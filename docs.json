@@ -1,11 +1,11 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
-  "name": "Mint Starter Kit",
+  "theme": "willow",
+  "name": "Statsig Documentation",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#4991FF",
+    "light": "#4991FF",
+    "dark": "#4991FF"
   },
   "favicon": "/favicon.svg",
   "navigation": {
@@ -16,6 +16,8 @@
           {
             "group": "Get Started",
             "pages": [
+              "welcome",
+              "understanding-platform",
               "introduction",
               "quickstart",
               "development"
@@ -51,6 +53,13 @@
               "api-reference/endpoint/delete",
               "api-reference/endpoint/webhook"
             ]
+          },
+          {
+            "group": "SDK Quickstart",
+            "pages": [
+              "sdks/quickstart_scraped",
+              "sdks/quickstart_new"
+            ]
           }
         ]
       }
@@ -58,19 +67,9 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Community",
-          "href": "https://mintlify.com/community",
+          "anchor": "Community Slack",
+          "href": "https://statsig.com/slack",
           "icon": "slack"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
         }
       ]
     }
