@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "willow",
+  "theme": "maple",
   "name": "Statsig Documentation",
   "colors": {
     "primary": "#4991FF",
@@ -31,7 +31,19 @@
               "essentials/images",
               "essentials/settings",
               "essentials/navigation",
-              "essentials/reusable-snippets"
+              "essentials/reusable-snippets",
+              {
+                "group": "Product Analytics",
+                "pages": [
+                  "product-analytics/overview",
+                  "product-analytics/drilldown",
+                  "product-analytics/funnels",
+                  "product-analytics/retention",
+                  "product-analytics/distribution",
+                  "product-analytics/user-journeys",
+                  "product-analytics/dashboards"
+                ]
+              }
             ]
           }
         ]
@@ -46,12 +58,12 @@
             ]
           },
           {
-            "group": "Endpoint Examples",
+            "group": "Console API Reference",
             "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              {
+                "group": "API reference",
+                "openapi": "openapi.json"
+              }
             ]
           },
           {
