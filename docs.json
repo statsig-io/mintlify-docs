@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "maple",
+  "theme": "aspen",
   "name": "Statsig Documentation",
   "colors": {
     "primary": "#4991FF",
@@ -27,23 +27,78 @@
             "group": "Essentials",
             "pages": [
               {
-                "group": "Feature Flags",
+                "group": "Feature Management",
                 "pages": [
-                  "feature-flags/overview",
-                  "feature-flags/create",
-                  "feature-flags/conditions",
-                  "feature-flags/overrides",
-                  "feature-flags/test-gate",
-                  "feature-flags/view-exposures",
-                  "feature-flags/pre-post-results",
-                  "feature-flags/multiple-rollout-stages",
-                  "feature-flags/scheduled-rollouts",
-                  "feature-flags/safeguards-overview",
-                  "feature-flags/safeguards-create",
-                  "feature-flags/safeguards-manage",
-                  "feature-flags/feature-flags-lifecycle",
-                  "feature-flags/permanent-and-stale-gates",
-                  "feature-flags/best-practices"
+                  {
+                    "group": "Feature Flags",
+                    "pages": [
+                      "feature-flags/overview",
+                      "feature-flags/create",
+                      "feature-flags/conditions",
+                      "feature-flags/overrides",
+                      "feature-flags/test-gate",
+                      "feature-flags/view-exposures",
+                      "feature-flags/pre-post-results",
+                      "feature-flags/multiple-rollout-stages",
+                      "feature-flags/scheduled-rollouts",
+                      "feature-flags/safeguards-overview",
+                      "feature-flags/safeguards-create",
+                      "feature-flags/safeguards-manage",
+                      "feature-flags/feature-flags-lifecycle",
+                      "feature-flags/permanent-and-stale-gates",
+                      "feature-flags/best-practices"
+                    ]
+                  },
+                  {
+                    "group": "Dynamic Config",
+                    "pages": [
+                      "dynamic-config/overview",
+                      "dynamic-config/working-with",
+                      "dynamic-config/enforce-schema",
+                      "dynamic-config/create-new",
+                      "dynamic-config/add-rule",
+                      "guides/first-dynamic-config"
+                    ]
+                  },
+                  {
+                    "group": "Segments",
+                    "pages": [
+                      "segments/overview",
+                      "segments/create-new",
+                      "segments/add-rule",
+                      "segments/add-id-list",
+                      "segments/implement"
+                    ]
+                  },
+                  {
+                    "group": "Release Pipeline",
+                    "pages": [
+                      "release-pipeline/overview",
+                      "release-pipeline/create-and-manage",
+                      "release-pipeline/trigger",
+                      "release-pipeline/actions"
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "Low-Code Experiments",
+                "pages": [
+                  "guides/sidecar-experiments/introduction",
+                  "guides/sidecar-experiments/setup",
+                  "guides/sidecar-experiments/creating-experiments",
+                  "guides/sidecar-experiments/measuring-experiments",
+                  "guides/sidecar-experiments/advanced-configurations",
+                  "guides/sidecar-experiments/publishing-experiments",
+                  "guides/sidecar-experiments/integrating-gtm",
+                  "guides/aa-sidecar"
+                ]
+              },
+              {
+                "group": "Web Analytics",
+                "pages": [
+                  "webanalytics/overview",
+                  "webanalytics/autocapture"
                 ]
               },
               {
@@ -65,6 +120,167 @@
                   "infra-analytics/logs-explorer",
                   "infra-analytics/logs-explorer-queries",
                   "infra-analytics/topline-alerts-logs"
+                ]
+              },
+              {
+                "group": "Session Replay",
+                "pages": [
+                  "session-replay/overview",
+                  "session-replay/install",
+                  "session-replay/configure",
+                  "session-replay/watch",
+                  "session-replay/cli-session-replay"
+                ]
+              },
+                "integrations/mcp",
+              {
+                "group": "AI Evals",
+                "pages": [
+                  "ai-evals/overview",
+                  "ai-evals/getting-started",
+                  "ai-evals/prompts",
+                  "ai-evals/offline-evals",
+                  "ai-evals/online-evals"
+                ]
+              },
+              {
+                "group": "Experiments",
+                "pages": [
+                  "experiments/introduction",
+                  {
+                    "group": "Set up an experiment",
+                    "pages": [
+                      "experiments/setup/create-new",
+                      "experiments/setup/overrides",
+                      "experiments/setup/quality-score"
+                    ]
+                  },
+                  {
+                    "group": "Implementing experiments",
+                    "pages": [
+                      "experiments/implementation/implement",
+                      "experiments/implementation/getting-group",
+                      "experiments/implementation/disable-group"
+                    ]
+                  },
+                  {
+                    "group": "Types of experiments",
+                    "pages": [
+                      "experiments/types/switchback-tests",
+                      "experiments/types/aa-test",
+                      "experiments/types/seo-testing"
+                    ]
+                  },
+                  {
+                    "group": "Autotune",
+                    "pages": [
+                      "experiments/autotune/bandit-introduction",
+                      {
+                        "group": "Autotune (MAB)",
+                        "pages": [
+                          "experiments/autotune/introduction",
+                          "experiments/autotune/setup",
+                          "experiments/autotune/monitoring",
+                          "experiments/autotune/multi-armed-bandit"
+                        ]
+                      },
+                      {
+                        "group": "Contextual (CMAB)",
+                        "pages": [
+                          "experiments/autotune/contextual/introduction",
+                          "experiments/autotune/contextual/getting-started",
+                          "experiments/autotune/contextual/monitoring",
+                          "experiments/autotune/contextual/methodology"
+                        ]
+                      },
+                      "experiments/autotune/bandit-faq",
+                      "experiments/autotune/using-bandits"
+                    ]
+                  },
+                  "experiments/advanced-setup/power-analysis",
+                  "experiments/layers-introduction",
+                  "experiments/holdouts-introduction",
+                  {
+                    "group": "Statistical methods",
+                    "pages": [
+                      {
+                        "group": "How we calculate",
+                        "pages": [
+                          "experiments/statistical-methods/confidence-intervals",
+                          "experiments/statistical-methods/p-value",
+                          "experiments/statistical-methods/methodologies/one-sided-test",
+                          "experiments/statistical-methods/methodologies/one-sample-test",
+                          "experiments/statistical-methods/metric-deltas",
+                          "experiments/statistical-methods/variance",
+                          "experiments/statistical-methods/methodologies/delta-method",
+                          "experiments/statistical-methods/methodologies/fieller-intervals"
+                        ]
+                      },
+                      {
+                        "group": "Variance reduction",
+                        "pages": [
+                          "experiments/statistical-methods/variance-reduction",
+                          "experiments/statistical-methods/methodologies/cuped",
+                          "experiments/statistical-methods/methodologies/winsorization"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "Advanced setup",
+                    "pages": [
+                      "experiments/advanced-setup/sequential-testing",
+                      "experiments/advanced-setup/bayesian",
+                      "experiments/advanced-setup/sprt",
+                      "experiments/advanced-setup/stratified-sampling",
+                      "experiments/statistical-methods/methodologies/bonferroni-correction",
+                      "experiments/statistical-methods/methodologies/benjamini–hochberg-procedure"
+                    ]
+                  },
+                  {
+                    "group": "Monitoring experiments",
+                    "pages": [
+                      "experiments/monitoring/monitor",
+                      "experiments/statistical-methods/methodologies/srm-checks",
+                      "experiments/monitoring/srm",
+                      "experiments/statistical-methods/pre-experiment-bias",
+                      "experiments/monitoring/bots"
+                    ]
+                  },
+                  {
+                    "group": "Interpreting results",
+                    "pages": [
+                      "experiments/interpreting-results/best-practices",
+                      "experiments/interpreting-results/read-pulse",
+                      "experiments/interpreting-results/userproperties",
+                      "experiments/interpreting-results/drill-down",
+                      "experiments/interpreting-results/participating-units",
+                      "experiments/interpreting-results/export",
+                      "experiments/interpreting-results/reconciling-experiment-results",
+                      "experiments/interpreting-results/faq"
+                    ]
+                  },
+                  {
+                    "group": "Exploring results",
+                    "pages": [
+                      "experiments/interpreting-results/custom-queries",
+                      "experiments/exploring-results/aggregated-impact",
+                      "experiments/statistical-methods/topline-impact",
+                      "experiments/exploring-results/meta-analysis",
+                      "experiments/exploring-results/differential-impact-detection",
+                      "experiments/exploring-results/interaction-detection"
+                    ]
+                  },
+                  {
+                    "group": "Ending an experiment",
+                    "pages": [
+                      "experiments/ending/ending-experiment",
+                      "experiments/ending/make-decision",
+                      "experiments/ending/stop-assignments",
+                      "experiments/ending/conclude-experiment-defer-decision",
+                      "experiments/ending/abandon"
+                    ]
+                  }
                 ]
               }
             ]
@@ -94,6 +310,286 @@
             "pages": [
               "sdks/quickstart_scraped",
               "sdks/quickstart_new"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Management & Admin",
+        "groups": [
+          {
+            "group": "Workspace Management",
+            "pages": [
+              "access-management/introduction",
+              "sdk-keys/api-keys",
+              {
+                "group": "Workspace",
+                "pages": [
+                  "access-management/organizations",
+                  "access-management/projects",
+                  "access-management/teams"
+                ]
+              },
+              {
+                "group": "Access Management",
+                "pages": [
+                  {
+                    "group": "Single Sign-On",
+                    "pages": [
+                      "access-management/sso/overview",
+                      "access-management/sso/okta_sso",
+                      "access-management/sso/azuread",
+                      "access-management/sso/google"
+                    ]
+                  },
+                  {
+                    "group": "SCIM User Provisioning",
+                    "pages": [
+                      "access-management/scim/overview",
+                      "access-management/scim/concepts",
+                      {
+                        "group": "Okta Guide",
+                        "pages": [
+                          "access-management/scim/okta_scim_setup",
+                          "access-management/scim/okta_scim_user_management",
+                          "access-management/scim/okta_scim_org_roles",
+                          "access-management/scim/okta_scim_team_management",
+                          "access-management/scim/okta_scim_troubleshooting"
+                        ]
+                      },
+                      "access-management/scim/scim-endpoints"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Integrations",
+            "pages": [
+              "integrations/introduction",
+              {
+                "group": "Data Into Statsig",
+                "pages": [
+                  {
+                    "group": "Data Connectors",
+                    "pages": [
+                      "integrations/data-connectors/amplitude",
+                      "integrations/data-connectors/braze",
+                      "integrations/data-connectors/census",
+                      "integrations/data-connectors/fivetran",
+                      "integrations/data-connectors/google-analytics",
+                      "integrations/data-connectors/heap",
+                      "integrations/data-connectors/hightouch",
+                      "integrations/data-connectors/mixpanel",
+                      "integrations/data-connectors/mparticle",
+                      "integrations/data-connectors/revenuecat",
+                      "integrations/data-connectors/rudderstack",
+                      "integrations/data-connectors/segment",
+                      "integrations/data-connectors/stitch"
+                    ]
+                  },
+                  {
+                    "group": "Warehouse Ingestion",
+                    "pages": [
+                      "data-warehouse-ingestion/introduction",
+                      {
+                        "group": "Connection Set Up",
+                        "pages": [
+                          "data-warehouse-ingestion/bigquery",
+                          "data-warehouse-ingestion/redshift",
+                          "data-warehouse-ingestion/snowflake",
+                          "data-warehouse-ingestion/databricks",
+                          "data-warehouse-ingestion/synapse",
+                          "data-warehouse-ingestion/s3",
+                          "data-warehouse-ingestion/athena",
+                          "data-warehouse-ingestion/faq"
+                        ]
+                      },
+                      "data-warehouse-ingestion/data_mapping"
+                    ]
+                  },
+                  "integrations/gtm",
+                  "integrations/event_filtering",
+                  "integrations/event_webhook",
+                  "integrations/openai",
+                  "integrations/statsiglite",
+                  "guides/statsig-id-resolver",
+                  {
+                    "group": "Data Imports (Deprecated)",
+                    "pages": [
+                      "integrations/data-imports/overview-deprecated",
+                      "integrations/data-imports/bigquery-deprecated",
+                      "integrations/data-imports/redshift-deprecated",
+                      "integrations/data-imports/snowflake-deprecated",
+                      "integrations/data-imports/azure_upload-deprecated"
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "Data Exports",
+                "pages": [
+                  "integrations/data-exports/overview"
+                ]
+              },
+              {
+                "group": "Serverless & Edge",
+                "pages": [
+                  "guides/serverless",
+                  "guides/cdn-edge-testing",
+                  "integrations/vercel",
+                  "integrations/cloudflare",
+                  "integrations/workersai",
+                  "integrations/fastly",
+                  "integrations/akamai"
+                ]
+              },
+              {
+                "group": "Slack, VS Code & Productivity",
+                "pages": [
+                  "integrations/github_code_references",
+                  "integrations/gitlab_code_references",
+                  "integrations/slack",
+                  "integrations/jira"
+                ]
+              },
+              {
+                "group": "Email & CMS Systems",
+                "pages": [
+                  "guides/email-campaign-test",
+                  "guides/contentful",
+                  "guides/customer-io-email-abtest",
+                  "guides/sendgrid-email-abtest",
+                  "guides/cms-integrations"
+                ]
+              },
+              {
+                "group": "No-Code Editors",
+                "pages": [
+                  "guides/shopify-ab-test",
+                  "guides/framer-analytics",
+                  "guides/webflow-sidecar-ab-test"
+                ]
+              },
+              {
+                "group": "Observability & Infra",
+                "pages": [
+                  "integrations/datadog",
+                  {
+                    "group": "Datadog Triggers",
+                    "pages": [
+                      "integrations/triggers/introduction",
+                      "integrations/triggers/datadog"
+                    ]
+                  },
+                  {
+                    "group": "Terraform",
+                    "pages": [
+                      "integrations/terraform/introduction",
+                      "integrations/terraform/terraform_gate",
+                      "integrations/terraform/terraform_experiment"
+                    ]
+                  },
+                  "integrations/pulumi"
+                ]
+              },
+              {
+                "group": "Azure AI",
+                "pages": [
+                  "azureai/introduction",
+                  "azureai/getting-started",
+                  "azureai/model-client",
+                  "azureai/completions",
+                  "azureai/embeddings",
+                  "azureai/capturing-metrics",
+                  "azureai/running-experiments"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Collaboration",
+            "pages": [
+              {
+                "group": "Templates & Policies",
+                "pages": [
+                  {
+                    "group": "Organization Policies",
+                    "pages": [
+                      "org-admin/organization_policies",
+                      "org-admin/experiment_policy",
+                      "org-admin/gates_policy"
+                    ]
+                  },
+                  {
+                    "group": "Templates",
+                    "pages": [
+                      "exp-templates/templates"
+                    ]
+                  },
+                  {
+                    "group": "Decision Framework",
+                    "pages": [
+                      "exp-templates/decision-framework"
+                    ]
+                  }
+                ]
+              },
+              "access-management/discussions",
+              "access-management/tags",
+              "guides/setting-up-reviews",
+              "guides/config-history"
+            ]
+          },
+          {
+            "group": "Privacy",
+            "pages": [
+              "compliance/introduction",
+              "compliance/user_data_deletion_requests",
+              "guides/private-attributes"
+            ]
+          },
+          {
+            "group": "Infrastructure Operations",
+            "pages": [
+              "infrastructure/introduction",
+              {
+                "group": "Open Telemetry",
+                "pages": [
+                  "server/concepts/open_telemetry"
+                ]
+              },
+              {
+                "group": "Cloudflare",
+                "pages": [
+                  "server/concepts/cloudflare"
+                ]
+              },
+              {
+                "group": "Domains & IP",
+                "pages": [
+                  "infrastructure/statsig_ip_ranges",
+                  "infrastructure/statsig_domains"
+                ]
+              },
+              {
+                "group": "API Proxies",
+                "pages": [
+                  "infrastructure/api_proxy/introduction",
+                  "infrastructure/api_proxy/managed-proxy",
+                  "infrastructure/api_proxy/custom_proxy",
+                  "server/concepts/forward_proxy"
+                ]
+              },
+              {
+                "group": "Reliability",
+                "pages": [
+                  "infrastructure/reliability-faq",
+                  "guides/uptime",
+                  "infrastructure/monitoring"
+                ]
+              }
             ]
           }
         ]
