@@ -8,30 +8,44 @@
     "dark": "#4991FF"
   },
   "favicon": "/favicon.svg",
+  "fonts":{
+    "family": "Geist"
+  },
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Product Docs",
         "groups": [
           {
             "group": "Get Started",
             "pages": [
               "welcome",
-              "understanding-platform",
-              "introduction",
-              "quickstart",
-              "development"
+              "understanding-platform"
             ]
           },
           {
             "group": "Essentials",
             "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/settings",
-              "essentials/navigation",
-              "essentials/reusable-snippets",
+              {
+                "group": "Feature Flags",
+                "pages": [
+                  "feature-flags/overview",
+                  "feature-flags/create",
+                  "feature-flags/conditions",
+                  "feature-flags/overrides",
+                  "feature-flags/test-gate",
+                  "feature-flags/view-exposures",
+                  "feature-flags/pre-post-results",
+                  "feature-flags/multiple-rollout-stages",
+                  "feature-flags/scheduled-rollouts",
+                  "feature-flags/safeguards-overview",
+                  "feature-flags/safeguards-create",
+                  "feature-flags/safeguards-manage",
+                  "feature-flags/feature-flags-lifecycle",
+                  "feature-flags/permanent-and-stale-gates",
+                  "feature-flags/best-practices"
+                ]
+              },
               {
                 "group": "Product Analytics",
                 "pages": [
@@ -42,6 +56,15 @@
                   "product-analytics/distribution",
                   "product-analytics/user-journeys",
                   "product-analytics/dashboards"
+                ]
+              },
+              {
+                "group": "Infra Analytics",
+                "pages": [
+                  "infra-analytics/overview",
+                  "infra-analytics/logs-explorer",
+                  "infra-analytics/logs-explorer-queries",
+                  "infra-analytics/topline-alerts-logs"
                 ]
               }
             ]
