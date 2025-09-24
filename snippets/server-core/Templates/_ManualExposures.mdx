@@ -1,0 +1,44 @@
+
+## Manual Exposures 
+
+<Warning>
+Manually logging exposures can be tricky and may lead to an imbalance in exposure events. For example, only triggering exposures for users in the Test group of an experiment will imbalance the experiment, making it useless.
+</Warning>
+
+Manual exposures give you the option to query your gates/experiments without triggering an exposure, and optionally, manually log the exposure after the fact.
+
+<CodeGroup>
+
+```javascript Check Gate
+// To check a gate without an exposure being logged
+// {/* Gate snippet code should be included here */}
+
+// Later, if you would like to expose this gate
+// {/* Gate exposure snippet code should be included here */}
+```
+
+```javascript Get Config
+// To get a dynamic config without an exposure being logged
+// {/* Config snippet code should be included here */}
+
+// Later, if you would like to expose the dynamic config
+// {/* Config exposure snippet code should be included here */}
+```
+
+```javascript Get Experiment
+// To get an experiment without an exposure being logged
+// {/* Experiment snippet code should be included here */}
+
+// Later, if you would like to expose the experiment
+// {/* Experiment exposure snippet code should be included here */}
+```
+
+```javascript Get Layer
+// To get a layer parameter without an exposure being logged
+// {/* Layer snippet code should be included here */}
+
+// Later, if you would like to expose the layer parameter
+// {/* Layer exposure snippet code should be included here */}
+```
+
+</CodeGroup>

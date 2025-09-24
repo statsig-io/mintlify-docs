@@ -28,7 +28,7 @@ Our statsig-node SDK illustrates how this works (and is exactly how we evaluate 
 
 <Warning>
 Do not provide a `privateAttribute` key anywhere else in the `user` object.  The entire `privateAttributes` dictionary is dropped, but any duplicate fields at the top level or in the custom object will still be logged (and evaluated against)
-</Info>
+</Warning>
 
 ## Client vs Server SDKs
 Client/single user environment SDKs send the user object with the `initialize` call to evaluate the user against every gate in your Statsig project.

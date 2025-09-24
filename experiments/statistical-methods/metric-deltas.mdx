@@ -7,7 +7,9 @@ description: "Learn how Statsig computes metric deltas to compare absolute and r
 
 A metric delta refers to the difference in metric values between two groups, by default the test and control groups. This is usually the impact we care about when looking at experiment results. To account for the different number of users (or units) that constitute each group, we compare the mean metric value per user, not the total.
 
-<Note> Selecting Groups
+<Note>
+**Selecting Groups**
+
 We define all deltas here to be the difference between a "treatment" group as compared to a presumably unchanged "control" group. However, Statsig enables comparison between any two groups as desired.
 </Note>
 
@@ -25,7 +27,7 @@ $$
 \Delta \overline{X} \%=\frac{\overline{X}_t-\overline{X}_c}{\overline{X}_c} \times 100 \%
 $$
 
-:::important Reversing Group Order
+<Note> Reversing Group Order
 If you reverse the order of group comparison in Pulse to be "control" vs "treatment", then all deltas will be reversed and the direction of change will be inverted.
 </Note>
 
@@ -78,7 +80,7 @@ $$
 
 Where $\max(X_i)$ is the maximum value of the new xAU metric for user $i$.
 
-:::important event_dau Legacy Support
+<Note> event_dau Legacy Support
 
 **event_dau** metrics are now in legacy support only and are no longer created for new events. Existing event_dau metrics will continue to be available for any of your new experiments and will continue to be computed daily. For all new events, you should create an event_user metric to measure daily active users.
 

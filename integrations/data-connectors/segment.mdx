@@ -6,7 +6,7 @@ last_update:
   date: 2025-09-18
 ---
 
-import StatsigEnvironmentFormat from "../snippets/integration_statsig_env_format.mdx";
+import StatsigEnvironmentFormat from "/snippets/integration_statsig_env_format.mdx";
 
 # Segment Overview
 
@@ -150,9 +150,9 @@ const client = new StatsigClient(sdkKey,
 ```
 
 You can access Segment's `anonymousId` using `analytics.user().anonymousId()` as [outlined in the Segment docs here](https://segment.com/docs/connections/sources/catalog/libraries/website/javascript/identity/).
-<Note> 
-It's important to note, that the Segment SDK may initialize after Statsig SDK, and the `anonymousId` may not be available in that scenario. It's important to check this in your specific implementation. If you're using vanilla javascript, you may want to wait for the `anonymousId` from the Segment SDK after initialization and call the `updateUser()` method on the Statsig SDK to update this ID. 
-</Info>
+<Note>
+It's important to note, that the Segment SDK may initialize after Statsig SDK, and the `anonymousId` may not be available in that scenario. It's important to check this in your specific implementation. If you're using vanilla javascript, you may want to wait for the `anonymousId` from the Segment SDK after initialization and call the `updateUser()` method on the Statsig SDK to update this ID.
+</Note>
 
 
 #### Example Mapping Flow
@@ -270,7 +270,7 @@ metric collection via Segment with Statsig's experimentation platform.
 
 <Note>
 Segment events are prepended with `segment::` so they can be easily distinguished from other sources
-</Info>
+</Note>
 
 ![](https://user-images.githubusercontent.com/125311112/263068916-a7bb398b-dd5f-4a0c-9c72-924f384a54b7.png)
 

@@ -7,9 +7,18 @@
     "light": "#4991FF",
     "dark": "#4991FF"
   },
-  "favicon": "/favicon.svg",
+  "background": {
+    "decoration": "gradient"
+  },
+  "favicon": "images/Statsig_Favicon_Dark.svg",
   "fonts":{
     "family": "Geist"
+  },
+  "contextual": {
+    "options": [
+      "copy",
+      "chatgpt"
+    ]
   },
   "navigation": {
     "tabs": [
@@ -288,12 +297,214 @@
         ]
       },
       {
-        "tab": "API Reference",
+        "tab": "Warehouse Native",
         "groups": [
           {
-            "group": "API Documentation",
+            "group": "Introduction",
             "pages": [
-              "api-reference/introduction"
+              "statsig-warehouse-native/introduction",
+              "statsig-warehouse-native/guides/quick-start",
+              "statsig-warehouse-native/native-vs-cloud"
+            ]
+          },
+          {
+            "group": "Guides",
+            "pages": [
+              {
+                "group": "POCs & Evaluations",
+                "pages": [
+                  "statsig-warehouse-native/guides/running_a_poc",
+                  "statsig-warehouse-native/guides/playground_eval",
+                  "statsig-warehouse-native/guides/sdks",
+                  "statsig-warehouse-native/guides/aatest",
+                  "statsig-warehouse-native/guides/email-experiments"
+                ]
+              },
+              {
+                "group": "Debugging",
+                "pages": [
+                  "statsig-warehouse-native/guides/checklist",
+                  "statsig-warehouse-native/guides/debugging",
+                  "statsig-warehouse-native/guides/sql"
+                ]
+              },
+              "statsig-warehouse-native/connecting-your-warehouse/forwarded-data"
+            ]
+          },
+          {
+            "group": "Warehouse Integrations",
+            "pages": [
+              "statsig-warehouse-native/guides/connect",
+              "statsig-warehouse-native/connecting-your-warehouse/snowflake",
+              "statsig-warehouse-native/connecting-your-warehouse/athena",
+              "statsig-warehouse-native/connecting-your-warehouse/bigquery",
+              "statsig-warehouse-native/connecting-your-warehouse/databricks",
+              "statsig-warehouse-native/connecting-your-warehouse/redshift",
+              "statsig-warehouse-native/connecting-your-warehouse/trino",
+              "statsig-warehouse-native/connecting-your-warehouse/clickhouse",
+              "statsig-warehouse-native/connecting-your-warehouse/fabric",
+              "statsig-warehouse-native/connecting-your-warehouse/other"
+            ]
+          },
+          {
+            "group": "Warehouse Management",
+            "pages": [
+              "statsig-warehouse-native/analysis-tools/data-privacy",
+              "statsig-warehouse-native/warehouse-management/storage",
+              "statsig-warehouse-native/guides/costs",
+              "statsig-warehouse-native/guides/best-practices"
+            ]
+          },
+          {
+            "group": "Data & Semantic Layer",
+            "pages": [
+              "statsig-warehouse-native/configuration/data-and-semantic-layer",
+              "statsig-warehouse-native/configuration/metric-sources",
+              {
+                "group": "Metrics",
+                "pages": [
+                  "statsig-warehouse-native/configuration/metrics",
+                  "statsig-warehouse-native/metrics/sum",
+                  "statsig-warehouse-native/metrics/count",
+                  "statsig-warehouse-native/metrics/count-distinct",
+                  "statsig-warehouse-native/metrics/unit-count-once",
+                  "statsig-warehouse-native/metrics/unit-count-window",
+                  "statsig-warehouse-native/metrics/unit-count-latest",
+                  "statsig-warehouse-native/metrics/unit-count-rate",
+                  "statsig-warehouse-native/metrics/mean",
+                  "statsig-warehouse-native/metrics/ratio",
+                  "statsig-warehouse-native/metrics/funnel",
+                  "statsig-warehouse-native/metrics/percentile",
+                  "statsig-warehouse-native/metrics/log",
+                  "statsig-warehouse-native/metrics/latest-value",
+                  "statsig-warehouse-native/metrics/retention",
+                  "statsig-warehouse-native/metrics/max-min"
+                ]
+              },
+              "statsig-warehouse-native/configuration/metric-examples",
+              "statsig-warehouse-native/features/cohort-metrics",
+              "statsig-warehouse-native/configuration/dimensional-analysis",
+              "statsig-warehouse-native/configuration/assignment-sources",
+              "statsig-warehouse-native/configuration/entity-properties",
+              "statsig-warehouse-native/configuration/qualifying-events",
+              {
+                "group": "Metric Management",
+                "pages": [
+                  "statsig-warehouse-native/configuration/tags-and-teams",
+                  "statsig-warehouse-native/features/roles-and-access",
+                  "statsig-warehouse-native/configuration/query-tools"
+                ]
+              },
+              {
+                "group": "Programmatic Management",
+                "pages": [
+                  "statsig-warehouse-native/configuration/console-api",
+                  "statsig-warehouse-native/configuration/semantic-layer-sync"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Experiment Analysis",
+            "pages": [
+              "statsig-warehouse-native/features/understanding-experiments",
+              "statsig-warehouse-native/features/experiment-options",
+              {
+                "group": "Setup",
+                "pages": [
+                  "statsig-warehouse-native/features/configure-an-experiment",
+                  "statsig-warehouse-native/features/types-of-experiments",
+                  "statsig-warehouse-native/features/power-analysis",
+                  "statsig-warehouse-native/features/targeting",
+                  "statsig-warehouse-native/features/id-resolution",
+                  "statsig-warehouse-native/features/filtering-exposures",
+                  "statsig-warehouse-native/metrics/normalized-metrics"
+                ]
+              },
+              {
+                "group": "Loading Results",
+                "pages": [
+                  "statsig-warehouse-native/features/reloads",
+                  "statsig-warehouse-native/features/turbo",
+                  "statsig-warehouse-native/features/full-reloads",
+                  "statsig-warehouse-native/features/incremental-reloads",
+                  "statsig-warehouse-native/features/metric-reloads",
+                  "statsig-warehouse-native/connecting-your-warehouse/scheduled-reloads",
+                  "statsig-warehouse-native/analysis-tools/pipeline-overview",
+                  "statsig-warehouse-native/features/freshness"
+                ]
+              },
+              {
+                "group": "Interpreting Results",
+                "pages": [
+                  "statsig-warehouse-native/read-pulse-whn",
+                  "statsig-warehouse-native/features/monitor-an-experiment",
+                  "statsig-warehouse-native/features/reports"
+                ]
+              },
+              {
+                "group": "Statistics",
+                "pages": [
+                  "statsig-warehouse-native/features/statistics"
+                ]
+              },
+              {
+                "group": "CURE",
+                "pages": [
+                  "statsig-warehouse-native/cure/introduction",
+                  "statsig-warehouse-native/cure/cure-setup"
+                ]
+              },
+              "statsig-warehouse-native/features/autotune",
+              "statsig-warehouse-native/features/use-case"
+            ]
+          },
+          {
+            "group": "Other Features",
+            "pages": [
+              "statsig-warehouse-native/features/mex-on-warehouse-native",
+              {
+                "group": "Geotests",
+                "pages": [
+                  "statsig-warehouse-native/geotests/introduction",
+                  "statsig-warehouse-native/geotests/geotests-setup",
+                  "statsig-warehouse-native/geotests/methodology"
+                ]
+              },
+              "statsig-warehouse-native/features/other-useful-features"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "SDKs & APIs",
+        "groups": [
+          {
+            "group": "SDK Quickstarts",
+            "pages": [
+              "sdks/quickstart",
+              "sdks/identify-users",
+              "quickstarts/check-gate",
+              "guides/abn-tests",
+              "guides/logging-events"
+            ]
+          },
+          {
+            "group": "SDK Concepts",
+            "pages": [
+              "sdks/getting-started",
+              "concepts/user",
+              "client/concepts/initialize",
+              "sdks/how-evaluation-works",
+              "sdks/debugging",
+              "sdks/client-vs-server",
+              "compliance/data_privacy_for_mobile"
+            ]
+          },
+          {
+            "group": "Server SDKs",
+            "pages": [
+              "server-core/node"
             ]
           },
           {
@@ -304,18 +515,11 @@
                 "openapi": "openapi.json"
               }
             ]
-          },
-          {
-            "group": "SDK Quickstart",
-            "pages": [
-              "sdks/quickstart_scraped",
-              "sdks/quickstart_new"
-            ]
           }
         ]
       },
       {
-        "tab": "Management & Admin",
+        "tab": "Management & Integrations",
         "groups": [
           {
             "group": "Workspace Management",
@@ -611,15 +815,11 @@
   },
   "navbar": {
     "links": [
-      {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
-      }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "label": "Statsig Console",
+      "href": "https://console.statsig.com"
     }
   },
   "footer": {

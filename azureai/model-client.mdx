@@ -6,8 +6,6 @@ last_update:
   date: 2025-09-18
 ---
 
-import Tabs from "@theme/Tabs";
-import TabItem from "@theme/TabItem";
 
 In order to invoke Azure AI methods, you'll need to instantiate a Model Client.  You have two ways of instantiating a Model Client
 
@@ -43,63 +41,61 @@ The JSON of this looks like this:
 
 Once this is done, you can instantiate your Model Client directly by using the **id** of this Dynamic Config like this:
 
-<Tabs
+<Tabs>
   groupId="language-choice"
   defaultValue="nodejs"
   values={[
     {label: 'NodeJS', value: 'nodejs'},
     {label: 'Python', value: 'python'},
     {label: '.Net', value: 'dotnet'},
-  ]}>
-  <TabItem value="nodejs">
+  <Tab title="NodeJS">
 ```js
 const client = AzureAI.getModelClient("<dynamic_config_id>");
 ```
-  </TabItem>
-  <TabItem value="python">
+  </Tab>
+  <Tab title="Python">
 ```python
 client = AzureAI.get_model_client("<dynamic_config_id>")
 ```
-  </TabItem>
-  <TabItem value="dotnet">
+  </Tab>
+  <Tab title=".NET">
 ```csharp
 var client = Server.GetModelClient("<dynamic_config_id>");
 ```
-  </TabItem>
+  </Tab>
 </Tabs>
 
 ## Option 2: Using hard-coded endpoint and key
 
 This is the most direct way of instantiating an AI model client.  However, this would mean you'll have to embed the endpoint and key in your code, or use another way (like an environment variable) to get the model endpoint and key into the process.
 
-<Tabs
+<Tabs>
   groupId="language-choice"
   defaultValue="nodejs"
   values={[
     {label: 'NodeJS', value: 'nodejs'},
     {label: 'Python', value: 'python'},
     {label: '.Net', value: 'dotnet'},
-  ]}>
-  <TabItem value="nodejs">
+  <Tab title="NodeJS">
 ```js
 const modelClient = AzureAI.getModelClientFromEndpoint(
     "<DEPLOYMENT_ENDPOINT_URL>",
     "<DEPLOYMENT_KEY>"
 );
 ```
-  </TabItem>
-  <TabItem value="python">
+  </Tab>
+  <Tab title="Python">
 ```python
 modelClient = AzureAI.get_model_client_from_endpoint("<DEPLOYMENT_ENDPOINT_URL>", "<DEPLOYMENT_KEY>")
 ```
-  </TabItem>
-  <TabItem value="dotnet">
+  </Tab>
+  <Tab title=".NET">
 ```csharp
 var modelClient = Server.GetModelClientFromEndpoint(
     "<DEPLOYMENT_ENDPOINT_URL>",
     "<DEPLOYMENT_KEY>"
 );
 ```
-  </TabItem>
+  </Tab>
 </Tabs>
 

@@ -6,23 +6,14 @@ last_update:
   date: 2025-09-18
 ---
 
-import Tabs from "@theme/Tabs";
-import TabItem from "@theme/TabItem";
 
 
 Embeddings are numerical representations of data (like text, images, or audio) that capture their essential features in a compact form, typically as vectors. For text, embeddings map words or sentences to vector spaces, where similar items are closer together, enabling comparisons and efficient searches. Developers use embeddings in tasks like semantic search, recommendation engines, and clustering, as they allow for analyzing and processing unstructured data with machine learning models that recognize and work with these patterns.
 
 ## Generate text embeddings
 
-<Tabs
-  groupId="language-choice"
-  defaultValue="nodejs"
-  values={[
-    {label: 'NodeJS', value: 'nodejs'},
-    {label: 'Python', value: 'python'},
-    {label: '.Net', value: 'dotnet'},
-  ]}>
-  <TabItem value="nodejs">
+<Tabs>
+  <Tab title="NodeJS">
 ```js
 const result = await modelClient.getEmbeddings([
   "Hello, world!",
@@ -32,8 +23,8 @@ for (const data of result.data) {
   console.log(`Embedding: ${data.embedding}`);
 }
 ```
-  </TabItem>
-  <TabItem value="python">
+  </Tab>
+  <Tab title="Python">
 ```python
 response = modelClient.get_embeddings(["Hello, world!", "Goodbye, world!"])
 
@@ -44,14 +35,14 @@ for item in response.data:
         f"..., {item.embedding[length-2]}, {item.embedding[length-1]}]"
     )
 ```
-  </TabItem>
-  <TabItem value="dotnet">
+  </Tab>
+  <Tab title=".NET">
 ```csharp
 var embedding = await client.GetEmbeddings(["Hello, world!", "Goodbye, world!"]);
 Console.WriteLine(embedding.First().ToArray());
 Console.WriteLine(embedding.Last().ToArray());
 ```
-  </TabItem>
+  </Tab>
 </Tabs>
 
 #### Output
