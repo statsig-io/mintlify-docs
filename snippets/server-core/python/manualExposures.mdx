@@ -1,11 +1,6 @@
-## Manual Exposures
-
-Statsig SDKs automatically log exposures when you check a gate, get a config, or get an experiment. However, there are a few cases where you may want to control when these exposures are logged yourself. For example, if you need to perform some asynchronous validation before committing to a gate check, you may not want to log an exposure if you ultimately don't use the result. This is where manual exposures come in.
-
-All of the main SDK functions (`check_gate`, `get_dynamic_config`, `get_experiment`, `get_layer`) accept an optional evaluation options parameter with `disable_exposure_logging` set to `True`. When this is used, the SDK will not automatically log an exposure event. You can then manually log the exposure at a later time using the corresponding manual exposure logging method:
-
-### Feature Gates
-
+All of the main SDK functions (`check_gate`, `get_dynamic_config`, `get_experiment`, `get_layer`) accept an optional `disable_exposure_logging` parameter. When this is set to `True`, the SDK will not automatically log an exposure event. You can then manually log the exposure at a later time using the corresponding manual exposure logging method:
+<Tabs>
+<Tab title="Feature Gates">
 ```python
 result = statsig.check_gate(aUser, 'a_gate_name', FeatureGateEvaluationOptions(disable_exposure_logging=True))
 ```
@@ -13,9 +8,9 @@ result = statsig.check_gate(aUser, 'a_gate_name', FeatureGateEvaluationOptions(d
 ```python
 statsig.manually_log_gate_exposure(aUser, 'a_gate_name')
 ```
+</Tab>
 
-### Dynamic Configs
-
+<Tab title="Dynamic Configs">
 ```python
 config = statsig.get_dynamic_config(aUser, 'a_dynamic_config_name', DynamicConfigEvaluationOptions(disable_exposure_logging=True))
 ```
@@ -23,9 +18,9 @@ config = statsig.get_dynamic_config(aUser, 'a_dynamic_config_name', DynamicConfi
 ```python
 statsig.manually_log_dynamic_config_exposure(aUser, 'a_dynamic_config_name')
 ```
+</Tab>
 
-### Experiments
-
+<Tab title="Experiments">
 ```python
 experiment = statsig.get_experiment(aUser, 'an_experiment_name', ExperimentEvaluationOptions(disable_exposure_logging=True))
 ```
@@ -33,9 +28,9 @@ experiment = statsig.get_experiment(aUser, 'an_experiment_name', ExperimentEvalu
 ```python
 statsig.manually_log_experiment_exposure(aUser, 'an_experiment_name')
 ```
+</Tab>
 
-### Layers
-
+<Tab title="Layers">
 ```python
 layer = statsig.get_layer(aUser, 'a_layer_name',  LayerEvaluationOptions(disable_exposure_logging=True))
 paramValue = layer.get('a_param_name', 'fallback_value')
@@ -44,3 +39,5 @@ paramValue = layer.get('a_param_name', 'fallback_value')
 ```python
 statsig.manually_log_layer_parameter_exposure(aUser, 'a_layer_name', 'a_param_name')
 ```
+</Tab>
+</Tabs>

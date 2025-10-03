@@ -5,6 +5,22 @@ description: Statsig's Legacy Server SDK for Python applications
 icon: "python"
 ---
 
+import CheckGateIntro from '/snippets/server/checkGate.mdx'
+import GetDynamicConfigIntro from '/snippets/server/getDynamicConfig.mdx'
+import GetExperimentIntro from '/snippets/server/getExperiment.mdx'
+import LogEventIntro from '/snippets/server/logEvent.mdx'
+import GetFeatureGateIntro from '/snippets/server/getFeatureGate.mdx'
+import StatsigUserIntro from '/snippets/server/statsigUser.mdx'
+import PrivateAttributesIntro from '/snippets/server/privateAttributes.mdx'
+import StatsigOptionsIntro from '/snippets/server/statsigOptions.mdx'
+import ShutdownIntro from '/snippets/server/shutdown.mdx'
+import ClientInitResponseIntro from '/snippets/server/clientInitResponse.mdx'
+import LocalOverridesIntro from '/snippets/server/localOverrides.mdx'
+import MultiInstanceIntro from '/snippets/server/multiInstance.mdx'
+import ForwardProxyIntro from '/snippets/server/forwardProxy.mdx'
+import InitializationWarning from '/snippets/server/initialization.mdx'
+import InitializationFooter from '/snippets/server/initialization2.mdx'
+
 import installation from '/snippets/server/python/installation.mdx'
 import initialization from '/snippets/server/python/initialization.mdx'
 import checkGate from '/snippets/server/python/checkGate.mdx'
@@ -29,42 +45,48 @@ import faqs from '/snippets/server/python/faqs.mdx'
 <installation/>
 </Step>
 <Step title="Initialize the SDK">
+<InitializationWarning/>
 <initialization/>
+<InitializationFooter/>
 </Step>
 </Steps>
 
 ## Working with the SDK
 
+<CheckGateIntro/>
 <checkGate/>
+
+<GetDynamicConfigIntro/>
 <getDynamicConfig/>
+
+<GetExperimentIntro/>
 <getExperiment/>
+
+<GetFeatureGateIntro/>
 <getFeatureGate/>
+
+<LogEventIntro/>
 <logEvent/>
 
-## Statsig User
+<StatsigUserIntro/>
+<PrivateAttributesIntro/>
 
-When calling APIs that require a user, you should pass as much information as possible in order to take advantage of advanced gate and config conditions (like country or OS/browser level checks), and correctly measure impact of your experiments on your metrics/events. At least one identifier, either userID or a Custom ID, is required to provide a consistent experience for a given user (as explained [here](/concepts/user#why-is-an-id-always-required-for-server-sdks)).
-
-Besides `userID`, we also have `email`, `ip`, `userAgent`, `country`, `locale` and `appVersion` as top-level fields on StatsigUser. In addition, you can pass any key-value pairs in an object/dictionary to the `custom` field and be able to create targeting based on them.
-
-Note that while typing is lenient on the `StatsigUser` object to allow you to pass in numbers, strings, arrays, objects, and potentially even enums or classes, the evaluation operators will only be able to operate on primitive types - mostly strings and numbers. While we attempt to smartly cast custom field types to match the operator, we cannot guarantee evaluation results for other types. For example, setting an array as a custom field will only ever be compared as a string - there is no operator to match a value in that array.
-
-### Private Attributes
-
-Have sensitive user PII data that should not be logged? No problem, we have a solution for it! On the StatsigUser object we also have a field called `privateAttributes`, which is a simple object/dictionary that you can use to set private user attributes. Any attribute set in `privateAttributes` will only be used for evaluation/targeting, and removed from any logs before they are sent to Statsig server.
-
-For example, if you have feature gates that should only pass for users with emails ending in "@statsig.com", but do not want to log your users' email addresses to Statsig, you can simply add the key-value pair `{ email: "my_user@statsig.com" }` to `privateAttributes` on the user and that's it!
-
+<StatsigOptionsIntro/>
 <statsigOptions/>
 
+<ShutdownIntro/>
 <shutdown/>
 
+<ClientInitResponseIntro/>
 <clientInitResponse/>
 
+<LocalOverridesIntro/>
 <localOverrides/>
 
+<MultiInstanceIntro/>
 <multiInstance/>
 
+<ForwardProxyIntro/>
 <forwardProxy/>
 
 <faqs/>

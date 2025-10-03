@@ -1,39 +1,26 @@
-import Tabs from "@theme/Tabs";
-import TabItem from "@theme/TabItem";
-
-<Tabs
-  groupId="java-server-sdk-lang-choice"
-  defaultValue="java"
-  values={[
-    {label: 'Java', value: 'java'},
-    {label: 'Kotlin', value: 'kotlin'},
-  ]}>
-  <TabItem value="java">
+<Tabs>
+  <Tab title="Java">
 
 ```java
-
 APIFeatureGate featureGate = Statsig.getFeatureGate(user, "a_gate");
 System.out.println("Feature Gate: " + featureGate.getName() + ", Is Enabled?: " + featureGate.getValue());
 
 String reason = featureGate.getReason() != null ? featureGate.getReason().toString() : "No specific reason";
 System.out.println("Evaluation Reason: " + reason);
-
 ```
 
-  </TabItem>
-  <TabItem value="kotlin">
+  </Tab>
+  <Tab title="Kotlin">
 
 ```kotlin
-
 val featureGate = Statsig.getFeatureGate(user, "a_gate");
 println("Feature Gate: ${featureGate.name}, Is Enabled?: ${featureGate.value}")
 
 val reason = featureGate.reason?.toString() ?: "No specific reason"
 println("Evaluation Reason: $reason")
-
 ```
 
-  </TabItem>
+  </Tab>
 </Tabs>
 
 The `APIFeatureGate` data class encapsulates the evaluation result of a feature gate for a specific user. It's mostly about getting metadata about the gate.

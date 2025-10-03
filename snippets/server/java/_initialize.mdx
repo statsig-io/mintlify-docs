@@ -1,14 +1,5 @@
-import Tabs from "@theme/Tabs";
-import TabItem from "@theme/TabItem";
-
-<Tabs
-  groupId="java-server-sdk-lang-choice"
-  defaultValue="java"
-  values={[
-    {label: 'Java', value: 'java'},
-    {label: 'Kotlin', value: 'kotlin'},
-  ]}>
-  <TabItem value="java">
+<Tabs>
+  <Tab title="Java">
 
 ```java
 import com.statsig.sdk.Statsig;
@@ -18,11 +9,10 @@ StatsigOptions options = new StatsigOptions();
 // options.initTimeoutMs = 9999;
 Future initFuture = Statsig.initializeAsync("server-secret-key", options);
 initFuture.get();
-
 ```
 
-  </TabItem>
-  <TabItem value="kotlin">
+  </Tab>
+  <Tab title="Kotlin">
 
 ```kotlin
 import com.statsig.sdk.Statsig
@@ -32,8 +22,7 @@ val options = StatsigOptions().apply {
         initTimeoutMs = 9999
 }
 async { Statsig.initialize("server-secret-key", options) }.await()
-
 ```
 
-  </TabItem>
+  </Tab>
 </Tabs>

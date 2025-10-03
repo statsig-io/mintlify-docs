@@ -1,66 +1,107 @@
 ---
 title: Python Server SDK
 sidebarTitle: Python
-description: Statsig's Server SDK for Python applications
+description: Statsig's Next-gen Python Server SDK built in our [Server Core](/server-core) framework
 icon: "python"
 ---
+
+import Installation from '/snippets/server-core/installation.mdx'
+import Initialization from '/snippets/server-core/initialization.mdx'
+import Initialization2 from '/snippets/server-core/initialization2.mdx'
+import CheckGateIntro from '/snippets/server-core/checkGate.mdx'
+import GetDynamicConfigIntro from '/snippets/server-core/getDynamicConfig.mdx'
+import GetExperimentIntro from '/snippets/server-core/getExperiment.mdx'
+import GetPromptIntro from '/snippets/server-core/getPrompt.mdx'
+import GetPromptSetIntro from '/snippets/server-core/getPromptSet.mdx'
+import ParamStoresIntro from '/snippets/server-core/paramStores.mdx'
+import LogEventIntro from '/snippets/server-core/logEvent.mdx'
+import ForwardLogLineEventIntro from '/snippets/server-core/forwardLogLineEvent.mdx'
+import GetFeatureGateIntro from '/snippets/server-core/getFeatureGate.mdx'
+import SharedInstanceIntro from '/snippets/server-core/sharedInstance.mdx'
+import ManualExposuresIntro from '/snippets/server-core/manualExposures.mdx'
+import StatsigUserIntro from '/snippets/server-core/statsigUser.mdx'
+import StatsigOptionsIntro from '/snippets/server-core/statsigOptions.mdx'
+import ShutdownIntro from '/snippets/server-core/shutdown.mdx'
+import ClientInitResponseIntro from '/snippets/server-core/clientInitResponse.mdx'
+import EventSubscriptionsIntro from '/snippets/server-core/eventSubscriptions.mdx'
+import LocalOverridesIntro from '/snippets/server-core/localOverrides.mdx'
+import PersistentStorageIntro from '/snippets/server-core/persistentStorage.mdx'
+import DataStoreIntro from '/snippets/server-core/dataStore.mdx'
+import OutputLoggerIntro from '/snippets/server-core/outputLogger.mdx'
+import ObservabilityClientIntro from '/snippets/server-core/observabilityClient.mdx'
 
 import installation from '/snippets/server-core/python/installation.mdx'
 import initialization from '/snippets/server-core/python/initialization.mdx'
 import checkGate from '/snippets/server-core/python/checkGate.mdx'
 import getDynamicConfig from '/snippets/server-core/python/getDynamicConfig.mdx'
 import getExperiment from '/snippets/server-core/python/getExperiment.mdx'
-import logEvent from '/snippets/server-core/python/logEvent.mdx'
 import getPrompt from '/snippets/server-core/python/getPrompt.mdx'
-import getFeatureGate from '/snippets/server-core/python/getFeatureGate.mdx'
 import paramStores from '/snippets/server-core/python/paramStores.mdx'
+import logEvent from '/snippets/server-core/python/logEvent.mdx'
+import getFeatureGate from '/snippets/server-core/python/getFeatureGate.mdx'
 import sharedInstance from '/snippets/server-core/python/sharedInstance.mdx'
-import shutdown from '/snippets/server-core/python/shutdown.mdx'
-import statsigOptions from '/snippets/server-core/python/options.mdx'
 import manualExposures from '/snippets/server-core/python/manualExposures.mdx'
-import localOverrides from '/snippets/server-core/python/localOverrides.mdx'
+import statsigOptions from '/snippets/server-core/python/options.mdx'
+import shutdown from '/snippets/server-core/python/shutdown.mdx'
 import clientInitResponse from '/snippets/server-core/python/clientInitResponse.mdx'
+import localOverrides from '/snippets/server-core/python/localOverrides.mdx'
 import persistentStorage from '/snippets/server-core/python/persistent_storage.mdx'
 import dataStore from '/snippets/server-core/python/data_store.mdx'
 import outputLogger from '/snippets/server-core/python/output_logger.mdx'
 import observabilityClient from '/snippets/server-core/python/observability_client.mdx'
 import faqs from '/snippets/server-core/python/faqs.mdx'
 
-<Note>
-Server-Core SDKs are our next generation server SDKs built in Rust. They offer improved performance and stability over our legacy server SDKs.
-</Note>
-
-[Github Repository](https://github.com/statsig-io/statsig-server-core/tree/main/statsig-pyo3) | [PyPI Package](https://pypi.org/project/statsig-python-core/)
-
-[**Migration Guide from Legacy Python SDK →**](/server-core/python/migration-guide)
+<Callout icon="github">
+<a href="https://github.com/statsig-io/statsig-server-core/tree/main/statsig-pyo3" target="_blank" rel="noreferrer">Python Core on Github</a>,
+<a href="https://pypi.org/project/statsig-python-core/" target="_blank" rel="noreferrer">PyPI Package</a>
+</Callout>
 
 ## Setup the SDK
 
 <Steps>
 <Step title="Install the SDK">
+<Installation/>
 <installation/>
 </Step>
 <Step title="Initialize the SDK">
+<Initialization/>
 <initialization/>
+<Initialization2/>
+
+
 </Step>
 </Steps>
 
 ## Working with the SDK
 
+<CheckGateIntro/>
 <checkGate/>
+
+<GetDynamicConfigIntro/>
 <getDynamicConfig/>
+
+<GetExperimentIntro/>
 <getExperiment/>
-<getPrompt/>
-<paramStores/>
-<logEvent/>
+
+<GetFeatureGateIntro/>
 <getFeatureGate/>
+
+<GetPromptIntro/>
+<getPrompt/>
+
+<ParamStoresIntro/>
+<paramStores/>
+
+<LogEventIntro/>
+<logEvent/>
+
+<SharedInstanceIntro/>
 <sharedInstance/>
 
+<ManualExposuresIntro/>
 <manualExposures/>
 
-## Statsig User
-
-The `StatsigUser` class represents a user in Statsig. You must provide a `user_id` or at least one of the `custom_ids` to identify the user.
+<StatsigUserIntro/>
 
 ```python
 from statsig_python_core import StatsigUser
@@ -89,15 +130,28 @@ user = StatsigUser(
 )
 ```
 
+<StatsigOptionsIntro/>
 <statsigOptions/>
 
+<ShutdownIntro/>
 <shutdown/>
 
+<ClientInitResponseIntro/>
 <clientInitResponse/>
+
+<LocalOverridesIntro/>
 <localOverrides/>
+
+<PersistentStorageIntro/>
 <persistentStorage/>
+
+<DataStoreIntro/>
 <dataStore/>
+
+<OutputLoggerIntro/>
 <outputLogger/>
+
+<ObservabilityClientIntro/>
 <observabilityClient/>
 
 <faqs/>
@@ -131,4 +185,3 @@ The following methods return information about which user fields are needed for 
 - `get_layer_fields_needed(layer_name: str) -> List[str]`
 
 These methods return a list of strings representing the user fields that are required to properly evaluate the specified gate, config, experiment, or layer.
-

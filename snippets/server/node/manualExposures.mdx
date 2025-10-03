@@ -1,7 +1,3 @@
-## Manual Exposures
-
-Statsig SDKs automatically log an exposure event every time a gate/experiment/config is checked. In some scenarios, you may want to control when to log an exposure.
-
 You can disable the automatic logging like this:
 
 ### Gates
@@ -44,5 +40,3 @@ Then, to manually log the layer parameter exposure:
 ```javascript
 Statsig.manuallyLogLayerParameterExposure(aUser, 'a_layer_name', 'a_param_name');
 ```
-
-

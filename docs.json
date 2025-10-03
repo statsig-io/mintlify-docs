@@ -617,6 +617,7 @@
               "server-core/python-core",
               "server-core/java-core",
               "server-core/dotnet-core",
+              "server-core/index",
               {
                 "group": "More Server SDKs",
                 "pages": [
@@ -634,7 +635,10 @@
                   "server/java",
                   "server/rust",
                   "server/php",
-                  "server/dotnet"
+                  "server/dotnet",
+                  "server/go",
+                  "server/ruby",
+                  "server/cpp"
                 ]
               }
             ]
@@ -943,6 +947,26 @@
   },
   "redirects": [
     {
+      "source": "/client/javascript-sdk",
+      "destination": "/client/javascript"
+    },
+    {
+      "source": "/experiments-plus/implement",
+      "destination": "/experiments/implementation/implement"
+    },
+    {
+      "source": "/client/iosClientSDK",
+      "destination": "/client/ios"
+    },
+    {
+      "source": "/client/javascript-sdk/next-js",
+      "destination": "/client/next"
+    },
+    {
+      "source": "/client/javascript-sdk/react",
+      "destination": "/client/react"
+    },
+    {
       "source": "/dynamic-config/overview",
       "destination": "/dynamic-config"
     },
@@ -973,6 +997,342 @@
     {
       "source": "/experiments/layers-introduction",
       "destination": "/layers"
+    },
+    {
+      "source": "/client/androidClientSDK",
+      "destination": "/client/Android"
+    },
+    {
+      "source": "/client/javascript-sdk/react-native",
+      "destination": "/client/ReactNative"
+    },
+    {
+      "source": "/client/dartSDK",
+      "destination": "/client/Dart"
+    },
+    {
+      "source": "/server/rubySDK",
+      "destination": "/server/ruby"
+    },
+    {
+      "source": "/server/golangSDK",
+      "destination": "/server/go"
+    },
+    {
+      "source": "/server/cppSDK",
+      "destination": "/server/cpp"
+    },
+    {
+      "source": "/client/javascript-sdk/expo",
+      "destination": "/client/Expo"
+    },
+    {
+      "source": "/client/javascript-sdk/Angular",
+      "destination": "/client/Angular"
+    },
+    {
+      "source": "/client/dotnetSDK",
+      "destination": "/client/DotNet"
+    },
+    {
+      "source": "/client/unitySDK",
+      "destination": "/client/Unity"
+    },
+    {
+      "source": "/client/rokuSDK",
+      "destination": "/client/Roku"
+    },
+    {
+      "source": "/experiments-plus/overrides",
+      "destination": "/experiments/setup/overrides"
+    },
+    {
+      "source": "/holdouts",
+      "destination": "/experiments/holdouts-introduction"
+    },
+    {
+      "source": "/experiments-plus/getting-group",
+      "destination": "/experiments/implementation/getting-group"
+    },
+    {
+      "source": "/experiments-plus/sequential-testing",
+      "destination": "/experiments/advanced-setup/sequential-testing"
+    },
+    {
+      "source": "/segments",
+      "destination": "/segments/overview"
+    },
+    {
+      "source": "/experiments-plus/switchback-tests",
+      "destination": "/experiments/types/switchback-tests"
+    },
+    {
+      "source": "/bandit-introduction",
+      "destination": "/autotune/bandit-introduction"
+    },
+    {
+      "source": "/client/introduction",
+      "destination": "/client/javascript"
+    },
+    {
+      "source": "/pulse/read-pulse",
+      "destination": "/experiments/interpreting-results/read-pulse"
+    },
+    {
+      "source": "/experiments-plus/bayesian",
+      "destination": "/experiments/advanced-setup/bayesian"
+    },
+    {
+      "source": "/stats-engine/pre-experiment-bias",
+      "destination": "/experiments/statistical-methods/pre-experiment-bias"
+    },
+    {
+      "source": "/stats-engine/confidence-intervals",
+      "destination": "/experiments/statistical-methods/confidence-intervals"
+    },
+    {
+      "source": "/experiments-plus/make-decision",
+      "destination": "/experiments/ending/make-decision"
+    },
+    {
+      "source": "/stats-engine/variance_reduction",
+      "destination": "/experiments/statistical-methods/variance-reduction"
+    },
+    {
+      "source": "/pulse/drill-down",
+      "destination": "/experiments/interpreting-results/drill-down"
+    },
+    {
+      "source": "/custom_proxy",
+      "destination": "/infrastructure/api_proxy/custom_proxy"
+    },
+    {
+      "source": "/stats-engine/p-value",
+      "destination": "/experiments/statistical-methods/p-value"
+    },
+    {
+      "source": "/experiments-plus/sprt",
+      "destination": "/experiments/advanced-setup/sprt"
+    },
+    {
+      "source": "/experiments-plus/ending-experiment",
+      "destination": "/experiments/ending/ending-experiment"
+    },
+    {
+      "source": "/experiments-plus/stratified-sampling",
+      "destination": "/experiments/advanced-setup/stratified-sampling"
+    },
+    {
+      "source": "/product-analytics/alerts",
+      "destination": "/product-analytics/topline-alerts"
+    },
+    {
+      "source": "/stats-engine/topline-impact",
+      "destination": "/experiments/statistical-methods/topline-impact"
+    },
+    {
+      "source": "/experimentation/quality-score",
+      "destination": "/experiments/setup/quality-score"
+    },
+    {
+      "source": "/stats-engine/methodologies/benjamini–hochberg-procedure",
+      "destination": "/experiments/statistical-methods/methodologies/benjamini–hochberg-procedure"
+    },
+    {
+      "source": "/stats-engine/methodologies/delta-method",
+      "destination": "/experiments/statistical-methods/methodologies/delta-method"
+    },
+    {
+      "source": "/stats-engine/variance",
+      "destination": "/experiments/statistical-methods/variance"
+    },
+    {
+      "source": "/release-pipeline",
+      "destination": "/release-pipeline/overview"
+    },
+    {
+      "source": "/stats-engine/methodologies/winsorization",
+      "destination": "/experiments/statistical-methods/methodologies/winsorization"
+    },
+    {
+      "source": "/stats-engine/methodologies/bonferroni-correction",
+      "destination": "/experiments/statistical-methods/methodologies/bonferroni-correction"
+    },
+    {
+      "source": "/experiments-plus/interaction-detection",
+      "destination": "/experiments/exploring-results/interaction-detection"
+    },
+    {
+      "source": "/multi-armed-bandit",
+      "destination": "/autotune/multi-armed-bandit"
+    },
+    {
+      "source": "/aggregated-impact",
+      "destination": "/experiments/exploring-results/aggregated-impact"
+    },
+    {
+      "source": "/stats-engine/methodologies/fieller-intervals",
+      "destination": "/experiments/statistical-methods/methodologies/fieller-intervals"
+    },
+    {
+      "source": "/pulse/custom-queries",
+      "destination": "/experiments/interpreting-results/custom-queries"
+    },
+    {
+      "source": "/product-analytics/alerts/topline_alerts",
+      "destination": "/product-analytics/topline-alerts"
+    },
+    {
+      "source": "/experiments-plus/stop-assignments",
+      "destination": "/experiments/ending/stop-assignments"
+    },
+    {
+      "source": "/experimentation/meta-analysis",
+      "destination": "/experiments/exploring-results/meta-analysis"
+    },
+    {
+      "source": "/users",
+      "destination": "/concepts/user"
+    },
+    {
+      "source": "/guides/seo-testing",
+      "destination": "/experiments/types/seo-testing"
+    },
+    {
+      "source": "/experiments-plus/differential-impact-detection",
+      "destination": "/experiments/exploring-results/differential-impact-detection"
+    },
+    {
+      "source": "/safeguards/overview",
+      "destination": "/feature-flags/safeguards-overview"
+    },
+    {
+      "source": "/pulse/best-practices",
+      "destination": "/experiments/interpreting-results/best-practices"
+    },
+    {
+      "source": "/pulse/export",
+      "destination": "/experiments/interpreting-results/export"
+    },
+    {
+      "source": "/stats-engine/one-sided-test",
+      "destination": "/experiments/statistical-methods/methodologies/one-sided-test"
+    },
+    {
+      "source": "/experiments-plus/conclude-experiment-defer-decision",
+      "destination": "/experiments/ending/conclude-experiment-defer-decision"
+    },
+    {
+      "source": "/experiments-plus/abandon",
+      "destination": "/experiments/ending/abandon"
+    },
+    {
+      "source": "/pulse/user-properties",
+      "destination": "/experiments/interpreting-results/userproperties"
+    },
+    {
+      "source": "/reliability-faqs",
+      "destination": "/infrastructure/reliability-faq"
+    },
+    {
+      "source": "/experiments-plus/geotests-setup",
+      "destination": "/statsig-warehouse-native/geotests/geotests-setup"
+    },
+    {
+      "source": "/stats-engine/metric-deltas",
+      "destination": "/experiments/statistical-methods/metric-deltas"
+    },
+    {
+      "source": "/templates/templates",
+      "destination": "/exp-templates/templates"
+    },
+    {
+      "source": "/experiments-plus/disable-group",
+      "destination": "/experiments/implementation/disable-group"
+    },
+    {
+      "source": "/pulse/participating-units",
+      "destination": "/experiments/interpreting-results/participating-units"
+    },
+    {
+      "source": "/safeguards/create",
+      "destination": "/feature-flags/safeguards-create"
+    },
+    {
+      "source": "/metrics/count_distinct_metric_type",
+      "destination": "/metrics/count-distinct"
+    },
+    {
+      "source": "/safeguards/manage",
+      "destination": "/feature-flags/safeguards-manage"
+    },
+    {
+      "source": "/experiments-plus/reconciling-experiment-results",
+      "destination": "/experiments/interpreting-results/reconciling-experiment-results"
+    },
+    {
+      "source": "/experimentation/statsig-lite",
+      "destination": "/integrations/statsiglite"
+    },
+    {
+      "source": "/guides/feature-flags",
+      "destination": "/feature-flags/overview"
+    },
+    {
+      "source": "/guides/first-holdout",
+      "destination": "/experiments/holdouts-introduction"
+    },
+    {
+      "source": "/guides/node-express-feature-flags",
+      "destination": "/server-core/node"
+    },
+    {
+      "source": "/guides/experiments",
+      "destination": "/experiments-plus"
+    },
+    {
+      "source": "/developer-guides/feature-flags-in-react",
+      "destination": "/client/react"
+    },
+    {
+      "source": "/pulse/custom-queries-whn",
+      "destination": "/statsig-warehouse-native/read-pulse-whn"
+    },
+    {
+      "source": "/experiments-plus/geotests/methodology",
+      "destination": "/statsig-warehouse-native/geotests/methodology"
+    },
+    {
+      "source": "/guides/landing-page-experiments/introduction",
+      "destination": "/guides/sidecar-experiments/introduction"
+    },
+    {
+      "source": "/pulse/read-pulse-whn",
+      "destination": "/statsig-warehouse-native/read-pulse-whn"
+    },
+    {
+      "source": "/stats-engine/topline-impact-whn",
+      "destination": "/statsig-warehouse-native/features/statistics"
+    },
+    {
+      "source": "/stats-engine/confidence-intervals-whn",
+      "destination": "/statsig-warehouse-native/features/statistics"
+    },
+    {
+      "source": "/pulse/drill-down-whn",
+      "destination": "/statsig-warehouse-native/read-pulse-whn"
+    },
+    {
+      "source": "/guides/landing-page-experiments/interpreting",
+      "destination": "/guides/sidecar-experiments/measuring-experiments"
+    },
+    {
+      "source": "/contextual-bandit",
+      "destination": "/autotune/contextual/introduction"
+    },
+    {
+      "source": "/stats-engine/methodologies/one-sided-test",
+      "destination": "/experiments/statistical-methods/methodologies/one-sided-test"
     }
   ],
   "logo": {

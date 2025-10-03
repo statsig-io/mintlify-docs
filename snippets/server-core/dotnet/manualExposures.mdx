@@ -1,28 +1,43 @@
+All of the main SDK functions (`CheckGate`, `GetDynamicConfig`, `GetExperiment`, `GetLayer`) accept an optional `EvaluationOptions` parameter. When `disableExposureLogging` is set to `true`, the SDK will not automatically log an exposure event. You can then manually log the exposure at a later time using the corresponding manual exposure logging method:
+<Tabs>
+<Tab title="Feature Gates">
 ```csharp
-var user = new StatsigUserBuilder()
-    .SetUserID("user_123")
-    .Build();
-
-statsig.ManuallyLogGateExposure(user, "feature_gate");
-
-statsig.ManuallyLogDynamicConfigExposure(user, "product_config");
-
-statsig.ManuallyLogExperimentExposure(user, "button_test");
-
-statsig.ManuallyLogLayerParameterExposure(user, "user_prefs_layer", "theme");
+var result = statsig.CheckGate(user, "a_gate_name", new EvaluationOptions(disableExposureLogging: true));
 ```
 
-Manual exposure logging is useful when:
-- You need to log exposures for gates/configs that were evaluated with `EvaluationOptions(disableExposureLogging: true)`
-- You're implementing custom caching and need to log exposures at specific times
-- You want to log exposures for analytics purposes without re-evaluating the feature flag
-- You're using server-side rendering and need to ensure client-side exposures are logged
+```csharp
+statsig.ManuallyLogGateExposure(user, "a_gate_name");
+```
+</Tab>
 
-## Methods
+<Tab title="Dynamic Configs">
+```csharp
+var config = statsig.GetDynamicConfig(user, "a_dynamic_config_name", new EvaluationOptions(disableExposureLogging: true));
+```
 
-- **ManuallyLogGateExposure(user, gateName)**: Log exposure for a feature gate
-- **ManuallyLogDynamicConfigExposure(user, configName)**: Log exposure for a dynamic config
-- **ManuallyLogExperimentExposure(user, experimentName)**: Log exposure for an experiment
-- **ManuallyLogLayerParameterExposure(user, layerName, parameterName)**: Log exposure for a specific layer parameter
+```csharp
+statsig.ManuallyLogDynamicConfigExposure(user, "a_dynamic_config_name");
+```
+</Tab>
 
-These methods ensure proper attribution in Statsig analytics and experiment results.
+<Tab title="Experiments">
+```csharp
+var experiment = statsig.GetExperiment(user, "an_experiment_name", new EvaluationOptions(disableExposureLogging: true));
+```
+
+```csharp
+statsig.ManuallyLogExperimentExposure(user, "an_experiment_name");
+```
+</Tab>
+
+<Tab title="Layers">
+```csharp
+var layer = statsig.GetLayer(user, "a_layer_name", new EvaluationOptions(disableExposureLogging: true));
+var paramValue = layer.Get("a_param_name", "fallback_value");
+```
+
+```csharp
+statsig.ManuallyLogLayerParameterExposure(user, "a_layer_name", "a_param_name");
+```
+</Tab>
+</Tabs>

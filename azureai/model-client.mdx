@@ -42,12 +42,6 @@ The JSON of this looks like this:
 Once this is done, you can instantiate your Model Client directly by using the **id** of this Dynamic Config like this:
 
 <Tabs>
-  groupId="language-choice"
-  defaultValue="nodejs"
-  values={[
-    {label: 'NodeJS', value: 'nodejs'},
-    {label: 'Python', value: 'python'},
-    {label: '.Net', value: 'dotnet'},
   <Tab title="NodeJS">
 ```js
 const client = AzureAI.getModelClient("<dynamic_config_id>");
@@ -70,12 +64,6 @@ var client = Server.GetModelClient("<dynamic_config_id>");
 This is the most direct way of instantiating an AI model client.  However, this would mean you'll have to embed the endpoint and key in your code, or use another way (like an environment variable) to get the model endpoint and key into the process.
 
 <Tabs>
-  groupId="language-choice"
-  defaultValue="nodejs"
-  values={[
-    {label: 'NodeJS', value: 'nodejs'},
-    {label: 'Python', value: 'python'},
-    {label: '.Net', value: 'dotnet'},
   <Tab title="NodeJS">
 ```js
 const modelClient = AzureAI.getModelClientFromEndpoint(

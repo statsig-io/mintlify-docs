@@ -1,6 +1,4 @@
-## StatsigOptions Struct in Rust
-
-The Statsig::new() method takes an optional parameter options to customize the Statsig client. Here's the accurate structure of the StatsigOptions struct based on the source code:
+<Accordion title="StatsigOptions">
 
 ### Parameters
 
@@ -135,3 +133,5 @@ let options = StatsigOptions::builder()
 let statsig = Statsig::new("server-secret-key", Some(Arc::new(options)));
 statsig.initialize().await?;
 ```
+
+</Accordion>

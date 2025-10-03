@@ -1,7 +1,3 @@
-## Retrieving Feature Gate Metadata
-
-In certain scenarios, you may need more information about a gate evaluation than just a boolean value. For additional metadata about the evaluation, use the Get Feature Gate API, which returns a FeatureGate object:
-
 ```javascript
 const gate = Statsig.getFeatureGate(user, 'new_homepage_design');
 console.log(gate.name); // 'new_homepage_design'

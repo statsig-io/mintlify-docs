@@ -13,7 +13,8 @@ response = json.loads(response_data)
 # Pass response to a client SDK to initialize without a network request
 ```
 
-### Parameters
+<AccordionGroup>
+<Accordion title = "Initialize Response Parameters">
 
 The `get_client_initialize_response` method accepts the following parameters:
 
@@ -26,7 +27,13 @@ def get_client_initialize_response(
 ) -> str:
 ```
 
-#### Hash Algorithm
+- **`user`**: `StatsigUser` - The user to generate the initialize response for
+- **`hash`**: `Optional[str]` - Algorithm used for hashing gate/experiment names (default: 'djb2')
+- **`client_sdk_key`**: `Optional[str]` - Client SDK key to use for initialization
+- **`include_local_overrides`**: `Optional[bool]` - Whether to include local overrides in the response
+
+</Accordion>
+<Accordion title = "Hash Algorithm">
 
 The `hash` parameter specifies which algorithm to use for hashing gate and experiment names in the client initialize response. The default is `'djb2'` for better performance and smaller payload size.
 
@@ -46,7 +53,8 @@ response_data = statsig.get_client_initialize_response(user, hash='sha256')
 response_data = statsig.get_client_initialize_response(user, hash='none')
 ```
 
-#### Client SDK Key
+</Accordion>
+<Accordion title = "Client SDK Key">
 
 The `client_sdk_key` parameter lets you filter the response to only the specific feature gates, experiments, dynamic configs, layers, or parameter stores that a particular client key has access to - effectively letting you apply [target apps](/sdk-keys/target-apps/).
 
@@ -58,7 +66,8 @@ response_data = statsig.get_client_initialize_response(
 )
 ```
 
-#### Local Overrides
+</Accordion>
+<Accordion title = "Local Overrides">
 
 The `include_local_overrides` parameter determines whether to consider [local overrides](#local-overrides) you've set when evaluating each config in the response.
 
@@ -70,7 +79,8 @@ response_data = statsig.get_client_initialize_response(
 )
 ```
 
-### Example: Bootstrapping a Client SDK
+</Accordion>
+<Accordion title = "Full Code Example">
 
 Below is a complete example of using the client initialize response to bootstrap a client SDK. Note that you may choose to parallelize or inline the initialize response data with other requests to your server, to eliminate additional requests and latency.
 
@@ -127,7 +137,8 @@ await Statsig.initialize({
 });
 ```
 
-### Response Format
+</Accordion>
+<Accordion title = "Response Format">
 
 The method returns a JSON string containing the client initialize response. You'll need to parse this string to access the data:
 
@@ -147,3 +158,7 @@ The response includes:
 - `layer_configs`: Layer evaluations
 - `has_updates`: Boolean indicating if there are updates
 - `time`: Timestamp of the response
+
+</Accordion>
+
+</AccordionGroup>

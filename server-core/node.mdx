@@ -1,12 +1,13 @@
 ---
 title: Node Server SDK
 sidebarTitle: Node
-description: Statsig's Server SDK for Node.js applications
+description: Statsig's Next-gen Node Server SDK built in our [Server Core](/server-core) framework
 icon: "node-js"
 ---
 
 import Installation from '/snippets/server-core/installation.mdx'
 import Initialization from '/snippets/server-core/initialization.mdx'
+import Initialization2 from '/snippets/server-core/initialization2.mdx'
 import CheckGateIntro from '/snippets/server-core/checkGate.mdx'
 import GetDynamicConfigIntro from '/snippets/server-core/getDynamicConfig.mdx'
 import GetExperimentIntro from '/snippets/server-core/getExperiment.mdx'
@@ -54,11 +55,10 @@ import observabilityClient from '/snippets/server-core/node/observabilityClient.
 import faqs from '/snippets/server-core/node/faqs.mdx'
 import reference from '/snippets/server-core/node/reference.mdx'
 
-<Note>
-Server-Core SDKs are our next generation server SDKs built in Rust. They offer improved performance and stability over our legacy server SDKs.
-</Note>
-
-[Github Repository](https://github.com/statsig-io/statsig-server-core/tree/main/statsig-node) | [NPM Package](https://www.npmjs.com/package/@statsig/statsig-node-core)
+<Callout icon="github">
+<a href="https://github.com/statsig-io/statsig-server-core/tree/main/statsig-node" target="_blank" rel="noreferrer">Node Core on Github</a>, 
+<a href="https://www.npmjs.com/package/@statsig/statsig-node-core" target="_blank" rel="noreferrer">NPM Package</a>
+</Callout>
 
 ## Setup the SDK
 
@@ -70,8 +70,9 @@ Server-Core SDKs are our next generation server SDKs built in Rust. They offer i
 <Step title="Initialize the SDK">
 <Initialization/>
 <initialization/>
+<Initialization2/>
 
-`initialize` will perform a network request. After `initialize` completes, virtually all SDK operations will be synchronous (See [Evaluating Feature Gates in the Statsig SDK](https://blog.statsig.com/evaluating-feature-gates-in-the-statsig-sdk-a6f8881a1ad8)). The SDK will fetch updates from Statsig in the background, independently of your API calls.
+
 </Step>
 </Steps>
 
@@ -86,6 +87,9 @@ Server-Core SDKs are our next generation server SDKs built in Rust. They offer i
 <GetExperimentIntro/>
 <getExperiment/>
 
+<GetFeatureGateIntro/>
+<getFeatureGate/>
+
 <GetPromptIntro/>
 <getPrompt/>
 
@@ -98,12 +102,8 @@ Server-Core SDKs are our next generation server SDKs built in Rust. They offer i
 <LogEventIntro/>
 <logEvent/>
 
-
 <ForwardLogLineEventIntro/>
 <forwardLogLineEvent/>
-
-<GetFeatureGateIntro/>
-<getFeatureGate/>
 
 <SharedInstanceIntro/>
 <sharedInstance/>

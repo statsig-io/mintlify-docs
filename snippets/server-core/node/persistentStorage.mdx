@@ -1,4 +1,4 @@
-```typescript
+```typescript expandable PersistentStorageInterface.ts
 export interface PersistentStorage {
   load: (key: string) => UserPersistedValues | null;
   save: (key: string, config_name: string, data: StickyValues) => void;
@@ -29,7 +29,7 @@ export interface SecondaryExposure {
 
 ### Usage Example
 
-```typescript
+```typescript expandable PersistentStorageUsage.ts
 import { PersistentStorage, StickyValues, UserPersistedValues } from '@statsig/statsig-node-core';
 
 class MyPersistentStorage implements PersistentStorage {

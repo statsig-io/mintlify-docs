@@ -1,14 +1,5 @@
-import Tabs from "@theme/Tabs";
-import TabItem from "@theme/TabItem";
-
-<Tabs
-  groupId="java-server-sdk-lang-choice"
-  defaultValue="java"
-  values={[
-    {label: 'Java', value: 'java'},
-    {label: 'Kotlin', value: 'kotlin'},
-  ]}>
-  <TabItem value="java">
+<Tabs>
+  <Tab title="Java">
 
 ```java
 // Values via getLayer
@@ -30,8 +21,8 @@ Double discount = priceExperiment.getDouble("discount", 0.1);
 Double price = msrp * (1 - discount);
 ```
 
-  </TabItem>
-  <TabItem value="kotlin">
+  </Tab>
+  <Tab title="Kotlin">
 
 ```kotlin
 // Values via getLayer
@@ -51,8 +42,7 @@ val discount = priceExperiment.getDouble("discount", 0.1)
 ...
 
 val price = msrp * (1 - discount)
-
 ```
 
-  </TabItem>
+  </Tab>
 </Tabs>

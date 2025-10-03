@@ -1,7 +1,3 @@
-## Using Shared Instance
-
-In some applications, you may want to create a single Statsig instance that can be accessed globally throughout your codebase. The shared instance functionality provides a singleton pattern for this purpose:
-
 ```python
 # Create a shared instance that can be accessed globally
 statsig = Statsig.new_shared("secret-key", options)
@@ -20,15 +16,15 @@ if Statsig.has_shared_instance():
 Statsig.remove_shared()
 ```
 
-The shared instance functionality provides a singleton pattern where a single Statsig instance can be created and accessed globally throughout your application. This is useful for applications that need to access Statsig functionality from multiple parts of the codebase without having to pass around a Statsig instance. 
+The shared instance functionality provides a singleton pattern where a single Statsig instance can be created and accessed globally throughout your application. This is useful for applications that need to access Statsig functionality from multiple parts of the codebase without having to pass around a Statsig instance.
 
-- `Statsig.new_shared(sdk_key, options)`: Creates a new shared instance of Statsig that can be accessed globally                                                                                                      
+- `Statsig.new_shared(sdk_key, options)`: Creates a new shared instance of Statsig that can be accessed globally
 - `Statsig.shared()`: Returns the shared instance
-- `Statsig.has_shared_instance()`: Checks if a shared instance exists (useful when you aren't sure if the shared instance is ready yet)                                                                               
-- `Statsig.remove_shared()`: Removes the shared instance (useful when you want to switch to a new shared instance)                                                                                                    
+- `Statsig.has_shared_instance()`: Checks if a shared instance exists (useful when you aren't sure if the shared instance is ready yet)
+- `Statsig.remove_shared()`: Removes the shared instance (useful when you want to switch to a new shared instance)
 
 <Note>
-`has_shared_instance()` and `remove_shared()` are helpful in specific scenarios but aren't required in most use cases where the shared instance is set up near the top of your application.                           
+`has_shared_instance()` and `remove_shared()` are helpful in specific scenarios but aren't required in most use cases where the shared instance is set up near the top of your application.
 
-Also note that only one shared instance can exist at a time. Attempting to create a second shared instance will result in an error.                                                                                   
+Also note that only one shared instance can exist at a time. Attempting to create a second shared instance will result in an error.
 </Note>

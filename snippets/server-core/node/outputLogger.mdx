@@ -1,3 +1,5 @@
+<AccordionGroup>
+<Accordion title="Logger Interface">
 ```typescript
 interface OutputLoggerProvider {
   initialize?: () => void;
@@ -8,6 +10,8 @@ interface OutputLoggerProvider {
   shutdown?: () => void;
 }
 ```
+</Accordion>
+<Accordion title="Implementation Example">
 
 ### Implementation Example
 
@@ -40,8 +44,8 @@ class CustomOutputLogger implements OutputLoggerProvider {
   };
 }
 ```
-
-### Usage with StatsigOptions
+</Accordion>
+<Accordion title="Usage with StatsigOptions">
 
 ```typescript
 import { Statsig, StatsigOptions } from '@statsig/statsig-node-core';
@@ -57,10 +61,12 @@ const statsig = new Statsig('secret-key', options);
 await statsig.initialize();
 ```
 
-### Notes
+</Accordion>
+<Accordion title="Notes">
 
 - All methods in the `OutputLoggerProvider` interface are optional
 - The `tag` parameter indicates the SDK component or category generating the log message
 - Use `outputLogLevel` in StatsigOptions to control which log levels are actually called
 - The logger is automatically initialized when the Statsig client initializes and shut down when the client shuts down
-
+</Accordion>
+</AccordionGroup>

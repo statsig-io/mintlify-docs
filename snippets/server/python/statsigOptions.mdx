@@ -1,6 +1,4 @@
-## Statsig Options
-
-`statsig.initialize()` takes an optional parameter `options` in addition to the secret key that you can provide to customize the Statsig client. Create a `StatsigOptions` class to pass in with the following available parameters:
+Create a `StatsigOptions` class to pass in with the following available parameters:
 
 (unit of measure for time related options is seconds)
 
@@ -55,5 +53,3 @@ options = StatsigOptions()
 options.set_environment_parameter("tier", StatsigEnvironmentTier.development.value)
 statsig.initialize("secret-key", options).wait()
 ```
-
-

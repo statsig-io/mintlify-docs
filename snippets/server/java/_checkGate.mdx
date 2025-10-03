@@ -1,17 +1,7 @@
-import Tabs from "@theme/Tabs";
-import TabItem from "@theme/TabItem";
-
-<Tabs
-  groupId="java-server-sdk-lang-choice"
-  defaultValue="java"
-  values={[
-    {label: 'Java', value: 'java'},
-    {label: 'Kotlin', value: 'kotlin'},
-  ]}>
-  <TabItem value="java">
+<Tabs>
+  <Tab title="Java">
 
 ```java
-
 StatsigUser user = new StatsigUser("user_id");
 Boolean isFeatureOn = Statsig.checkGateSync(user, "use_new_feature");
 
@@ -20,14 +10,12 @@ if (isFeatureOn) {
 } else {
   // Gate is off
 }
-
 ```
 
-  </TabItem>
-  <TabItem value="kotlin">
+  </Tab>
+  <Tab title="Kotlin">
 
 ```kotlin
-
 val user = StatsigUser("user_id");
 val featureOn = Statsig.checkGateSync(user, "use_new_feature")
 
@@ -36,8 +24,7 @@ if (featureOn) {
 } else {
   // Gate is off
 }
-
 ```
 
-  </TabItem>
+  </Tab>
 </Tabs>
