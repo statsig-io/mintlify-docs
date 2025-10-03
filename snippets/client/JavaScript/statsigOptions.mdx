@@ -1,0 +1,34 @@
+### JavaScript Options
+
+- **loggingEnabled** (`LoggingEnabledOption`) — Controls logging behavior.
+  - `browser-only` (default): log events from browser environments.
+  - `disabled`: never send events.
+  - `always`: log in every environment, including non-browser contexts.
+- **disableLogging** (`boolean`, deprecated) — Use `loggingEnabled: 'disabled'` instead.
+- **disableStableID** (`boolean`, default `false`) — Skip generating a device-level Stable ID.
+- **disableEvaluationMemoization** (`boolean`, default `false`) — Recompute every evaluation instead of using the memoized result.
+- **initialSessionID** (`string`) — Override the generated session ID.
+- **enableCookies** (`boolean`, default `false`) — Persist Stable ID in cookies for cross-domain tracking.
+- **disableStorage** (`boolean`) — Prevent any local storage writes (disables caching).
+- **networkConfig** — Override network endpoints per request type.
+- **environment** (`StatsigEnvironment`) — Set environment-wide defaults (for example `{ tier: 'staging' }`).
+- **logLevel** (`LogLevel`, default `Warn`) — Console verbosity.
+- **loggingBufferMaxSize** (`number`, default `50`) — Max events per log batch.
+- **loggingIntervalMs** (`number`, default `10_000`) — Interval between automatic flushes.
+- **overrideAdapter** (`OverrideAdapter`) — Modify evaluations before returning them.
+- **includeCurrentPageUrlWithEvents** (`boolean`, default `true`) — Attach the current page URL to logged events.
+- **disableStatsigEncoding** (`boolean`, default `false`) — Send requests without Statsig-specific encoding.
+- **logEventCompressionMode** (`LogEventCompressionMode`, default `Enabled`) — Control compression for batched events.
+- **disableCompression** (`boolean`, deprecated) — Use `logEventCompressionMode` instead.
+- **dataAdapter** (`EvaluationsDataAdapter`) — Provide a custom data adapter to control caching/fetching.
+- **customUserCacheKeyFunc** (`CustomCacheKeyGenerator`) — Override cache key generation for stored evaluations.
+
+<Accordion title="Network Config Options">
+- **api** (`string`) — Base URL for all requests (append `/v1`). Default: `https://api.statsig.com`.
+- **logEventUrl** (`string`) — Endpoint for event uploads. Default: `https://prodregistryv2.org/v1/rgstr`.
+- **logEventFallbackUrls** (`string[]`) — Fallback endpoints for event uploads.
+- **networkTimeoutMs** (`number`) — Request timeout in ms (default `10000`).
+- **preventAllNetworkTraffic** (`boolean`) — Disable all outbound requests; combine with `loggingEnabled: 'disabled'` to silence log warnings.
+- **networkOverrideFunc** (`function`) — Provide custom transport (e.g., Axios).
+- **initializeUrl** (`string`) — Endpoint for initialization requests. Default: `https://featureassets.org/v1/initialize`.
+</Accordion>

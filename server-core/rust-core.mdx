@@ -1,0 +1,65 @@
+---
+title: Rust Server SDK
+sidebarTitle: Rust
+description: Statsig's Server SDK for Rust applications
+icon: "rust"
+---
+
+<Note>
+Server-Core SDKs are our next generation server SDKs built in Rust. They offer improved performance and stability over our legacy server SDKs.
+</Note>
+
+[Github Repository](https://github.com/statsig-io/statsig-server-core/tree/main/statsig-rust) | [Cargo Package](https://crates.io/crates/statsig)
+
+import installation from '/snippets/server-core/rust/install.mdx'
+import initialization from '/snippets/server-core/rust/initialize.mdx'
+import checkGate from '/snippets/server-core/rust/checkGate.mdx'
+import getConfig from '/snippets/server-core/rust/getConfig.mdx'
+import getExperiment from '/snippets/server-core/rust/getExperiment.mdx'
+import logEvent from '/snippets/server-core/rust/logEvent.mdx'
+import getFeatureGate from '/snippets/server-core/rust/getFeatureGate.mdx'
+import paramStores from '/snippets/server-core/rust/paramStores.mdx'
+import sharedInstance from '/snippets/server-core/rust/sharedInstance.mdx'
+import shutdown from '/snippets/server-core/rust/shutdown.mdx'
+import statsigOptions from '/snippets/server-core/rust/options.mdx'
+import manualExposures from '/snippets/server-core/rust/manualExposures.mdx'
+import localOverrides from '/snippets/server-core/rust/localOverrides.mdx'
+import eventSubscriptions from '/snippets/server-core/rust/eventSubscriptions.mdx'
+import persistentStorage from '/snippets/server-core/rust/persistent_storage.mdx'
+import dataStore from '/snippets/server-core/rust/data_store.mdx'
+import outputLogger from '/snippets/server-core/rust/output_logger.mdx'
+import observabilityClient from '/snippets/server-core/rust/observability_client.mdx'
+import faqs from '/snippets/server-core/rust/faqs.mdx'
+
+## Setup the SDK
+
+<Steps>
+<Step title="Install the SDK">
+<installation/>
+</Step>
+<Step title="Initialize the SDK">
+<initialization/>
+</Step>
+</Steps>
+
+## Working with the SDK
+
+<checkGate/>
+<getConfig/>
+<getExperiment/>
+<paramStores/>
+<logEvent/>
+<getFeatureGate/>
+<sharedInstance/>
+
+<manualExposures/>
+<statsigOptions/>
+<shutdown/>
+<eventSubscriptions/>
+<localOverrides/>
+<persistentStorage/>
+<dataStore/>
+<outputLogger/>
+<observabilityClient/>
+<faqs/>
+

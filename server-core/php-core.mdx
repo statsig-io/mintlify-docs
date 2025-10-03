@@ -1,0 +1,49 @@
+---
+title: PHP Server SDK
+sidebarTitle: PHP
+description: Statsig's Server SDK for PHP applications
+icon: "php"
+---
+
+<Note>
+Server-Core SDKs are our next generation server SDKs built in Rust. They offer improved performance and stability over our legacy server SDKs.
+</Note>
+
+[Github Repository](https://github.com/statsig-io/statsig-server-core/tree/main/statsig-php) | [Packagist Package](https://packagist.org/packages/statsig/statsig-php-core)
+
+import installation from '/snippets/server-core/php/install.mdx'
+import initialization from '/snippets/server-core/php/initialize.mdx'
+import checkGate from '/snippets/server-core/php/checkGate.mdx'
+import getConfig from '/snippets/server-core/php/getConfig.mdx'
+import getExperiment from '/snippets/server-core/php/getExperiment.mdx'
+import logEvent from '/snippets/server-core/php/logEvent.mdx'
+import getFeatureGate from '/snippets/server-core/php/getFeatureGate.mdx'
+import shutdown from '/snippets/server-core/php/shutdown.mdx'
+import flush from '/snippets/server-core/php/flush.mdx'
+import statsigOptions from '/snippets/server-core/php/options.mdx'
+import notes from '/snippets/server-core/php/notes.mdx'
+
+## Setup the SDK
+
+<Steps>
+<Step title="Install the SDK">
+<installation/>
+</Step>
+<Step title="Initialize the SDK">
+<initialization/>
+</Step>
+</Steps>
+
+## Working with the SDK
+
+<checkGate/>
+<getConfig/>
+<getExperiment/>
+<logEvent/>
+<getFeatureGate/>
+
+<statsigOptions/>
+<flush/>
+<shutdown/>
+<notes/>
+

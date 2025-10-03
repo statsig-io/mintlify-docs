@@ -11,7 +11,7 @@
     "decoration": "gradient"
   },
   "favicon": "images/Statsig_Favicon_Dark.svg",
-  "fonts":{
+  "fonts": {
     "family": "Geist"
   },
   "contextual": {
@@ -42,6 +42,8 @@
                     "group": "Feature Flags",
                     "pages": [
                       "feature-flags/overview",
+                      "guides/first-feature",
+                      "guides/featureflags-or-experiments",
                       "feature-flags/create",
                       "feature-flags/conditions",
                       "feature-flags/overrides",
@@ -61,7 +63,7 @@
                   {
                     "group": "Dynamic Config",
                     "pages": [
-                      "dynamic-config/overview",
+                      "dynamic-config",
                       "dynamic-config/working-with",
                       "dynamic-config/enforce-schema",
                       "dynamic-config/create-new",
@@ -142,7 +144,7 @@
                   "session-replay/cli-session-replay"
                 ]
               },
-                "integrations/mcp",
+              "integrations/mcp",
               {
                 "group": "AI Evals",
                 "pages": [
@@ -156,11 +158,11 @@
               {
                 "group": "Experiments",
                 "pages": [
-                  "experiments/introduction",
+                  "experiments-plus",
                   {
                     "group": "Set up an experiment",
                     "pages": [
-                      "experiments/setup/create-new",
+                      "experiments-plus/create-new",
                       "experiments/setup/overrides",
                       "experiments/setup/quality-score"
                     ]
@@ -184,31 +186,31 @@
                   {
                     "group": "Autotune",
                     "pages": [
-                      "experiments/autotune/bandit-introduction",
+                      "autotune/bandit-introduction",
                       {
                         "group": "Autotune (MAB)",
                         "pages": [
-                          "experiments/autotune/introduction",
-                          "experiments/autotune/setup",
-                          "experiments/autotune/monitoring",
-                          "experiments/autotune/multi-armed-bandit"
+                          "autotune",
+                          "autotune/setup",
+                          "autotune/monitoring",
+                          "autotune/multi-armed-bandit"
                         ]
                       },
                       {
                         "group": "Contextual (CMAB)",
                         "pages": [
-                          "experiments/autotune/contextual/introduction",
-                          "experiments/autotune/contextual/getting-started",
-                          "experiments/autotune/contextual/monitoring",
-                          "experiments/autotune/contextual/methodology"
+                          "autotune/contextual/introduction",
+                          "autotune/contextual/getting-started",
+                          "autotune/contextual/monitoring",
+                          "autotune/contextual/methodology"
                         ]
                       },
-                      "experiments/autotune/bandit-faq",
-                      "experiments/autotune/using-bandits"
+                      "autotune/bandit-faq",
+                      "autotune/using-bandits"
                     ]
                   },
-                  "experiments/advanced-setup/power-analysis",
-                  "experiments/layers-introduction",
+                  "experiments-plus/power-analysis",
+                  "layers",
                   "experiments/holdouts-introduction",
                   {
                     "group": "Statistical methods",
@@ -244,14 +246,14 @@
                       "experiments/advanced-setup/sprt",
                       "experiments/advanced-setup/stratified-sampling",
                       "experiments/statistical-methods/methodologies/bonferroni-correction",
-                      "experiments/statistical-methods/methodologies/benjamini–hochberg-procedure"
+                      "experiments/statistical-methods/methodologies/benjamini\u2013hochberg-procedure"
                     ]
                   },
                   {
                     "group": "Monitoring experiments",
                     "pages": [
-                      "experiments/monitoring/monitor",
-                      "experiments/statistical-methods/methodologies/srm-checks",
+                      "experiments-plus/monitor",
+                      "stats-engine/methodologies/srm-checks",
                       "experiments/monitoring/srm",
                       "experiments/statistical-methods/pre-experiment-bias",
                       "experiments/monitoring/bots"
@@ -579,15 +581,62 @@
               "concepts/user",
               "client/concepts/initialize",
               "sdks/how-evaluation-works",
-              "sdks/debugging",
+              "sdk/debugging",
+              "http-api",
               "sdks/client-vs-server",
               "compliance/data_privacy_for_mobile"
             ]
           },
           {
+            "group": "Client SDKs",
+            "pages": [
+              "client/JavaScript",
+              "client/React",
+              "client/Next",
+              "client/Android",
+              "client/iOS",
+              {
+                "group": "More Client SDKs",
+                "pages": [
+                  "client/CPP",
+                  "client/Dart",
+                  "client/DotNet",
+                  "client/Expo",
+                  "client/ReactNative",
+                  "client/Angular",
+                  "client/Roku",
+                  "client/Unity"
+                ]
+              }
+            ]
+          },
+          {
             "group": "Server SDKs",
             "pages": [
-              "server-core/node"
+              "server-core/node",
+              "server-core/python-core",
+              "server-core/java-core",
+              "server-core/dotnet-core",
+              {
+                "group": "More Server SDKs",
+                "pages": [
+                  "server-core/rust-core",
+                  "server-core/elixir-core",
+                  "server-core/php-core"
+                ]
+              },
+              {
+                "group": "Legacy Server SDKs",
+                "pages": [
+                  "server/node",
+                  "server/python",
+                  "server/erlang",
+                  "server/java",
+                  "server/rust",
+                  "server/php",
+                  "server/dotnet"
+                ]
+              }
             ]
           },
           {
@@ -894,8 +943,36 @@
   },
   "redirects": [
     {
-      "source": "/dynamic-config",
-      "destination": "/dynamic-config/overview"
+      "source": "/dynamic-config/overview",
+      "destination": "/dynamic-config"
+    },
+    {
+      "source": "/experiments/introduction",
+      "destination": "/experiments-plus"
+    },
+    {
+      "source": "/experiments/statistical-methods/methodologies/srm-checks",
+      "destination": "/stats-engine/methodologies/srm-checks"
+    },
+    {
+      "source": "/experiments/setup/create-new",
+      "destination": "/experiments-plus/create-new"
+    },
+    {
+      "source": "/sdks/debugging",
+      "destination": "/sdk/debugging"
+    },
+    {
+      "source": "/experiments/advanced-setup/power-analysis",
+      "destination": "/experiments-plus/power-analysis"
+    },
+    {
+      "source": "/experiments/monitoring/monitor",
+      "destination": "/experiments-plus/monitor"
+    },
+    {
+      "source": "/experiments/layers-introduction",
+      "destination": "/layers"
     }
   ],
   "logo": {
@@ -903,8 +980,7 @@
     "dark": "/logo/dark.svg"
   },
   "navbar": {
-    "links": [
-    ],
+    "links": [],
     "primary": {
       "type": "button",
       "label": "Statsig Console",

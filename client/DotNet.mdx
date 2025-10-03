@@ -1,0 +1,133 @@
+---
+title: .NET Client SDK
+sidebarTitle: .NET Client
+description: Statsig's SDK for Experimentation and Feature Flags in .NET applications.
+icon: "code"
+---
+
+import Installation from '/snippets/client/installation.mdx'
+import Initialization from '/snippets/client/initialization.mdx'
+import checkGate from '/snippets/client/checkGate.mdx'
+import getDynamicConfig from '/snippets/client/getDynamicConfig.mdx'
+import logEvent from '/snippets/client/logEvent.mdx'
+import getExperimentLayer from '/snippets/client/getExperimentLayer.mdx'
+import statsigUser from '/snippets/client/statsigUser.mdx'
+import privateAttributes from '/snippets/client/privateAttributes.mdx'
+import statsigOptions from '/snippets/client/statsigOptions.mdx'
+import dotnetStatsigOptions from '/snippets/client/DotNet/statsigOptions.mdx'
+import shuttingDown from '/snippets/client/shuttingDown.mdx'
+
+<Callout icon="github">
+Source code: <a href="https://github.com/statsig-io/dotnet-sdk" target="_blank" rel="noreferrer">statsig-io/dotnet-sdk</a>
+</Callout>
+
+## Setup the SDK
+<Steps>
+<Step title="Install the SDK">
+<Installation/>
+
+The package is hosted on [Nuget](https://www.nuget.org/packages/Statsig/). You can either install it from your Visual Studio's Nuget package manager, or through the NuGet CLI:
+
+```shell
+nuget install Statsig
+```
+</Step>
+<Step title="Initialize the SDK">
+<Initialization/>
+
+```csharp
+using Statsig;
+using Statsig.Client;
+
+await StatsigClient.Initialize(
+    "client-sdk-key",
+    new StatsigUser { UserID = "some_user_id", Email = "user@email.com" },
+    new StatsigOptions(new StatsigEnvironment(EnvironmentTier.Development)) // optional, use when needed to customize certain behaviors
+);
+```
+</Step>
+</Steps>
+
+## Use the SDK
+
+<checkGate/>
+
+```csharp
+if (StatsigClient.CheckGate("new_homepage_design"))
+{
+  // Gate is on, show new home page
+}
+else
+{
+  // Gate is off, show old home page
+}
+```
+
+<getDynamicConfig/>
+
+```csharp
+DynamicConfig config = StatsigClient.GetConfig("awesome_product_details");
+
+// The 2nd parameter is the default value to be used in case the given parameter name does not exist on
+// the Dynamic Config object. This can happen when there is a typo, or when the user is offline and the
+// value has not been cached on the client.
+string itemName = config.Get<string>("product_name", "Awesome Product v1");
+double price = config.Get<double>("price", 10.0);
+bool shouldDiscount = config.Get<bool>("discount", false);
+```
+
+<getExperimentLayer/>
+
+```csharp
+// Values via getLayer
+
+Layer layer = StatsigClient.GetLayer("user_promo_experiments");
+var promoTitle = layer.Get("title", "Welcome to Statsig!");
+var discount = layer.Get("discount", 0.1);
+
+// or, via getExperiment
+
+DynamicConfig  titleExperiment = StatsigClient.GetExperiment("new_user_promo_title");
+DynamicConfig  priceExperiment = StatsigClient.GetExperiment("new_user_promo_price");
+
+var promoTitle = titleExperiment.Get("title", "Welcome to Statsig!");
+var discount = priceExperiment.Get("discount", 0.1);
+
+...
+
+double price = msrp * (1 - discount);
+```
+
+<logEvent/>
+
+```csharp
+StatsigClient.LogEvent(
+    "add_to_cart",
+    "SKU_12345",
+    new Dictionary<string, string>() {
+        { "price", "9.99" },
+        { "item_name", "diet_coke_48_pack" }
+    }
+);
+```
+
+<statsigUser/>
+
+```csharp
+// if you want to update the existing user, or change to a different user, call updateUser
+
+await StatsigClient.UpdateUser(
+    new StatsigUser { UserID = "new_user_id", Email = "new_user@email.com" },
+);
+```
+
+<privateAttributes/>
+
+<statsigOptions/>
+<dotnetStatsigOptions/>
+
+<shuttingDown/>
+
+```csharp
+StatsigClient.Shutdown();
+```

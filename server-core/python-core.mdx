@@ -1,0 +1,134 @@
+---
+title: Python Server SDK
+sidebarTitle: Python
+description: Statsig's Server SDK for Python applications
+icon: "python"
+---
+
+import installation from '/snippets/server-core/python/installation.mdx'
+import initialization from '/snippets/server-core/python/initialization.mdx'
+import checkGate from '/snippets/server-core/python/checkGate.mdx'
+import getDynamicConfig from '/snippets/server-core/python/getDynamicConfig.mdx'
+import getExperiment from '/snippets/server-core/python/getExperiment.mdx'
+import logEvent from '/snippets/server-core/python/logEvent.mdx'
+import getPrompt from '/snippets/server-core/python/getPrompt.mdx'
+import getFeatureGate from '/snippets/server-core/python/getFeatureGate.mdx'
+import paramStores from '/snippets/server-core/python/paramStores.mdx'
+import sharedInstance from '/snippets/server-core/python/sharedInstance.mdx'
+import shutdown from '/snippets/server-core/python/shutdown.mdx'
+import statsigOptions from '/snippets/server-core/python/options.mdx'
+import manualExposures from '/snippets/server-core/python/manualExposures.mdx'
+import localOverrides from '/snippets/server-core/python/localOverrides.mdx'
+import clientInitResponse from '/snippets/server-core/python/clientInitResponse.mdx'
+import persistentStorage from '/snippets/server-core/python/persistent_storage.mdx'
+import dataStore from '/snippets/server-core/python/data_store.mdx'
+import outputLogger from '/snippets/server-core/python/output_logger.mdx'
+import observabilityClient from '/snippets/server-core/python/observability_client.mdx'
+import faqs from '/snippets/server-core/python/faqs.mdx'
+
+<Note>
+Server-Core SDKs are our next generation server SDKs built in Rust. They offer improved performance and stability over our legacy server SDKs.
+</Note>
+
+[Github Repository](https://github.com/statsig-io/statsig-server-core/tree/main/statsig-pyo3) | [PyPI Package](https://pypi.org/project/statsig-python-core/)
+
+[**Migration Guide from Legacy Python SDK →**](/server-core/python/migration-guide)
+
+## Setup the SDK
+
+<Steps>
+<Step title="Install the SDK">
+<installation/>
+</Step>
+<Step title="Initialize the SDK">
+<initialization/>
+</Step>
+</Steps>
+
+## Working with the SDK
+
+<checkGate/>
+<getDynamicConfig/>
+<getExperiment/>
+<getPrompt/>
+<paramStores/>
+<logEvent/>
+<getFeatureGate/>
+<sharedInstance/>
+
+<manualExposures/>
+
+## Statsig User
+
+The `StatsigUser` class represents a user in Statsig. You must provide a `user_id` or at least one of the `custom_ids` to identify the user.
+
+```python
+from statsig_python_core import StatsigUser
+
+user = StatsigUser(
+    user_id="a-user-id",
+    email="user@example.com",
+    ip="192.168.1.1",
+    user_agent="Mozilla/5.0...",
+    country="US",
+    locale="en_US",
+    app_version="1.0.0",
+    custom={
+        # Custom fields
+        "plan": "premium",
+        "age": 25
+    },
+    custom_ids={
+        # Custom ID types
+        "stable_id": "stable-id-123"
+    },
+    private_attributes={
+        # Private attributes not forwarded to integrations
+        "email": "private@example.com"
+    }
+)
+```
+
+<statsigOptions/>
+
+<shutdown/>
+
+<clientInitResponse/>
+<localOverrides/>
+<persistentStorage/>
+<dataStore/>
+<outputLogger/>
+<observabilityClient/>
+
+<faqs/>
+
+## Reference
+
+### API Methods
+
+- `check_gate(user: StatsigUser, gate_name: str, options: Optional[FeatureGateEvaluationOptions] = None) -> bool`
+- `get_dynamic_config(user: StatsigUser, config_name: str, options: Optional[DynamicConfigEvaluationOptions] = None) -> DynamicConfig`
+- `get_experiment(user: StatsigUser, experiment_name: str, options: Optional[ExperimentEvaluationOptions] = None) -> DynamicConfig`
+- `get_layer(user: StatsigUser, layer_name: str, options: Optional[LayerEvaluationOptions] = None) -> Layer`
+- `get_feature_gate(user: StatsigUser, gate_name: str, options: Optional[FeatureGateEvaluationOptions] = None) -> FeatureGate`
+- `get_parameter_store(user: StatsigUser, parameter_store_name: str, options: Optional[ParameterStoreEvaluationOptions] = None) -> ParameterStore`
+- `get_prompt(user: StatsigUser, prompt_name: str, options: Optional[PromptEvaluationOptions] = None) -> Prompt`
+- `log_event(user: StatsigUser, event_name: str, value: Optional[Union[str, float]] = None, metadata: Optional[Dict[str, str]] = None) -> None`
+- `manually_log_gate_exposure(user: StatsigUser, gate_name: str) -> None`
+- `manually_log_dynamic_config_exposure(user: StatsigUser, config_name: str) -> None`
+- `manually_log_experiment_exposure(user: StatsigUser, experiment_name: str) -> None`
+- `manually_log_layer_parameter_exposure(user: StatsigUser, layer_name: str, parameter_name: str) -> None`
+- `get_client_initialize_response(user: StatsigUser, options: Optional[ClientInitializeResponseOptions] = None) -> ClientInitializeResponse`
+- `shutdown() -> AsyncResult[None]`
+
+### Fields Needed Methods
+
+The following methods return information about which user fields are needed for evaluation:
+
+- `get_gate_fields_needed(gate_name: str) -> List[str]`
+- `get_dynamic_config_fields_needed(config_name: str) -> List[str]`
+- `get_experiment_fields_needed(experiment_name: str) -> List[str]`
+- `get_layer_fields_needed(layer_name: str) -> List[str]`
+
+These methods return a list of strings representing the user fields that are required to properly evaluate the specified gate, config, experiment, or layer.
+

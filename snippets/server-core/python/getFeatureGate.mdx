@@ -1,0 +1,9 @@
+## Retrieving Feature Gate Metadata
+
+In certain scenarios, you may need more information about a gate evaluation than just a boolean value. For additional metadata about the evaluation, use the Get Feature Gate API, which returns a FeatureGate object:
+
+```python
+gate = statsig.get_feature_gate(user, "example_gate")
+print(gate.rule_id)
+print(gate.value)
+```

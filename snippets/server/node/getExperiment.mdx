@@ -1,0 +1,24 @@
+## Getting a Layer/Experiment
+
+Then we have **Layers/Experiments**, which you can use to run A/B/n experiments. We offer two APIs, but we recommend the use of [layers](/layers) to enable quicker iterations with parameter reuse.
+
+```javascript
+// Values via getLayer
+
+const layer = Statsig.getLayer(user, "user_promo_experiments");
+const promoTitle = layer.get("title", "Welcome to Statsig!");
+const discount = layer.get("discount", 0.1);
+
+// or, via getExperiment
+
+const promoExperiment = Statsig.getExperiment(user, "new_user_promo");
+
+const promoTitle = promoExperiment.get("title", "Welcome to Statsig!");
+const discount = promoExperiment.get("discount", 0.1);
+
+...
+
+const price = msrp * (1 - discount);
+```
+
+

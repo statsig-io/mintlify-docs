@@ -1,0 +1,65 @@
+---
+title: Experiment Diagnostics
+description: Monitor experiment health in Statsig Warehouse Native, from automated checks to exposure streams.
+slug: /statsig-warehouse-native/features/monitor-an-experiment
+sidebar_label: Diagnostics
+---
+
+Once an experiment is live you can monitor its health, exposures, and metric freshness directly from the Statsig console.
+
+## Monitor Experiment Health
+
+1. Open **Experiments** in the left navigation.
+2. Select the experiment you want to inspect.
+3. Review the **Experiment Health Checks** banner for automated alerts.
+
+![Experiment health checks in the console](/images/statsig-warehouse-native/monitor-an-experiment/health-checks.png)
+
+Hover over a check for details, then click it to jump to the underlying view. Key checks include:
+
+- **Pulse metrics available** – Confirms that Pulse results landed (typically the day after launch).
+- **Exposures are balanced** – Runs a chi-squared test for sample ratio mismatch (SRM). Temporary randomness can trigger warnings; persistent imbalances usually signal assignment or logging issues.
+  - p-value between 0.001 and 0.01 → Warning (yellow). Re-check the next day.
+  - p-value < 0.01 but < 0.1% absolute deviation → Warning (yellow) with small expected impact.
+  - p-value < 0.001 and ≥ 0.1% deviation → Alert (red). Investigate immediately.
+- **Crossover users** – Flags users who see multiple variants. Statsig removes them from analysis which reduces sample size.
+  - Assign & Analyze: Warning at 0.1–1%, Alert above 1%.
+  - Analyze Only: Warning at 1–10%, Alert above 10%.
+- **User metrics were computed** – Confirms metric joins succeeded so results are trustworthy.
+- **Metrics available for topline impact** – Indicates whether the data set is rich enough to compute [topline impacts](/stats-engine/topline-impact).
+- **Differential Impact Detection completed** – Shows whether subpopulation impact scans finished. Learn more in [differential impact detection](/experiments-plus/differential-impact-detection).
+
+### Context-specific Checks
+
+Some checks apply only to end-to-end Statsig experiments (where the SDK assigns variants), and others only to analysis-mode experiments (Statsig analyzes exposures from another system):
+
+- **Checks started** (end-to-end) – Verifies that config checks are reaching Statsig shortly after launch.
+- **Checks have valid unit type** (end-to-end) – Ensures exposures include the configured unit identifier (userID by default).
+- **Exposures found** (analysis mode) – Confirms exposures are arriving once Pulse loads.
+
+### Advanced ID Resolution Checks
+
+When you stitch identifiers (for example, Stable ID ↔ userID in signup flows) you may see deduplication alerts:
+
+- **Deduplication Rate Check** – Warns if 1–5% of exposures are duplicates; alerts above 5% because sample size drops and mappings may be incorrect.
+
+<Note>
+Statsig Advanced ID Resolution now supports 1-many and many-many mappings in addition to 1-1. See [ID resolution](/statsig-warehouse-native/features/id-resolution) for details.
+</Note>
+
+- **Deduplication Bias Check** – Uses a chi-squared test to find imbalances across variants.
+  - p-value between 0.001 and 0.01 → Warning (yellow).
+  - p-value < 0.001 → Alert (red) indicating deduplication may bias results.
+
+### Additional Quality Checks
+
+- **Pre-experimental bias** – Highlights differences in baseline behavior between variants. Consider CUPED or adjusting your targeting. See [pre-experiment bias](/stats-engine/pre-experiment-bias).
+- **Outlier check** – Detects metrics dominated by a small number of users. Evaluate whether winsorization or capping is appropriate, and ensure existing caps aren’t overly restrictive.
+
+## Exposure Streams
+
+Scroll below the health checks to view exposure streams. These tables show recent gate/experiment exposures, including the rule that matched each user and any secondary exposures (e.g., holdouts or targeting gates). Use them to verify targeting and confirm ramp progress.
+
+---
+
+Keeping an eye on these diagnostics helps you resolve issues quickly and keep Warehouse Native experiments on track.

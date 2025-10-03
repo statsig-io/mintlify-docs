@@ -1,0 +1,226 @@
+---
+title: Legacy Java/Kotlin Server SDK
+sidebarTitle: Legacy Java/Kotlin
+description: Statsig's Legacy Server SDK for Java and Kotlin applications
+icon: "java"
+---
+
+<Note>Server vs. Client
+These docs are for using our Java/Kotlin SDK in a multi-user, server side context. For client side android applications, check out our [Android SDK](/client/Android) or one of the other client SDKs for your client side applications.
+</Note>
+
+This SDK is written in Kotlin, but exposes methods and overrides to Java based applications.
+
+[Github Repository](https://github.com/statsig-io/java-server-sdk)
+
+## Installation
+
+`v1.X.X+` of the SDK is now published only to Maven Central.
+
+To install the SDK, set the Maven Central repository in your `build.gradle`. You probably already have this for other dependencies.
+
+```groovy
+repositories {
+    mavenCentral()
+}
+```
+
+Then add the dependency:
+
+```groovy
+implementation 'com.statsig:serversdk:1.X.X' // replace with the most up to date version
+// For >v1.24.0 If you are not using streaming and want to reduce the package size you can:
+implementation 'com.statsig:serversdk:1.X.X' {
+    exclude(group = "io.grpc", module = "*") 
+}
+```
+
+You can find the versions in the github releases of the [open source sdk repository](https://github.com/statsig-io/java-server-sdk/releases), or from the [maven central repository](https://mvnrepository.com/artifact/com.statsig/serversdk).
+
+### Jitpack Deprecation
+
+`v0.X.X` versions of the SDK are available from jitpack, but newer versions will not be published to jitpack.
+
+<Note>
+If you update Statsig to be pulled from Maven Central instead of jitpack, you can remove `maven { url 'https://jitpack.io' }` if Statsig was the only library you got from jitpack and you previously relied on v0.X.X of the SDK.
+</Note>
+
+## Initialize the SDK
+
+After installation, you will need to initialize the SDK using a [Server Secret Key from the Statsig console](https://console.statsig.com/api_keys).
+
+<Warning>
+Do NOT embed your Server Secret Key in client-side applications, or expose it in any external-facing documents. However, if you accidentally expose it, you can create a new one in the Statsig console.
+</Warning>
+
+<CodeGroup>
+```java Java
+import com.statsig.sdk.Statsig;
+
+StatsigOptions options = new StatsigOptions();
+// Customize options as needed. For example:
+// options.initTimeoutMs = 9999;
+Future initFuture = Statsig.initializeAsync("server-secret-key", options);
+initFuture.get();
+```
+
+```kotlin Kotlin
+import com.statsig.sdk.Statsig
+
+val options = StatsigOptions().apply {
+        // Customize options as needed. For example:
+        initTimeoutMs = 9999
+}
+async { Statsig.initialize("server-secret-key", options) }.await()
+```
+</CodeGroup>
+
+`initialize` will perform a network request. After `initialize` completes, virtually all SDK operations will be synchronous (See [Evaluating Feature Gates in the Statsig SDK](https://blog.statsig.com/evaluating-feature-gates-in-the-statsig-sdk-a6f8881a1ad8)). The SDK will fetch updates from Statsig in the background, independently of your API calls.
+
+## Working with the SDK
+
+### Checking a Feature Flag/Gate
+
+Now that your SDK is initialized, let's fetch a [**Feature Gate**](/feature-flags/overview). Feature Gates can be used to create logic branches in code that can be rolled out to different users from the Statsig Console. Gates are always **CLOSED** or **OFF** (think `return false;`) by default.
+
+From this point on, all APIs will require you to specify the user (see [Statsig user](#statsig-user)) associated with the request. For example, check a gate for a certain user like this:
+
+<CodeGroup>
+```java Java
+StatsigUser user = new StatsigUser("user_id");
+Boolean isFeatureOn = Statsig.checkGateSync(user, "use_new_feature");
+
+if (isFeatureOn) {
+  // Gate is on, use new feature
+} else {
+  // Gate is off
+}
+```
+
+```kotlin Kotlin
+val user = StatsigUser("user_id");
+val featureOn = Statsig.checkGateSync(user, "use_new_feature")
+
+if (featureOn) {
+  // Gate is on, use new feature
+} else {
+  // Gate is off
+}
+```
+</CodeGroup>
+
+### Reading a Dynamic Config
+
+Feature Gates can be very useful for simple on/off switches, with optional but advanced user targeting. However, if you want to be able send a different set of values (strings, numbers, and etc.) to your clients based on specific user attributes, e.g. country, [**Dynamic Configs**](/dynamic-config) can help you with that. The API is very similar to Feature Gates, but you get an entire json object you can configure on the server and you can fetch typed parameters from it.
+
+<CodeGroup>
+```java Java
+DynamicConfig config = Statsig.getConfigSync(user, "awesome_product_details");
+String itemName = config.getString("product_name", "Awesome Product v1");
+double price = config.getDouble("price", 10.0);
+```
+
+```kotlin Kotlin
+val config = Statsig.getConfigSync(user, "awesome_product_details")
+val itemName = config.getString("product_name", "Awesome Product v1")
+val price = config.getDouble("price", 10.0)
+```
+</CodeGroup>
+
+### Getting a Layer/Experiment
+
+Then we have **Layers/Experiments**, which you can use to run A/B/n experiments. We offer two APIs, but we recommend the use of [layers](/layers) to enable quicker iterations with parameter reuse.
+
+<CodeGroup>
+```java Java
+// Values via getLayer
+Layer layer = Statsig.getLayerSync(user, "user_promo_experiments");
+String title = layer.getString("title", "Welcome to Statsig!");
+double discount = layer.getDouble("discount", 0.1);
+
+// or, via getExperiment
+DynamicConfig experiment = Statsig.getExperimentSync(user, "new_user_promo");
+String expTitle = experiment.getString("title", "Welcome to Statsig!");
+double expDiscount = experiment.getDouble("discount", 0.1);
+```
+
+```kotlin Kotlin
+// Values via getLayer
+val layer = Statsig.getLayerSync(user, "user_promo_experiments")
+val title = layer.getString("title", "Welcome to Statsig!")
+val discount = layer.getDouble("discount", 0.1)
+
+// or, via getExperiment
+val experiment = Statsig.getExperimentSync(user, "new_user_promo")
+val expTitle = experiment.getString("title", "Welcome to Statsig!")
+val expDiscount = experiment.getDouble("discount", 0.1)
+```
+</CodeGroup>
+
+### Logging an Event
+
+Now that you have a Feature Gate or an Experiment set up, you may want to track some custom events and see how your new features or different experiment groups affect these events. This is super easy with Statsig - simply call the Log Event API and specify the user and event name to log; you additionally provide some value and/or an object of metadata to be logged together with the event:
+
+<CodeGroup>
+```java Java
+Statsig.logEvent(user, "add_to_cart", "SKU_12345", 
+    Map.of("price", "9.99", "item_name", "diet_coke_48_pack"));
+```
+
+```kotlin Kotlin
+Statsig.logEvent(user, "add_to_cart", "SKU_12345", 
+    mapOf("price" to "9.99", "item_name" to "diet_coke_48_pack"))
+```
+</CodeGroup>
+
+Learn more about identifying users, group analytics, and best practices for logging events in the [logging events guide](/guides/logging-events).
+
+### Retrieving Feature Gate Metadata
+
+In certain scenarios, you may need more information about a gate evaluation than just a boolean value. For additional metadata about the evaluation, use the Get Feature Gate API, which returns a FeatureGate object:
+
+<CodeGroup>
+```java Java
+FeatureGate gate = Statsig.getFeatureGateSync(user, "use_new_feature");
+boolean value = gate.getValue();
+String ruleId = gate.getRuleID();
+EvaluationDetails details = gate.getEvaluationDetails();
+```
+
+```kotlin Kotlin
+val gate = Statsig.getFeatureGateSync(user, "use_new_feature")
+val value = gate.getValue()
+val ruleId = gate.getRuleID()
+val details = gate.getEvaluationDetails()
+```
+</CodeGroup>
+
+## Statsig User
+
+When calling APIs that require a user, you should pass as much information as possible in order to take advantage of advanced gate and config conditions (like country or OS/browser level checks), and correctly measure impact of your experiments on your metrics/events. At least one identifier, either userID or a Custom ID, is required to provide a consistent experience for a given user (as explained [here](/concepts/user#why-is-an-id-always-required-for-server-sdks)).
+
+Besides `userID`, we also have `email`, `ip`, `userAgent`, `country`, `locale` and `appVersion` as top-level fields on StatsigUser. In addition, you can pass any key-value pairs in an object/dictionary to the `custom` field and be able to create targeting based on them.
+
+Note that while typing is lenient on the `StatsigUser` object to allow you to pass in numbers, strings, arrays, objects, and potentially even enums or classes, the evaluation operators will only be able to operate on primitive types - mostly strings and numbers. While we attempt to smartly cast custom field types to match the operator, we cannot guarantee evaluation results for other types. For example, setting an array as a custom field will only ever be compared as a string - there is no operator to match a value in that array.
+
+### Private Attributes
+
+Have sensitive user PII data that should not be logged? No problem, we have a solution for it! On the StatsigUser object we also have a field called `privateAttributes`, which is a simple object/dictionary that you can use to set private user attributes. Any attribute set in `privateAttributes` will only be used for evaluation/targeting, and removed from any logs before they are sent to Statsig server.
+
+For example, if you have feature gates that should only pass for users with emails ending in "@statsig.com", but do not want to log your users' email addresses to Statsig, you can simply add the key-value pair `{ email: "my_user@statsig.com" }` to `privateAttributes` on the user and that's it!
+
+## Shutdown
+
+To gracefully shutdown the SDK and ensure all events are flushed:
+
+<CodeGroup>
+```java Java
+Statsig.shutdown();
+```
+
+```kotlin Kotlin
+Statsig.shutdown()
+```
+</CodeGroup>
+
+

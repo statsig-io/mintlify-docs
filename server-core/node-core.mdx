@@ -1,0 +1,141 @@
+---
+title: Node Server SDK
+sidebarTitle: Node
+description: Statsig's Server SDK for Node.js applications
+icon: "node-js"
+---
+
+import installation from '/snippets/server-core/node/installation.mdx'
+import initialization from '/snippets/server-core/node/initialization.mdx'
+import checkGate from '/snippets/server-core/node/checkGate.mdx'
+import getDynamicConfig from '/snippets/server-core/node/getDynamicConfig.mdx'
+import getExperiment from '/snippets/server-core/node/getExperiment.mdx'
+import logEvent from '/snippets/server-core/node/logEvent.mdx'
+import getPrompt from '/snippets/server-core/node/getPrompt.mdx'
+import getPromptSet from '/snippets/server-core/node/getPromptSet.mdx'
+import getFeatureGate from '/snippets/server-core/node/getFeatureGate.mdx'
+import paramStores from '/snippets/server-core/node/paramStores.mdx'
+import forwardLogLineEvent from '/snippets/server-core/node/forwardLogLineEvent.mdx'
+import sharedInstance from '/snippets/server-core/node/sharedInstance.mdx'
+import shutdown from '/snippets/server-core/node/shutdown.mdx'
+import statsigOptions from '/snippets/server-core/node/statsigOptions.mdx'
+import manualExposures from '/snippets/server-core/node/manualExposures.mdx'
+import localOverrides from '/snippets/server-core/node/localOverrides.mdx'
+import clientInitResponse from '/snippets/server-core/node/clientInitResponse.mdx'
+import eventSubscriptions from '/snippets/server-core/node/eventSubscriptions.mdx'
+import persistentStorage from '/snippets/server-core/node/persistentStorage.mdx'
+import dataStore from '/snippets/server-core/node/dataStore.mdx'
+import outputLogger from '/snippets/server-core/node/outputLogger.mdx'
+import observabilityClient from '/snippets/server-core/node/observabilityClient.mdx'
+import faqs from '/snippets/server-core/node/faqs.mdx'
+
+<Note>
+Server-Core SDKs are our next generation server SDKs built in Rust. They offer improved performance and stability over our legacy server SDKs.
+</Note>
+
+[Github Repository](https://github.com/statsig-io/statsig-server-core/tree/main/statsig-node) | [NPM Package](https://www.npmjs.com/package/@statsig/statsig-node-core)
+
+## Setup the SDK
+
+<Steps>
+<Step title="Install the SDK">
+<installation/>
+</Step>
+<Step title="Initialize the SDK">
+<initialization/>
+</Step>
+</Steps>
+
+## Working with the SDK
+
+<checkGate/>
+<getDynamicConfig/>
+<getExperiment/>
+<getPrompt/>
+<getPromptSet/>
+<paramStores/>
+<logEvent/>
+<forwardLogLineEvent/>
+<getFeatureGate/>
+<sharedInstance/>
+
+<manualExposures/>
+
+## Statsig User
+
+The `StatsigUser` object represents a user in Statsig. You must provide a `userID` or at least one of the `customIDs` to identify the user.
+
+```typescript
+const user = new StatsigUser({
+  userID: "a-user-id",
+  email: "user@example.com",
+  ip: "192.168.1.1",
+  userAgent: "Mozilla/5.0...",
+  country: "US",
+  locale: "en_US",
+  appVersion: "1.0.0",
+  custom: {
+    // Custom fields
+    plan: "premium",
+    age: 25
+  },
+  customIDs: {
+    // Custom ID types
+    stableID: "stable-id-123"
+  },
+  privateAttributes: {
+    // Private attributes not forwarded to integrations
+    email: "private@example.com"
+  }
+});
+```
+
+<statsigOptions/>
+
+<shutdown/>
+
+<clientInitResponse/>
+<eventSubscriptions/>
+<localOverrides/>
+<persistentStorage/>
+<dataStore/>
+<outputLogger/>
+<observabilityClient/>
+
+<faqs/>
+
+## Reference
+
+### API Methods
+
+- `checkGate(user: StatsigUser, gateName: string, options?: EvaluationOptions): boolean`
+- `getDynamicConfig(user: StatsigUser, configName: string, options?: EvaluationOptions): DynamicConfig`
+- `getExperiment(user: StatsigUser, experimentName: string, options?: EvaluationOptions): DynamicConfig`
+- `getLayer(user: StatsigUser, layerName: string, options?: EvaluationOptions): Layer`
+- `getFeatureGate(user: StatsigUser, gateName: string, options?: EvaluationOptions): FeatureGate`
+- `getParameterStore(user: StatsigUser, parameterStoreName: string, options?: EvaluationOptions): ParameterStore`
+- `getPrompt(user: StatsigUser, promptName: string, options?: EvaluationOptions): Prompt`
+- `getPromptSet(user: StatsigUser, promptSetName: string, options?: EvaluationOptions): PromptSet`
+- `logEvent(user: StatsigUser, eventName: string, value?: string | number | null, metadata?: Record<string, string>): void`
+- `forwardLogLineEvent(user: StatsigUser, level: string, message: string, metadata?: Record<string, string>): void`
+- `manuallyLogGateExposure(user: StatsigUser, gateName: string): void`
+- `manuallyLogDynamicConfigExposure(user: StatsigUser, configName: string): void`
+- `manuallyLogExperimentExposure(user: StatsigUser, experimentName: string): void`
+- `manuallyLogLayerParameterExposure(user: StatsigUser, layerName: string, parameterName: string): void`
+- `getClientInitializeResponse(user: StatsigUser, options?: ClientInitializeResponseOptions): ClientInitializeResponse`
+- `shutdown(): Promise<void>`
+
+### Fields Needed Methods
+
+The following methods return information about which user fields are needed for evaluation:
+
+- `getGateFieldsNeeded(gateName: string): string[]`
+- `getDynamicConfigFieldsNeeded(configName: string): string[]`
+- `getExperimentFieldsNeeded(experimentName: string): string[]`
+- `getLayerFieldsNeeded(layerName: string): string[]`
+
+These methods return an array of strings representing the user fields that are required to properly evaluate the specified gate, config, experiment, or layer. This can be useful for:
+- Optimizing user object creation by only including necessary fields
+- Understanding which user attributes affect a particular feature
+- Debugging evaluation issues
+

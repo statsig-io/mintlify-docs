@@ -1,0 +1,59 @@
+---
+title: .NET Server SDK
+sidebarTitle: .NET
+description: Statsig's Server SDK for .NET applications
+icon: "microsoft"
+---
+
+<Note>
+Server-Core SDKs are our next generation server SDKs built in Rust. They offer improved performance and stability over our legacy server SDKs.
+</Note>
+
+[Github Repository](https://github.com/statsig-io/statsig-server-core/tree/main/statsig-ffi/bindings/dotnet) | [NuGet Package](https://www.nuget.org/packages/Statsig.Server.Core/)
+
+import installation from '/snippets/server-core/dotnet/install.mdx'
+import initialization from '/snippets/server-core/dotnet/initialize.mdx'
+import checkGate from '/snippets/server-core/dotnet/checkGate.mdx'
+import getConfig from '/snippets/server-core/dotnet/getConfig.mdx'
+import getExperiment from '/snippets/server-core/dotnet/getExperiment.mdx'
+import getLayer from '/snippets/server-core/dotnet/getLayer.mdx'
+import getParameterStore from '/snippets/server-core/dotnet/getParameterStore.mdx'
+import logEvent from '/snippets/server-core/dotnet/logEvent.mdx'
+import getFeatureGate from '/snippets/server-core/dotnet/getFeatureGate.mdx'
+import shutdown from '/snippets/server-core/dotnet/shutdown.mdx'
+import statsigOptions from '/snippets/server-core/dotnet/options.mdx'
+import manualExposures from '/snippets/server-core/dotnet/manualExposures.mdx'
+import localOverrides from '/snippets/server-core/dotnet/localOverrides.mdx'
+import clientInitResponse from '/snippets/server-core/dotnet/clientInitResponse.mdx'
+import evaluationOptions from '/snippets/server-core/dotnet/evaluationOptions.mdx'
+import notes from '/snippets/server-core/dotnet/notes.mdx'
+
+## Setup the SDK
+
+<Steps>
+<Step title="Install the SDK">
+<installation/>
+</Step>
+<Step title="Initialize the SDK">
+<initialization/>
+</Step>
+</Steps>
+
+## Working with the SDK
+
+<checkGate/>
+<getConfig/>
+<getExperiment/>
+<getLayer/>
+<getParameterStore/>
+<logEvent/>
+<getFeatureGate/>
+
+<manualExposures/>
+<statsigOptions/>
+<evaluationOptions/>
+<shutdown/>
+<clientInitResponse/>
+<localOverrides/>
+<notes/>
+
