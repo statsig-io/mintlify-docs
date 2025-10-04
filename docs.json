@@ -948,7 +948,7 @@
   "redirects": [
     {
       "source": "/client/javascript-sdk",
-      "destination": "/client/javascript"
+      "destination": "/client/JavaScript"
     },
     {
       "source": "/experiments-plus/implement",

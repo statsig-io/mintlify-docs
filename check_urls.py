@@ -8,7 +8,7 @@ for row in rows:
     if not path.startswith('/'):
         path = '/' + path
     try:
-        r = requests.get(f'http://localhost:3000{path}', timeout=2)
+        r = requests.get(f'https://statsig-4b2ff144.mintlify.app/{path}', timeout=2)
 
         # Extract title and check if it's a 404 page
         title_match = re.search(r'<title>(.*?)</title>', r.text, re.IGNORECASE)
