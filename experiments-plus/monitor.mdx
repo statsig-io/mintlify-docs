@@ -1,7 +1,7 @@
 ---
 title: "Monitor an Experiment"
 description: "Track health checks, exposures, and diagnostics for active experiments in Statsig Cloud."
-slug: /experiments-plus/monitor
+slug: "/experiments-plus/monitor"
 ---
 
 Once an experiment launches you can monitor its health and exposure mix directly from the Statsig console.
@@ -16,17 +16,17 @@ Once an experiment launches you can monitor its health and exposure mix directly
 
 Hover a status icon to read the summary, then click for full context. Common checks include:
 
-- **Checks started** – Verifies the SDK is reporting config checks shortly after launch.
-- **Checks have valid unit type** – Confirms checks include the configured unit identifier (userID by default).
-- **Event metrics have data** – Ensures events carry the same unit ID as exposures so Pulse can compute metrics. This often surfaces when downstream tooling (e.g., Segment) omits stableID or custom IDs.
-- **Pulse metrics available** – Indicates Pulse results have landed (typically the day after launch).
-- **Exposures are balanced** – Runs a chi-squared test for sample ratio mismatch (SRM). Occasional warnings happen due to randomness, but persistent red alerts point to assignment or logging issues.
-  - p-value between 0.001 and 0.01 → Warning (yellow).
-  - p-value < 0.01 with <0.1% absolute deviation → Warning (yellow) with low expected impact.
-  - p-value < 0.001 and ≥0.1% deviation → Alert (red) requiring investigation.
-- **Crossover units detected** – Flags users exposed to multiple variants. Statsig Cloud keeps these users in both groups (since the SDK rarely produces crossovers) but highlights them so you can address root causes. Reach out if you see rates above 1%.
-- **Default value type mismatch** – Warns if an experiment’s fallback default value type disagrees with the parameter definition.
-- **Group assignment healthy** – Surfaces unexpected assignment reasons (e.g., `Uninitialized`, `InvalidBootstrap`). Click **View Assignment Reasons** to see the hourly breakdown.
+- **Checks started** - Verifies the SDK is reporting config checks shortly after launch.
+- **Checks have valid unit type** - Confirms checks include the configured unit identifier (userID by default).
+- **Event metrics have data** - Ensures events carry the same unit ID as exposures so Pulse can compute metrics. This often surfaces when downstream tooling (e.g., Segment) omits stableID or custom IDs.
+- **Pulse metrics available** - Indicates Pulse results have landed (typically the day after launch).
+- **Exposures are balanced** - Runs a chi-squared test for sample ratio mismatch (SRM). Occasional warnings happen due to randomness, but persistent red alerts point to assignment or logging issues.
+  - p-value between 0.001 and 0.01 -> Warning (yellow).
+  - p-value \< 0.01 with \<0.1% absolute deviation -\> Warning (yellow) with low expected impact.
+  - p-value \< 0.001 and \>=0.1% deviation -\> Alert (red) requiring investigation.
+- **Crossover units detected** - Flags users exposed to multiple variants. Statsig Cloud keeps these users in both groups (since the SDK rarely produces crossovers) but highlights them so you can address root causes. Reach out if you see rates above 1%.
+- **Default value type mismatch** - Warns if an experiment's fallback default value type disagrees with the parameter definition.
+- **Group assignment healthy** - Surfaces unexpected assignment reasons (e.g., `Uninitialized`, `InvalidBootstrap`). Click **View Assignment Reasons** to see the hourly breakdown.
 
 ![Assignment reasons breakdown chart](/images/experiments/monitor/assignment-reasons.png)
 
@@ -37,7 +37,7 @@ Crossover warnings usually mean:
 1. The request bootstrapped with a different stable ID (`BootstrapStableIDMismatch`).
 2. Both client and server SDKs are checking the same gate/experiment without synchronized updates.
 
-If you can’t pinpoint the cause, ping us in Slack—we’re happy to help.
+If you can't pinpoint the cause, ping us in Slack - we're happy to help.
 
 ## Exposure Streams
 

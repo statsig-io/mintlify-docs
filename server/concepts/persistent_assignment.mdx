@@ -1,13 +1,6 @@
 ---
 title: Server Persistent Assignment
-sidebar_label: Server Persistent Assignment
-slug: /server/concepts/persistent_assignment
-keywords:
-  - owner:brock
-last_update:
-  date: 2025-09-18
 ---
-
 
 Persistent assignment allows you to ensure that a user's variant stays consistent while an experiment is running, regardless of changes to allocation or targeting.
 
@@ -52,9 +45,10 @@ val options = GetExperimentOptions(
 const options: GetExperimentOptions = {
   ...
   persistentAssignmentOptions: {
-    enforceTargeting = true,
+    enforceTargeting: true,
   }
 }
+
 ```
   </Tab>
 </Tabs>
@@ -88,6 +82,7 @@ exp = Statsig.get_experiment( # User evaluates using values from persisted stora
 )
 puts exp.group_name # 'Control'
 ```
+
   </Tab>
   <Tab title="Python (Python Core)">
 ```python
@@ -107,8 +102,10 @@ let options = new StatsigOptions(persistentStorage = persistedStorage)
 let statsig = new Statsig(secretKye, options)
 let user = new StatsigUser("a-user")
 let exp = statsig.getExperiment(user, ExperimentEvaluationOptions(userPersistentValues= persistedStorage.getUserPersistedValues(user, "user_id")))
+
 ```
   </Tab>
+  
   <Tab title="Kotlin">
 ```kotlin
 runBlocking {
@@ -141,14 +138,14 @@ println(exp.groupName) // "Control"
 await Statsig.initialize(
   "secret-key",
   {
-    userPersistentStorage: new MyPersistentStorageAdapter()
+    userPersistentStorage: new MyPersistentStorageAdapter() 
   }
 )
 const persistedUser: StatsigUser = { userID: "123" }
 let exp = Statsig.getExperimentSync(
   persistedUser,
   "active_experiment",
-  {
+  { 
     userPersistedValues: Statsig.getUserPersistedValues(user, "userID")
   },
 )
@@ -156,7 +153,7 @@ console.log(exp.getGroupName()) // "Control"
 exp = Statsig.getExperimentSync(
   { userID: "unknown" },
   "active_experiment",
-  {
+  { 
     userPersistedValues: Statsig.getUserPersistedValues(user, "userID")
   },
 )
@@ -190,7 +187,7 @@ exp = GetExperimentWithOptions(
 fmt.Println(exp.GroupName) // "Control"
 ```
   </Tab>
-  <Tab title=".NET">
+  <Tab title=".Net">
 ```csharp
 var options = new StatsigServerOptions();
 options.UserPersistentStorage = new MyPersistentStorageAdapter()
@@ -207,6 +204,7 @@ var newGetExpOptions = StatsigGetExperimentOptions(newValues);
 
 var newExp = StatsigServer.GetExperimentSync(new StatsigUser {UserID = "unknown"}, "active_experiment", newGetExpOptions);
 Console.WriteLine(newExp.GroupName); // "Control"
+
 ```
   </Tab>
 </Tabs>

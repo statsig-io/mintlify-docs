@@ -27,71 +27,228 @@
         "groups": [
           {
             "group": "Get Started",
+            "icon": "rocket",
             "pages": [
               "welcome",
               "understanding-platform"
             ]
           },
           {
-            "group": "Essentials",
+            "group": "Experiments",
+            "icon": "flask",
             "pages": [
+              "experiments-plus/overview",
               {
-                "group": "Feature Management",
+                "group": "Create & Implement",
                 "pages": [
-                  {
-                    "group": "Feature Flags",
-                    "pages": [
-                      "feature-flags/overview",
-                      "guides/first-feature",
-                      "guides/featureflags-or-experiments",
-                      "feature-flags/create",
-                      "feature-flags/conditions",
-                      "feature-flags/overrides",
-                      "feature-flags/test-gate",
-                      "feature-flags/view-exposures",
-                      "feature-flags/pre-post-results",
-                      "feature-flags/multiple-rollout-stages",
-                      "feature-flags/scheduled-rollouts",
-                      "feature-flags/safeguards-overview",
-                      "feature-flags/safeguards-create",
-                      "feature-flags/safeguards-manage",
-                      "feature-flags/feature-flags-lifecycle",
-                      "feature-flags/permanent-and-stale-gates",
-                      "feature-flags/best-practices"
-                    ]
-                  },
-                  {
-                    "group": "Dynamic Config",
-                    "pages": [
-                      "dynamic-config",
-                      "dynamic-config/working-with",
-                      "dynamic-config/enforce-schema",
-                      "dynamic-config/create-new",
-                      "dynamic-config/add-rule",
-                      "guides/first-dynamic-config"
-                    ]
-                  },
-                  {
-                    "group": "Segments",
-                    "pages": [
-                      "segments/overview",
-                      "segments/create-new",
-                      "segments/add-rule",
-                      "segments/add-id-list",
-                      "segments/implement"
-                    ]
-                  },
-                  {
-                    "group": "Release Pipeline",
-                    "pages": [
-                      "release-pipeline/overview",
-                      "release-pipeline/create-and-manage",
-                      "release-pipeline/trigger",
-                      "release-pipeline/actions"
-                    ]
-                  }
+                  "experiments-plus/create-new",
+                  "experiments-plus/power-analysis",
+                  "experiments/implementation/implement",
+                  "experiments/setup/overrides",
+                  "experiments/implementation/getting-group",
+                  "experiments-plus/monitor",
+                  "experiments/setup/quality-score"
                 ]
               },
+              {
+                "group": "Configure Stats Methods",
+                "pages": [
+                  {
+                    "group": "Experiment Types",
+                    "pages": [
+                      "experiments/types/switchback-tests",
+                      "experiments/statistical-methods/methodologies/one-sided-test",
+                      "experiments/types/aa-test",
+                      "experiments/types/seo-testing",
+                      {
+                        "group": "Bandit Experiments",
+                        "pages": [
+                          {
+                            "group": "Contextual (CMAB)",
+                            "pages": [
+                              "autotune/contextual/introduction",
+                              "autotune/contextual/getting-started",
+                              "autotune/contextual/monitoring",
+                              "autotune/contextual/methodology"
+                            ]
+                          },
+                          {
+                            "group": "Autotune (MAB)",
+                            "pages": [
+                              "autotune/overview",
+                              "autotune/setup",
+                              "autotune/monitoring",
+                              "autotune/multi-armed-bandit"
+                            ]
+                          },
+                          "autotune/bandit-faq",
+                          "autotune/using-bandits"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "Reducing False Positives",
+                    "pages": [
+                      "experiments/statistical-methods/methodologies/bonferroni-correction",
+                      "experiments/statistical-methods/methodologies/benjamini\u2013hochberg-procedure"
+                    ]
+                  },
+                  {
+                    "group": "Health Checks",
+                    "pages": [
+                      "stats-engine/methodologies/srm-checks",
+                      "experiments/statistical-methods/pre-experiment-bias",
+                      "experiments/monitoring/srm"
+                    ]
+                  },
+                  {
+                    "group": "Variance Reduction",
+                    "pages": [
+                      "experiments/statistical-methods/variance-reduction",
+                      "experiments/statistical-methods/methodologies/cuped",
+                      "experiments/statistical-methods/methodologies/winsorization"
+                    ]
+                  },
+                  {
+                    "group": "How we Calculate:",
+                    "pages": [
+                      "experiments/statistical-methods/confidence-intervals",
+                      "experiments/statistical-methods/p-value",
+                      "experiments/statistical-methods/metric-deltas",
+                      "experiments/statistical-methods/variance",
+                      "experiments/statistical-methods/methodologies/delta-method",
+                      "experiments/monitoring/bots",
+                      "experiments/statistical-methods/methodologies/one-sample-test",
+                      "experiments/statistical-methods/methodologies/fieller-intervals"
+                    ]
+                  },
+                  "experiments/advanced-setup/stratified-sampling",
+                  "experiments/advanced-setup/sequential-testing",
+                  "experiments/advanced-setup/bayesian",
+                  "experiments/advanced-setup/sprt"
+                ]
+              },
+              {
+                "group": "Ending An Experiment",
+                "pages": [
+                  "experiments/ending/ending-experiment",
+                  "experiments/ending/make-decision",
+                  "experiments/ending/stop-assignments",
+                  "experiments/ending/conclude-experiment-defer-decision",
+                  "experiments/ending/abandon",
+                  "experiments/implementation/disable-group"
+                ]
+              },
+              {
+                "group": "Read Results",
+                "pages": [
+                  "experiments/interpreting-results/read-pulse",
+                  "experiments/interpreting-results/userproperties",
+                  "experiments/interpreting-results/drill-down",
+                  "experiments/interpreting-results/export",
+                  "experiments/interpreting-results/best-practices",
+                  "experiments/interpreting-results/reconciling-experiment-results",
+                  "experiments/interpreting-results/faq",
+                  "experiments/interpreting-results/participating-units"
+                ]
+              },
+              {
+                "group": "Further Analysis",
+                "pages": [
+                  "experiments/interpreting-results/custom-queries",
+                  "experiments/exploring-results/aggregated-impact",
+                  "experiments/statistical-methods/topline-impact",
+                  "experiments/exploring-results/meta-analysis",
+                  "experiments/exploring-results/differential-impact-detection",
+                  "experiments/exploring-results/interaction-detection"
+                ]
+              },
+              "layers/overview",
+              "experiments/holdouts-introduction"
+            ]
+          },
+          {
+            "group": "Feature Management",
+            "icon": "toggle-off",
+            "pages": [
+              {
+                "group": "Feature Flags",
+                "pages": [
+                  "feature-flags/overview",
+                  "guides/first-feature",
+                  "guides/featureflags-or-experiments",
+                  "feature-flags/create",
+                  "feature-flags/conditions",
+                  "feature-flags/overrides",
+                  "feature-flags/test-gate",
+                  "feature-flags/view-exposures",
+                  "feature-flags/pre-post-results",
+                  "feature-flags/multiple-rollout-stages",
+                  "feature-flags/scheduled-rollouts",
+                  "feature-flags/safeguards-overview",
+                  "feature-flags/safeguards-create",
+                  "feature-flags/safeguards-manage",
+                  "feature-flags/feature-flags-lifecycle",
+                  "feature-flags/permanent-and-stale-gates",
+                  "feature-flags/best-practices"
+                ]
+              },
+              {
+                "group": "Dynamic Config",
+                "pages": [
+                  "dynamic-config/overview",
+                  "dynamic-config/working-with",
+                  "dynamic-config/enforce-schema",
+                  "dynamic-config/create-new",
+                  "dynamic-config/add-rule",
+                  "guides/first-dynamic-config"
+                ]
+              },
+              {
+                "group": "Segments",
+                "pages": [
+                  "segments/overview",
+                  "segments/create-new",
+                  "segments/add-rule",
+                  "segments/add-id-list",
+                  "segments/implement"
+                ]
+              },
+              {
+                "group": "Release Pipelines",
+                "pages": [
+                  "release-pipeline/overview",
+                  "release-pipeline/create-and-manage",
+                  "release-pipeline/trigger",
+                  "release-pipeline/actions"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Product Analytics",
+            "icon": "chart-line",
+            "pages": [
+              "product-analytics/overview",
+              "product-analytics/drilldown",
+              {
+                "group": "Other Chart Types",
+                "pages": [
+                  "product-analytics/funnels",
+                  "product-analytics/retention",
+                  "product-analytics/distribution",
+                  "product-analytics/user-journeys"
+                ]
+              },
+              "product-analytics/dashboards",
+              "product-analytics/topline-alerts"
+            ]
+          },
+          {
+            "group": "Other Features",
+            "pages": [
+              
               {
                 "group": "Low-Code Experiments",
                 "pages": [
@@ -110,19 +267,6 @@
                 "pages": [
                   "webanalytics/overview",
                   "webanalytics/autocapture"
-                ]
-              },
-              {
-                "group": "Product Analytics",
-                "pages": [
-                  "product-analytics/overview",
-                  "product-analytics/drilldown",
-                  "product-analytics/funnels",
-                  "product-analytics/retention",
-                  "product-analytics/distribution",
-                  "product-analytics/user-journeys",
-                  "product-analytics/dashboards",
-                  "product-analytics/topline-alerts"
                 ]
               },
               {
@@ -153,146 +297,6 @@
                   "ai-evals/prompts",
                   "ai-evals/offline-evals",
                   "ai-evals/online-evals"
-                ]
-              },
-              {
-                "group": "Experiments",
-                "pages": [
-                  "experiments-plus",
-                  {
-                    "group": "Set up an experiment",
-                    "pages": [
-                      "experiments-plus/create-new",
-                      "experiments/setup/overrides",
-                      "experiments/setup/quality-score"
-                    ]
-                  },
-                  {
-                    "group": "Implementing experiments",
-                    "pages": [
-                      "experiments/implementation/implement",
-                      "experiments/implementation/getting-group",
-                      "experiments/implementation/disable-group"
-                    ]
-                  },
-                  {
-                    "group": "Types of experiments",
-                    "pages": [
-                      "experiments/types/switchback-tests",
-                      "experiments/types/aa-test",
-                      "experiments/types/seo-testing"
-                    ]
-                  },
-                  {
-                    "group": "Autotune",
-                    "pages": [
-                      "autotune/bandit-introduction",
-                      {
-                        "group": "Autotune (MAB)",
-                        "pages": [
-                          "autotune",
-                          "autotune/setup",
-                          "autotune/monitoring",
-                          "autotune/multi-armed-bandit"
-                        ]
-                      },
-                      {
-                        "group": "Contextual (CMAB)",
-                        "pages": [
-                          "autotune/contextual/introduction",
-                          "autotune/contextual/getting-started",
-                          "autotune/contextual/monitoring",
-                          "autotune/contextual/methodology"
-                        ]
-                      },
-                      "autotune/bandit-faq",
-                      "autotune/using-bandits"
-                    ]
-                  },
-                  "experiments-plus/power-analysis",
-                  "layers",
-                  "experiments/holdouts-introduction",
-                  {
-                    "group": "Statistical methods",
-                    "pages": [
-                      {
-                        "group": "How we calculate",
-                        "pages": [
-                          "experiments/statistical-methods/confidence-intervals",
-                          "experiments/statistical-methods/p-value",
-                          "experiments/statistical-methods/methodologies/one-sided-test",
-                          "experiments/statistical-methods/methodologies/one-sample-test",
-                          "experiments/statistical-methods/metric-deltas",
-                          "experiments/statistical-methods/variance",
-                          "experiments/statistical-methods/methodologies/delta-method",
-                          "experiments/statistical-methods/methodologies/fieller-intervals"
-                        ]
-                      },
-                      {
-                        "group": "Variance reduction",
-                        "pages": [
-                          "experiments/statistical-methods/variance-reduction",
-                          "experiments/statistical-methods/methodologies/cuped",
-                          "experiments/statistical-methods/methodologies/winsorization"
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "group": "Advanced setup",
-                    "pages": [
-                      "experiments/advanced-setup/sequential-testing",
-                      "experiments/advanced-setup/bayesian",
-                      "experiments/advanced-setup/sprt",
-                      "experiments/advanced-setup/stratified-sampling",
-                      "experiments/statistical-methods/methodologies/bonferroni-correction",
-                      "experiments/statistical-methods/methodologies/benjamini\u2013hochberg-procedure"
-                    ]
-                  },
-                  {
-                    "group": "Monitoring experiments",
-                    "pages": [
-                      "experiments-plus/monitor",
-                      "stats-engine/methodologies/srm-checks",
-                      "experiments/monitoring/srm",
-                      "experiments/statistical-methods/pre-experiment-bias",
-                      "experiments/monitoring/bots"
-                    ]
-                  },
-                  {
-                    "group": "Interpreting results",
-                    "pages": [
-                      "experiments/interpreting-results/best-practices",
-                      "experiments/interpreting-results/read-pulse",
-                      "experiments/interpreting-results/userproperties",
-                      "experiments/interpreting-results/drill-down",
-                      "experiments/interpreting-results/participating-units",
-                      "experiments/interpreting-results/export",
-                      "experiments/interpreting-results/reconciling-experiment-results",
-                      "experiments/interpreting-results/faq"
-                    ]
-                  },
-                  {
-                    "group": "Exploring results",
-                    "pages": [
-                      "experiments/interpreting-results/custom-queries",
-                      "experiments/exploring-results/aggregated-impact",
-                      "experiments/statistical-methods/topline-impact",
-                      "experiments/exploring-results/meta-analysis",
-                      "experiments/exploring-results/differential-impact-detection",
-                      "experiments/exploring-results/interaction-detection"
-                    ]
-                  },
-                  {
-                    "group": "Ending an experiment",
-                    "pages": [
-                      "experiments/ending/ending-experiment",
-                      "experiments/ending/make-decision",
-                      "experiments/ending/stop-assignments",
-                      "experiments/ending/conclude-experiment-defer-decision",
-                      "experiments/ending/abandon"
-                    ]
-                  }
                 ]
               },
               {
@@ -582,7 +586,6 @@
               "client/concepts/initialize",
               "sdks/how-evaluation-works",
               "sdk/debugging",
-              "http-api",
               "sdks/client-vs-server",
               "compliance/data_privacy_for_mobile"
             ]
@@ -590,11 +593,11 @@
           {
             "group": "Client SDKs",
             "pages": [
-              "client/JavaScript",
-              "client/React",
+              "client/javascript-sdk",
+              "client/react",
               "client/Next",
               "client/Android",
-              "client/iOS",
+              "client/iosClientSDK",
               {
                 "group": "More Client SDKs",
                 "pages": [
@@ -613,7 +616,7 @@
           {
             "group": "Server SDKs",
             "pages": [
-              "server-core/node",
+              "server-core/node-core",
               "server-core/python-core",
               "server-core/java-core",
               "server-core/dotnet-core",
@@ -629,8 +632,8 @@
               {
                 "group": "Legacy Server SDKs",
                 "pages": [
-                  "server/node",
-                  "server/python",
+                  "server/nodejsServerSDK",
+                  "server/pythonSDK",
                   "server/erlang",
                   "server/java",
                   "server/rust",
@@ -644,11 +647,43 @@
             ]
           },
           {
+            "group": "More SDK Methods",
+            "pages": [
+              "client/concepts/persistent_assignment",
+              "server/concepts/persistent_assignment",
+              "client/concepts/local-eval-adapter",
+              "server/concepts/data_store",
+              "sdk-keys/target-apps",
+              {
+                "group": "Other Framework Guides",
+                "pages": [
+                  "guides/node-express-feature-flags",
+                  "guides/node-express-abtests",
+                  "guides/python-flask-feature-flags",
+                  "guides/python-flask-abtests"
+                ]
+              },
+              "server/deprecation-notices",
+              "sdks/support"
+            ]
+          },
+          {
             "group": "Console API Reference",
             "pages": [
+              "console-api/introduction",
               {
                 "group": "API reference",
-                "openapi": "openapi.json"
+                "openapi": "capiopenapi.json"
+              }
+            ]
+          },
+          {
+            "group": "HTTP API Reference",
+            "pages": [
+              "http-api/overview",
+              {
+                "group": "API reference (beta)",
+                "openapi": "httpopenapi.json"
               }
             ]
           }
@@ -947,16 +982,40 @@
   },
   "redirects": [
     {
-      "source": "/client/javascript-sdk",
-      "destination": "/client/JavaScript"
+      "source": "/metrics/metrics-from-events",
+      "destination": "/metrics/raw-event-metrics"
+    },
+    {
+      "source": "/console-api/*",
+      "destination": "/console-api/introduction"
+    },
+    {
+      "source": "/guides/sidecar-experiments/advanced-configurations",
+      "destination": "/guides/sidecar-experiments/advanced-configurations"
+    },
+    {
+      "source": "experiments-plus/cure",
+      "destination": "/statsig-warehouse-native/cure/introduction"
+    },
+    {
+      "source": "/stats-engine/methodologies/cuped",
+      "destination": "/experiments/statistical-methods/methodologies/cuped"
+    },
+    {
+      "source": "/guides/aa-test",
+      "destination": "/experiments/types/aa-test"
+    },
+    {
+      "source": "/client/javascript-sdk/init-strategies",
+      "destination": "/client/concepts/initialize"
+    },
+    {
+      "source": "/console-api/all-endpoints-generated",
+      "destination": "/console-api/introduction"
     },
     {
       "source": "/experiments-plus/implement",
       "destination": "/experiments/implementation/implement"
-    },
-    {
-      "source": "/client/iosClientSDK",
-      "destination": "/client/ios"
     },
     {
       "source": "/client/javascript-sdk/next-js",
@@ -969,10 +1028,6 @@
     {
       "source": "/dynamic-config/overview",
       "destination": "/dynamic-config"
-    },
-    {
-      "source": "/experiments/introduction",
-      "destination": "/experiments-plus"
     },
     {
       "source": "/experiments/statistical-methods/methodologies/srm-checks",
@@ -1179,7 +1234,7 @@
       "destination": "/experiments/interpreting-results/custom-queries"
     },
     {
-      "source": "/product-analytics/alerts/topline_alerts",
+      "source": "/product-analytics/topline_alerts",
       "destination": "/product-analytics/topline-alerts"
     },
     {
@@ -1284,7 +1339,7 @@
     },
     {
       "source": "/guides/node-express-feature-flags",
-      "destination": "/server-core/node"
+      "destination": "/server-core/node-core"
     },
     {
       "source": "/guides/experiments",
