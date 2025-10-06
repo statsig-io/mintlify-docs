@@ -1,72 +1,95 @@
 <Accordion title="StatsigOptions">
 ### Parameters
 
-- **`environment`**: `Optional<string>`  
+<ResponseField name="environment" type="string">
   Environment parameter for evaluation.
+</ResponseField>
 
-- **`specsUrl`**: `Optional<string>`  
+<ResponseField name="specsUrl" type="string">
   Custom URL for fetching feature specifications.
+</ResponseField>
 
-- **`specsSyncIntervalMs`**: `Optional<number>`  
+<ResponseField name="specsSyncIntervalMs" type="number">
   How often the SDK updates specifications from Statsig servers (in milliseconds).
+</ResponseField>
 
-- **`fallbackToStatsig`**: `Optional<bool>`  
-  Default off. Turn this one on if you are proxying download_config_specs / get_id_lists endpoint and wish to fallback to statsig default endpoint to increase reliability. 
+<ResponseField name="fallbackToStatsig" type="boolean" default="false">
+  Turn this on if you are proxying `download_config_specs` / `get_id_lists` and want to fall back to the default Statsig endpoint to increase reliability.
+</ResponseField>
 
-- **`logEventUrl`**: `Optional<string>`  
+<ResponseField name="logEventUrl" type="string">
   Custom URL for logging events.
+</ResponseField>
 
-- **`disableAllLogging`**: `Optional<bool>`  
-  Default off. If turned on, SDK will not collect any loggings within the sessions, including custom events and config check exposure events.
+<ResponseField name="disableAllLogging" type="boolean" default="false">
+  If true, the SDK will not collect any logging within the session, including custom events and config check exposure events.
+</ResponseField>
 
-- **`enableIDLists`**: `Optional<bool>`  
-  Default off. **Required to be `true` when using segments with more than 1000 IDs.** See [ID List segments](/segments/add-id-list) for more details.
+<ResponseField name="enableIDLists" type="boolean" default="false">
+  Required to be `true` when using segments with more than 1000 IDs. See [ID List segments](/segments/add-id-list).
+</ResponseField>
 
-- **`disableUserAgentParsing`** `Optional[bool]`
-  Default false. If set to true, the SDK will NOT attempt to parse UserAgents (attached to the user object) into browserName, browserVersion, systemName, systemVersion, and appVersion at evaluation time, when needed for evaluation.
+<ResponseField name="disableUserAgentParsing" type="boolean" default="false">
+  If true, the SDK will not parse User-Agent strings into `browserName`, `browserVersion`, `systemName`, `systemVersion`, and `appVersion` when needed for evaluation.
+</ResponseField>
 
-- **`waitForUserAgentInit`** `Optional[bool]`
-  Default: false
+<ResponseField name="waitForUserAgentInit" type="boolean" default="false">
+  When true, the SDK waits until user agent parsing data is fully loaded during initialization (~1 second), ensuring parsing is ready before any evaluations.
+</ResponseField>
 
-  When set to true, the SDK will wait until user agent parsing data is fully loaded during initialization. This may slow down by ~1 second startup but ensures that parsing of the user's userAgent string into fields like browserName, browserVersion, systemName, systemVersion, and appVersion is ready before any evaluations.
+<ResponseField name="disableUserCountryLookup" type="boolean" default="false">
+  If true, the SDK will not parse IP addresses (from `user.ip`) into country codes when needed for evaluation.
+</ResponseField>
 
-- **`disableUserCountryLookup`**  `Optional[bool]`
-  Default false. If set to true, the SDK will NOT attempt to parse IP addresses (attached to the user object at user.ip) into Country codes at evaluation time, when needed for evaluation.
+<ResponseField name="waitForCountryLookupInit" type="boolean" default="false">
+  When true, the SDK waits for country lookup data (e.g., GeoIP or YAML files) to fully load during initialization (~1 second), ensuring IP-to-country parsing is ready at evaluation time.
+</ResponseField>
 
-- **`waitForCountryLookupInit`**  `Optional[bool]`
-  Default: false
-
-  When set to true, the SDK will wait for country lookup data (e.g., GeoIP or YAML files) to fully load during initialization. This may slow down by ~1 second startup but ensures that IP-to-country parsing is ready at evaluation time
-
-- **`eventLoggingFlushIntervalMs`**: `Optional<number>`  
+<ResponseField name="eventLoggingFlushIntervalMs" type="number">
   How often events are flushed to Statsig servers (in milliseconds).
+</ResponseField>
 
-- **`eventLoggingMaxQueueSize`**: `Optional<number>`  
+<ResponseField name="eventLoggingMaxQueueSize" type="number">
   Maximum number of events to queue before forcing a flush.
+</ResponseField>
 
-- **`dataStore`**: `Optional<DataStore>`  
-  An adapter with custom storage behavior for config specs. 
-  
-  Can also be used to continuously fetch updates in place of the Statsig network. See [Data Stores](#data-store).
-  
-  For example, see our 1P implementation via Redis [statsig-node-redis](https://github.com/statsig-io/node-js-server-sdk-redis).
+<ResponseField name="dataStore" type="DataStore">
+  An adapter with custom storage behavior for config specs. Can also continuously fetch updates in place of the Statsig network. See [Data Stores](#data-store). For example, see our 1P Redis implementation [statsig-node-redis](https://github.com/statsig-io/node-js-server-sdk-redis).
+</ResponseField>
 
-- **`specsAdapterConfig`**: `Optional<SpecAdapterConfig>`  
-  More advanced settings to config SDK to fetch from different sources: for example, [statsig forward proxy](/infrastructure/forward-proxy), your own proxy server, data store. 
-  Or using different network protocol, http vs grpc streaming.
+<ResponseField name="specsAdapterConfig" type="SpecAdapterConfig">
+  Advanced settings to fetch from different sources (e.g., [statsig forward proxy](/infrastructure/forward-proxy), your own proxy server, data store) or to use different network protocols (HTTP vs gRPC streaming).
+</ResponseField>
 
-- **`observabilityClient`**: `Optional<ObservabilityClient>`  
-  Interface for you to integrate observability metrics exposed by SDK, including, config propagation delay, initialization time spent. See [details](#observability-client)
+<ResponseField name="observabilityClient" type="ObservabilityClient">
+  Interface to integrate observability metrics exposed by the SDK (e.g., config propagation delay, initialization time). See [details](#observability-client).
+</ResponseField>
 
-- **`persistentStorage`**: `Optional<PersistentStorage>`  
-  Interface for you to user persistent storage within sdk. To view more [details](#persistent-storage)
+<ResponseField name="persistentStorage" type="PersistentStorage">
+  Interface to use persistent storage within the SDK. See [details](#persistent-storage).
+</ResponseField>
 
-- **`proxyConfig`**: `Optional<ProxyConfig>`  
-  Configuration for connecting through a proxy server. The `ProxyConfig` object has the following properties:
-  - `proxyHost`: Optional string specifying the proxy server host
-  - `proxyPort`: Optional number specifying the proxy server port
-  - `proxyAuth`: Optional string for proxy authentication (format: "username:password")
-  - `proxyProtocol`: Optional string specifying the protocol (e.g., "http", "https")
+<ResponseField name="proxyConfig" type="ProxyConfig">
+  Configuration for connecting through a proxy server.
+</ResponseField>
+
+<Accordion title="ProxyConfig">
+<ResponseField name="proxyHost" type="string">
+  Proxy server host.
+</ResponseField>
+
+<ResponseField name="proxyPort" type="number">
+  Proxy server port.
+</ResponseField>
+
+<ResponseField name="proxyAuth" type="string">
+  Proxy authentication in the form "username:password".
+</ResponseField>
+
+<ResponseField name="proxyProtocol" type="string">
+  Protocol (e.g., "http", "https").
+</ResponseField>
+</Accordion>
 
 ---
 

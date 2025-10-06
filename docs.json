@@ -247,6 +247,7 @@
           },
           {
             "group": "Other Features",
+            "icon": "bolt",
             "pages": [
               
               {
@@ -359,6 +360,7 @@
           },
           {
             "group": "Tutorials",
+            "icon": "file",
             "pages": [
               "client/concepts/parameter-stores",
               "guides/first-device-level-experiment",
@@ -390,6 +392,7 @@
         "groups": [
           {
             "group": "Introduction",
+            "icon": "flag-checkered",
             "pages": [
               "statsig-warehouse-native/introduction",
               "statsig-warehouse-native/guides/quick-start",
@@ -398,6 +401,7 @@
           },
           {
             "group": "Guides",
+            "icon": "file",
             "pages": [
               {
                 "group": "POCs & Evaluations",
@@ -422,6 +426,7 @@
           },
           {
             "group": "Warehouse Integrations",
+            "icon": "plug",
             "pages": [
               "statsig-warehouse-native/guides/connect",
               "statsig-warehouse-native/connecting-your-warehouse/snowflake",
@@ -437,6 +442,7 @@
           },
           {
             "group": "Warehouse Management",
+            "icon": "list-check",
             "pages": [
               "statsig-warehouse-native/analysis-tools/data-privacy",
               "statsig-warehouse-native/warehouse-management/storage",
@@ -446,6 +452,7 @@
           },
           {
             "group": "Data & Semantic Layer",
+            "icon": "bracket-curly",
             "pages": [
               "statsig-warehouse-native/configuration/data-and-semantic-layer",
               "statsig-warehouse-native/configuration/metric-sources",
@@ -495,6 +502,7 @@
           },
           {
             "group": "Experiment Analysis",
+            "icon": "calculator",
             "pages": [
               "statsig-warehouse-native/features/understanding-experiments",
               "statsig-warehouse-native/features/experiment-options",
@@ -550,6 +558,7 @@
           },
           {
             "group": "Other Features",
+            "icon": "bolt",
             "pages": [
               "statsig-warehouse-native/features/mex-on-warehouse-native",
               {
@@ -570,6 +579,7 @@
         "groups": [
           {
             "group": "SDK Quickstarts",
+            "icon": "flag-checkered",
             "pages": [
               "sdks/quickstart",
               "sdks/identify-users",
@@ -580,6 +590,7 @@
           },
           {
             "group": "SDK Concepts",
+            "icon": "lightbulb",
             "pages": [
               "sdks/getting-started",
               "concepts/user",
@@ -648,6 +659,7 @@
           },
           {
             "group": "More SDK Methods",
+            "icon": "list",
             "pages": [
               "client/concepts/persistent_assignment",
               "server/concepts/persistent_assignment",
@@ -669,6 +681,7 @@
           },
           {
             "group": "Console API Reference",
+            "icon": "network-wired",
             "pages": [
               "console-api/introduction",
               {
@@ -679,6 +692,7 @@
           },
           {
             "group": "HTTP API Reference",
+            "icon": "server",
             "pages": [
               "http-api/overview",
               {
@@ -694,6 +708,7 @@
         "groups": [
           {
             "group": "Workspace Management",
+            "icon": "list-check",
             "pages": [
               "access-management/introduction",
               "sdk-keys/api-keys",
@@ -741,6 +756,7 @@
           },
           {
             "group": "Integrations",
+            "icon": "plug",
             "pages": [
               "integrations/introduction",
               {
@@ -885,6 +901,7 @@
           },
           {
             "group": "Collaboration",
+            "icon": "users-rectangle",
             "pages": [
               {
                 "group": "Templates & Policies",
@@ -919,14 +936,15 @@
           },
           {
             "group": "Privacy",
+            "icon": "shield-check",
             "pages": [
-              "compliance/introduction",
               "compliance/user_data_deletion_requests",
               "guides/private-attributes"
             ]
           },
           {
             "group": "Infrastructure Operations",
+            "icon": "server",
             "pages": [
               "infrastructure/introduction",
               {
