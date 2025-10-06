@@ -1,49 +1,52 @@
 You can pass in an optional parameter `options` in addition to `sdkKey` and `user` during initialization to customize the Statsig client.
 
-<Accordion title="Statsig Options">
-- **api** - `String`, default https://api.statsig.com/v1/
-  - The default endpoint to use for all SDK network requests. You should not override this (unless you have another API that implements the Statsig API endpoints)
+<ResponseField name="api" type="String" default="https://api.statsig.com/v1/">
+  Default endpoint for all SDK network requests. Do not override unless you implement the Statsig API elsewhere.
+</ResponseField>
 
-- **disableCurrentActivityLogging**: `Boolean`, default `false`
-  - by default, any custom event your application logs with `Statsig.logEvent()` includes the current top-level activity. This is so we can generate user journey funnels for your users. You can set this parameter to true to disable this behavior.
+<ResponseField name="disableCurrentActivityLogging" type="Boolean" default="false">
+  Include the current top-level activity on logged events by default. Set to `true` to disable.
+</ResponseField>
 
-- **disableDiagnosticsLogging**: `Boolean`, default `false` **(Deprecated)**
-  - Deprecated: This option is no longer available
-  - Previously: Prevent the SDK from sending useful debug information to Statsig
+<ResponseField name="disableDiagnosticsLogging" type="Boolean" default="false" deprecated post={["deprecated"]}>
+  Deprecated. Previously prevented the SDK from sending diagnostic information.
+</ResponseField>
 
-- **initTimeoutMs**: `Long`, default `3000`
-  - used to decide how long the Statsig client waits for the initial network request to respond before calling the completion block. The Statsig client will return either cached values (if any) or default values if checkGate/getConfig/getExperiment is called before the initial network request completes.
-  - if you always want to wait for the latest values fetched from Statsig server, you should set this to 0 so we do not timeout the network request.
-  - unit is milliseconds.
+<ResponseField name="initTimeoutMs" type="Long" default="3000">
+  Milliseconds to wait for the initial request before completing. Set to `0` to wait indefinitely.
+</ResponseField>
 
-- **enableAutoValueUpdate**: `Boolean`, default `false`
-  - By default, feature values for a user are fetched once during Statsig.start and don't change throughout the session. Setting this value to true will make Statsig periodically fetch updated values for the current user.
+<ResponseField name="enableAutoValueUpdate" type="Boolean" default="false">
+  Periodically fetch updated values for the current user when enabled.
+</ResponseField>
 
-- **autoValueUpdateIntervalMinutes**: `Double`, default `1.0`
-  - Only applies if enableAutoValueUpdate is true. Controls how frequently calls to refresh the current users values are made. Time is in minutes and defaults to 1 minute. Minimum value is 1 minute.
+<ResponseField name="autoValueUpdateIntervalMinutes" type="Double" default="1.0">
+  Frequency (in minutes) for auto value refresh. Minimum is `1` minute.
+</ResponseField>
 
-- **overrideStableID**: `String?`, default `null`
-  - overrides the `stableID` in the SDK that is set for the user
+<ResponseField name="overrideStableID" type="String?" default="null">
+  Override the SDK-generated `stableID` for the user.
+</ResponseField>
 
-- **loadCacheAsync**: `Boolean`, default `false`
-  - Whether or not the SDK should block on loading saved values from disk.
+<ResponseField name="loadCacheAsync" type="Boolean" default="false">
+  Whether the SDK should block on loading saved values from disk.
+</ResponseField>
 
-- **initializeValues**: `Map<String, Any>?`, default `null`
-  - Provide the `initialize response` values directly to the Android SDK to synchronously initialize the client or "Bootstrap". You can generate these values from a Statsig Server SDK like the [NodeJS Server SDK](/server/nodejsServerSDK#bootstrap) and pass them in to the SDK when initializing. For more info, see [Bootstraping.](/client/concepts/initialize/#2-bootstrap-initialization) 
+<ResponseField name="initializeValues" type="Map<String, Any>?" default="null">
+  Provide the initialize response directly to bootstrap the client synchronously. See NodeJS Server SDK for generating values and the Bootstrap docs.
+</ResponseField>
 
-- **disableHashing**: `Boolean?`, default `false`
-  - When disabled, the SDK will not hash gate/config/experiment names, instead they will be readable as plain text.
-   :::note
-   This requires special authorization from Statsig. Reach out to our support team](mailto:support@statsig.com), your sales contact, or via our slack channel if you want this enabled.
-   :::
+<ResponseField name="disableHashing" type="Boolean?" default="false">
+  When `true`, gate/config/experiment names are not hashed and remain readable. Requires special authorization from Statsig.
+</ResponseField>
 
-- **customCacheKey**: `((sdkKey: String, user: StatsigUser) -> String)`, default: `{ sdkKey, user -> "${user.getCacheKey()}:$sdkKey" },` v4.26.0+
-  - By default, client SDKs define a "user" for caching as the set of all IDs (the UserID and CustomIDs) and the sdkKey (so multiple instances don't collide)
-  - This can mean that a different set of fields will map to the same cached user.  The intent is to improve cache hit rate, and provide better defaults
-  - If you have critical fields that define a user differently which are not considered IDs, you can override the cache key we generate using this function
+<ResponseField name="customCacheKey" type="((sdkKey: String, user: StatsigUser) -> String)">
+  Override how the cache key is generated for stored values when the default does not fit your needs.
+</ResponseField>
 
-- **evaluationCallback**: `((config: BaseConfig) -> Unit)`, v4.24.0+
-  - A function that can be supplied to the sdk that will be called whenever a gate, config, experiment or layer is checked. The function takes a BaseConfig, which will be one of FeatureGate, DynamicConfig, or Layer, as the only parameter which is the result of the check made.
+<ResponseField name="evaluationCallback" type="((config: BaseConfig) -> Unit)">
+  Callback invoked whenever a gate, config, experiment, or layer is checked. Receives the evaluated `BaseConfig`.
+</ResponseField>
 
 #### Methods
 
@@ -63,4 +66,3 @@ Call `Statsig.updateRuntimeOptions(runtimeMutableOptions: StatsigRuntimeMutableO
    - Setting this value to `false` will prevent the Statsig client from sending logging events over the network or saving events to its on-disk cache. The 1000 most recent events will be queued in memory. They can be logged to network (or cached) if `loggingEnabled` is set to `true` later during that session.
    - Calling `Statsig.flush()` after setting `loggingEnabled` to `true` will immediately clear the queue and minimize loss of older log events
    - This can be useful for cases where it is necessary for users to grant permission before events should be logged, or in any other cases where logging should not be enabled
-</Accordion>

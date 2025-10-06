@@ -1,6 +1,10 @@
 # macOS
 .DS_Store
 
+# Brock's local from migration
+old_docs_urls.csv
+check_urls.py
+
 # Dependencies
 node_modules/
 

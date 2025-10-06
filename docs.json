@@ -234,6 +234,7 @@
               "product-analytics/drilldown",
               {
                 "group": "Other Chart Types",
+                "expanded": true,
                 "pages": [
                   "product-analytics/funnels",
                   "product-analytics/retention",
