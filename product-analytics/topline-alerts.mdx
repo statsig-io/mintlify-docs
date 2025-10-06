@@ -33,11 +33,15 @@ Topline Alerts notify you when key metrics shift beyond a threshold or change in
     <Info title="Example">
       We're setting up an alert to monitor P90 latency for <code>mex_query</code> events, filtering out internal employee queries and grouping by the <code>hadGroupBy</code> dimension.
     </Info>
-    ![Select events or metrics for a Topline Alert](/images/infra-analytics/topline-alerts-choose-events.png)
+    <Frame>
+      <img src="/images/infra-analytics/topline-alerts-choose-events.png" alt="Select events or metrics for a Topline Alert" />
+    </Frame>
   </Step>
   <Step title="Review the Alert Preview">
     <p>The preview shows how your metric is trending with the current setup. Confirm values look correct, or open the metric in <a href="/product-analytics/drilldown">Metrics Explorer</a> for deeper analysis.</p>
-    ![Topline Alert preview showing trending metric](/images/infra-analytics/topline-alerts-preview.png)
+    <Frame>
+      <img src="/images/infra-analytics/topline-alerts-preview.png" alt="Topline Alert preview showing trending metric" />
+    </Frame>
   </Step>
   <Step title="Set Alert Conditions">
     <p>The preview updates along with each change. Define the:</p>
@@ -50,7 +54,9 @@ Topline Alerts notify you when key metrics shift beyond a threshold or change in
     <Warning>
       On Warehouse Native, also define the evaluation frequency, lookback, and max delay—they directly influence warehouse compute costs.
     </Warning>
-    ![Configure alert conditions for a Topline Alert](/images/infra-analytics/topline-alerts-conditions.png)
+    <Frame>
+      <img src="/images/infra-analytics/topline-alerts-conditions.png" alt="Configure alert conditions for a Topline Alert" />
+    </Frame>
   </Step>
   <Step title="Add Notifications">
     <p>Notifications go to email, the Statsig Console, and Slack (if connected). Project-wide defaults live in Settings.</p>
@@ -68,7 +74,9 @@ Topline Alerts notify you when key metrics shift beyond a threshold or change in
       <li>Open the trend in <a href="/product-analytics/drilldown">Metrics Explorer</a>.</li>
       <li>Mute the alert temporarily if it is noisy or already under investigation.</li>
     </ul>
-    ![Topline Alerts table with active alerts](/images/product-analytics/topline-alerts-overview.png)
+    <Frame>
+      <img src="/images/product-analytics/topline-alerts-overview.png" alt="Topline Alerts table with active alerts" />
+    </Frame>
   </Step>
 </Steps>
 
@@ -76,7 +84,9 @@ Topline Alerts notify you when key metrics shift beyond a threshold or change in
 
 Head to the <strong>Diagnostics</strong> tab to review alert history, inspect samples, jump into Metrics Explorer, or mute noisy alerts.
 
-![Diagnostics tab showing alert history](/images/product-analytics/topline-alerts-diagnostics.png)
+<Frame>
+  <img src="/images/product-analytics/topline-alerts-diagnostics.png" alt="Diagnostics tab showing alert history" />
+</Frame>
 
 ---
 

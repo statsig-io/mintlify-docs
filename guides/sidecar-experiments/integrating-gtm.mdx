@@ -10,26 +10,36 @@ This integration is for tracking purposes only. We strongly advise against loadi
 ### Overview
 This integration with GTM will automatically send any GTM-tagged events to Statsig.<br /> No additional coding or tagging is required after completing these steps.
 
-![Statsig logstream showing GTM events flowing in](/images/gtm-logstream.png)
+<Frame>
+  <img src="/images/gtm-logstream.png" alt="Statsig logstream showing GTM events flowing in" />
+</Frame>
 _(statsig logstream showing gtm events flowing in)_
 
 ### Step 1: Create new tag 
-![GTM create new tag interface for Statsig integration](/images/gtm-create-tag.png)
+<Frame>
+  <img src="/images/gtm-create-tag.png" alt="GTM create new tag interface for Statsig integration" />
+</Frame>
 
 ### Step 2: Choose tag type
 Choose "Custom HTML" for tag type, and paste [this GTM code](#gtm-code) (including script tag)
 
-![GTM tag configuration screen with custom HTML setup](/images/gtm-tag-configuration.png)
+<Frame>
+  <img src="/images/gtm-tag-configuration.png" alt="GTM tag configuration screen with custom HTML setup" />
+</Frame>
 
 ### Step 3: Adjust fire options
 Under Advanced Settings under "Tag Firing options", select "Once per page"
 
-![GTM tag firing options settings for once per page](/images/gtm-create-tag-options.png)
+<Frame>
+  <img src="/images/gtm-create-tag-options.png" alt="GTM tag firing options settings for once per page" />
+</Frame>
 
 ### Step 4: Set Tag Trigger
 Below the "Tag Configuration" section, set the Trigger to "Initialization - All Pages" Option. 
 
-![GTM tag trigger configuration for all pages initialization](/images/gtm-tag-trigger.png)
+<Frame>
+  <img src="/images/gtm-tag-trigger.png" alt="GTM tag trigger configuration for all pages initialization" />
+</Frame>
 
 ### Step 5: Save tag and test
 After saving the tag, and publishing your updated GTM tag, tracking will be done automatically without any additional configuration.

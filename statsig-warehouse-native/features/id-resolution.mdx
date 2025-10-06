@@ -27,7 +27,9 @@ Many platforms handle this in an ad-hoc way, which requires the user to do pre-p
 
 Statsig Warehouse Native offers an automatic, no-code solution for connecting identifiers across this boundary in a centralized and reproducible way.
 
-![Docs_IDresolution_TheProblem_111224b](https://github.com/user-attachments/assets/05cb4f49-14a2-4b51-a0e0-63f127838ce4)
+<Frame>
+  <img src="https://github.com/user-attachments/assets/05cb4f49-14a2-4b51-a0e0-63f127838ce4" alt="Docs_IDresolution_TheProblem_111224b" />
+</Frame>
 
 ## Mapping Modes
 
@@ -74,16 +76,22 @@ To use Identity Resolution across experiments in your project, you will need a l
 
 Once that's done, you can simply select this source when configuring your secondary ID type, and Statsig handles the join for you.
 
-![ID resolution source configuration interface](https://github.com/statsig-io/docs/assets/102695539/3fc0422d-ed96-4fe6-9e52-05e24a6cc2a2)
+<Frame>
+  <img src="https://github.com/statsig-io/docs/assets/102695539/3fc0422d-ed96-4fe6-9e52-05e24a6cc2a2" alt="ID resolution source configuration interface" />
+</Frame>
 
 If you want to use a Statsig SDK to populate this table, you can log an event (like a "Signup" event that has both the logged-out identifier and the user ID on the same event. Events sent via the Statsig SDK are written into your warehouse - and you can configure an Identity Resolution source on top of that using something like this -
-![Identity resolution configuration interface](https://github.com/statsig-io/docs/assets/31516123/6b2a3d0e-a1ad-446b-a604-43dd050f05fa)
+<Frame>
+  <img src="https://github.com/statsig-io/docs/assets/31516123/6b2a3d0e-a1ad-446b-a604-43dd050f05fa" alt="Identity resolution configuration interface" />
+</Frame>
 
 ### Using Assignment Source
 
 When creating an assignment source, provide a column for both ID types. It is assumed that your 'Primary ID' will be non-null for exposure records. Your secondary ID can be null. If your secondary ID is sparse (some records are null, and some are not due to logging), Statsig will back-attribute any identified secondary ID to other records from the same Primary ID.
 
-![ID Resolution Assignment Source](https://github.com/statsig-io/docs/assets/102695539/8cbdd8cc-2ea6-4bf8-a620-0428051989d1)
+<Frame>
+  <img src="https://github.com/statsig-io/docs/assets/102695539/8cbdd8cc-2ea6-4bf8-a620-0428051989d1" alt="ID Resolution Assignment Source" />
+</Frame>
 
 When you create an analysis-only experiment or power analysis with this ID type, you can optionally select a Secondary ID. If you do so, you can now use metrics from either ID type in your analysis. For E2E experiments that use the Statsig SDK, this is configurable on the experiment setup page, under Advanced settings.
 

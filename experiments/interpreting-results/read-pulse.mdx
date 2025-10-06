@@ -14,7 +14,9 @@ To read the results of your experiment, go to the **Results** tab, where you wil
 
 ### Exposures
 
-![Exposures Chart](https://github.com/user-attachments/assets/7a80e74e-140d-4c36-a78e-c9b626e1fee5)
+<Frame>
+  <img src="https://github.com/user-attachments/assets/7a80e74e-140d-4c36-a78e-c9b626e1fee5" alt="Exposures Chart" />
+</Frame>
 
 At the top of the Results page is the Exposures Chart. Exposures are the unique experimental units enrolled in the experiment. This is typically the number of unique users, and for device-level experimentation, this is the number of devices. The timeline shows you when the experiment was started, and how many exposures were enrolled on any given day. You can see the rate at which users were added into each group of the experiment, how many total users were exposed, and confirm the target ratio matches what you configured in experiment setup.
 
@@ -42,7 +44,9 @@ All of these are available in daily Results, which will start showing in the nex
 
 #### Post-first Day Scorecard
 
-![Scorecard](https://github.com/user-attachments/assets/8b855f5c-d26f-4185-ac31-5108fbebe18e)
+<Frame>
+  <img src="https://github.com/user-attachments/assets/8b855f5c-d26f-4185-ac31-5108fbebe18e" alt="Scorecard" />
+</Frame>
 
 The experiment Results daily run calculates the difference between the comparable randomization groups (eg. test and control) across your company's suite of metrics, and applies a statistical test to the results. You can read more about Statsig's stats engine [here](/stats-engine). 
 
@@ -73,7 +77,9 @@ There are a few different views to see your Scorecard metric lifts, namely:
 - Days since exposure
 
 Cumulative results includes a detailed view on hover, where you can additionally view the raw statistics used in the metric lift calculations, as well as topline impact.
-![Screenshot 2025-05-01 at 4 36 34 PM](https://github.com/user-attachments/assets/856c7750-df56-45d9-b253-6b63f336cac7)
+<Frame>
+  <img src="https://github.com/user-attachments/assets/856c7750-df56-45d9-b253-6b63f336cac7" alt="Screenshot 2025-05-01 at 4 36 34 PM" />
+</Frame>
 
 ### Dimensions
 
@@ -85,7 +91,9 @@ User Dimensions refer to user level attributes that are either part of the user 
 
 You can create [custom "explore" queries](/pulse/custom-queries) to _filter on_ or _group by_ available user dimensions. For example, you could "See results for users in the US", or "See results for users using iOS, grouped by their country". Go to the "explore" tab to draft a custom query
 
-![custom queries](https://github.com/user-attachments/assets/e3afb526-8f9d-465e-af33-ea9575ac69e7)
+<Frame>
+  <img src="https://github.com/user-attachments/assets/e3afb526-8f9d-465e-af33-ea9575ac69e7" alt="custom queries" />
+</Frame>
 
 
 #### Event dimensions
@@ -93,9 +101,13 @@ You can create [custom "explore" queries](/pulse/custom-queries) to _filter on_ 
 Events Dimensions refer to the value or metadata logged as part of a custom event that is used to define the metric. If you want to see results for a metric broken down by categories that are specific to that metric, [specify the dimension](/metrics/metric-dimensions) you want to break down by in the **value** or **metadata** attributes when you log the source event. For example, when you log a "click" event on your web or mobile application, you may also log the target category using the **value** attribute as shown below. Statsig will automatically generate results for each category in addition to the top level metric. 
 
 To see breakdowns for all categories within a metric, click on the (+) sign next to the metric.
-![dimension button](https://github.com/user-attachments/assets/65cbe2a0-d269-4385-a606-c825ff2e8e05)
+<Frame>
+  <img src="https://github.com/user-attachments/assets/65cbe2a0-d269-4385-a606-c825ff2e8e05" alt="dimension button" />
+</Frame>
 
-![dimension results view](https://github.com/user-attachments/assets/f557dac6-e29f-4cb5-bd6a-19fc2b226193)
+<Frame>
+  <img src="https://github.com/user-attachments/assets/f557dac6-e29f-4cb5-bd6a-19fc2b226193" alt="dimension results view" />
+</Frame>
 
 ### Significance Level Settings
 
@@ -106,7 +118,9 @@ These settings can be adjusted at any time to view Scorecard results with differ
 * **CUPED**: Toggle CUPED on/ off via the inline settings above the metric lifts. Note that this setting can only be toggled for **Scorecard** metrics, as CUPED is not applied to non-Scorecard metrics. 
 * **Sequential Testing**: Applies a correction to the calculate p-values and confidence intervals to reduce false positive rates when evaluating results before the target completion date of the experiment. This helps mitigate the increased false positive rate associated with the "peeking problem". Toggle Sequential Testing on/ off via the inline settings above the metric lifts. Note that this setting is available only for experiments with a set target duration.
 * 
-![analysis settings](https://github.com/user-attachments/assets/d2d7405a-9e86-4317-8f32-51b369c66699)  
+<Frame>
+  <img src="https://github.com/user-attachments/assets/d2d7405a-9e86-4317-8f32-51b369c66699" alt="analysis settings" />
+</Frame>  
 
 
 ### Restarting Results

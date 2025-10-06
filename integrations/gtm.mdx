@@ -6,7 +6,9 @@ title: Google Tag Manager (GTM)
 
 This integration will allow customers using Statsig on the web to leverage their existing Google Tag manager configuration to track events to Statsig. This saves customers from having to retag their web properties with calls specific to Statsig's SDK. This integration uses a global listener to consume all GTM triggers and dispatch a corresponding event back to Statsig.
 
-![Statsig log stream showing GTM events](/images/gtm-logstream.png)
+<Frame>
+  <img src="/images/gtm-logstream.png" alt="Statsig log stream showing GTM events" />
+</Frame>
 _(statsig log stream showing GTM events flowing in)_
 
 ## Setup
@@ -38,22 +40,30 @@ await statsig.initialize('<CLIENT-SDK-KEY>', '<USER-OBJECT>', {
 ```
 
 ### Step 2: Create new tag 
-![GTM create new tag interface](/images/gtm-create-tag.png)
+<Frame>
+  <img src="/images/gtm-create-tag.png" alt="GTM create new tag interface" />
+</Frame>
 
 ### Step 3: Choose tag type
 Choose "Custom HTML" for tag type, and paste [this GTM code](#gtm-code) (including script tag)
 
-![GTM tag configuration screen](/images/gtm-tag-configuration.png)
+<Frame>
+  <img src="/images/gtm-tag-configuration.png" alt="GTM tag configuration screen" />
+</Frame>
 
 ### Step 4: Adjust fire options
 Under Advanced Settings under "Tag Firing options", select "Once per page"
 
-![GTM tag firing options settings](/images/gtm-create-tag-options.png)
+<Frame>
+  <img src="/images/gtm-create-tag-options.png" alt="GTM tag firing options settings" />
+</Frame>
 
 ### Step 5: Set Tag Trigger
 Below the "Tag Configuration" section, set the Trigger to "Initialization - All Pages" Option. 
 
-![GTM tag trigger configuration](/images/gtm-tag-trigger.png)
+<Frame>
+  <img src="/images/gtm-tag-trigger.png" alt="GTM tag trigger configuration" />
+</Frame>
 
 ### Step 6: Save tag and test
 After saving the tag, and publishing your updated GTM tag, tracking will be done automatically without any additional configuration.
@@ -135,7 +145,9 @@ window.StatsigLogger = (function () {
 
 This pattern will allow you to enrich your GTM `dataLayer` with experiment assignment information. 
 
-![gtm datalayer outbound](/images/gtm-outbound.png)
+<Frame>
+  <img src="/images/gtm-outbound.png" alt="gtm datalayer outbound" />
+</Frame>
 
 Prior to your Statsig `initialize` call, you should bind an EventEmitter listener that captures the assigned experiment name and test group, and push it into the `dataLayer` as follows. Note that the argument passed to the callback contains rich context about the assignment. Please modify the GTM `dataLayer` properties to your liking. 
 

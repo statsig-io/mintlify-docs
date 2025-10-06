@@ -19,7 +19,9 @@ Many experimentation practitioners use the Power Analysis calculator during setu
 
 Power Analysis Calculator can be accessed from the tools menu. It's also linked on the experiment setup page, underneath the Experiment Duration field.
 
-![Power Analysis entry points](/images/experiments/power-analysis/navigation.png)
+<Frame>
+  <img src="/images/experiments/power-analysis/navigation.png" alt="Power Analysis entry points" />
+</Frame>
 
 1. Select the population used to determine the metric mean and variance and to estimate the number of exposures over time.
     - **Everyone**: Analysis is based on the entire user base.
@@ -31,15 +33,21 @@ Power Analysis Calculator can be accessed from the tools menu. It's also linked 
 
 3. Click on **Run Power Analysis** to calculate results
 
-![Power analysis form inputs](/images/experiments/power-analysis/form-inputs.png)
+<Frame>
+  <img src="/images/experiments/power-analysis/form-inputs.png" alt="Power analysis form inputs" />
+</Frame>
 
 Your past power analysis calculations will be available to view in the "Past Analyses" tab.
 
-![Past power analyses list](/images/experiments/power-analysis/past-analyses.png)
+<Frame>
+  <img src="/images/experiments/power-analysis/past-analyses.png" alt="Past power analyses list" />
+</Frame>
 
 If you want to attach an existing power analysis to an experiment, that option is available via the dropdown menu on an existing power analysis.
 
-![Power analysis attachment interface](/images/experiments/attach-power-analysis-to-experiment.png)
+<Frame>
+  <img src="/images/experiments/attach-power-analysis-to-experiment.png" alt="Power analysis attachment interface" />
+</Frame>
 
 ## Population Types
 
@@ -79,7 +87,9 @@ When looking at the results, you can modify certain inputs like "# of Groups", "
 
 If you already know the available allocation, fixed allocation allows you to understand how the length of the experiment impacts the MDE. The example below shows how the MDE for a page load metric shrinks over time in an experiment with 100% allocation.  After 1 week we expect 5200 users per group and an MDE of 21.6%, by week 4 the number of users per group should increase to ~48k and the MDE is reduced to 7%.
 
-![Fixed allocation analysis results chart](/images/experiments/power-analysis/fixed-allocation.png)
+<Frame>
+  <img src="/images/experiments/power-analysis/fixed-allocation.png" alt="Fixed allocation analysis results chart" />
+</Frame>
 
 ### Fixed MDE Analysis
 
@@ -87,11 +97,15 @@ If you already know the effect size you want to measure, fixed MDE analysis allo
 
 The results show the minimum number of weeks needed to reach this MDE for different allocation percentages.  In the example below, the experiment should run for at least 2 weeks with 65% allocation or 4 weeks with 50% allocation.  There's no way achieve the desired MDE in 1 week, as this would require more than 100% allocation (more users than we expect to see in one week).
 
-![Fixed MDE analysis results table](/images/experiments/power-analysis/fixed-mde.png)
+<Frame>
+  <img src="/images/experiments/power-analysis/fixed-mde.png" alt="Fixed MDE analysis results table" />
+</Frame>
 
 ## Advanced Options
 
-![Advanced power analysis options interface](/images/experiments/power-analysis/advanced-options.png)
+<Frame>
+  <img src="/images/experiments/power-analysis/advanced-options.png" alt="Advanced power analysis options interface" />
+</Frame>
 
 
 Advanced settings to customize the analysis:
@@ -107,7 +121,9 @@ Advanced settings to customize the analysis:
 
 The relative percentage MDE for a given metric *X* is computed using the following equation:
 
-![MDE calculation formula](/images/experiments/power-analysis/mde-formula.png)
+<Frame>
+  <img src="/images/experiments/power-analysis/mde-formula.png" alt="MDE calculation formula" />
+</Frame>
 
 * *X-bar* is the mean metric value across all users
 * *var(X)* is the population variance of the metric

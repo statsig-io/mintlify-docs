@@ -13,7 +13,9 @@ SRM, or sample ratio mismatch, is a problem with experiments characterized by th
 
 The example below is an exposure crosstab of an experiment that has SRM. Even though the group percentages may look similar, if an assignment system is actually splitting traffic evenly, an imbalance this extreme (or more) would have less than a 0.01% chance to occur randomly.
 
-![srm_example](/images/experiments/srm.png)
+<Frame>
+  <img src="/images/experiments/srm.png" alt="srm_example" />
+</Frame>
 
 Statsig, and most experiment platforms, normalize metrics per-user; a count metric will be measured as total count divided by unique users in the experiment. This means that, in a vacuum, it's fine to have more users in one group. So, why is SRM problematic?
 
@@ -37,7 +39,9 @@ If the p-value of the test is low, we reject the null hypothesis that the groups
 
 On Statsig, SRM will create a warning or failure state on an experiment's health check when detected - depending on how extreme the SRM is.
 
-![srm_failure](/images/experiments/srm_failure.png)
+<Frame>
+  <img src="/images/experiments/srm_failure.png" alt="srm_failure" />
+</Frame>
 
 This often causes concern; people don't want to reset their experiment and lose the data they've collected, and additionally the concern is that if there _is_ an underlying issue it will just reproduce if the experiment is reset and restarted.
 
@@ -50,7 +54,9 @@ it's a strong signal that there is truly an assignment issue.
 
 Below is an example of a p-value chart that indicates a real issue.
 
-![srm_bad_timeseries](/images/experiments/bad_pvalue.png)
+<Frame>
+  <img src="/images/experiments/bad_pvalue.png" alt="srm_bad_timeseries" />
+</Frame>
 
 **2.) Understand if there's a clear root cause for SRM**
 

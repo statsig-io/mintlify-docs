@@ -51,21 +51,29 @@ To configure environment-specific rules for a **Feature Gate**, follow these ste
 
 1. **Create a new Feature Gate**: In the Statsig Console, create a new Feature Gate. For example, name it "development mode" to target only your development environment.
    
-   ![Feature Gate](/images/tutorials/environments/environments-feature-gate.png)
+   <Frame>
+     <img src="/images/tutorials/environments/environments-feature-gate.png" alt="Feature Gate" />
+   </Frame>
 
 2. **Specify Environments**: When configuring the rule, check the **Specify Environments** box and select the environments you want to target. By default, rules are enabled for all environments unless specified otherwise.
 
-   ![Specify Environment](/images/tutorials/environments/environments-specify.png)
+   <Frame>
+     <img src="/images/tutorials/environments/environments-specify.png" alt="Specify Environment" />
+   </Frame>
 
 3. **Save your settings**: After saving, the environment(s) for which the rule is enabled will be displayed below the rule name.
    
-   ![Enabled Environments](/images/tutorials/environments/environments-enabled.png)
+   <Frame>
+     <img src="/images/tutorials/environments/environments-enabled.png" alt="Enabled Environments" />
+   </Frame>
 
 You can also filter rules by environment using the filter in the upper-right corner of the Feature Gate UI.
 
 To edit the target environments of a rule, click the "..." next to the rule name and select **Edit Rule**.
 
-   ![Edit Rule](/images/tutorials/environments/environments-edit-rule.png)
+   <Frame>
+     <img src="/images/tutorials/environments/environments-edit-rule.png" alt="Edit Rule" />
+   </Frame>
 
 ---
 
@@ -77,11 +85,15 @@ By default, Statsig provides three environments: **Development**, **Staging**, a
 
 1. Navigate to **Project Settings** > **Environments & Keys**.
 
-   ![Project Settings](/images/tutorials/environments/environments-project-settings.png)
+   <Frame>
+     <img src="/images/tutorials/environments/environments-project-settings.png" alt="Project Settings" />
+   </Frame>
 
 2. Click **Edit** to add new environments or reorder the existing ones using drag-and-drop.
 
-   ![Edit Environments](/images/tutorials/environments/environments-edit-environments.png)
+   <Frame>
+     <img src="/images/tutorials/environments/environments-edit-environments.png" alt="Edit Environments" />
+   </Frame>
 
 > **Note**: Reordering environments doesn’t affect any rule logic, but it helps convey the rollout hierarchy (e.g., development -> staging -> production) to your teams.
 
@@ -97,7 +109,9 @@ To enhance security and privacy, Statsig allows you to create per-environment AP
 
 2. Click **Generate New Key**, and specify the environment for which you want to generate the API key.
 
-   ![Generate API Key](/images/tutorials/environments/environments-generate-key.png)
+   <Frame>
+     <img src="/images/tutorials/environments/environments-generate-key.png" alt="Generate API Key" />
+   </Frame>
 
 > **Note**: The default environments—Development, Staging, and Production—share the same server and client-side API keys. You can generate new keys for custom environments as needed.
 

@@ -15,12 +15,16 @@ Parameter Stores **decouple your code from configuration, indefinitely**. This a
 
 While usually release cycles are more painful on platforms like mobile, take the example of the Statsig Website - perhaps our marketing team asks for frequent updates, so we'd prefer to parameterize the text, images, buttons, colors and more: 
 
-![Parameter Store Mapping](/images/tutorials/parameter-stores/param_stores_mapping.png)
+<Frame>
+  <img src="/images/tutorials/parameter-stores/param_stores_mapping.png" alt="Parameter Store Mapping" />
+</Frame>
 
 
 When the time comes to run an experiment, we can point these variables directly at experiments - starting an A/B test without writing a line of code:
 
-![Parameter Store Experiment Mapping](/images/tutorials/parameter-stores/param_stores.gif)
+<Frame>
+  <img src="/images/tutorials/parameter-stores/param_stores.gif" alt="Parameter Store Experiment Mapping" />
+</Frame>
 
 Now, you've begun an experiment on your tagline, without ever making a code change. You continue to access the parameter in-code like this:
 

@@ -14,7 +14,9 @@ Once your Statsig account is ready, follow the steps below to create and test-dr
   <Step title="Create a feature gate">
     Navigate to the [Feature Gates page](https://console.statsig.com/gates) and click <strong>Get Started</strong> (or <strong>Create</strong> if you already have gates).
 
-    ![Feature Gates page with Create button](/images/guides/first-feature/feature-gates-page.png)
+    <Frame>
+      <img src="/images/guides/first-feature/feature-gates-page.png" alt="Feature Gates page with Create button" />
+    </Frame>
 
     Give the gate a clear name and description—for example, <code>Mobile Registration</code> with a note about the new mobile sign-up flow.
   </Step>
@@ -22,13 +24,17 @@ Once your Statsig account is ready, follow the steps below to create and test-dr
   <Step title="Target mobile platforms">
     New gates default to returning <code>false</code> until you add targeting. Click <strong>Add New Rule</strong>, choose <strong>Operating System → Any of</strong>, and select <strong>Android</strong> and <strong>iOS</strong>. Set the pass percentage to 100% and click <strong>Add Rule</strong>, then <strong>Save</strong>.
 
-    ![Adding a mobile targeting rule](/images/guides/first-feature/add-rule.png)
+    <Frame>
+      <img src="/images/guides/first-feature/add-rule.png" alt="Adding a mobile targeting rule" />
+    </Frame>
   </Step>
 
   <Step title="Add an internal testing rule">
     Layer on a second rule for your team—for example <strong>Email → Contains any of</strong> with your company domain—so employees can exercise the feature regardless of device.
 
-    ![Gate with mobile and email rules](/images/guides/first-feature/gate-rules.png)
+    <Frame>
+      <img src="/images/guides/first-feature/gate-rules.png" alt="Gate with mobile and email rules" />
+    </Frame>
   </Step>
 
   <Step title="Generate a client API key">
@@ -48,7 +54,9 @@ Once your Statsig account is ready, follow the steps below to create and test-dr
     document.head.appendChild(script);
     ```
 
-    ![Injecting the SDK via DevTools](/images/guides/first-feature/add-sdk-script.png)
+    <Frame>
+      <img src="/images/guides/first-feature/add-sdk-script.png" alt="Injecting the SDK via DevTools" />
+    </Frame>
   </Step>
 
   <Step title="Initialize and check the gate">
@@ -71,7 +79,9 @@ Once your Statsig account is ready, follow the steps below to create and test-dr
   <Step title="Simulate a mobile environment">
     Enable the mobile device toolbar in Chrome DevTools.
 
-    ![Chrome DevTools mobile device toolbar icon](/images/guides/first-feature/devtools-mobile-toolbar.png)
+    <Frame>
+      <img src="/images/guides/first-feature/devtools-mobile-toolbar.png" alt="Chrome DevTools mobile device toolbar icon" />
+    </Frame>
 
     Re-evaluate the user to pick up the new environment and re-check the gate:
 
@@ -82,7 +92,9 @@ Once your Statsig account is ready, follow the steps below to create and test-dr
 
     The gate should now return <code>true</code> for the mobile profile.
 
-    ![Gate returning true for mobile rule](/images/guides/first-feature/mobile-rule-true.png)
+    <Frame>
+      <img src="/images/guides/first-feature/mobile-rule-true.png" alt="Gate returning true for mobile rule" />
+    </Frame>
   </Step>
 
   <Step title="Test the employee backdoor">
@@ -95,7 +107,9 @@ Once your Statsig account is ready, follow the steps below to create and test-dr
 
     The gate passes again thanks to the email rule.
 
-    ![Gate returning true via email rule](/images/guides/first-feature/email-rule-true.png)
+    <Frame>
+      <img src="/images/guides/first-feature/email-rule-true.png" alt="Gate returning true via email rule" />
+    </Frame>
   </Step>
 
   <Step title="Flush exposures and inspect diagnostics">
@@ -105,7 +119,9 @@ Once your Statsig account is ready, follow the steps below to create and test-dr
 
     Open the gate’s <strong>Diagnostics</strong> tab to confirm each exposure, including the failing desktop check, mobile pass, and employee pass.
 
-    ![Diagnostics exposure stream showing recent checks](/images/guides/first-feature/diagnostics-stream.png)
+    <Frame>
+      <img src="/images/guides/first-feature/diagnostics-stream.png" alt="Diagnostics exposure stream showing recent checks" />
+    </Frame>
   </Step>
 </Steps>
 

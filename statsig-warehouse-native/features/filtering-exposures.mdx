@@ -10,7 +10,9 @@ last_update:
 ## Filter Exposures by Qualifying Event
 You can use Qualifying Events to filter exposures to units who did or did not trigger an event after being exposed. This is a powerful tool, especially for analysis-only experiments where the assignment tool may have over-exposed units (e.g. assigning units on page load when the intervention was only triggered when a button was clicked).
 
-![Screenshot 2024-06-11 at 4 18 32 PM](https://github.com/statsig-io/docs/assets/102695539/f7a5ee06-b67a-4cba-9680-fbe99c64d0fc)
+<Frame>
+  <img src="https://github.com/statsig-io/docs/assets/102695539/f7a5ee06-b67a-4cba-9680-fbe99c64d0fc" alt="Screenshot 2024-06-11 at 4 18 32 PM" />
+</Frame>
 
 We recommend caution using this tool, as it's possible to introduce post-assignment data into your assignment data, biasing results. Because of this, qualifying Event filters are disabled on Assign and Analyze experiments by default, since with the Statsig SDK experiments are usually not overexposed. The Statsig team can turn this feature on by request if you have a use case for it!
 

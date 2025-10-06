@@ -24,14 +24,18 @@ Follow these three simple steps to set up an experiment with a custom Unit ID. I
    
 2. **Find Custom Unit IDs**: Under **Manage Account** > **Info**, look for the **Custom Unit IDs** section.
     
-    ![Custom Unit ID Settings](/images/tutorials/custom-id-types/console-add-custom-id.png)
+    <Frame>
+      <img src="/images/tutorials/custom-id-types/console-add-custom-id.png" alt="Custom Unit ID Settings" />
+    </Frame>
 
 3. **Add a New Custom Unit ID**:
     - Click the **Edit** button.
     - Enter `companyID` as the new ID type and provide a description.
     - Save the changes.
 
-    ![Add Custom ID](/images/tutorials/custom-id-types/custom-id-add.png)
+    <Frame>
+      <img src="/images/tutorials/custom-id-types/custom-id-add.png" alt="Add Custom ID" />
+    </Frame>
 
 Once added, this custom Unit ID can be used across all your Statsig configurations: experiments, gates, layers, dynamic configs, and autotunes. You only need to configure it once for your project! This unified configuration streamlines your workflow, allowing you to consistently use your custom identifier across various Statsig tools and features. Whether you're setting up a new experiment, configuring a feature flag, or creating a dynamic config, you can rely on your custom Unit ID to accurately target and analyze your specific user base or entities.
 
@@ -41,7 +45,9 @@ Once added, this custom Unit ID can be used across all your Statsig configuratio
     - Navigate to **Experiments+** in the Statsig Console.
     - When setting up a new experiment, find the **ID Type** dropdown and select `companyID`.
 
-    ![Select Custom ID Type](/images/tutorials/custom-id-types/custom-id-selection.png)
+    <Frame>
+      <img src="/images/tutorials/custom-id-types/custom-id-selection.png" alt="Select Custom ID Type" />
+    </Frame>
 
 2. **Complete Experiment Setup**:
     - Finish configuring your experiment as you would for any [user-level experiment](/guides/abn-tests).

@@ -21,7 +21,9 @@ Context columns can be used to filter the qualifying event for power analysis - 
 
 Statsig has best-in-class controls around using qualifying events to filter exposures in an experiment in cases of over-exposure.
 
-![qualifying event filter](/images/whn/qe_filter.png)
+<Frame>
+  <img src="/images/whn/qe_filter.png" alt="qualifying event filter" />
+</Frame>
 
 In the image above:
 
@@ -38,7 +40,9 @@ You can often identify over-exposed experiments by observing uniformly low parti
 
 Qualifying events can be used in power analysis as a way to estimate your experimentation population by how many people historically hit your proposed trigger event.
 
-![power analysis with qualifying event](/images/whn/pac_qe.png)
+<Frame>
+  <img src="/images/whn/pac_qe.png" alt="power analysis with qualifying event" />
+</Frame>
 
 These can be filtered by event attributes, or by entity properties (e.g. users who triggered this event and are also in a segment or country).
 

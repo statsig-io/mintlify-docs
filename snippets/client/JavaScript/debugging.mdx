@@ -16,13 +16,17 @@ const client = new StatsigClient('client-xyz', { userID: 'a-user' }, {
 
 Open your browser console and run `__STATSIG__` to inspect the current client instance. Useful properties include `_logger._queue` for pending events.
 
-![Statsig Global](/images/client/statsig-global.png)
+<Frame>
+  <img src="/images/client/statsig-global.png" alt="Statsig Global" />
+</Frame>
 
 ### Review Network Traffic
 
 Filter network requests by `client-` to see initialization and logging calls.
 
-![Network Logs](/images/client/network-logs.png)
+<Frame>
+  <img src="/images/client/network-logs.png" alt="Network Logs" />
+</Frame>
 
 ### Check Evaluation Reasons
 

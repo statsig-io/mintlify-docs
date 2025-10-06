@@ -18,7 +18,9 @@ To monitor the status of your experiment,
 - Select the experiment you want to monitor
 - **Experiment Health Checks** show alerts for problems with the experiment setup. Hover over the icon and click on a check for more details.
 
-  ![Diagnostic health check image](https://github.com/statsig-io/docs/assets/5475308/8b557e40-2473-45e1-ac0c-bd61a2eb5208)
+  <Frame>
+    <img src="https://github.com/statsig-io/docs/assets/5475308/8b557e40-2473-45e1-ac0c-bd61a2eb5208" alt="Diagnostic health check image" />
+  </Frame>
 
   - **Pulse metrics available** monitors availability of Pulse results, which are expected on the day after the experiment starts assuming your metrics have landed.
   - **Exposures are balanced** checks that the number of units exposed in each group matches the expected allocation. The Sample Ratio Mismatch (SRM) check is performed using a Chi-Squared test of independence. It is possible for experiments to temporarily show small imbalances simply due to the randomness of the user assignment. These will often resolve on their own after a couple days, while true SRM imbalances that originate from systematic assignment/logging problems tend to persist over time. The following thresholds are used for displaying SRM alerts:

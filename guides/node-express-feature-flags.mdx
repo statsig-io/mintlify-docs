@@ -22,14 +22,18 @@ curl --request POST 'https://statsigapi.net/console/v1/gates' \
 --header 'Content-Type: application/json' \
 --data-raw '{"name":"express_app_bg","idType":"userID","isEnabled":true,"rules":[{"name":"Everyone","passPercentage":50,"conditions":[{"type":"public"}]}]}'
 ``` 
-![Feature gate configuration interface](/img/express-gate.png)
+<Frame>
+  <img src="/img/express-gate.png" alt="Feature gate configuration interface" />
+</Frame>
 
 ## Project Outline
 
 This example was built on the very simple [Hello World](https://expressjs.com/en/starter/hello-world.html) example app documented by ExpressJS.
 The main server entrypoint is `app.js` and the demo webpage source follows the handlebars standard, living in `views/index.hbs`.
 
-![ExpressJS project folder structure](/img/express-folder-structure.png)
+<Frame>
+  <img src="/img/express-folder-structure.png" alt="ExpressJS project folder structure" />
+</Frame>
 
 Aside from `statsig-node`, this example app requires several node modules, including:
 * `cookie-parser` for managing cookies for user identity
@@ -121,4 +125,6 @@ The template will be rendered and with access to the `backgroundFeatureEnabled` 
 </div>
 ```
 
-![ExpressJS app with feature flag enabled](/img/express-page.png)
+<Frame>
+  <img src="/img/express-page.png" alt="ExpressJS app with feature flag enabled" />
+</Frame>

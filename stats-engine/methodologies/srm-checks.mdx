@@ -14,8 +14,12 @@ This is a signal that there could be some unknown bias in the test. This is a ma
 
 Statsig runs SRM checks on all experiments and feature gates as part of our Health Checks (described [here](/experiments-plus/monitor)). We use a Chi-squared test to identify if the split of users between groups is indicative of a Sample Ratio Mismatch.
 
-![SRM health check results interface](/images/experiments/srm-checks-health.png)
+<Frame>
+  <img src="/images/experiments/srm-checks-health.png" alt="SRM health check results interface" />
+</Frame>
 
 We automatically analyze data by common dimensions logged by the Statsig SDK to identify potential drivers of SRM. These include sdk_type, sdk_version, reason, is_bot, browser_name, browser_version, os, os_version, and region to identify potential causes.
 
-![SRM dimension analysis breakdown](/images/experiments/srm-checks-dimensions.png)
+<Frame>
+  <img src="/images/experiments/srm-checks-dimensions.png" alt="SRM dimension analysis breakdown" />
+</Frame>

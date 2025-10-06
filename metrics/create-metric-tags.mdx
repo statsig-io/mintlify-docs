@@ -7,23 +7,33 @@ description: "Organize and group your metrics using tags to create collections f
 
 To create a metric tag, click on **Metrics** in the left hand navigation menu, and click on the [Metrics Catalog](https://console.statsig.com/4TLCtqzctSqusYcQljJLJE/metrics/metrics_catalog) tab. 
 
-![Metrics catalog navigation](/images/metrics/metrics-catalog-navigation.png)
+<Frame>
+  <img src="/images/metrics/metrics-catalog-navigation.png" alt="Metrics catalog navigation" />
+</Frame>
 
 In the **Metrics Catalog** tab, click on the **Tags** filter icon in the upper right-hand corner, and then tap **Manage** in the drop-down. This will take you to the tag manager within Project Settings for all tags in your project.
 
-![Tags filter management](/images/metrics/tags-filter-management.png)
+<Frame>
+  <img src="/images/metrics/tags-filter-management.png" alt="Tags filter management" />
+</Frame>
 
 Tap on the **Create New Tag** in the upper right-hand corner of the tag manager tab to create a new tag. Enter a name and description for your new tag. Click on **Create**. 
 
-![Create new tag dialog](/images/metrics/create-new-tag-dialog.png)
+<Frame>
+  <img src="/images/metrics/create-new-tag-dialog.png" alt="Create new tag dialog" />
+</Frame>
 
 From now on, you can quickly add this tag to any metric using the **+** icon when you hover on the metric. To see what metrics are associated with a given tag, you can reference the **Tags** tab within Project Settings. 
 
-![Metrics catalog with tag management interface](/images/metrics/metrics-catalog-tag-interface.png)
+<Frame>
+  <img src="/images/metrics/metrics-catalog-tag-interface.png" alt="Metrics catalog with tag management interface" />
+</Frame>
 
 Once you've tagged your metrics, you can zoom into **Metric Lifts** in Pulse for the tagged metrics to focus on the results that matter the most to you.
 
-![Pulse results showing tagged metric lifts](/images/metrics/pulse-tagged-metric-lifts.png)
+<Frame>
+  <img src="/images/metrics/pulse-tagged-metric-lifts.png" alt="Pulse results showing tagged metric lifts" />
+</Frame>
 
 
 ## Core Tag 
@@ -43,7 +53,9 @@ Given the special treatment the Core tag receives, it is recommended to spend a 
 
 To see which metrics already have the **Core** tag applied, filter by the **Core** tag in the Metrics Catalog by tapping the filter icon in the upper right-hand corner, then **Tags**, then selecting the **Core** tag.  Remove the Core tag from any unwanted metrics in the resulting filtered listview.
 
-![Core metrics filter view](/images/metrics/core-metrics-filter-view.png)
+<Frame>
+  <img src="/images/metrics/core-metrics-filter-view.png" alt="Core metrics filter view" />
+</Frame>
 
 ## Setting Rollout Alert Thresholds for your Core Metrics 
 Often when rolling out a new feature or experiment, you may want to be notified if any new rollouts or experiments negatively impact a key business metric. Statsig enables you to set Rollout Alerts at the per-metric level, whereby you will be alerted if any currently running experiment or feature gate regresses the metric beyond the set threshold.

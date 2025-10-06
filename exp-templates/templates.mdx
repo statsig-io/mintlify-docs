@@ -21,27 +21,37 @@ There are two primary ways to create a new template-
 
 To create a new template from Project Settings, navigate to **Settings** -> **Project Configuration** -> **Templates** and click the **+Create New** CTA, then select whether you want to create a gate, experiment, or dynamic config template.
 
-![Template Creation](/images/templates/create-template.png)
+<Frame>
+  <img src="/images/templates/create-template.png" alt="Template Creation" />
+</Frame>
 
 ### Converting an Existing Config into a Template
 
 If you create a new config that you think would be useful to more folks on the team as a template, you can convert an existing (or currently being created) config into a template. To do this, in the config you wish to convert to a template, tap the "..." menu and select **Save as Template**. This will prompt you to name your template and add a description before saving.
 
-![Save as Template 1](/images/templates/templates_save_1.png)
+<Frame>
+  <img src="/images/templates/templates_save_1.png" alt="Save as Template 1" />
+</Frame>
 
-![Save as Template 2](/images/templates/templates_save_2.png)
+<Frame>
+  <img src="/images/templates/templates_save_2.png" alt="Save as Template 2" />
+</Frame>
 
 ## Managing Templates
 
 Templates can be managed via the **Templates** setting under **Product Configuration**. Note that permissions for who can/ can't create or modify templates are managed via Statsig's Role-based Access Controls in **People** -> **Roles**. By default Org and Project Admins can modify or delete any Template.
 
-![Templates](/images/templates/templates_role_setting.png)
+<Frame>
+  <img src="/images/templates/templates_role_setting.png" alt="Templates" />
+</Frame>
 
 ## Creating Configs from Templates
 
 To create a config using a template, at the time of config creation, select a template to apply from the template selector. If templates are required at the Organization or Team-level, the user will be blocked from proceeding with config creation until they've selected an approved template. The list of template options in the drop-down is configured at the team level (see below).
 
-![Template Selection](/images/templates/template-selection.png)
+<Frame>
+  <img src="/images/templates/template-selection.png" alt="Template Selection" />
+</Frame>
 
 ## Managing Templates- Settings & Permissions
 
@@ -54,7 +64,9 @@ There are a few key layers of settings governing templates, namely at the-
 
 Within Experiment and Gate Policies (**Settings** -> **Project Configuration** -> **Feature Management**/ **Experimentation** - **Organization Tab**), you can enforce that a template is used for any new gate/ dynamic config/ experiment creation.  Only organization admins can configure this setting. NOTE that you must create at least 1 experiment/ gate template for users to choose if you toggle on this setting, otherwise they will be blocked in creating new configs.
 
-![Org-level Feature Gate Templates Settings](/images/templates/gates_policy_3.png)
+<Frame>
+  <img src="/images/templates/gates_policy_3.png" alt="Org-level Feature Gate Templates Settings" />
+</Frame>
 
 ### Team-level Templates Settings
 
@@ -62,7 +74,9 @@ At the team-level, you can configure which templates members of that team can ch
 
 To configure team-specific templates, navigate to **Settings** -> **People** -> **Teams** -> choose a team -> **Settings** and then choose which templates are allowed for gates, dynamic configs, and experiments.
 
-![Team-level Templates Settings](/images/templates/templates_teams.png)
+<Frame>
+  <img src="/images/templates/templates_teams.png" alt="Team-level Templates Settings" />
+</Frame>
 
 ### Notes
 

@@ -63,7 +63,9 @@ In your Project Settings, under the Integrations tab. Enable the Generic Webhook
 
 In the dialog that appears, enter the url of you destination webhook and then hit Enable to save the url and enable this integration.
 
-![integration-dialog](https://user-images.githubusercontent.com/95646168/162327234-c9a683af-3c36-4da9-a66d-d16bf0ad09bc.png)
+<Frame>
+  <img src="https://user-images.githubusercontent.com/95646168/162327234-c9a683af-3c36-4da9-a66d-d16bf0ad09bc.png" alt="integration-dialog" />
+</Frame>
 
 You can then set which events you want forwarded to your webhook using the [Event Filtering](#filtering-events) dialog.
 
@@ -124,9 +126,13 @@ Below are a few examples of some of the config change payloads. To best capture 
 Once you've enabled outbound events to your webhook, you can select which categories of Statsig events you want to export by clicking on the **Event Filtering** button and checking the appropriate boxes as shown below.
 There are 2 main types of events: *Exposures* (e.g. events logged via the SDK) and *Config Changes* (changelogs for Statsig Console)
 
-![event-filter-button](https://user-images.githubusercontent.com/95646168/162329973-6f229186-1126-4824-9e29-1ff029f6553e.png)
+<Frame>
+  <img src="https://user-images.githubusercontent.com/95646168/162329973-6f229186-1126-4824-9e29-1ff029f6553e.png" alt="event-filter-button" />
+</Frame>
 
-![event-filter-dialog](https://user-images.githubusercontent.com/95646168/162329983-169703fc-c838-40a2-81dc-dd3c83886d00.png)
+<Frame>
+  <img src="https://user-images.githubusercontent.com/95646168/162329983-169703fc-c838-40a2-81dc-dd3c83886d00.png" alt="event-filter-dialog" />
+</Frame>
 
 ### Webhook Signature
 
@@ -167,4 +173,6 @@ You can also use the **Debug** tool to
 1. See requests made to the webhook, including diagnostic information such as number of events forwarded/filtered, request header & body, and more.
 2. Send example requests to the webhook using any recently logged event or exposure
 
-![Debug Tool](https://graphite-user-uploaded-assets-prod.s3.amazonaws.com/ak7zkUsSoHh2VQAhtjtL/5e14e128-1fd4-46f9-8543-364f9b9819bb.png)
+<Frame>
+  <img src="https://graphite-user-uploaded-assets-prod.s3.amazonaws.com/ak7zkUsSoHh2VQAhtjtL/5e14e128-1fd4-46f9-8543-364f9b9819bb.png" alt="Debug Tool" />
+</Frame>

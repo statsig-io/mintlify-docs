@@ -13,7 +13,9 @@ Currently, Okta can only push role updates to Statsig.
 Navigate to `Directory > Profile Editor` and select the User (default) Okta profile. This represents all of the Okta users' attributes.
 Scroll down and press `Add Attribute` and fill out the new attribute to have the variable name `statsigOrgRole`.
 
-![img](/images/okta_scim_steps/org_steps/step1.png)
+<Frame>
+  <img src="/images/okta_scim_steps/org_steps/step1.png" alt="img" />
+</Frame>
 
 ### Step 2. Create the Custom Attribute in the Statsig SCIM Integration
 
@@ -23,23 +25,31 @@ Add an new attribute that matches the following format:
 - Variable name: `statsigOrgRole`
 - External namespace: `urn:ietf:params:scim:schemas:core:2.0:User`
 
-![img](/images/okta_scim_steps/org_steps/step2.png)
+<Frame>
+  <img src="/images/okta_scim_steps/org_steps/step2.png" alt="img" />
+</Frame>
 
 ### Step 3. Create a Mapping from Statsig to Okta for the Custom Attribute
 
 On the same Statsig SCIM profile editor, navigate to the `Mappings` button.
 Scroll down to the new attribute `statsigOrgRole` and map `user.statsigOrgRole` to the Okta attribute `statsigOrgRole`.
 
-![img](/images/okta_scim_steps/org_steps/step3.png)
+<Frame>
+  <img src="/images/okta_scim_steps/org_steps/step3.png" alt="img" />
+</Frame>
 
 ### Step 4. Create a mapping from Okta to Statsig for the Custom Attribute
 
 Now navigate to the Okta User to Statsig SCIM user mapping.
-![img](/images/okta_scim_steps/org_steps/step4_1.png)
+<Frame>
+  <img src="/images/okta_scim_steps/org_steps/step4_1.png" alt="img" />
+</Frame>
 
 Scroll down to the `statsigOrgRole` attribute and map `user.statsigOrgRole` to the Okta attribute `statsigOrgRole`.
 
-![img](/images/okta_scim_steps/org_steps/step4_2.png)
+<Frame>
+  <img src="/images/okta_scim_steps/org_steps/step4_2.png" alt="img" />
+</Frame>
 
 Now all users will be synced with their organization role. On the Statsig SCIM integration you can modify a user's role directly as well.
 
@@ -48,16 +58,24 @@ Now all users will be synced with their organization role. On the Statsig SCIM i
 Navigate to the Statsig SCIM integration provisioning section.
 Under the "To App" tab, scroll down to the `statsigOrgRole` attribute.
 
-![img](/images/okta_scim_steps/org_steps/step5_1.png)
+<Frame>
+  <img src="/images/okta_scim_steps/org_steps/step5_1.png" alt="img" />
+</Frame>
 Set the attribute value to `Map from Okta Profile` and `statsigOrgRole`.
 Set apply on `Create and update`.
 
-![img](/images/okta_scim_steps/org_steps/step5_2.png)
+<Frame>
+  <img src="/images/okta_scim_steps/org_steps/step5_2.png" alt="img" />
+</Frame>
 
 Navigate to the "To Okta" tab and scroll down to the `statsigOrgRole` attribute.
-![img](/images/okta_scim_steps/org_steps/step5_3.png)
+<Frame>
+  <img src="/images/okta_scim_steps/org_steps/step5_3.png" alt="img" />
+</Frame>
 
 Set the attribute value to `Map from Statsig Profile` and `statsigOrgRole`.
 Set apply on `Create`.
 
-![img](/images/okta_scim_steps/org_steps/step5_4.png)
+<Frame>
+  <img src="/images/okta_scim_steps/org_steps/step5_4.png" alt="img" />
+</Frame>

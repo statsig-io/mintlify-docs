@@ -43,8 +43,12 @@ By default, cohort metrics can have a mix of maturation in the experimental popu
 
 In the examples below, one metric forces cohorts to complete. It has **less units** in the analysis, since many units do not have a complete window, a **lower total** because of the small unit count, but a **higher mean** since the units it does have have completed their window and have a longer data collection period on average.
 
-![Metric that did not wait to mature](/images/whn/basic_cohort_metric.png)
-![Metric that waited to Mature](/images/whn/wait_to_mature_metric.png)
+<Frame>
+  <img src="/images/whn/basic_cohort_metric.png" alt="Metric that did not wait to mature" />
+</Frame>
+<Frame>
+  <img src="/images/whn/wait_to_mature_metric.png" alt="Metric that waited to Mature" />
+</Frame>
 
 This can cause confusion since it leads to different populations between metrics, and also filters out the last few days of an experiment's data in the daily timeseries since new cohorts' data is not including. A metric's cohort settings can be seen quickly by hovering over the name of the metric in the experiment scorecard.
 
@@ -52,19 +56,27 @@ This can cause confusion since it leads to different populations between metrics
 
 This is what the data collection looks like for a standard cohort metric with a 0-6 day window. Note that this collects data for **7 days** - it's 0-indexed.
 
-![Basic cohort example](/images/whn/basic_cohort_example.png)
+<Frame>
+  <img src="/images/whn/basic_cohort_example.png" alt="Basic cohort example" />
+</Frame>
 
 If the cohort period goes over the end of the experiment, the default behavior is that the data collection is truncated to the end of the experiment
 
-![Basic cohort over end example](/images/whn/basic_cohort_over_end_example.png)
+<Frame>
+  <img src="/images/whn/basic_cohort_over_end_example.png" alt="Basic cohort over end example" />
+</Frame>
 
 If the metric is configured to only allow completed cohort windows, the unit is completely excluded from the analysis. They are not part of the denominator for the average value of a sum or count metric, and their metric data is filtered from the analysis.
 
-![Basic cohort example](/images/whn/completed_window_example.png)
+<Frame>
+  <img src="/images/whn/completed_window_example.png" alt="Basic cohort example" />
+</Frame>
 
 If mature after end is configured in the experiment, it will continue to collect data after the end of the experiment (whether wait for mature is enabled or not).
 
-![Basic cohort example](/images/whn/mature_after_end_example.png)
+<Frame>
+  <img src="/images/whn/mature_after_end_example.png" alt="Basic cohort example" />
+</Frame>
 
 ## Experiment-based Cohort Settings
 
@@ -74,7 +86,9 @@ Cohort controls are also available on experiments. This is because the relevance
 
 Checking **Allow Cohort Metrics to Mature After Experiment End** allows metrics to be collected after the end of the experiment. This is recommended for one-time interventions, e.g. a new signup page; getting post-experiment signal from units who did get the intervention means additional statistical power.
 
-![Allow Cohorts to Mature](/images/whn/allow_cohorts_to_mature.png)
+<Frame>
+  <img src="/images/whn/allow_cohorts_to_mature.png" alt="Allow Cohorts to Mature" />
+</Frame>
 
 This is **not** recommended in cases where the intervention is continuous, e.g. a ranking change; post-experiment data will be diluted (e.g. test users might get the control experience in their post-experiment period), diluting results.
 
@@ -84,7 +98,9 @@ On the data side, the analysis will be extended past the end of the experiment b
 
 On the **Experiment Population** section of the experiment setup page, there is an option for fixed-window cohorting under **Configure Analysis Period** with Analysis Type **Fixed Duration**. This only counts metrics for a certain period after **experiment start**. This is useful when there's an experiment with a specific point in time, like email campaigns or other cases of fixed enrollment events.
 
-![Analysis Period Settings](/images/whn/configure_analysis_period.png)
+<Frame>
+  <img src="/images/whn/configure_analysis_period.png" alt="Analysis Period Settings" />
+</Frame>
 
 This setting is only available for assign and analyze experiments.
 
@@ -105,7 +121,9 @@ In some cases, a metric in your warehouse may not be matured until a certain tim
 
 One example of a metric that may not be immediately mature is daily revenue. If a user makes a purchase but refunds it a few days later, their daily revenue may retroactively change to reflect the refund on a later date. A 28 day long refund period for users might align naturally a 28 day long bake window for revenue metrics.
 
-![Metric Bake Example](https://github.com/statsig-io/docs/assets/102695539/7c0ca9e7-ae49-4213-96aa-e0815a46940e)
+<Frame>
+  <img src="https://github.com/statsig-io/docs/assets/102695539/7c0ca9e7-ae49-4213-96aa-e0815a46940e" alt="Metric Bake Example" />
+</Frame>
 
 In the example above, the user has a revenue metric that considers the last 28 days. Instead of calculating a partial result, they will exclude users from the analysis until they've had 28 days for their data to mature.
 

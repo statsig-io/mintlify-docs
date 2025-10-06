@@ -27,13 +27,17 @@ For users who use databricks and a dbfs-based deltalake as their primary warehou
 
 1. Follow the [Databricks documentation](https://docs.databricks.com/integrations/jdbc-odbc-bi.html#get-connection-details-for-a-cluster) to get the hostname and http path of the cluster you'll use to run your experimental analysis. You may want to create a specific cluster for this use case.
 
-![credentials](https://user-images.githubusercontent.com/102695539/242474157-e6329ea8-92ae-43af-95dc-7bce2a26a3e6.png)
+<Frame>
+  <img src="https://user-images.githubusercontent.com/102695539/242474157-e6329ea8-92ae-43af-95dc-7bce2a26a3e6.png" alt="credentials" />
+</Frame>
 
 <br />
 
 2. Follow [these instructions](https://docs.databricks.com/dev-tools/auth.html#databricks-personal-access-tokens) to get the personal access token that will be used to calculate experiment results on your warehouse. Alternatively, you can follow [these instructions](https://docs.databricks.com/en/administration-guide/users-groups/service-principals.html#manage-personal-access-tokens-for-a-service-principal) to get a personal access token for a service principal. 
 
-![databricks info](https://user-images.githubusercontent.com/108023879/188731186-ecdc0872-de06-4576-b387-fa08bdca447d.png)
+<Frame>
+  <img src="https://user-images.githubusercontent.com/108023879/188731186-ecdc0872-de06-4576-b387-fa08bdca447d.png" alt="databricks info" />
+</Frame>
 
 3. Create or choose a database to use. For example, you could run this sql in a notebook:
 

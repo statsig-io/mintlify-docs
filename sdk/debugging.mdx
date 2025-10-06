@@ -12,11 +12,15 @@ When a user sees an unexpected value, start with the tooling built into the Stat
 
 Every gate, config, experiment, and layer has both a **Setup** and **Diagnostics** tab. The diagnostics view highlights pass/fail rates and bucketing counts so you can spot anomalies over time.
 
-![Diagnostics tab showing pass and fail counts](/images/sdks/debugging/diagnostics-overview.png)
+<Frame>
+  <img src="/images/sdks/debugging/diagnostics-overview.png" alt="Diagnostics tab showing pass and fail counts" />
+</Frame>
 
 Scroll to the log stream to inspect individual evaluations. Entries arrive within seconds for both production and non-production environments.
 
-![Log stream showing recent exposures](/images/sdks/debugging/log-stream.png)
+<Frame>
+  <img src="/images/sdks/debugging/log-stream.png" alt="Log stream showing recent exposures" />
+</Frame>
 
 <Note>
 Enable **Show non-production logs** in the diagnostics view to surface checks coming from test keys and development builds.
@@ -43,13 +47,17 @@ Statsig SDKs emit runtime logs across four verbosity levels:
 
 Click any exposure in the log stream to drill into the precise rule, user attributes, evaluation reason, SDK metadata, and server timestamps. That detail is often enough to pinpoint why a user received a specific value.
 
-![Evaluation details modal with rule match information](/images/sdks/debugging/evaluation-details.png)
+<Frame>
+  <img src="/images/sdks/debugging/evaluation-details.png" alt="Evaluation details modal with rule match information" />
+</Frame>
 
 ### Evaluation Reasons
 
 Evaluation reasons answer two questions: where the SDK sourced its definitions and why a particular value was returned. Use them to distinguish between healthy results, overrides, and error states.
 
-![Evaluation reason popover showing source and reason](/images/sdks/debugging/evaluation-reason.png)
+<Frame>
+  <img src="/images/sdks/debugging/evaluation-reason.png" alt="Evaluation reason popover showing source and reason" />
+</Frame>
 
 <Tabs>
   <Tab title="Client SDKs">

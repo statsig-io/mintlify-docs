@@ -41,7 +41,9 @@ On your [AWS CloudFront console](https://console.aws.amazon.com/cloudfront/),
   - Set the Origin Domain to `api.statsig.com`.
   - Set the Protocol to `HTTPS only`.
 
-  ![Origin section](https://user-images.githubusercontent.com/7304774/178337858-834c6762-15b4-410d-91bb-68e04932523e.png)
+  <Frame>
+    <img src="https://user-images.githubusercontent.com/7304774/178337858-834c6762-15b4-410d-91bb-68e04932523e.png" alt="Origin section" />
+  </Frame>
 
 - In the Default cache behavior section,
 
@@ -49,13 +51,17 @@ On your [AWS CloudFront console](https://console.aws.amazon.com/cloudfront/),
   - Set Allowed HTTP methods to `GET, HEAD, OPTIONS, PUT, POST, PATCH, DELETE`.
   - In the Cache Key and origin requests subsection, allow all headers and parameters to be forwarded to the Origin, and allow CORS requests for the Origin.
 
-  ![Default cache behavior section](https://user-images.githubusercontent.com/7304774/178590547-acdedcb6-e15a-4086-a29f-0657242d9894.png)
+  <Frame>
+    <img src="https://user-images.githubusercontent.com/7304774/178590547-acdedcb6-e15a-4086-a29f-0657242d9894.png" alt="Default cache behavior section" />
+  </Frame>
 
 - In Function associations section,
 
   - Add a Lambda@Edge function to Origin request to rewrite the `Host` header to `api.statsig.com`. Please refer to [the AWS tutorial on creating a Lambda@Edge function](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-edge-how-it-works-tutorial.html).
 
-  ![Function associations section](https://user-images.githubusercontent.com/7304774/178591897-a93a046a-c76f-4fc6-ab0c-86452de99be7.png)
+  <Frame>
+    <img src="https://user-images.githubusercontent.com/7304774/178591897-a93a046a-c76f-4fc6-ab0c-86452de99be7.png" alt="Function associations section" />
+  </Frame>
 
 You can use the following javascript code snippet in your Lambda@Edge function:
 
@@ -73,7 +79,9 @@ export const handler = async (event, context, callback) => {
   - Add a Custom SSL certificate. You will need to follow the [AWS guide for Alternate domain name](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/CNAMEs.html#alternate-domain-names-requirements) to add a SSL certificate.
   - Click on Create distribution.
 
-![Settings](https://user-images.githubusercontent.com/7304774/178337890-828e9f37-dd28-43a3-adc1-061052916045.png)
+<Frame>
+  <img src="https://user-images.githubusercontent.com/7304774/178337890-828e9f37-dd28-43a3-adc1-061052916045.png" alt="Settings" />
+</Frame>
 
 - You will get a Distribution domain name (e.g. `d111111abcdef8.cloudfront.net`) once it is provisioned.
 
@@ -99,7 +107,9 @@ Once you are logged into Cloudflare. You can follow these steps:
 
 1.  Navigate to "Workers & Pages > Overview" in the left rail to create a new worker.
 
-    ![1-cloudflare-create](https://github.com/statsig-io/statsig-kit/assets/95646168/39bcd1ad-ddcc-4be9-9d71-905ed6a90b8b)
+    <Frame>
+      <img src="https://github.com/statsig-io/statsig-kit/assets/95646168/39bcd1ad-ddcc-4be9-9d71-905ed6a90b8b" alt="1-cloudflare-create" />
+    </Frame>
 
 <Note>
     You may see a different experience if you already have workers on your account.
@@ -107,11 +117,15 @@ Once you are logged into Cloudflare. You can follow these steps:
 
 3.  Name you new worker whatever you would like and then click "Deploy".
 
-    ![2-cloudflare-deploy](https://github.com/statsig-io/statsig-kit/assets/95646168/9d728e12-675e-4648-b6ee-ce84c72b305c)
+    <Frame>
+      <img src="https://github.com/statsig-io/statsig-kit/assets/95646168/9d728e12-675e-4648-b6ee-ce84c72b305c" alt="2-cloudflare-deploy" />
+    </Frame>
 
 4.  Once deployed, click "Edit Code".
 
-    ![3-cloudflare-edit-code](https://github.com/statsig-io/statsig-kit/assets/95646168/8c971a58-5bb7-4faa-a7ba-4574ab29f0ce)
+    <Frame>
+      <img src="https://github.com/statsig-io/statsig-kit/assets/95646168/8c971a58-5bb7-4faa-a7ba-4574ab29f0ce" alt="3-cloudflare-edit-code" />
+    </Frame>
 
 5.  Copy and paste the following snippet into the `worker.js` file, then hit "Deploy".
 
@@ -130,7 +144,9 @@ Once you are logged into Cloudflare. You can follow these steps:
     };
     ```
 
-    ![4-cloudflare-paste-snippet](https://github.com/statsig-io/statsig-kit/assets/95646168/558498dd-159f-409e-acef-a31e0dff86c2)
+    <Frame>
+      <img src="https://github.com/statsig-io/statsig-kit/assets/95646168/558498dd-159f-409e-acef-a31e0dff86c2" alt="4-cloudflare-paste-snippet" />
+    </Frame>
 
 6.  Your worker should now be deployed and ready to use. See [Using Your Proxy](#using-your-proxy) for instructions on how to configure your Statsig SDK.
 

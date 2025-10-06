@@ -30,14 +30,18 @@ user provisioning and management.
 - Navigate to Applications > Applications > Create App Integration
 - Select "SWA - Secure Web Authentication"
 
-![img](/images/okta_scim_steps/step1-create-new-custom-integration.png)
+<Frame>
+  <img src="/images/okta_scim_steps/step1-create-new-custom-integration.png" alt="img" />
+</Frame>
 
 ## Step 2: Configure App Settings
 
 - Set the App name to "Statsig SCIM"
 - Enter a placeholder URL for the App Login Page (this is a required field but not used for SCIM). Ex: `https://console.statsig.com/`
 
-![img](/images/okta_scim_steps/step2-configure-app-settings.png)
+<Frame>
+  <img src="/images/okta_scim_steps/step2-configure-app-settings.png" alt="img" />
+</Frame>
 
 ## Step 3: Enable SCIM Provisioning
 
@@ -45,7 +49,9 @@ user provisioning and management.
 - Click on "Edit" in the "Provisioning" section
 - Enable "SCIM Provisioning"
 
-![img](/images/okta_scim_steps/step3-enable-scim.png)
+<Frame>
+  <img src="/images/okta_scim_steps/step3-enable-scim.png" alt="img" />
+</Frame>
 
 ## Step 4: Configure SCIM Settings
 
@@ -67,7 +73,9 @@ user provisioning and management.
 - Set the authentication mode to "HTTP Header"
 - For the authorization header, use the SCIM Bearer token generated in Statsig by your Org Admin. See [How to Obtain SCIM Auth Key](/access-management/scim/overview#how-to-obtain-scim-auth-key) for more details.
 
-![img](/images/okta_scim_steps/step4.png)
+<Frame>
+  <img src="/images/okta_scim_steps/step4.png" alt="img" />
+</Frame>
 
 ## Step 5: Configure Okta to Statsig Settings
 
@@ -75,7 +83,9 @@ user provisioning and management.
 - Enable "Update User Attributes"
 - Enable "Deactivate Users"
 
-![img](/images/okta_scim_steps/step5-configure-okta-to-statsig-settings.png)
+<Frame>
+  <img src="/images/okta_scim_steps/step5-configure-okta-to-statsig-settings.png" alt="img" />
+</Frame>
 
 ## Step 6: Import Existing Statsig Users and Groups
 
@@ -83,4 +93,6 @@ user provisioning and management.
 - Click "Import Now" to fetch existing Statsig users and groups
 - Process the imported users as needed
 
-![img](/images/okta_scim_steps/step6-import-existing-users.png)
+<Frame>
+  <img src="/images/okta_scim_steps/step6-import-existing-users.png" alt="img" />
+</Frame>

@@ -17,7 +17,9 @@ To add additional covariates
 
 In project settings under Experimentation, specify default covariates for your company:
 
-![Project Settings](/images/cure/project_setting.png)
+<Frame>
+  <img src="/images/cure/project_setting.png" alt="Project Settings" />
+</Frame>
 
 Covariates can be sourced from the assignment source for the experiment, or from Entity Property Sources.
 
@@ -27,7 +29,9 @@ Properties with an Entity Property Source name attached come from a property sou
 
 Per-experiment, specify additional covariates or remove covariates specific to your analysis:
 
-![Experiment Settings](/images/cure/experiment_setting.png)
+<Frame>
+  <img src="/images/cure/experiment_setting.png" alt="Experiment Settings" />
+</Frame>
 
 Like with the experiment settings, this list is sourced from the experiment assignment source columns as well as relevant Entity Property Sources.
 
@@ -44,4 +48,6 @@ Statsig has a strong opinion that throwing in arbitrary covariates based on an e
 
 You can turn off CUPED in your pulse results, and can create a project-level setting to enforce this. This will still run CURE, however, which entails some amount of compute cost. To avoid running CURE, you can turn it off on a given metric by un-checking the CUPED option in the metric's setup page.
 
-![Metric Settings](/images/cure/metric_setting.png)
+<Frame>
+  <img src="/images/cure/metric_setting.png" alt="Metric Settings" />
+</Frame>

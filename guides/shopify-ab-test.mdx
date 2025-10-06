@@ -31,13 +31,17 @@ This simple, lightweight Chrome extension will allow non-technical users to buil
 - click on **Online Store**, then Themes
 - locate and click the more menu [...], find the **Edit Code** option
 
-![statsig product overview](/images/shopify-customize-1.png)
+<Frame>
+  <img src="/images/shopify-customize-1.png" alt="statsig product overview" />
+</Frame>
 
 - [Locate your Sidecar script tag](/guides/sidecar-experiments/publishing-experiments#step-2-add-script-code) and copy the script tag to your clipboard
 - Navigate to the `theme.liquid` file in your Shopify theme editor
 - Paste the Sidecar script tag toward the top of the page `<head>` as shown below.
 
-![statsig product overview](/images/shopify-customize-2.png)
+<Frame>
+  <img src="/images/shopify-customize-2.png" alt="statsig product overview" />
+</Frame>
 - Save your `theme.liquid` file.
 - Sidecar is now installed across your entire website 🎉.
 
@@ -47,7 +51,9 @@ Shopify's [Custom Pixel framework](https://help.shopify.com/en/manual/promoting-
 The custom pixel framework offers a [wide set of events](https://shopify.dev/docs/api/web-pixels-api/standard-events) you can subscribe to, and namely, the ability to perform tracking during the checkout experience.
 Note that code deployed outside the scope of a custom pixel will not fire during checkout experience as documented [here](https://help.shopify.com/en/manual/promoting-marketing/pixels/overview#pixels-sandbox-environment).
 
-![configure shopify pixel](/images/shopify-pixel.png)
+<Frame>
+  <img src="/images/shopify-pixel.png" alt="configure shopify pixel" />
+</Frame>
 
 Below is boilerplate custom pixel code that provides a function to send events back to Statsig. You should subscribe to the various events and event metadata necessary for your experimentation practices. This [sample GTM pixel](https://help.shopify.com/en/manual/promoting-marketing/pixels/custom-pixels/gtm-tutorial) shows some of the common events and metadata that you can capture and track to Statsig.
 ```js
