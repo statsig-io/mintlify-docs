@@ -3,8 +3,6 @@ title: Trigger a Release Pipeline
 description: Learn how to attach pipelines to features and trigger controlled rollouts
 ---
 
-# Triggering Release Pipelines
-
 A Release Pipeline is activated when you make changes to a feature gate or dynamic config that has a pipeline attached to it.
 
 ## Attaching a Pipeline
@@ -16,7 +14,7 @@ Before triggering a release, you must first attach a pipeline to your feature ga
 You can select a Release Pipeline directly in the creation modal when setting up a new feature gate or dynamic config:
 
 <Frame>
-  <img src="/img/release-pipeline/modal-attach.png" alt="Attaching a pipeline during creation" />
+  <img src="/images/release-pipeline/modal-attach.png" alt="Attaching a pipeline during creation" />
 </Frame>
 
 ### To an Existing Feature
@@ -24,7 +22,7 @@ You can select a Release Pipeline directly in the creation modal when setting up
 For an existing feature gate or dynamic config, you can attach a Release Pipeline through the sidebar settings:
 
 <Frame>
-  <img src="/img/release-pipeline/sidebar-attach.png" alt="Attaching a pipeline via sidebar" />
+  <img src="/images/release-pipeline/sidebar-attach.png" alt="Attaching a pipeline via sidebar" />
 </Frame>
 
 :::note
@@ -43,7 +41,7 @@ When a Release Pipeline is attached, making changes to your feature gate or dyna
 The system will then begin the rollout following the phases defined in the attached pipeline.
 
 <Frame>
-  <img src="/img/release-pipeline/trigger.png" alt="Confirmation dialog when triggering a pipeline" />
+  <img src="/images/release-pipeline/trigger.png" alt="Confirmation dialog when triggering a pipeline" />
 </Frame>
 
 ## Viewing Release Status
@@ -54,7 +52,7 @@ Once a Release Pipeline is triggered, you can monitor its progress:
 2. This banner displays the current phase and overall progress through the pipeline
 
 <Frame>
-  <img src="/img/release-pipeline/view-status.png" alt="Status banner showing release progress" />
+  <img src="/images/release-pipeline/view-status.png" alt="Status banner showing release progress" />
 </Frame>
 
 For information about controlling an ongoing release, including approvals and aborts, see [Managing Release Actions](/release-pipeline/actions).

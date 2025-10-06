@@ -1,9 +1,8 @@
 ---
 title: Okta SCIM Setup
+sidebarTitle: Setup
 ---
 
-
-# Okta SCIM Provisioning
 
 <br />
 This guide outlines the process for setting up SCIM (System for Cross-domain Identity
@@ -15,14 +14,14 @@ user provisioning and management.
 - An Okta account with admin access
 - A SCIM Key from the [Statsig Console](/access-management/scim/overview#how-to-obtain-scim-auth-key) (requires Statsig Org Admin rights)
 
-:::note
+<Note>
 
 ### Integration Notes
 
 - User email management is not enabled on SCIM yet.
 - When a user is removed from Statsig, they will be automatically unassigned in Okta. Conversely, if a user is unassigned or deactivated in Okta, they will be removed from the Statsig Organization.
 - Creation of Statsig Projects and Roles is not supported via SCIM.
-  :::
+</Note>
 
 ## Step 1: Create a New App Integration in Okta
 
