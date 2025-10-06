@@ -1,0 +1,148 @@
+---
+title: Dart Client SDK
+sidebarTitle: Dart
+description: Statsig's SDK for Experimentation and Feature Flags in Dart & Flutter applications.
+icon: "dart-lang"
+---
+
+import Installation from '/snippets/client/installation.mdx'
+import Initialization from '/snippets/client/initialization.mdx'
+import checkGate from '/snippets/client/checkGate.mdx'
+import getDynamicConfig from '/snippets/client/getDynamicConfig.mdx'
+import logEvent from '/snippets/client/logEvent.mdx'
+import getExperimentLayer from '/snippets/client/getExperimentLayer.mdx'
+import paramStores from '/snippets/client/paramStores.mdx'
+import statsigUser from '/snippets/client/statsigUser.mdx'
+import privateAttributes from '/snippets/client/privateAttributes.mdx'
+import statsigOptions from '/snippets/client/statsigOptions.mdx'
+import dartStatsigOptions from '/snippets/client/Dart/statsigOptions.mdx'
+import shuttingDown from '/snippets/client/shuttingDown.mdx'
+import dartFlutterLifecycle from '/snippets/client/Dart/flutterLifecycle.mdx'
+
+<Callout icon="github">
+Source code: <a href="https://github.com/statsig-io/dart-sdk" target="_blank" rel="noreferrer">statsig-io/dart-sdk</a>
+</Callout>
+
+## Setup the SDK
+<Steps>
+<Step title="Install the SDK">
+<Installation/>
+
+With Dart:
+
+```bash
+dart pub add statsig
+```
+
+With Flutter:
+
+```bash
+flutter pub add statsig
+```
+
+<Note>
+If you are using **Flutter**, be sure to add Statsig as part of the [app lifecycle](#flutter-lifecycle-hooks) to avoid losing events.
+</Note>
+</Step>
+<Step title="Initialize the SDK">
+<Initialization/>
+
+```dart
+import 'package:statsig/statsig.dart';
+
+await Statsig.initialize('client-sdk-key', StatsigUser(userId: "a-user-id"));
+```
+</Step>
+</Steps>
+
+## Use the SDK
+
+<checkGate/>
+
+```dart
+if (Statsig.checkGate("new_homepage_design")) {
+  // Gate is on, show new home page
+} else {
+  // Gate is off, show old home page
+}
+```
+
+<getDynamicConfig/>
+
+```dart
+var config = Statsig.getConfig("awesome_product_details");
+
+// The 2nd parameter is the default value to be used in case the given parameter name does not exist on
+// the Dynamic Config object. This can happen when there is a typo, or when the user is offline and the
+// value has not been cached on the client.
+var itemName = config.get("product_name", "Awesome Product v1");
+var price = config.get("price", 10.0);
+var shouldDiscount = config.get("discount", false);
+```
+
+<getExperimentLayer/>
+
+```dart
+// Values via getLayer
+
+var layer = Statsig.getLayer("user_promo_experiments");
+var promoTitle = layer.getString("title", "Welcome to Statsig!");
+var discount = layer.getDouble("discount", 0.1);
+
+// or, via getExperiment
+
+var titleExperiment = Statsig.getExperiment("new_user_promo_title");
+var priceExperiment = Statsig.getExperiment("new_user_promo_price");
+
+var promoTitle = titleExperiment.get("title", "Welcome to Statsig!");
+var discount = priceExperiment.get("discount", 0.1);
+```
+
+<logEvent/>
+
+```dart
+// Provide a doubleValue argument for number values
+Statsig.logEvent("purchase", doubleValue: 2.99, metadata: {"item_name": "remove_ads"});
+
+// or provide a stringValue argument for string values
+Statsig.logEvent("login", stringValue: "a.user@mail.com");
+```
+
+<paramStores/>
+
+### Getting a Parameter Store
+
+To fetch a set of parameters, use the following api:
+
+```dart
+var homepageStore = Statsig.getParameterStore("homepage");
+```
+
+### Getting a parameter
+
+You can then access parameters like this:
+
+```dart
+var title = homepageStore.get("title", "Welcome")
+
+var shouldShowUpsell = homepageStore.get("upsell_upgrade_now", false)
+```
+
+<statsigUser/>
+
+```dart
+await Statsig.updateUser(StatsigUser("a_new_user"));
+```
+
+<privateAttributes/>
+
+<statsigOptions/>
+<dartStatsigOptions/>
+
+<shuttingDown/>
+
+```dart
+await Statsig.shutdown();
+```
+
+<dartFlutterLifecycle/>

@@ -1,5 +1,5 @@
 ---
-sidebar_label: Statsig ID Resolver
+sidebarTitle: Statsig ID Resolver
 title: Statsig ID Resolver
 keywords:
   - owner:shubham
@@ -11,19 +11,27 @@ last_update:
 
 Statsig ID Resolver is an integration set up at the project level that brings your ID names into console. IDs are used everywhere within Console, but unless you are an ID Wizard it is hard to tell at a glance who or what an ID belongs to. Take Feature Gate rules for example:
 
-![Feature gate rules with raw user IDs](/images/id_resolver1.png)
+<Frame>
+  <img src="/images/id_resolver1.png" alt="Feature gate rules with raw user IDs" />
+</Frame>
 
 Each of the IDs shown represent a superhero with a name and other identifying information. After setting up ID Resolver you will be able to see an ID’s “name” next to each ID. In this example, the ID’s name is the superhero’s name followed by their publisher. You have the power to define “name” as whatever string is most useful for your project.
 
-![Feature gate rules with resolved ID names](/images/id_resolver2.png)
+<Frame>
+  <img src="/images/id_resolver2.png" alt="Feature gate rules with resolved ID names" />
+</Frame>
 
 Additionally, after setting up ID Resolver Autocomplete you can begin typing in an ID’s name and have it auto-resolve to the correct ID
 
-![ID autocomplete functionality in action](/images/id_resolver3.png)
+<Frame>
+  <img src="/images/id_resolver3.png" alt="ID autocomplete functionality in action" />
+</Frame>
 
 ID Resolver can be used wherever you enter IDs, for example in Feature Gate rules, Overrides, Users tab, and Segment ID lists
 
-![ID resolver usage across console interfaces](/images/id_resolver_4.png)
+<Frame>
+  <img src="/images/id_resolver_4.png" alt="ID resolver usage across console interfaces" />
+</Frame>
 
 ## Step 1 - Create your ID Resolver Webhook
 
@@ -88,8 +96,12 @@ This webhook should take in a `name` (the current partially typed name) and a po
 
 You can find Statsig ID Resolver under the Integrations tab within Project Settings
 
-![ID resolver integration setup screen](/images/id_resolver_setup_1.png)
+<Frame>
+  <img src="/images/id_resolver_setup_1.png" alt="ID resolver integration setup screen" />
+</Frame>
 
-![ID resolver webhook configuration interface](/images/id_resolver_setup_2.png)
+<Frame>
+  <img src="/images/id_resolver_setup_2.png" alt="ID resolver webhook configuration interface" />
+</Frame>
 
 And that's it! You're off to the races with easier-to-recognize IDs throughout the Console.  

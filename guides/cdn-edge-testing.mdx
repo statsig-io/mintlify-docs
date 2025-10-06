@@ -1,5 +1,5 @@
 ---
-sidebar_label: CDN Edge Testing
+sidebarTitle: CDN Edge Testing
 title: CDN Edge Testing for Cached Resources
 keywords:
   - owner:brock
@@ -12,7 +12,9 @@ Most customers with heavy web traffic use a CDN to serve resources from cache, i
 This pattern is optimal for testing with cached content without sacrificing cache-hit ratio. For scenarios where running the Statsig SDK at the edge is not possible, the sdk must be implemented on the origin server, or you should consider using a client SDK.
 
 <figure>
-![architecture](/images/edgefcn.png)
+<Frame>
+  <img src="/images/edgefcn.png" alt="architecture" />
+</Frame>
 <figcaption>_*example only — implementation may vary depending on your provider*_</figcaption>
 </figure>
 

@@ -1,0 +1,43 @@
+---
+title: "Metrics Dashboard"
+description: "Explore your metrics and events through the Statsig console with real-time visualization and organization tools."
+---
+
+Metrics are available for all unit types enabled in the project.  User ID and Stable ID are provided by default and others can be added following [these steps](/guides/experiment-on-custom-id-types#step-1---add-companyid-as-a-new-id-type-in-your-project-settings).  Make a selection from the drop down to view event DAU and user accounting metrics calculated based on the desired unit type.
+
+<Frame>
+  <img src="/images/metrics/unit-type-selection.png" alt="Metrics unit type selection" />
+</Frame>
+
+## Events
+The Metrics console allows you to visualize all the events that you have logged in Statsig. The **Events** tab shows all the events, including a real-time stream of events as they come in.
+
+<Frame>
+  <img src="/images/metrics/events-tab-view.png" alt="Events tab view" />
+</Frame>
+
+You can toggle between a list view or chart view of your events to view the trend line over time.  
+
+<Frame>
+  <img src="/images/metrics/events-chart-view.png" alt="Events chart view" />
+</Frame>
+
+From here you can drill into each event and see a detailed view of the logs, broken down by each unique value that was logged.
+
+<Frame>
+  <img src="/images/metrics/event-detailed-view.png" alt="Event detailed view" />
+</Frame>
+
+## Metrics Catalog
+The **Metrics Catalog** tab allows you to search and tag your metrics, as well as [create custom metrics](/metrics/create). Tags enable you organize your metrics and create collections of metrics that are associated in some way. For example, you could tag a set of metrics focused on a product area, business function, business objective, and so on. You can also create a loose collection of guardrail metrics that teams check in every experiment to ensure there are causing no unexpected effects in other parts of the business. Once you create a tagged collection of metrics, you can easily pull up this set of metrics when viewing your experiment results and zoom into the context that you want to focus on. 
+
+<Frame>
+  <img src="/images/metrics/metrics-catalog.png" alt="Metrics catalog" />
+</Frame>
+
+ Similar to the **Events** tab, you can toggle between a list view or chart view of your metrics to view the trend line over time.  
+ 
+ <Frame>
+   <img src="/images/metrics/metrics-chart-view.png" alt="Metrics chart view" />
+ </Frame>
+

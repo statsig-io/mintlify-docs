@@ -1,5 +1,6 @@
 ---
-title: Running an A/A (aa) Test using Sidecar
+title: Running an A/A Test using Sidecar
+sidebarTitle: A/A Test with Sidecar
 description: Learn how to run an A/A test with Statsig Sidecar to validate your experimentation setup and metrics configuration.
 ---
 
@@ -19,18 +20,24 @@ There are many reasons to run an A/A test, one of the most common being to valid
 
 Navigate to the page on your website that you want to run an A/A Test. Open the Statsig Side car extension and click on 'New Experiment'. Fill in the title of your A/A test. 
 
-![Sidecar A/A test experiment setup interface](/images/sidecar_aa_setup.png)
+<Frame>
+  <img src="/images/sidecar_aa_setup.png" alt="Sidecar A/A test experiment setup interface" />
+</Frame>
 
 Then, determine of the URI filter (i.e. All Pages, contains, etc.). After you have configured the URI, it is time to set up the variants. 
 
 With the variant 'Control', pick an action. In this example we are simply changing the content of an element, specifically the title, 'Getting Started is Simple'. 
 
 
-![Sidecar A/A test variant configuration screen](/images/sidecar_aa_select.png)
+<Frame>
+  <img src="/images/sidecar_aa_select.png" alt="Sidecar A/A test variant configuration screen" />
+</Frame>
 
 Repeating the step above, you'll do the exact same action for the variant 'Test'. Your set up should look like the following. 
 
-![Sidecar A/A test final configuration showing identical variants](/images/sidecar_aa_final.png)
+<Frame>
+  <img src="/images/sidecar_aa_final.png" alt="Sidecar A/A test final configuration showing identical variants" />
+</Frame>
 
 From there, all you'll need to do is click 'Publish', this will push out the experiment to Statsig as a draft. 
 
@@ -52,7 +59,9 @@ his will break down your logged exposures (as well as the distribution of the lo
 
 In the **Scorecard** panel, you can see the full picture of how all your tagged metrics are performing.  
 
-![pulse_results_empty](https://user-images.githubusercontent.com/101903926/163248267-7bd7419a-59e0-4d58-b8e5-8ace95ed74d9.png)
+<Frame>
+  <img src="https://user-images.githubusercontent.com/101903926/163248267-7bd7419a-59e0-4d58-b8e5-8ace95ed74d9.png" alt="pulse_results_empty" />
+</Frame>
 
 What should you expect to see?  
 

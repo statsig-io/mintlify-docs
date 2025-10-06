@@ -16,9 +16,9 @@ Defining and using Target Apps is a best practice when using Statsig at large sc
 - Performance: removing unused entities from the payload to your Statsig SDK integration will speed up the initialization time and reduce the amount of data that is stored in any local caches or data stores
 - Security: you may not want to expose certain gates/experiments/configs to the client side, or to the client key which is easily found in your client app. Specifying a target app for your client key and ONLY linking that to client specific gates/configs/experiments hides those from prying eyes
 
-:::info
+<Info>
 NOTE: Before using target apps as a solution, consider if you can instead use separate projects for your Statsig integrations. Note that gates/experiments/metrics are restricted to a single Statsig project, so if you need to share any of those across apps or services, its best to use a Target App instead. But if your services or apps always have distinct gates/experiments/metrics, using a separate project might be a better solution.
-:::
+</Info>
 
 If you have an existing Statsig project with multiple SDK integrations, Statsig will help you to bootstrap your Target Apps by suggesting existing entities to tag which have historically recorded checks from that specific SDK.
 
@@ -28,7 +28,9 @@ If you have an existing Statsig project with multiple SDK integrations, Statsig 
 
 Start by going to **Settings** > **Target Applications**.
 
-![Project Settings](/img/target_apps/settings.png)
+<Frame>
+  <img src="/img/target_apps/settings.png" alt="Project Settings" />
+</Frame>
 
 <img
   width="1485"
@@ -39,7 +41,9 @@ Start by going to **Settings** > **Target Applications**.
 
 Create a target app, or use one that is suggested based on your current SDK exposure logs.
 
-![Project Settings](/img/target_apps/add.png)
+<Frame>
+  <img src="/img/target_apps/add.png" alt="Project Settings" />
+</Frame>
 
 ### Associating a Feature Gate with a Target App
 
@@ -49,7 +53,9 @@ For example, navigate to the **Feature Gates** tab, and then select a specific g
 
 In the right rail for that gate, you can view and edit the target app(s) applied to that gate.
 
-![Project Settings](/img/target_apps/gate.png)
+<Frame>
+  <img src="/img/target_apps/gate.png" alt="Project Settings" />
+</Frame>
 
 Repeat this flow for the Dynamic Configs and Experiments that are used by this Target App.
 
@@ -61,17 +67,21 @@ Select the SDK Key you wish to restrict to the set of Target App entities.
 
 Under **Actions**, trigger the dropdown menu
 
-![Project Settings](/img/target_apps/keys.png)
+<Frame>
+  <img src="/img/target_apps/keys.png" alt="Project Settings" />
+</Frame>
 
 Then select the target app(s) to apply to that key.
 
-![Project Settings](/img/target_apps/apply.png)
+<Frame>
+  <img src="/img/target_apps/apply.png" alt="Project Settings" />
+</Frame>
 
-:::note
+<Note>
 When [bootstrapping](/client/concepts/initialize#2-bootstrap-initialization) a Client SDK from a Server SDK, you'll need the server SDK to have access to all of the gates/experiments/configs needed both for server and client. If you have separate target apps for client and server SDKs, you should apply both target apps to the server key you're using.
 
 Then, to filter the boostrapping response to a specific target app, add a client key with that target app applied to the getClientInitializeResponse call.
-:::
+</Note>
 
 ### Debugging
 

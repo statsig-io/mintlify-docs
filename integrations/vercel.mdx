@@ -11,13 +11,17 @@ The integration also directly hooks into Vercel's Edge Config, providing low lat
 
 Head over to the [Vercel Marketplace](https://vercel.com/integrations/statsig) to install the Statsig app for Vercel. You'll be prompted to create a new Statsig project.
 
-![Vercel marketplace installation interface](/images/vercel_marketplace_install.png)
+<Frame>
+  <img src="/images/vercel_marketplace_install.png" alt="Vercel marketplace installation interface" />
+</Frame>
 
 Enable Edge Config Syncing to have Statsig automatically push configs into Vercel's Edge Config for fast SDK Initialization. After installing the application, you can connect the application to a Vercel project to automatically pull in env vars to use in your project automatically.
 
 In the application page, you'll be able to go to your newly created Statsig project and configure gates and experiments. All gates and experiments will automatically be synced into Vercel for quick status checks and access.
 
-![Vercel marketplace project view interface](/images/vercel_marketplace_view.png)
+<Frame>
+  <img src="/images/vercel_marketplace_view.png" alt="Vercel marketplace project view interface" />
+</Frame>
 
 ## Using Flags SDK in NextJS
 
@@ -154,7 +158,9 @@ function randomIntFromInterval(min, max) { // min and max included
 
 If you want to check on the evaluations you are getting, you can go to the gate you created for this example and look at the evaluations in the Diagnostics tab.
 
-![Diagnostics Stream](https://github.com/user-attachments/assets/2b690181-0103-43be-b791-7cf0a7db66eb)
+<Frame>
+  <img src="https://github.com/user-attachments/assets/2b690181-0103-43be-b791-7cf0a7db66eb" alt="Diagnostics Stream" />
+</Frame>
 
 And there you have it - a working Vercel Edge Config integration for Statsig.
 

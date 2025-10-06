@@ -1,14 +1,12 @@
 ---
 title: Winsorization
-sidebar_label: Winsorization
+sidebarTitle: Winsorization
 slug: /stats-engine/methodologies/winsorization
 keywords:
   - owner:vm
 last_update:
   date: 2025-09-18
 ---
-
-## Winsorization
 
 Winsorization is a common technique for removing noise in experiment results, specifically from outliers.
 
@@ -25,7 +23,9 @@ Winsorization is applied to to sum and event count metrics, including imported m
   <Tab title="Warehouse Native">
 Statsig Warehouse Native lets you configure this per metric - and choose explicitly the upper and/or lower bounds to apply.
 
-![Winsorization configuration interface](https://github.com/statsig-io/docs/assets/31516123/6d058842-27f7-4b6b-9bd8-245a5f894f90)
+<Frame>
+  <img src="https://github.com/statsig-io/docs/assets/31516123/6d058842-27f7-4b6b-9bd8-245a5f894f90" alt="Winsorization configuration interface" />
+</Frame>
 
 Winsorization is applied to to sum, event count, mean and ratio metrics.
   </Tab>

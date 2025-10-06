@@ -1,5 +1,5 @@
 ---
-title: Creating your first experiment
+title: Creating Your First Experiment
 description: Learn how to create and configure A/B experiments using Sidecar without writing code or deploying to production.
 ---
 
@@ -13,13 +13,17 @@ This guide assumes you have followed the previous steps of installing side-car, 
 
 Navigate to the web page you want to experiment on.
 
-![Sidecar experiment interface showing the main dashboard](/images/sidecarfull.png)
+<Frame>
+  <img src="/images/sidecarfull.png" alt="Sidecar experiment interface showing the main dashboard" />
+</Frame>
 
 ### Step 2: New experiment
 
 Hit the *New Experiment* button and fill out the details.  This will create a local experiment which hasn't been published yet. This allows you to configure all the details, verify that everything works and then you can publish it.
 
-![New experiment creation form](https://github.com/statsig-io/.github/assets/74588208/d8cfc8bb-43e9-4a64-8ca8-002c579e7fff)
+<Frame>
+  <img src="https://github.com/statsig-io/.github/assets/74588208/d8cfc8bb-43e9-4a64-8ca8-002c579e7fff" alt="New experiment creation form" />
+</Frame>
 
 ### Step 3 (Optional): Add url filter
 
@@ -31,7 +35,9 @@ _You can configure URL targeting using the following methods:_
 * Exact Match - The page URL must match the exact value specified here. 
 * Regex - Regular expressions, for example `(http|https):\/\/www.statsig.com\/pricing` matches pages `http://www.statsig.com/pricing` or `https://www.statsig.com/pricing`, and will activate this experiment on those pages.
 
-![URL targeting configuration interface with filter options](/images/sidecarurls.png)
+<Frame>
+  <img src="/images/sidecarurls.png" alt="URL targeting configuration interface with filter options" />
+</Frame>
 
 
 ### Step 4: Add actions
@@ -40,13 +46,17 @@ Click the *Add Action* button and you'll see a list of actions you can perform w
 
 Go ahead and choose *Change content of an element*.  This will set you up to run an A/B test changing the content of an HTML element - like Headlines, descriptions, CTA, etc.
 
-![Add action selection menu with available experiment actions](/images/sidecaraddaction.png)
+<Frame>
+  <img src="/images/sidecaraddaction.png" alt="Add action selection menu with available experiment actions" />
+</Frame>
 
 #### 💡 Use Redirect Action for running Landing Page and Split URL experiments
 
 For running Landing Page and Split URL experiments, you can quickly add the "Redirect to another page" for any of your test groups and indicate the destination url as desired. Any query string parameters will be preserved and passed to the destination URL.
 
-![Redirect action configuration for landing page experiments](/images/sidecarredirect.png)
+<Frame>
+  <img src="/images/sidecarredirect.png" alt="Redirect action configuration for landing page experiments" />
+</Frame>
 
 ### Step 5: Select an element
 
@@ -56,11 +66,15 @@ Click on the yellow *Target element path* text-box.  This will activate an eleme
 
 Now as you move your mouse over your web page you'll see a red selection rectangle.  Choose the element you want by clicking on it.  In this example, we're choosing the main Headline.
 
-![Element selection with red highlight showing target element](/images/sidecarselect.png)
+<Frame>
+  <img src="/images/sidecarselect.png" alt="Element selection with red highlight showing target element" />
+</Frame>
 
 Sidecar will now reflect the path of the element that was selected.
 
-![Selected element path display in the configuration panel](/images/sidecarpath.png)
+<Frame>
+  <img src="/images/sidecarpath.png" alt="Selected element path display in the configuration panel" />
+</Frame>
 
 
 ### Step 6: Update content
@@ -69,13 +83,17 @@ Now, you can choose the two different text content you want to A/B test.  In the
 
 You can validate these changes in realtime by clicking on the &#x25B6; button above the text box for each variant.  This will immediately change the element's content so you can visually inspect how things look before publishing.
 
-![Content update interface with preview functionality](/images/sidecarupdatelt.png)
+<Frame>
+  <img src="/images/sidecarupdatelt.png" alt="Content update interface with preview functionality" />
+</Frame>
 
 ### Step 7: Add more actions
 
 Feel free to add more actions within the same experiment and play with the capabilities of the tool
 
-![Adding additional experiment actions to the same test](/images/sidecar2ndaction.png)
+<Frame>
+  <img src="/images/sidecar2ndaction.png" alt="Adding additional experiment actions to the same test" />
+</Frame>
 
 #### Congratulations!  You have created your first no-code experiment
 
