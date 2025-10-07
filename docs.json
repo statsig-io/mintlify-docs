@@ -3,12 +3,15 @@
   "theme": "aspen",
   "name": "Statsig Documentation",
   "colors": {
-    "primary": "#4991FF",
-    "light": "#4991FF",
-    "dark": "#4991FF"
+    "primary": "#202020",
+    "dark": "#202020",
+    "light": "#F9FAFA"
   },
   "background": {
-    "decoration": "gradient"
+    "image": {
+      "light": "/images/hero_image_light.png",
+      "dark": "/images/hero_image_dark.png"
+    }
   },
   "favicon": "images/Statsig_Favicon_Dark.svg",
   "fonts": {
