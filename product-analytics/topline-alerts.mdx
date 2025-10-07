@@ -1,9 +1,11 @@
 ---
 title: 'Topline Alerts'
-description: 'Get notified when key product metrics shift beyond thresholds or meaningful changes.'
+description: 'Get notified when metrics shift beyond a fixed threshold or relative change in value.'
 ---
 
-## Alert Types
+Topline Alerts are available in Statsig Cloud and Statsig Warehouse Native.
+
+Statsig currently supports three types of Topline Alerts:
 
 | Alert Condition Type | When to Use | Example |
 | --- | --- | --- |
@@ -48,7 +50,7 @@ description: 'Get notified when key product metrics shift beyond thresholds or m
       <li>Evaluation window</li>
     </ul>
     <Warning>
-      On Warehouse Native, also define the evaluation frequency, lookback, and max delay—they directly influence warehouse compute costs.
+      On Warehouse Native: Define the evaluation frequency, lookback, and max delay—they directly influence warehouse compute costs.
     </Warning>
     <Frame>
       <img src="/images/infra-analytics/topline-alerts-conditions.png" alt="Configure alert conditions for a Topline Alert" />
