@@ -7,8 +7,6 @@ last_update:
   date: 2025-09-18
 ---
 
-# CURE
-
 CURE (variance Control Using Regression Estimates) is Statsig's extended implementation of [CUPED](../stats-engine/methodologies/cuped), a technique which uses pre-experiment data for each experimental unit to control some of the data observed in an online experiment. CUPED can reduce variance moderately to significantly, and can correct for some amount of pre-existing differences between experiment groups at the time of the experiment.
 
 CUPED is a powerful technique that provides additional statistical power without needing additional users or time to run an experiment. However, it has one major limitation: it relies on using pre-experiment data for a given metric to reduce the same metric's variance. This means that:

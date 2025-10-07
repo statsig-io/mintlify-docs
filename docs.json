@@ -540,14 +540,40 @@
                 "group": "Interpreting Results",
                 "pages": [
                   "statsig-warehouse-native/read-pulse-whn",
-                  "statsig-warehouse-native/features/monitor-an-experiment",
+                  "statsig-warehouse-native/features/interpreting-results/read-results",
+                  "statsig-warehouse-native/features/interpreting-results/metric-drill-down",
+                  "statsig-warehouse-native/features/interpreting-results/custom-queries",
+                  "statsig-warehouse-native/features/interpreting-results/export",
+                  "statsig-warehouse-native/features/interpreting-results/participating-units",
+                  "statsig-warehouse-native/features/interpreting-results/best-practices",
+                  "statsig-warehouse-native/features/interpreting-results/faq",
                   "statsig-warehouse-native/features/reports"
                 ]
               },
               {
                 "group": "Statistics",
                 "pages": [
-                  "statsig-warehouse-native/features/statistics"
+                  "statsig-warehouse-native/features/statistics",
+                  "statsig-warehouse-native/features/statistics/confidence-intervals",
+                  "statsig-warehouse-native/features/statistics/p-value",
+                  "statsig-warehouse-native/features/statistics/metric-deltas",
+                  "statsig-warehouse-native/features/statistics/variance",
+                  "statsig-warehouse-native/features/statistics/topline-impact",
+                  "statsig-warehouse-native/features/statistics/variance-reduction",
+                  "statsig-warehouse-native/features/statistics/pre-experiment-bias",
+                  {
+                    "group": "Methodologies Used (WHN)",
+                    "pages": [
+                      "statsig-warehouse-native/features/statistics/methodologies/bonferroni-correction",
+                      "statsig-warehouse-native/features/statistics/methodologies/benjamini\u2013hochberg-procedure",
+                      "statsig-warehouse-native/features/statistics/methodologies/cuped",
+                      "statsig-warehouse-native/features/statistics/methodologies/delta-method",
+                      "statsig-warehouse-native/features/statistics/methodologies/fieller-intervals",
+                      "statsig-warehouse-native/features/statistics/methodologies/srm-checks",
+                      "statsig-warehouse-native/features/statistics/methodologies/winsorization",
+                      "statsig-warehouse-native/features/statistics/methodologies/one-sided-test"
+                    ]
+                  }
                 ]
               },
               {
@@ -1391,14 +1417,6 @@
     {
       "source": "/pulse/read-pulse-whn",
       "destination": "/statsig-warehouse-native/read-pulse-whn"
-    },
-    {
-      "source": "/stats-engine/topline-impact-whn",
-      "destination": "/statsig-warehouse-native/features/statistics"
-    },
-    {
-      "source": "/stats-engine/confidence-intervals-whn",
-      "destination": "/statsig-warehouse-native/features/statistics"
     },
     {
       "source": "/pulse/drill-down-whn",
