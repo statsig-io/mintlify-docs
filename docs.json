@@ -237,7 +237,6 @@
               "product-analytics/drilldown",
               {
                 "group": "Other Chart Types",
-                "expanded": true,
                 "pages": [
                   "product-analytics/funnels",
                   "product-analytics/retention",
@@ -1396,7 +1395,11 @@
     },
     {
       "source": "/guides/experiments",
-      "destination": "/experiments-plus"
+      "destination": "/experiments-plus/overview"
+    },
+    {
+      "source": "/experiments-plus",
+      "destination": "/experiments-plus/overview"
     },
     {
       "source": "/developer-guides/feature-flags-in-react",

@@ -32,8 +32,9 @@ At the Project-level, you can require all config creations are associated with a
 Within each team, there are a number of settings you can configure: 
 
 **Default Monitoring Metrics/ Scorecard Metrics:** This setting enables pre-configuration of a set of metrics to add to every new gate/ experiment/ holdout at the team level. These might be a mix of top-line company metrics every team must monitor (e.g. revenue/ app performance), as well as a set of team-specific KPIs all rollouts and experiments should be tracking. 
-
+<Frame>
 <img width="881" alt="Screen Shot 2024-02-17 at 4 24 12 PM" src="https://github.com/statsig-io/docs/assets/101903926/16f0ccfd-05d6-4fb2-8992-ec8780ff3778"/>
+</Frame>
 
 **Require Reviews:** If reviews are not already required at the Project-level, this setting enables you to require reviews at the individual team level. Note that this setting won't appear if you're already requiring reviews at the Project level (controlled via **Settings** -> **Product Configuration** -> **Reviews**).  
 
@@ -45,13 +46,15 @@ Within each team, there are a number of settings you can configure:
 **Default Allowed Reviewers:** This setting enables more granular control of *who* is allowed to review and approve changes to a team's configs. There are three options here- "Anyone in the Project" (least restrictive), "Team Members Only" (keep reviews within the team), and "Team or Project Admins Only" (most restrictive). 
 
 Note that team-based review configurations layer on top of [role-based review settings](/guides/setting-up-reviews#enforcing-team-reviews). For example, if your role has permission to approve reviews and your team has review settings set to “Team members only”, then an approver would need to both be in a role with review approval permission AND be on the team to approve a review pending for that team’s config. 
-
+<Frame>
 <img width="924" alt="Screen Shot 2024-02-17 at 4 24 50 PM" src="https://github.com/statsig-io/docs/assets/101903926/39263840-cb37-4286-b30a-c6d255f218d0"/>
+</Frame>
 
 **Create/ Edit Configs and Metrics:** This setting dictates which members of a team are allowed to edit or create configs tagged with the team. There are two options here- "Anyone in the Project" (no restrictions, anyone can edit the team's configs), or "Team Members Only".
 
-
+<Frame>
 <img width="919" alt="Screen Shot 2024-02-17 at 4 24 59 PM" src="https://github.com/statsig-io/docs/assets/101903926/df517c17-acdd-4516-a9ee-bc612a0bfdc9"/>
+</Frame>
 
 **Default Target Applications:** This setting will auto-apply any assigned Target Applications to all configs created that are associated with this team. Note that this only impacts which Target Applications are added to the config by default at creation time, but can be edited/ overridden as needed. 
 

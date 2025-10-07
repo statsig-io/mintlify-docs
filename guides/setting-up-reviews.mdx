@@ -77,8 +77,9 @@ To enable the Pre-commit Webhook experience:
 1. Configure change validations via Console API, see documentation [here](https://docs.statsig.com/console-api/change-validation/). 
 2. Configure the experience for Statsig Console users via **Settings** -> **General**, where you will be able to configure the "Pending State" banner text, URL, and a Pre-commit Webhook key for verification purposes.
 
-<img width="495" height="335" alt="Screen Shot 2025-09-11 at 1 46 56 PM" src="https://github.com/user-attachments/assets/49c408da-0910-4a90-9ee3-7d1e114c9013" />
-<img width="497" height="259" alt="Screen Shot 2025-09-11 at 1 47 08 PM" src="https://github.com/user-attachments/assets/a01617b2-3bb0-4f20-a505-b9318dd220a7" />
+<Frame><img width="495" height="335" alt="Screen Shot 2025-09-11 at 1 46 56 PM" src="https://github.com/user-attachments/assets/49c408da-0910-4a90-9ee3-7d1e114c9013" /></Frame>
+
+<Frame><img width="497" height="259" alt="Screen Shot 2025-09-11 at 1 47 08 PM" src="https://github.com/user-attachments/assets/a01617b2-3bb0-4f20-a505-b9318dd220a7" /></Frame>
 
 
 Now, when a change is made in the Statsig Console, Statsig hits the customer’s configured webhook with the proposed changes. The change in Statsig will be pending until the customer approves the review via Console API (after their internal checks are complete). Statsig exposes an option for Project Admins (only) to bypass this process and commit the changes directly.  
