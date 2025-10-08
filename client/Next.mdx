@@ -18,14 +18,30 @@ import getDynamicConfig from '/snippets/client/Next/getDynamicConfig.mdx'
 import getExperiment from '/snippets/client/Next/getExperiment.mdx'
 import logEvent from '/snippets/client/Next/logEvent.mdx'
 import paramStore from '/snippets/client/Next/paramStore.mdx'
+import paramStoresIntro from '/snippets/client/paramStores.mdx'
+import statsigOptions from '/snippets/client/statsigOptions.mdx'
+import sessionReplay from '/snippets/client/Next/sessionReplay.mdx'
+import webAnalytics from '/snippets/client/Next/webAnalytics.mdx'
+import proxying from '/snippets/client/Next/proxying.mdx'
+import bootstrapping from '/snippets/client/Next/bootstrapping.mdx'
+import ssg from '/snippets/client/Next/ssg.mdx'
+import JSStableID from '/snippets/client/JavaScript/stableID.mdx'
+import JSStatsigOptions from '/snippets/client/JavaScript/statsigOptions.mdx'
 
-## Setup the SDK
+<Callout icon="github">
+Source code: <a href="https://github.com/statsig-io/js-client-monorepo" target="_blank" rel="noreferrer">statsig-io/js-client-monorepo</a>
+</Callout>
+
+## Set Up the SDK
+
 <Steps>
-<Step title="Install the SDK">
-<Installation/>
-<aiSetup/>
-<manualInstallation/>
-</Step>
+  <Step title="Install the SDK">
+    <Installation/>
+    <aiSetup/>
+  </Step>
+  <Step title="Initialize the SDK">
+    <manualInstallation/>
+  </Step>
 </Steps>
 
 ## Use the SDK
@@ -37,9 +53,45 @@ import paramStore from '/snippets/client/Next/paramStore.mdx'
 <getDynamicConfig/>
 
 <getExperimentLayerIntro/>
+
 <getExperiment/>
 
-<paramStore/>
+<paramStoresIntro />
+<paramStore />
 
 <logEventIntro/>
 <logEvent/>
+
+## Session Replay
+
+<sessionReplay/>
+
+## Web Analytics / Auto Capture
+
+<webAnalytics/>
+
+<JSStableID/>
+
+## Advanced Setup
+
+### Client Bootstrapping (Recommended)
+
+<bootstrapping/>
+
+### Proxying Network Traffic (Optional)
+
+<proxying/>
+
+## Statsig Site Generation (SSG)
+
+<ssg/>
+
+<statsigOptions />
+<JSStatsigOptions />
+
+## Additional Resources
+
+- <a href="https://docs.statsig.com/client/javascript-sdk/next-js/" target="_blank" rel="noreferrer">Docusaurus Next.js reference</a>
+- <a href="/client/JavaScript">JavaScript Client SDK</a>
+- <a href="/client/React">React Client SDK</a>
+ - <a href="/client/concepts/initialize">Initialization Concepts</a>

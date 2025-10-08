@@ -40,16 +40,16 @@
             "group": "Experiments",
             "icon": "flask",
             "pages": [
-              "experiments-plus/overview",
+              "experiments/overview",
               {
                 "group": "Create & Implement",
                 "pages": [
-                  "experiments-plus/create-new",
-                  "experiments-plus/power-analysis",
+                  "experiments/create-new",
+                  "experiments/power-analysis",
                   "experiments/implementation/implement",
                   "experiments/setup/overrides",
                   "experiments/implementation/getting-group",
-                  "experiments-plus/monitor",
+                  "experiments/monitor",
                   "experiments/setup/quality-score"
                 ]
               },
@@ -167,7 +167,7 @@
                   "experiments/exploring-results/interaction-detection"
                 ]
               },
-              "layers/overview",
+              "experiments/layers-overview",
               "experiments/holdouts-introduction"
             ]
           },
@@ -613,7 +613,7 @@
             "pages": [
               "sdks/quickstart",
               "sdks/identify-users",
-              "quickstarts/check-gate",
+              "guides/check-gate",
               "guides/abn-tests",
               "guides/logging-events"
             ]
@@ -623,7 +623,7 @@
             "icon": "lightbulb",
             "pages": [
               "sdks/getting-started",
-              "concepts/user",
+              "sdks/user",
               "client/concepts/initialize",
               "sdks/how-evaluation-works",
               "sdk/debugging",
@@ -695,7 +695,7 @@
               "server/concepts/persistent_assignment",
               "client/concepts/local-eval-adapter",
               "server/concepts/data_store",
-              "sdk-keys/target-apps",
+              "sdks/target-apps",
               {
                 "group": "Other Framework Guides",
                 "pages": [
@@ -716,7 +716,7 @@
               "console-api/introduction",
               {
                 "group": "API reference",
-                "openapi": "capiopenapi.json"
+                "openapi": "console-api/capiopenapi.json"
               }
             ]
           },
@@ -727,7 +727,7 @@
               "http-api/overview",
               {
                 "group": "API reference (beta)",
-                "openapi": "httpopenapi.json"
+                "openapi": "http-api/httpopenapi.json"
               }
             ]
           }
@@ -741,7 +741,7 @@
             "icon": "list-check",
             "pages": [
               "access-management/introduction",
-              "sdk-keys/api-keys",
+              "sdks/api-keys",
               {
                 "group": "Workspace",
                 "pages": [
@@ -780,7 +780,7 @@
                       "access-management/scim/scim-endpoints",
                       {
                         "group": "SCIM API reference",
-                        "openapi": "scimopenapi.json"
+                        "openapi": "access-management/scim/scimopenapi.json"
                       }
                     ]
                   }
@@ -922,13 +922,13 @@
               {
                 "group": "Azure AI",
                 "pages": [
-                  "azureai/introduction",
-                  "azureai/getting-started",
-                  "azureai/model-client",
-                  "azureai/completions",
-                  "azureai/embeddings",
-                  "azureai/capturing-metrics",
-                  "azureai/running-experiments"
+                  "integrations/azureai/introduction",
+                  "integrations/azureai/getting-started",
+                  "integrations/azureai/model-client",
+                  "integrations/azureai/completions",
+                  "integrations/azureai/embeddings",
+                  "integrations/azureai/capturing-metrics",
+                  "integrations/azureai/running-experiments"
                 ]
               }
             ]
@@ -943,21 +943,21 @@
                   {
                     "group": "Organization Policies",
                     "pages": [
-                      "org-admin/organization_policies",
-                      "org-admin/experiment_policy",
-                      "org-admin/gates_policy"
+                      "access-management/org-admin/organization_policies",
+                      "access-management/org-admin/experiment_policy",
+                      "access-management/org-admin/gates_policy"
                     ]
                   },
                   {
                     "group": "Templates",
                     "pages": [
-                      "exp-templates/templates"
+                      "experiments/templates/templates"
                     ]
                   },
                   {
                     "group": "Decision Framework",
                     "pages": [
-                      "exp-templates/decision-framework"
+                      "experiments/templates/decision-framework"
                     ]
                   }
                 ]
@@ -1034,6 +1034,38 @@
   },
   "redirects": [
     {
+      "source": "/org-admin/:slug*",
+      "destination": "/access-management/org-admin/:slug*"
+    },
+    {
+      "source": "/concepts/user",
+      "destination": "/sdks/user"
+    },
+    {
+      "source": "/exp-templates/:slug*",
+      "destination": "/experiments/templates/:slug*"
+    },
+    {
+      "source": "/quickstarts/check-gate",
+      "destination": "/guides/check-gate"
+    },
+    {
+      "source": "/layers",
+      "destination": "/experiments/layers-overview"
+    },
+    {
+      "source": "/sdk-keys/:slug*",
+      "destination": "/sdks/:slug*"
+    },
+    {
+      "source": "/experiments-plus/:slug*",
+      "destination": "/experiments/:slug*"
+    },
+    {
+      "source": "/azureai/:slug*",
+      "destination": "/integrations/azureai/:slug*"
+    },
+    {
       "source": "/metrics/metrics-from-events",
       "destination": "/metrics/raw-event-metrics"
     },
@@ -1087,7 +1119,7 @@
     },
     {
       "source": "/experiments/setup/create-new",
-      "destination": "/experiments-plus/create-new"
+      "destination": "/experiments/create-new"
     },
     {
       "source": "/sdks/debugging",
@@ -1095,11 +1127,11 @@
     },
     {
       "source": "/experiments/advanced-setup/power-analysis",
-      "destination": "/experiments-plus/power-analysis"
+      "destination": "/experiments/power-analysis"
     },
     {
       "source": "/experiments/monitoring/monitor",
-      "destination": "/experiments-plus/monitor"
+      "destination": "/experiments/monitor"
     },
     {
       "source": "/experiments/layers-introduction",
@@ -1299,7 +1331,7 @@
     },
     {
       "source": "/users",
-      "destination": "/concepts/user"
+      "destination": "/sdks/user"
     },
     {
       "source": "/guides/seo-testing",
@@ -1399,7 +1431,7 @@
     },
     {
       "source": "/experiments-plus",
-      "destination": "/experiments-plus/overview"
+      "destination": "/experiments/overview"
     },
     {
       "source": "/developer-guides/feature-flags-in-react",
@@ -1439,7 +1471,7 @@
     }
   ],
   "logo": {
-    "light": "/logo/light.svg",
+    "light": "/images/logo/light.svg",
     "dark": "/logo/dark.svg"
   },
   "navbar": {
