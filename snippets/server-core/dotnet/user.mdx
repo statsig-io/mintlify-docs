@@ -31,20 +31,10 @@ var user = new StatsigUserBuilder()
     .Build();
 ```
 
-## User Properties
-
-- **UserID**: Primary user identifier
-- **Email**: User's email address
-- **IP**: User's IP address for geo-targeting
-- **UserAgent**: Browser user agent string
-- **Country**: ISO country code (e.g., "US", "CA")
-- **Locale**: Locale string (e.g., "en-US", "fr-CA")
-- **AppVersion**: Application version string
-- **CustomIDs**: Additional user identifiers for targeting
-- **CustomProperties**: Public user attributes used in targeting rules
-- **PrivateAttributes**: Private user data not used in targeting (for logging only)
 
 ## Builder Methods
+
+<Accordion title="Builder Methods">
 
 - **SetUserID(string)**: Set the primary user ID
 - **SetEmail(string)**: Set user email
@@ -60,6 +50,8 @@ var user = new StatsigUserBuilder()
 - **SetPrivateAttributes(Dictionary\<string, object\>)**: Set all private attributes
 - **AddPrivateAttribute(string, object)**: Add a single private attribute
 - **Build()**: Create the StatsigUser instance
+
+</Accordion>
 
 Remember to dispose of StatsigUser instances when done:
 

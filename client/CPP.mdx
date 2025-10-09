@@ -7,40 +7,71 @@ icon: "code"
 
 import Installation from '/snippets/client/installation.mdx'
 import Initialization from '/snippets/client/initialization.mdx'
-import checkGateIntro from '/snippets/client/checkGate.mdx'
-import getDynamicConfigIntro from '/snippets/client/getDynamicConfig.mdx'
-import getExperimentLayerIntro from '/snippets/client/getExperimentLayer.mdx'
-import logEventIntro from '/snippets/client/logEvent.mdx'
+import checkGate from '/snippets/client/checkGate.mdx'
+import getDynamicConfig from '/snippets/client/getDynamicConfig.mdx'
+import getExperimentLayer from '/snippets/client/getExperimentLayer.mdx'
+import logEvent from '/snippets/client/logEvent.mdx'
+import shuttingDown from '/snippets/client/shuttingDown.mdx'
+import statsigUser from '/snippets/client/statsigUser.mdx'
+import statsigOptions from '/snippets/client/statsigOptions.mdx'
 
 import installation from '/snippets/client/CPP/installation.mdx'
 import initialization from '/snippets/client/CPP/initialization.mdx'
-import checkGate from '/snippets/client/CPP/checkGate.mdx'
-import getDynamicConfig from '/snippets/client/CPP/getDynamicConfig.mdx'
-import getExperiment from '/snippets/client/CPP/getExperiment.mdx'
-import logEvent from '/snippets/client/CPP/logEvent.mdx'
+import checkGateCode from '/snippets/client/CPP/checkGate.mdx'
+import getDynamicConfigCode from '/snippets/client/CPP/getDynamicConfig.mdx'
+import getExperimentCode from '/snippets/client/CPP/getExperiment.mdx'
+import logEventCode from '/snippets/client/CPP/logEvent.mdx'
+import cppStatsigUser from '/snippets/client/CPP/statsigUser.mdx'
+import cppStatsigOptions from '/snippets/client/CPP/statsigOptions.mdx'
+import cppFaqs from '/snippets/client/CPP/faqs.mdx'
 
-## Setup the SDK
+<Callout icon="github">
+Source code: <a href="https://github.com/statsig-io/cpp-client-sdk" target="_blank" rel="noreferrer">statsig-io/cpp-client-sdk</a>
+</Callout>
+
+## Set Up the SDK
+
 <Steps>
-<Step title="Install the SDK">
-<Installation/>
-<installation/>
-</Step>
-<Step title="Initialize the SDK">
-<Initialization/>
-<initialization/>
-</Step>
+  <Step title="Install the SDK">
+    <Installation/>
+    <installation/>
+  </Step>
+  <Step title="Initialize the SDK">
+    <Initialization/>
+    <initialization/>
+  </Step>
 </Steps>
 
 ## Use the SDK
 
-<checkGateIntro/>
 <checkGate/>
+<checkGateCode/>
 
-<getDynamicConfigIntro/>
 <getDynamicConfig/>
+<getDynamicConfigCode/>
 
-<getExperimentLayerIntro/>
-<getExperiment/>
+<getExperimentLayer/>
+<getExperimentCode/>
 
-<logEventIntro/>
 <logEvent/>
+<logEventCode/>
+
+<statsigUser/>
+<cppStatsigUser/>
+
+<statsigOptions/>
+<cppStatsigOptions/>
+
+## Lifecycle & Advanced Usage
+
+<shuttingDown/>
+
+```cpp
+client.Shutdown();
+
+// or, use the shared instance
+
+StatsigClient::Shared().Shutdown();
+```
+
+<cppFaqs/>

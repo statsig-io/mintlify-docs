@@ -660,11 +660,14 @@
               "server-core/node-core",
               "server-core/python-core",
               "server-core/java-core",
+              "server/go",
+              "server/ruby",
               "server-core/dotnet-core",
               "server-core/index",
               {
                 "group": "More Server SDKs",
                 "pages": [
+                  "server/cpp",
                   "server-core/rust-core",
                   "server-core/elixir-core",
                   "server-core/php-core"
@@ -679,10 +682,7 @@
                   "server/java",
                   "server/rust",
                   "server/php",
-                  "server/dotnet",
-                  "server/go",
-                  "server/ruby",
-                  "server/cpp"
+                  "server/dotnet"
                 ]
               }
             ]
@@ -1472,7 +1472,7 @@
   ],
   "logo": {
     "light": "/images/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "dark": "/images/logo/dark.svg"
   },
   "navbar": {
     "links": [],

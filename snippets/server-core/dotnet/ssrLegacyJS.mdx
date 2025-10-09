@@ -1,0 +1,6 @@
+### getClientInitializeResponse and the legacy JS SDK
+
+If you are migrating from the legacy JS Client, you will need to make some updates to how your server SDK generates values. The default hashing algorithm was changed from `sha256` to `djb2` for performance and size reasons.
+
+See the [Bootstrapping Migration Docs](/client/javascript-sdk/using-evaluations-data-adapter#migrating-from-dataadapter-to-bootstrap) for more.
+

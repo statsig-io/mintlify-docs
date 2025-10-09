@@ -11,9 +11,9 @@ import Initialization2 from '/snippets/server-core/initialization2.mdx'
 import CheckGateIntro from '/snippets/server-core/checkGate.mdx'
 import GetDynamicConfigIntro from '/snippets/server-core/getDynamicConfig.mdx'
 import GetExperimentIntro from '/snippets/server-core/getExperiment.mdx'
-import ParamStoresIntro from '/snippets/server-core/paramStores.mdx'
 import LogEventIntro from '/snippets/server-core/logEvent.mdx'
 import GetFeatureGateIntro from '/snippets/server-core/getFeatureGate.mdx'
+import SharedInstanceIntro from '/snippets/server-core/sharedInstance.mdx'
 import ManualExposuresIntro from '/snippets/server-core/manualExposures.mdx'
 import StatsigUserIntro from '/snippets/server-core/statsigUser.mdx'
 import StatsigOptionsIntro from '/snippets/server-core/statsigOptions.mdx'
@@ -27,20 +27,23 @@ import checkGate from '/snippets/server-core/dotnet/checkGate.mdx'
 import getConfig from '/snippets/server-core/dotnet/getConfig.mdx'
 import getExperiment from '/snippets/server-core/dotnet/getExperiment.mdx'
 import getLayer from '/snippets/server-core/dotnet/getLayer.mdx'
-import getParameterStore from '/snippets/server-core/dotnet/getParameterStore.mdx'
 import logEvent from '/snippets/server-core/dotnet/logEvent.mdx'
 import getFeatureGate from '/snippets/server-core/dotnet/getFeatureGate.mdx'
+import sharedInstance from '/snippets/server-core/dotnet/sharedInstance.mdx'
 import manualExposures from '/snippets/server-core/dotnet/manualExposures.mdx'
 import user from '/snippets/server-core/dotnet/user.mdx'
 import statsigOptions from '/snippets/server-core/dotnet/options.mdx'
 import evaluationOptions from '/snippets/server-core/dotnet/evaluationOptions.mdx'
 import shutdown from '/snippets/server-core/dotnet/shutdown.mdx'
 import clientInitResponse from '/snippets/server-core/dotnet/clientInitResponse.mdx'
+import ssrIPUserAgent from '/snippets/server-core/dotnet/ssrIPUserAgent.mdx'
+import ssrIDs from '/snippets/server-core/dotnet/ssrIDs.mdx'
+import ssrLegacyJS from '/snippets/server-core/dotnet/ssrLegacyJS.mdx'
 import localOverrides from '/snippets/server-core/dotnet/localOverrides.mdx'
 import notes from '/snippets/server-core/dotnet/notes.mdx'
 
 <Callout icon="github">
-<a href="https://github.com/statsig-io/statsig-server-core/tree/main/statsig-ffi/bindings/dotnet" target="_blank" rel="noreferrer">.NET Core on Github</a>,
+<a href="https://github.com/statsig-io/statsig-server-core/tree/main/statsig-ffi/bindings/dotnet" target="_blank" rel="noreferrer">.NET Core on Github</a>, 
 <a href="https://www.nuget.org/packages/Statsig.Server.Core/" target="_blank" rel="noreferrer">NuGet Package</a>
 </Callout>
 
@@ -73,14 +76,14 @@ import notes from '/snippets/server-core/dotnet/notes.mdx'
 
 <getLayer/>
 
-<ParamStoresIntro/>
-<getParameterStore/>
-
 <LogEventIntro/>
 <logEvent/>
 
 <GetFeatureGateIntro/>
 <getFeatureGate/>
+
+<SharedInstanceIntro/>
+<sharedInstance/>
 
 <ManualExposuresIntro/>
 <manualExposures/>
@@ -98,6 +101,10 @@ import notes from '/snippets/server-core/dotnet/notes.mdx'
 
 <ClientInitResponseIntro/>
 <clientInitResponse/>
+
+<ssrIPUserAgent/>
+<ssrIDs/>
+<ssrLegacyJS/>
 
 <LocalOverridesIntro/>
 <localOverrides/>

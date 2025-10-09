@@ -1,0 +1,51 @@
+---
+title: Python Core SDK Migration Guide
+sidebarTitle: Python Migration
+description: Migrate from the legacy Python Server SDK to the new Python Core SDK
+---
+
+import Intro from '/snippets/server-core/migration-guides/_Intro.mdx'
+import Installation from '/snippets/server-core/migration-guides/_Installation.mdx'
+import UserCreation from '/snippets/server-core/migration-guides/_UserCreation.mdx'
+import APIChanges from '/snippets/server-core/migration-guides/_APIChanges.mdx'
+import GlobalChanges from '/snippets/server-core/migration-guides/_GlobalChanges.mdx'
+import StatsigOptions from '/snippets/server-core/migration-guides/_StatsigOptions.mdx'
+import MigrationHelp from '/snippets/server-core/migration-guides/_MigrationHelp.mdx'
+import NeedHelp from '/snippets/server-core/migration-guides/_NeedHelp.mdx'
+
+import PyUserCreation from '/snippets/server-core/python/migration-guide/user-creation.mdx'
+import PyAPIChanges from '/snippets/server-core/python/migration-guide/api-changes.mdx'
+import PyStatsigOptions from '/snippets/server-core/python/migration-guide/statsig-options.mdx'
+
+<Intro sdkType="Python" />
+
+<Installation
+  legacyInstall="pip install statsig"
+  install="pip install statsig-python-core"
+/>
+
+<UserCreation>
+  <PyUserCreation />
+</UserCreation>
+
+<APIChanges>
+  <PyAPIChanges />
+</APIChanges>
+
+<GlobalChanges
+  waitForUserAgentInit="wait_for_user_agent_init"
+  waitForCountryLookupInit="wait_for_country_lookup_init"
+  disableUserAgentParsing="disable_user_agent_parsing"
+  disableCountryLookup="disable_country_lookup"
+  enableIdLists="enable_id_lists"
+/>
+
+<StatsigOptions>
+  <PyStatsigOptions />
+</StatsigOptions>
+
+<MigrationHelp
+  migrationAdapterLink="https://github.com/statsig-io/statsig-server-core-migration-adapters/blob/main/python_core_migration_adapter.py"
+/>
+
+<NeedHelp />
