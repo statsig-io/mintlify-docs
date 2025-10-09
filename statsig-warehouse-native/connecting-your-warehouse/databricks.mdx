@@ -41,7 +41,7 @@ For users who use databricks and a dbfs-based deltalake as their primary warehou
 
 3. Create or choose a database to use. For example, you could run this sql in a notebook:
 
-```
+```sql
 staging_database_name = '<my_name>'
 spark.sql(f"CREATE DATABASE IF NOT EXISTS {staging_database_name}")
 ```

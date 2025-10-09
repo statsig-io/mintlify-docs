@@ -10,6 +10,8 @@ last_update:
 
 <Warning>
 
+Count-distinct metrics are more expensive to compute than [count](./count) or [unique unit count](./unit-count-once) metrics, especially for very long experiments
+
 If you want to count distinct occurrences of the experiment's unit of assignment (e.g. the user_id in a user_id experiment), you should use a unit_count metrics instead. This achieves the same result, but more efficiently calculates and stores the metric data.
 
 In many cases a count metric serves as a close proxy to count-distinct; you can also set up a data source to track unique instances of a key to avoid re-running the distinct operation across experiment analyses.
@@ -30,7 +32,7 @@ At the group level, the mean is calculated as the SUM of the unit-level COUNT_DI
 
 This would look like the SQL below:
 
-```
+```sql expandable
 -- Unit Level
 SELECT
   source_data.unit_id,
