@@ -1,18 +1,14 @@
 ---
 title: Cohort Metrics
 sidebarTitle: Cohort Metrics
-description: Analyzing Cohorts with Statsig
+description: Cohort metrics are a way to analyze the impact of an experiment in a certain time frame per experimental unit
 keywords:
   - owner:craig
 last_update:
   date: 2025-09-18
 ---
 
-# Cohort Metrics
-
-Cohort metrics are a way to analyze the impact of an experiment in a certain time frame per experimental unit.
-
-This is useful for many reasons. Common use cases are:
+Cohort metrics are useful for many reasons. Common use cases are:
 
 - By ensuring all users have equal periods for data collection, there is an "apples to apples" comparison across user enrolled early/late in the experiment (which often corresponds to power/occasional users), and across different "time periods" that may have extrinsic factors like holidays
 - If analyzing an unbounded period, experimental units' variance in the population can increase over time - leading to scenario where error bars don't actually converge towards 0 as the experiment is run for longer!
@@ -34,8 +30,10 @@ Basic cohort windows are fairly simple. They are a filter on metric data with a 
 For example, this cohort metric from 1 to 6 days would filter to events from 24 hours until 144 hours from when they were exposed to the experiment.
 
 <Note>
-For metrics from data sources that are marked as daily data, the cohort comparison is truncated to a date so that day-0 data behaves as expected (e.g. a user exposed on `2025-01-05T09:00` will include the date-based data from `2025-01-05` instead of truncating to times "after 9:00am").
+This is calculated as a timestamp comparison; a unit enrolled at 12pm will have exactly 24 hours until they hit the end of a 0-1 day cohort.
 </Note>
+
+For metrics from data sources that are marked as daily data, the cohort comparison is truncated to a date so that day-0 data behaves as expected (e.g. a user exposed on `2025-01-05T09:00` will include the date-based data from `2025-01-05` instead of truncating to times "after 9:00am").
 
 ## Waiting for Maturation
 
