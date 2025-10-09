@@ -11,27 +11,45 @@ import Initialization2 from '/snippets/server-core/initialization2.mdx'
 import CheckGateIntro from '/snippets/server-core/checkGate.mdx'
 import GetDynamicConfigIntro from '/snippets/server-core/getDynamicConfig.mdx'
 import GetExperimentIntro from '/snippets/server-core/getExperiment.mdx'
+import GetPromptIntro from '/snippets/server-core/getPrompt.mdx'
+import GetPromptSetIntro from '/snippets/server-core/getPromptSet.mdx'
+import ParamStoresIntro from '/snippets/server-core/paramStores.mdx'
 import LogEventIntro from '/snippets/server-core/logEvent.mdx'
+import ForwardLogLineEventIntro from '/snippets/server-core/forwardLogLineEvent.mdx'
 import GetFeatureGateIntro from '/snippets/server-core/getFeatureGate.mdx'
+import SharedInstanceIntro from '/snippets/server-core/sharedInstance.mdx'
 import StatsigUserIntro from '/snippets/server-core/statsigUser.mdx'
 import StatsigOptionsIntro from '/snippets/server-core/statsigOptions.mdx'
 import ShutdownIntro from '/snippets/server-core/shutdown.mdx'
 import ClientInitResponseIntro from '/snippets/server-core/clientInitResponse.mdx'
+import PersistentStorageIntro from '/snippets/server-core/persistentStorage.mdx'
+import DataStoreIntro from '/snippets/server-core/dataStore.mdx'
+import OutputLoggerIntro from '/snippets/server-core/outputLogger.mdx'
+import ObservabilityClientIntro from '/snippets/server-core/observabilityClient.mdx'
 
 import installation from '/snippets/server-core/elixir/install.mdx'
 import initialization from '/snippets/server-core/elixir/initialize.mdx'
 import checkGate from '/snippets/server-core/elixir/checkGate.mdx'
 import getConfig from '/snippets/server-core/elixir/getConfig.mdx'
 import getExperiment from '/snippets/server-core/elixir/getExperiment.mdx'
+import getPrompt from '/snippets/server-core/elixir/getPrompt.mdx'
+import getPromptSet from '/snippets/server-core/elixir/getPromptSet.mdx'
+import paramStores from '/snippets/server-core/elixir/paramStores.mdx'
 import logEvent from '/snippets/server-core/elixir/logEvent.mdx'
+import forwardLogLineEvent from '/snippets/server-core/elixir/forwardLogLineEvent.mdx'
 import getFeatureGate from '/snippets/server-core/elixir/getFeatureGate.mdx'
+import sharedInstance from '/snippets/server-core/elixir/sharedInstance.mdx'
 import statsigOptions from '/snippets/server-core/elixir/options.mdx'
 import shutdown from '/snippets/server-core/elixir/shutdown.mdx'
 import clientInitResponse from '/snippets/server-core/elixir/clientInitResponse.mdx'
+import persistentStorage from '/snippets/server-core/elixir/persistentStorage.mdx'
+import dataStore from '/snippets/server-core/elixir/dataStore.mdx'
+import outputLogger from '/snippets/server-core/elixir/outputLogger.mdx'
+import observabilityClient from '/snippets/server-core/elixir/observabilityClient.mdx'
 import faqs from '/snippets/server-core/elixir/faqs.mdx'
 
 <Callout icon="github">
-<a href="https://github.com/statsig-io/statsig-server-core/tree/main/statsig-elixir" target="_blank" rel="noreferrer">Elixir Core on Github</a>,
+<a href="https://github.com/statsig-io/statsig-server-core/tree/main/statsig-elixir" target="_blank" rel="noreferrer">Elixir Core on Github</a>, 
 <a href="https://hex.pm/packages/statsig" target="_blank" rel="noreferrer">Hex Package</a>
 </Callout>
 
@@ -62,11 +80,26 @@ import faqs from '/snippets/server-core/elixir/faqs.mdx'
 <GetExperimentIntro/>
 <getExperiment/>
 
+<GetFeatureGateIntro/>
+<getFeatureGate/>
+
+<GetPromptIntro/>
+<getPrompt/>
+
+<GetPromptSetIntro/>
+<getPromptSet/>
+
+<ParamStoresIntro/>
+<paramStores/>
+
 <LogEventIntro/>
 <logEvent/>
 
-<GetFeatureGateIntro/>
-<getFeatureGate/>
+<ForwardLogLineEventIntro/>
+<forwardLogLineEvent/>
+
+<SharedInstanceIntro/>
+<sharedInstance/>
 
 <StatsigUserIntro/>
 
@@ -103,5 +136,17 @@ user = %Statsig.User{
 
 <ClientInitResponseIntro/>
 <clientInitResponse/>
+
+<PersistentStorageIntro/>
+<persistentStorage/>
+
+<DataStoreIntro/>
+<dataStore/>
+
+<OutputLoggerIntro/>
+<outputLogger/>
+
+<ObservabilityClientIntro/>
+<observabilityClient/>
 
 <faqs/>

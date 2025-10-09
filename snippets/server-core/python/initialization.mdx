@@ -33,7 +33,7 @@ For production deployments using WSGI servers like uWSGI or Gunicorn, ensure Sta
 
 #### ✅ Correct: uWSGI example
 
-```python
+```python expandable
 # app.py
 from statsig_python_core import Statsig, StatsigOptions
 from flask import Flask
@@ -96,7 +96,7 @@ gunicorn --config gunicorn_config.py app:app
 
 #### ✅ Correct: FastAPI example
 
-```python
+```python expandable
 from fastapi import FastAPI
 from statsig_python_core import Statsig, StatsigOptions
 

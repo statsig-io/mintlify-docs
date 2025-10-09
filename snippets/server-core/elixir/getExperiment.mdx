@@ -1,4 +1,4 @@
-```Python
+```elixir
 # Values via get_layer
 user = %StatsigUser{
     user_id: "test_user_123"
@@ -17,6 +17,8 @@ options = %Statsig.ExperimentEvaluationOptions{
     disable_exposure_logging = true
 }
 {:ok, experiment} = Statsig.get_experiment("user_promo_experiment", user, options)
-
 ```
-Note if you are using layer to get value -- get param value. It will return primitive types: boolean, string, and numbers, for more complex type, SDK will return json serialized values. 
+
+<Note>
+If you are using layer to get value -- get param value. It will return primitive types: boolean, string, and numbers, for more complex type, SDK will return json serialized values.
+</Note> 

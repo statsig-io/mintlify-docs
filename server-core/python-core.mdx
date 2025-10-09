@@ -36,15 +36,19 @@ import checkGate from '/snippets/server-core/python/checkGate.mdx'
 import getDynamicConfig from '/snippets/server-core/python/getDynamicConfig.mdx'
 import getExperiment from '/snippets/server-core/python/getExperiment.mdx'
 import getPrompt from '/snippets/server-core/python/getPrompt.mdx'
+import getPromptSet from '/snippets/server-core/python/getPromptSet.mdx'
 import paramStores from '/snippets/server-core/python/paramStores.mdx'
 import logEvent from '/snippets/server-core/python/logEvent.mdx'
+import forwardLogLineEvent from '/snippets/server-core/python/forwardLogLineEvent.mdx'
 import getFeatureGate from '/snippets/server-core/python/getFeatureGate.mdx'
 import sharedInstance from '/snippets/server-core/python/sharedInstance.mdx'
 import manualExposures from '/snippets/server-core/python/manualExposures.mdx'
+import statsigUser from '/snippets/server-core/python/statsigUser.mdx'
 import statsigOptions from '/snippets/server-core/python/options.mdx'
 import shutdown from '/snippets/server-core/python/shutdown.mdx'
 import clientInitResponse from '/snippets/server-core/python/clientInitResponse.mdx'
 import localOverrides from '/snippets/server-core/python/localOverrides.mdx'
+import testedPlatforms from '/snippets/server-core/python/testedPlatforms.mdx'
 import persistentStorage from '/snippets/server-core/python/persistent_storage.mdx'
 import dataStore from '/snippets/server-core/python/data_store.mdx'
 import outputLogger from '/snippets/server-core/python/output_logger.mdx'
@@ -52,7 +56,7 @@ import observabilityClient from '/snippets/server-core/python/observability_clie
 import faqs from '/snippets/server-core/python/faqs.mdx'
 
 <Callout icon="github">
-<a href="https://github.com/statsig-io/statsig-server-core/tree/main/statsig-pyo3" target="_blank" rel="noreferrer">Python Core on Github</a>,
+<a href="https://github.com/statsig-io/statsig-server-core/tree/main/statsig-pyo3" target="_blank" rel="noreferrer">Python Core on Github</a>, 
 <a href="https://pypi.org/project/statsig-python-core/" target="_blank" rel="noreferrer">PyPI Package</a>
 </Callout>
 
@@ -62,13 +66,12 @@ import faqs from '/snippets/server-core/python/faqs.mdx'
 <Step title="Install the SDK">
 <Installation/>
 <installation/>
+<testedPlatforms/>
 </Step>
 <Step title="Initialize the SDK">
 <Initialization/>
 <initialization/>
 <Initialization2/>
-
-
 </Step>
 </Steps>
 
@@ -89,11 +92,17 @@ import faqs from '/snippets/server-core/python/faqs.mdx'
 <GetPromptIntro/>
 <getPrompt/>
 
+<GetPromptSetIntro/>
+<getPromptSet/>
+
 <ParamStoresIntro/>
 <paramStores/>
 
 <LogEventIntro/>
 <logEvent/>
+
+<ForwardLogLineEventIntro/>
+<forwardLogLineEvent/>
 
 <SharedInstanceIntro/>
 <sharedInstance/>
@@ -102,33 +111,7 @@ import faqs from '/snippets/server-core/python/faqs.mdx'
 <manualExposures/>
 
 <StatsigUserIntro/>
-
-```python
-from statsig_python_core import StatsigUser
-
-user = StatsigUser(
-    user_id="a-user-id",
-    email="user@example.com",
-    ip="192.168.1.1",
-    user_agent="Mozilla/5.0...",
-    country="US",
-    locale="en_US",
-    app_version="1.0.0",
-    custom={
-        # Custom fields
-        "plan": "premium",
-        "age": 25
-    },
-    custom_ids={
-        # Custom ID types
-        "stable_id": "stable-id-123"
-    },
-    private_attributes={
-        # Private attributes not forwarded to integrations
-        "email": "private@example.com"
-    }
-)
-```
+<statsigUser/>
 
 <StatsigOptionsIntro/>
 <statsigOptions/>
@@ -136,11 +119,11 @@ user = StatsigUser(
 <ShutdownIntro/>
 <shutdown/>
 
-<ClientInitResponseIntro/>
-<clientInitResponse/>
-
 <LocalOverridesIntro/>
 <localOverrides/>
+
+<ClientInitResponseIntro/>
+<clientInitResponse/>
 
 <PersistentStorageIntro/>
 <persistentStorage/>
