@@ -320,8 +320,15 @@
                   "ai-evals/overview",
                   "ai-evals/getting-started",
                   "ai-evals/prompts",
+                  "ai-evals/graders",
                   "ai-evals/offline-evals",
-                  "ai-evals/online-evals"
+                  {
+                    "group": "Online Evals",
+                    "pages": [
+                      "ai-evals/online-evals",
+                      "ai-evals/create-an-online-eval"
+                    ]
+                  }
                 ]
               },
               {

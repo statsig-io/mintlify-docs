@@ -7,11 +7,7 @@ description: The Statsig MCP (Model Context Protocol) server lets tools like Cur
 
 Add the following MCP server configuration JSON to your respective tool's config file. This config sets up the connection to Statsig's MCP endpoint with your API key:
 
-<details>
-<summary>
-Click to see MCP Json
-</summary>
-```json
+```json expandable
 {
   "mcpServers": {
     "statsig-local": {
@@ -29,7 +25,6 @@ Click to see MCP Json
   }
 }
 ```
-</details>
 
 Replace `console-YOUR-API-KEY` with your actual Statsig Console API key, which you can retrieve [here](https://console.statsig.com/api_keys). Ensure your API key has the right permissions — read-only keys can view data, while write keys can make changes to your project!
 
