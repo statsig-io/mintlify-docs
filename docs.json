@@ -234,10 +234,10 @@
             "icon": "chart-line",
             "pages": [
               "product-analytics/overview",
+              "product-analytics/drilldown",
               {
                 "group": "Other Chart Types",
                 "pages": [
-                  "product-analytics/drilldown",
                   "product-analytics/funnels",
                   "product-analytics/retention",
                   "product-analytics/distribution",
@@ -245,20 +245,19 @@
                 ]
               },
               "product-analytics/dashboards",
-<<<<<<< Updated upstream
-              "product-analytics/topline-alerts",
-              {
-                "group": "Users",
-                "pages": [
-                  "product-analytics/users-tab",
-                  "product-analytics/user-profiles"
-=======
               {
                 "group": "Alerts",
                 "pages": [
                   "metrics/rollout-alerts",
                   "product-analytics/topline-alerts"
->>>>>>> Stashed changes
+                ]
+              },
+              {
+                "group": "Users",
+                "pages": [
+                  "product-analytics/users-tab",
+                  "product-analytics/user-profiles"
+
                 ]
               }
             ]
@@ -272,13 +271,20 @@
                 "group": "Low-Code Experiments",
                 "pages": [
                   "guides/sidecar-experiments/introduction",
-                  "guides/sidecar-experiments/setup",
-                  "guides/sidecar-experiments/creating-experiments",
+                  "guides/sidecar-experiments/sidecar-v3",
                   "guides/sidecar-experiments/measuring-experiments",
-                  "guides/sidecar-experiments/advanced-configurations",
-                  "guides/sidecar-experiments/publishing-experiments",
-                  "guides/sidecar-experiments/integrating-gtm",
-                  "guides/aa-sidecar"
+                  "guides/sidecar-experiments/advanced-configurations-v3",
+                  {
+                    "group": "(Legacy) Sidecar",
+                    "pages": [
+                      "guides/sidecar-experiments/setup",
+                      "guides/sidecar-experiments/creating-experiments",
+                      "guides/sidecar-experiments/advanced-configurations",
+                      "guides/sidecar-experiments/publishing-experiments",
+                      "guides/sidecar-experiments/integrating-gtm",
+                      "guides/aa-sidecar"
+                    ]
+                  }
                 ]
               },
               {
@@ -314,8 +320,15 @@
                   "ai-evals/overview",
                   "ai-evals/getting-started",
                   "ai-evals/prompts",
+                  "ai-evals/graders",
                   "ai-evals/offline-evals",
-                  "ai-evals/online-evals"
+                  {
+                    "group": "Online Evals",
+                    "pages": [
+                      "ai-evals/online-evals",
+                      "ai-evals/create-an-online-eval"
+                    ]
+                  }
                 ]
               },
               {
@@ -388,6 +401,7 @@
                 "pages": [
                   "guides/migration-overview",
                   "guides/migrate-from-amplitude",
+                  "guides/migrate-from-mixpanel",
                   {
                     "group": "Migrate from LaunchDarkly",
                     "pages": [
@@ -654,7 +668,7 @@
             "pages": [
               "client/javascript-sdk",
               "client/html",
-              "client/react",
+              "client/React",
               "client/Next",
               "client/Android",
               "client/iosClientSDK",
@@ -893,11 +907,11 @@
                   {
                     "group": "Data Imports (Deprecated)",
                     "pages": [
-                      "integrations/data-imports/overview-deprecated",
-                      "integrations/data-imports/bigquery-deprecated",
-                      "integrations/data-imports/redshift-deprecated",
-                      "integrations/data-imports/snowflake-deprecated",
-                      "integrations/data-imports/azure_upload-deprecated"
+                      "integrations/data-imports/overview",
+                      "integrations/data-imports/bigquery",
+                      "integrations/data-imports/redshift",
+                      "integrations/data-imports/snowflake",
+                      "integrations/data-imports/azure_upload"
                     ]
                   }
                 ]
@@ -1337,16 +1351,13 @@
     },
     {
       "source": "/client/javascript-sdk/react",
-      "destination": "/client/react"
+      "destination": "/client/React"
     },
     {
-<<<<<<< Updated upstream
-      "source": "/dynamic-config/overview",
-      "destination": "/dynamic-config"
+      "source": "/dynamic-config",
+      "destination": "/dynamic-config/overview"
     },
     {
-=======
->>>>>>> Stashed changes
       "source": "/experiments/statistical-methods/methodologies/srm-checks",
       "destination": "/stats-engine/methodologies/srm-checks"
     },
@@ -1664,7 +1675,7 @@
     },
     {
       "source": "/developer-guides/feature-flags-in-react",
-      "destination": "/client/react"
+      "destination": "/client/React"
     },
   
     {
