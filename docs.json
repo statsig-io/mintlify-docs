@@ -234,10 +234,10 @@
             "icon": "chart-line",
             "pages": [
               "product-analytics/overview",
-              "product-analytics/drilldown",
               {
                 "group": "Other Chart Types",
                 "pages": [
+                  "product-analytics/drilldown",
                   "product-analytics/funnels",
                   "product-analytics/retention",
                   "product-analytics/distribution",
@@ -245,7 +245,14 @@
                 ]
               },
               "product-analytics/dashboards",
-              "product-analytics/topline-alerts"
+              "product-analytics/topline-alerts",
+              {
+                "group": "Users",
+                "pages": [
+                  "product-analytics/users-tab",
+                  "product-analytics/user-profiles"
+                ]
+              }
             ]
           },
           {
