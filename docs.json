@@ -245,7 +245,14 @@
                 ]
               },
               "product-analytics/dashboards",
-              "product-analytics/topline-alerts"
+              "product-analytics/topline-alerts",
+              {
+                "group": "Users",
+                "pages": [
+                  "product-analytics/users-tab",
+                  "product-analytics/user-profiles"
+                ]
+              }
             ]
           },
           {
@@ -339,7 +346,6 @@
                       "metrics/custom-dau",
                       "metrics/archiving-metrics",
                       "metrics/create-metric-tags",
-                      "metrics/rollout-alerts",
                       "metrics/user",
                       "metrics/directionality"
                     ]
@@ -424,6 +430,7 @@
                   "statsig-warehouse-native/guides/sql"
                 ]
               },
+              "statsig-warehouse-native/guides/experimentation-program",
               "statsig-warehouse-native/connecting-your-warehouse/forwarded-data"
             ]
           },
@@ -516,10 +523,13 @@
                   "statsig-warehouse-native/features/configure-an-experiment",
                   "statsig-warehouse-native/features/types-of-experiments",
                   "statsig-warehouse-native/features/power-analysis",
+                  "statsig-warehouse-native/features/stratified-sampling",
+                  "statsig-warehouse-native/features/differential-impact",
                   "statsig-warehouse-native/features/targeting",
                   "statsig-warehouse-native/features/id-resolution",
                   "statsig-warehouse-native/features/filtering-exposures",
-                  "statsig-warehouse-native/metrics/normalized-metrics"
+                  "statsig-warehouse-native/metrics/normalized-metrics",
+                  "statsig-warehouse-native/features/quality-score"
                 ]
               },
               {
@@ -538,7 +548,6 @@
               {
                 "group": "Interpreting Results",
                 "pages": [
-                  "statsig-warehouse-native/read-pulse-whn",
                   "statsig-warehouse-native/features/interpreting-results/read-results",
                   "statsig-warehouse-native/features/interpreting-results/metric-drill-down",
                   "statsig-warehouse-native/features/interpreting-results/custom-queries",
@@ -583,6 +592,7 @@
                 ]
               },
               "statsig-warehouse-native/features/autotune",
+              "statsig-warehouse-native/features/meta-analysis",
               "statsig-warehouse-native/features/use-case"
             ]
           },
@@ -626,7 +636,7 @@
               "sdks/user",
               "client/concepts/initialize",
               "sdks/how-evaluation-works",
-              "sdk/debugging",
+              "sdks/debugging",
               "sdks/client-vs-server",
               "compliance/data_privacy_for_mobile"
             ]
@@ -635,6 +645,7 @@
             "group": "Client SDKs",
             "pages": [
               "client/javascript-sdk",
+              "client/html",
               "client/react",
               "client/Next",
               "client/Android",
@@ -649,7 +660,28 @@
                   "client/ReactNative",
                   "client/Angular",
                   "client/Roku",
-                  "client/Unity"
+                  "client/Unity",
+                  {
+                    "group": "On Device Evaluation SDKs",
+                    "pages": [
+                      "client/swiftOnDeviceEvaluationSDK",
+                      "client/androidOnDeviceEvaluationSDK",
+                      {
+                        "group": "JS On Device Evaluation SDKs",
+                        "pages": [
+                          "client/jsOnDeviceEvaluationSDK",
+                          "client/ReactNativeOnDeviceEvaluation.mdx"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "Migrating from Legacy JS",
+                    "pages": [
+                      "client/migration-guides/MigrationFromOldJsClient",
+                      "client/migration-guides/MigrationFromOldReactClient"
+                    ]
+                  }
                 ]
               }
             ]
@@ -676,6 +708,7 @@
               {
                 "group": "Legacy Server SDKs",
                 "pages": [
+                  "server/legacy-sdks",
                   "server/nodejsServerSDK",
                   "server/pythonSDK",
                   "server/erlang",
@@ -718,6 +751,15 @@
                 "group": "API reference",
                 "openapi": "console-api/capiopenapi.json"
               }
+            ]
+          },
+          {
+            "group": "Statsig CLI",
+            "icon": "terminal",
+            "pages": [
+              "statsigcli/introduction",
+              "statsigcli/commands",
+              "statsigcli/gate-management"
             ]
           },
           {
@@ -1034,6 +1076,186 @@
   },
   "redirects": [
     {
+      "source": "/stats-engine/methodologies/delta-method-whn",
+      "destination": "/experiments/statistical-methods/methodologies/delta-method.mdx"
+    },
+    {
+      "source": "/experimentation/quality-score-whn",
+      "destination": "/statsig-warehouse-native/features/quality-score"
+    },
+    {
+      "source": "/experimentation/quality-score-whn/",
+      "destination": "/experiments/setup/quality-score"
+    },
+    {
+      "source": "/stats-engine/variance-whn",
+      "destination": "/statsig-warehouse-native/features/statistics/variance"
+    },
+    {
+      "source": "/stats-engine/variance_reduction-whn",
+      "destination": "/statsig-warehouse-native/features/statistics/variance-reduction"
+    },
+    {
+      "source":"/statsig-warehouse-native/features/other-features",
+      "destination": "/statsig-warehouse-native/features/other-useful-features"
+    },
+    {
+      "source": "/server/concepts/all-assignments",
+      "destination": "/client/concepts/initialize#2-bootstrap-initialization"
+    },
+    {
+      "source": "/statsig-warehouse-native/features/statistics/confidence-intervals",
+      "destination": "statsig-warehouse-native/features/statistics/confidence-intervals.mdx"
+    },
+    {
+      "source": "/stats-engine/topline-impact-whn",
+      "destination": "statsig-warehouse-native/features/statistics/topline-impact.mdx"
+    },
+    {
+      "source": "/stats-engine/methodologies/one-sided-test-whn",
+      "destination": "statsig-warehouse-native/features/statistics/methodologies/one-sided-test.mdx"
+    },
+    {
+      "source": "/stats-engine/metric-deltas-whn",
+      "destination": "statsig-warehouse-native/features/statistics/metric-deltas.mdx"
+    },
+    {
+      "source": "/client/iOS/repo-migration-guide",
+      "destination": "/client/migration-guides/ios-repo-migration-guide.mdx"
+    },
+    {
+      "source": "/developer-guides/abtest-in-javascript",
+      "destination": "/client/javascript-sdk"
+    },
+    {
+      "source": "/experiments-plus/stratified-sampling-whn",
+      "destination": "experiments/advanced-setup/stratified-sampling"
+    },
+    {
+      "source": "/statsig-warehouse-native/guides/dummy_evaluation",
+      "destination": "/statsig-warehouse-native/guides/playground_eval"
+    },
+    {
+      "source": "/stats-engine/one-sample-test",
+      "destination": "/experiments/statistical-methods/methodologies/one-sample-test"
+    },
+    {
+      "source": "/using-bandits",
+      "destination": "/autotune/using-bandits"
+    },
+    {
+      "source": "/client/onDevice",
+      "destination": "client/onDeviceOverview.mdx"
+    },
+    {
+      "source": "/guides/srm/",
+      "destination": "experiments/monitoring/srm"
+    },
+    {
+      "source": "/pulse/access-whn/",
+      "destination": "/experiments/interpreting-results/access-whn"
+    },
+    {
+      "source": "/sdk_monitoring",
+      "destination": "/infrastructure/sdk-monitoring"
+    },
+    {
+      "source": "/client/cpp-client-sdk",
+      "destination": "/client/cpp"
+    },
+    {
+      "source": "server/phpSDK",
+      "destination": "/server/php"
+    },
+    {
+      "source": "/statsigcli",
+      "destination": "/statsigcli/introduction"
+    },
+    {
+      "source": "/client/javascript-sdk/using-evaluations-data-adapter",
+      "destination": "/client/javascript-mono/UsingEvaluationsDataAdapter.mdx"
+    },
+    {
+      "source": "/guides/production",
+      "destination": "/statsig-warehouse-native/guides/production.mdx"
+    },
+    {
+      "source": "/client/js-on-device-eval-client",
+      "destination": "/client/jsOnDeviceEvaluationSDK.mdx"
+    },
+    {
+      "source": "/server-core/java/migration",
+      "destination": "/server-core/migration-guides/java.mdx"
+    },
+    {
+      "source": "/feature-flags/bots",
+      "destination": "/experiments/monitoring/bots"
+    },
+    {
+      "source": "/statsig-warehouse-native/data-privacy",
+      "destination": "/statsig-warehouse-native/analysis-tools/data-privacy"
+    },
+    {
+      "source": "/product-analytics/alerts/topline_alerts",
+      "destination": "/product-analytics/topline-alerts"
+    },
+    {
+      "source": "/statsig-warehouse-native/pipeline-overview",
+      "destination": "/statsig-warehouse-native/analysis-tools/pipeline-overview"
+    },
+    {
+      "source": "/server-core/python/migration-guide",
+      "destination": "/server-core/migration-guides/python"
+    },
+    {
+      "source": "/guides/running-a-poc",
+      "destination": "statsig-warehouse-native/guides/running_a_poc"
+    },
+    {
+      "source": "/server/javaSdk",
+      "destination": "/server/java"
+    },
+    {
+      "source": "/users/profiles/",
+      "destination": "/product-analytics/user-profiles"
+    },
+    {
+      "source": "/infrastructure/managed-proxy",
+      "destination": "infrastructure/api_proxy/managed-proxy"
+    },
+    {
+      "source": "/statsig-warehouse-native/guides/forwarded-data",
+      "destination": "/connecting-your-warehouse/forwarded-data"
+    },
+    {
+      "source": "/server-core/dotnetCoreSDK",
+      "destination": "/server-core/dotnet-core"
+    },
+    {
+      "source": "/server/dotnetSDK",
+      "destination": "/server/dotnet"
+    },
+    {
+      "source": "/client/javascript-sdk/migrating-from-statsig-js",
+      "destination": "/client/migration-guides/MigrationFromOldJsClient"
+    },
+    {
+      "source": "/client/javascript-sdk/migrating-from-statsig-react",
+      "destination": "/client/migration-guides/MigrationFromOldReactClient"
+    },
+    {
+      "source": "/experiments-plus/cure",
+      "destination": "statsig-warehouse-native/cure/introduction"
+    },
+    {
+      "source": "/client/javascript-sdk/stable-id",
+      "destination": "/client/javascript-sdk-stable-id"
+    },
+    {
+      "source": "/quickstarts/feature-gates",
+      "destination": "/guides/check-gate"
+    },
+    {
       "source": "/org-admin/:slug*",
       "destination": "/access-management/org-admin/:slug*"
     },
@@ -1103,7 +1325,7 @@
     },
     {
       "source": "/client/javascript-sdk/next-js",
-      "destination": "/client/next"
+      "destination": "/client/Next"
     },
     {
       "source": "/client/javascript-sdk/react",
@@ -1210,10 +1432,6 @@
       "destination": "/autotune/bandit-introduction"
     },
     {
-      "source": "/client/introduction",
-      "destination": "/client/javascript"
-    },
-    {
       "source": "/pulse/read-pulse",
       "destination": "/experiments/interpreting-results/read-pulse"
     },
@@ -1318,10 +1536,6 @@
       "destination": "/experiments/interpreting-results/custom-queries"
     },
     {
-      "source": "/product-analytics/topline_alerts",
-      "destination": "/product-analytics/topline-alerts"
-    },
-    {
       "source": "/experiments-plus/stop-assignments",
       "destination": "/experiments/ending/stop-assignments"
     },
@@ -1372,6 +1586,10 @@
     {
       "source": "/reliability-faqs",
       "destination": "/infrastructure/reliability-faq"
+    },
+    {
+      "source": "/experiments-plus/geotests",
+      "destination": "/statsig-warehouse-native/geotests/introduction"
     },
     {
       "source": "/experiments-plus/geotests-setup",
@@ -1437,10 +1655,7 @@
       "source": "/developer-guides/feature-flags-in-react",
       "destination": "/client/react"
     },
-    {
-      "source": "/pulse/custom-queries-whn",
-      "destination": "/statsig-warehouse-native/read-pulse-whn"
-    },
+  
     {
       "source": "/experiments-plus/geotests/methodology",
       "destination": "/statsig-warehouse-native/geotests/methodology"
@@ -1448,14 +1663,6 @@
     {
       "source": "/guides/landing-page-experiments/introduction",
       "destination": "/guides/sidecar-experiments/introduction"
-    },
-    {
-      "source": "/pulse/read-pulse-whn",
-      "destination": "/statsig-warehouse-native/read-pulse-whn"
-    },
-    {
-      "source": "/pulse/drill-down-whn",
-      "destination": "/statsig-warehouse-native/read-pulse-whn"
     },
     {
       "source": "/guides/landing-page-experiments/interpreting",
