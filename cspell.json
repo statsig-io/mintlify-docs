@@ -748,7 +748,9 @@
     "llms",
     "LLMs",
     "Mintlify",
-    "sidecar"
+    "sidecar",
+    "topbar",
+    "rebar"
   ],
   "ignorePaths": [
     "node_modules/**",
