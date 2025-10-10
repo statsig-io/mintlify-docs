@@ -17,27 +17,37 @@ Statsig currently supports three types of Topline Alerts:
 ---
 
 ## Creating a Topline Alert
-### **Step 1:** Navigate to Topline Alerts
-Go to **Analytics → Topline Alerts** in the product menu.  
 
-### **Step 2:** Create a New Alert
+<Steps>
+<Step title="Navigate to Topline Alerts">
+Go to **Analytics → Topline Alerts** in the product menu.
+</Step>
+
+<Step title="Create a New Alert">
 Click **+Create** and give the new alert a name.
+</Step>
 
-### **Step 3:** Select the Event or Metric Source
+<Step title="Select the Event or Metric Source">
 Pick the data you want to monitor.
 - **On Statsig Warehouse Native:** Select a Metric Source, filter, and group by your desired dimensions.
 - **On Statsig Cloud:** Select the event, aggregation, filters, and group by conditions for this alert.
   
 _Example:_ We're going to set set up an alert to monitor P90 latency of `mex_query` events. We're going to filter out internal employee queries and group by an additional dimension called `hadGroupBy`.
 
-![alert setup](/images/infra-analytics/topline-alerts-choose-events.png)
+<Frame>
+  <Img src="/images/infra-analytics/topline-alerts-choose-events.png" alt="alert setup" />
+</Frame>
+</Step>
 
-### **Step 4:** Review your metric in Alert Preview
-The preview shows how your metric is trending with the current setup. Confirm values look correct, or open the metric in [Metrics Explorer](https://docs.statsig.com/product-analytics/drilldown) for deeper analysis.  
+<Step title="Review your metric in Alert Preview">
+The preview shows how your metric is trending with the current setup. Confirm values look correct, or open the metric in [Metrics Explorer](https://docs.statsig.com/product-analytics/drilldown) for deeper analysis.
 
-![alert setup](/images/infra-analytics/topline-alerts-preview.png)
+<Frame>
+  <Img src="/images/infra-analytics/topline-alerts-preview.png" alt="alert setup" />
+</Frame>
+</Step>
 
-### **Step 5:** Set Alert Conditions
+<Step title="Set Alert Conditions">
 The preview will update along with your setup changes. Define the:
 - Condition type (threshold, change, change %)
 - Directionality 
@@ -45,28 +55,34 @@ The preview will update along with your setup changes. Define the:
 - Evaluation window
   - **On Warehouse Native:** Define the evaluation frequency, lookback, and max delay. These will influence the cost of evaluating this alert in your warehouse.
 
-![alert setup](/images/infra-analytics/topline-alerts-conditions.png)
+<Frame>
+  <Img src="/images/infra-analytics/topline-alerts-conditions.png" alt="alert setup" />
+</Frame>
+</Step>
 
-
-### **Step 6:** Add Notifications
+<Step title="Add Notifications">
 Notifications go to email, the Statsig Console, and Slack if connected. Project-wide defaults are available in the Settings menu. 
 - Write a message users will receive when the alert fires (keep it clear and actionable)
 - Add subscribers
 - Set the alert priority
 - Configure re-notification rules if you want alerts to resend while the condition holds
+</Step>
 
-
-### **Step 7:** Save & Monitor
+<Step title="Save & Monitor">
 Save the alert. When it fires, it will appear at the top of the page. 
 
-The **Diagnostics** tab will show past activity of the alert. This includes trigger history with options to inspect samples, launch into Metrics Explorer, or mute.  
+The **Diagnostics** tab will show past activity of the alert. This includes trigger history with options to inspect samples, launch into Metrics Explorer, or mute.
 
-![alert setup](/images/infra-analytics/topline-alerts-diagnostics.png)
-<br />
+<Frame>
+  <Img src="/images/infra-analytics/topline-alerts-diagnostics.png" alt="alert setup" />
+</Frame>
+</Step>
+</Steps>
 
 ---
 
 ### Interested in more?
+
 - [Create log-based alerts](/infra-analytics/topline-alerts-logs) to catch issues directly from event logs 
 - [Use rollout alerts](/product-analytics/alerts/rollout_alerts) to monitor metrics in the context of feature gates and experiments
 - [Set up team Slack notifications](https://docs.statsig.com/integrations/slack/#team-notifications) to keep your alerts visible where your team works.
