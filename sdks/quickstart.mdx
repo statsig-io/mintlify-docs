@@ -6,7 +6,7 @@ description: This quickstart will guide you through quickly installing the Stats
 If you're looking for a more detailed guide, check out the [SDK Overview](/sdks/getting-started) or read about choosing between [client or server SDKs](/sdks/client-vs-server).
 
 <Tabs>
-  
+
 
   <Tab title="React" icon="react">
   <Steps>
@@ -25,8 +25,8 @@ If you're looking for a more detailed guide, check out the [SDK Overview](/sdks/
 
     export default function RootLayout({ children }: { children: React.ReactNode }) {
       return (
-        <StatsigProvider 
-          sdkKey={"client-MY-STATSIG-CLIENT-KEY"} // 
+        <StatsigProvider
+          sdkKey={"client-MY-STATSIG-CLIENT-KEY"} //
           user={{ userID: "quickstart-user" }}
           loadingComponent={<div>Loading...</div>}>
           {children}
@@ -34,9 +34,12 @@ If you're looking for a more detailed guide, check out the [SDK Overview](/sdks/
       );
     }
     ```
-  <Note>
-  This example assumes you're using client-side React, if you're Server-Side Rendering, you'd be better served by our [Next.js docs]().
-  </Note>
+
+{" "}
+<Note>
+  This example assumes you're using client-side React, if you're Server-Side
+  Rendering, you'd be better served by our [Next.js docs]().
+</Note>
 
   </Step>
   <Step title="Add client key">
@@ -79,6 +82,7 @@ If you're looking for a more detailed guide, check out the [SDK Overview](/sdks/
 
     ## Next steps
     Congratulations! You've successfully set up the Statsig SDK in React. Continue on to the tutorials, or jump in to the full [Next.js](/client/javascript-sdk/next-js) or [React](/client/javascript-sdk/react) SDK libraries.
+
   </Tab>
   <Tab title="JS snippet" icon="js">
     The easiest way to get up and running is by adding the Statsig JavaScript snippet to your website.
@@ -137,6 +141,7 @@ If you're looking for a more detailed guide, check out the [SDK Overview](/sdks/
     - Use [feature flags](/feature-flags/overview)
 
     See the [Javascript SDK reference](/client/javascript-sdk) for more info.
+
   </Tab>
 
   <Tab title="Python" icon="python">
@@ -201,6 +206,7 @@ If you're looking for a more detailed guide, check out the [SDK Overview](/sdks/
 
     ## Next steps
     Congratulations! You've set up the Statsig SDK in Python. Continue on to our tutorials, or jump in to the full [Python SDK Reference.](/server-core/python-core)
+
   </Tab>
 
   <Tab title="Node" icon="node-js">
@@ -212,7 +218,7 @@ If you're looking for a more detailed guide, check out the [SDK Overview](/sdks/
     ```
 
   </Step>
-  <Step tite="Initialize the Statsig SDK">
+  <Step title="Initialize the Statsig SDK">
     ```jsx
     // Basic initialization
     const statsig = new Statsig("<REPLACE_WITH_YOUR_SERVER_SECRET_KEY>");
@@ -265,6 +271,7 @@ If you're looking for a more detailed guide, check out the [SDK Overview](/sdks/
 
     ## Next steps
     Congratulations! You've successfully set up the Statsig SDK in Node.js. Continue on to the tutorials, or jump in to the full [Node.js](/server-core/node-core) SDK library.
+
   </Tab>
 
   <Tab title="+24 more SDKs">
@@ -273,7 +280,7 @@ If you're looking for a more detailed guide, check out the [SDK Overview](/sdks/
 
     **Mobile SDKs:**
     - iOS (Swift)
-    - Android (Kotlin/Java) 
+    - Android (Kotlin/Java)
     - Flutter
     - React Native
 
@@ -293,5 +300,6 @@ If you're looking for a more detailed guide, check out the [SDK Overview](/sdks/
 
     Visit our [SDK documentation](/sdks) to explore all available options and their specific implementation guides.
     </Info>
+
   </Tab>
 </Tabs>

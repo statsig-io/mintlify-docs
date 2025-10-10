@@ -746,7 +746,9 @@
     "IMDS",
     "resourcedetection",
     "llms",
-    "LLMs"
+    "LLMs",
+    "Mintlify",
+    "sidecar"
   ],
   "ignorePaths": [
     "node_modules/**",

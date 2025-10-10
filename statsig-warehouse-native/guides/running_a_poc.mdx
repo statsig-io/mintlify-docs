@@ -1,6 +1,6 @@
 ---
 title: Running a Warehouse Native POC
-description: How to plan a proof of concept with Statsig Warehouse Native (WHN), including the components of our solution, steps required to successfully lead a proof of concept & validation/next steps to productionize
+description: How to plan a proof of concept with Statsig Warehouse Native (WHN), including the components of our solution, steps required to successfully lead a proof of concept & validation/next steps to move to production
 keywords:
   - owner:vm
 last_update:
@@ -12,8 +12,20 @@ last_update:
 **Statsig Warehouse Native** enables customers with existing metric logs to quickly run analysis on their existing metric data, and optionally bring previous assignment data/offline experiments into the platform quickly. Statsig WHN has has two types of experiments:
 
 <ol>
-<li>**Assign and Analyze**: You can run an experiment on **web/mobile/app** and use Statsig’s SDKs to assign (bucket or randomize) users, and then analyze results.</li>
-<li>**Analyze**: You can run an experiment elsewhere (**_your own SDK, email, direct mail, sms, ivr, etc._**) and use Statsig to analyze that data and calculate experiment results. This assignment data can be read from your warehouse in [this format](/statsig-warehouse-native/configuration/assignment-sources#example-data) - we call these [Assignment Sources](/statsig-warehouse-native/configuration/assignment-sources).</li>
+  <li>
+    **Assign and Analyze**: You can run an experiment on **web/mobile/app** and
+    use Statsig’s SDKs to assign (bucket or randomize) users, and then analyze
+    results.
+  </li>
+  <li>
+    **Analyze**: You can run an experiment elsewhere (**_your own SDK, email,
+    direct mail, sms, ivr, etc._**) and use Statsig to analyze that data and
+    calculate experiment results. This assignment data can be read from your
+    warehouse in [this
+    format](/statsig-warehouse-native/configuration/assignment-sources#example-data)
+    - we call these [Assignment
+    Sources](/statsig-warehouse-native/configuration/assignment-sources).
+  </li>
 </ol>
 
 If you have a pre-existing experiment in your warehouse, we recommend getting started first with an **Analyze** experiment. This is an effective and quick way (less than 1 day) to get comfortable with establishing a connection between Statsig and your warehouse, and the experience of consuming [experiment results](/pulse/read-pulse) in the Statsig console. Then, we recommend running a **Assign and Analyze** experiment using Statsig's SDKs; typically an A/A test. With the A/A **Assign and Analyze** experiment, you can test Statsig's SDKs and implementation process with your engineering and product team.
@@ -21,7 +33,10 @@ If you have a pre-existing experiment in your warehouse, we recommend getting st
 # Steps to running an effective Proof of Concept with Warehouse Native
 
 <Frame>
-  <img src="https://github.com/statsig-io/docs/assets/31516123/723b6c60-7151-4716-8970-0e52c391991d" alt="Warehouse Native POC workflow diagram" />
+  <img
+    src="https://github.com/statsig-io/docs/assets/31516123/723b6c60-7151-4716-8970-0e52c391991d"
+    alt="Warehouse Native POC workflow diagram"
+  />
 </Frame>
 
 Keep these high level steps in mind as you begin your planning your Warehouse Native implementation:
@@ -47,7 +62,10 @@ Keep these high level steps in mind as you begin your planning your Warehouse Na
 1. **Connect Metric Sources & Define Metrics** - Once the data warehouse has been connected, you can begin defining metric and assignment sources (if applicable) to Statsig. Our systems expect specific schemas in order to correctly map the data to our pipelines:
 
    <Frame>
-     <img src="https://gist.github.com/assets/125311112/4fa8c5e2-c19f-4ef6-be70-f31b61170e7c" alt="" />
+     <img
+       src="https://gist.github.com/assets/125311112/4fa8c5e2-c19f-4ef6-be70-f31b61170e7c"
+       alt=""
+     />
    </Frame>
 
    Beyond these columns, the schema is flexible and can accept additional columns. **Metadata** can be used to filter metrics and also be utilized for more granular analysis.
@@ -80,7 +98,10 @@ Keep these high level steps in mind as you begin your planning your Warehouse Na
 1. **Finalize Evaluation and Next Steps -** Ultimately a POC is meant to validate a set of evaluation criteria that will determine whether or not Statsig is a good fit for your team’s workflows. The following graphic provides high-level guidance on what to look for during your evaluation phase.
 
    <Frame>
-     <img src="https://gist.github.com/assets/125311112/c5f86db5-6bf9-4a5e-9709-ede36384b3ca" alt="" />
+     <img
+       src="https://gist.github.com/assets/125311112/c5f86db5-6bf9-4a5e-9709-ede36384b3ca"
+       alt=""
+     />
    </Frame>
 
    Should you decide to move forward, the next step becomes converting your POC environment to a production-level implementation. We have created [this guide](/guides/production) to give you a general sense of what that entails.
