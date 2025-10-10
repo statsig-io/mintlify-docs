@@ -15,7 +15,7 @@ I want to filter the experiment results to new users only: A user is 'new' if th
 ### Solution
 
 Assuming you have a logging table which contains every time when a user visits the website and relative timestamp `logging`, and you have another table with all user's user_id `user`. First, you need to create an Entity Property with the following logic: 
-```
+```sql expandable
 select distinct
   user_id,
   'new' as new_user,
@@ -75,7 +75,7 @@ When setting up your experiment, under the *Setup* tab within your experiments, 
 - **[Recommended]** Create a new Entity Property Source for your ID Resolution mapping if you haven't already.
 
   Go to Data -> Entity Properties. Follow the steps, you can either enter an existing table with the ID mappings or write a new query to create the mappings with the following logic:
-  ```
+  ```sql
   SELECT stable_id, user_id, timestamp
   FROM id_mapping
   ```

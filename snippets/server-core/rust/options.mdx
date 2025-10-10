@@ -1,98 +1,120 @@
 <Accordion title="StatsigOptions">
 
-### Parameters
+<ResponseField name="data_store" type="Option<Arc<dyn DataStoreTrait>>">
+  External data store for Statsig values.
+</ResponseField>
 
-- **`data_store`**: Option\<Arc\<dyn DataStoreTrait\>\>
-External data store for Statsig values.
-
-- **`disable_all_logging`**: Option\<bool\>
+<ResponseField name="disable_all_logging" type="Option<bool>">
   When true, disables all event logging.
+</ResponseField>
 
-- **`disable_network`**: Option\<bool\>
+<ResponseField name="disable_network" type="Option<bool>">
   When `true`, disables all network functions: event & exposure logging, spec downloads, and ID List downloads. Formerly called "localMode".
+</ResponseField>
 
-- **`enable_id_lists`**: Option\<bool\>
+<ResponseField name="enable_id_lists" type="Option<bool>">
   Enable/disable ID list functionality. **Required to be `true` when using segments with more than 1000 IDs.** See [ID List segments](/segments/add-id-list) for more details.
+</ResponseField>
 
-- **`disable_user_agent_parsing`** `Optional[bool]`
-  Default false. If set to true, the SDK will NOT attempt to parse UserAgents (attached to the user object) into browserName, browserVersion, systemName, systemVersion, and appVersion at evaluation time, when needed for evaluation.
+<ResponseField name="disable_user_agent_parsing" type="Option<bool>" default="false">
+  If set to true, the SDK will NOT attempt to parse UserAgents (attached to the user object) into browserName, browserVersion, systemName, systemVersion, and appVersion at evaluation time, when needed for evaluation.
+</ResponseField>
 
-- **`wait_for_user_agent_init`** `Optional[bool]`
-  Default: false
+<ResponseField name="wait_for_user_agent_init" type="Option<bool>" default="false">
+  When set to true, the SDK will wait until user agent parsing data is fully loaded during initialization. This may slow down by ~1 second startup but ensures that parsing of the user's userAgent string into fields like browserName, browserVersion, systemName, systemVersion, and appVersion is ready before any evaluations.
+</ResponseField>
 
-  When set to true, the SDK will wait until user agent parsing data is fully loaded during initialization. This may slow down by ~1 second startup but ensures that parsing of the user’s userAgent string into fields like browserName, browserVersion, systemName, systemVersion, and appVersion is ready before any evaluations.
+<ResponseField name="disable_user_country_lookup" type="Option<bool>" default="false">
+  If set to true, the SDK will NOT attempt to parse IP addresses (attached to the user object at user.ip) into Country codes at evaluation time, when needed for evaluation.
+</ResponseField>
 
-- **`disable_user_country_lookup`**  `Optional[bool]`
-  Default false. If set to true, the SDK will NOT attempt to parse IP addresses (attached to the user object at user.ip) into Country codes at evaluation time, when needed for evaluation.
+<ResponseField name="wait_for_country_lookup_init" type="Option<bool>" default="false">
+  When set to true, the SDK will wait for country lookup data (e.g., GeoIP or YAML files) to fully load during initialization. This may slow down by ~1 second startup but ensures that IP-to-country parsing is ready at evaluation time.
+</ResponseField>
 
-- **`wait_for_country_lookup_init`**  `Optional[bool]`
-  Default: false
-
-  When set to true, the SDK will wait for country lookup data (e.g., GeoIP or YAML files) to fully load during initialization. This may slow down by ~1 second startup but ensures that IP-to-country parsing is ready at evaluation time
-
-- **`environment`**: Option\<String\>
+<ResponseField name="environment" type="Option<String>">
   Environment parameter for evaluation.
+</ResponseField>
 
-- **`event_logging_adapter`**: Option\<Arc\<dyn EventLoggingAdapter\>\>
+<ResponseField name="event_logging_adapter" type="Option<Arc<dyn EventLoggingAdapter>>">
   Custom adapter for event logging.
+</ResponseField>
 
-- **`event_logging_flush_interval_ms`**: Option\<u32\>
+<ResponseField name="event_logging_flush_interval_ms" type="Option<u32>">
   How often events are flushed to Statsig servers (in milliseconds).
+</ResponseField>
 
-- **`event_logging_max_queue_size`**: Option\<u32\>
+<ResponseField name="event_logging_max_queue_size" type="Option<u32>">
   Maximum number of events to queue before forcing a flush.
+</ResponseField>
 
-- **`event_logging_max_pending_batch_queue_size`**: Option\<u32\>
+<ResponseField name="event_logging_max_pending_batch_queue_size" type="Option<u32>">
   Maximum number of batches of events to hold in buffer to retry.
+</ResponseField>
 
-- **`fallback_to_statsig_api`**: Option\<bool\>
+<ResponseField name="fallback_to_statsig_api" type="Option<bool>">
   Whether to fallback to the Statsig API if custom endpoints fail.
+</ResponseField>
 
-- **`id_lists_adapter`**: Option\<Arc\<dyn IdListsAdapter\>\>
+<ResponseField name="id_lists_adapter" type="Option<Arc<dyn IdListsAdapter>>">
   Custom adapter for ID lists.
+</ResponseField>
 
-- **`id_lists_sync_interval_ms`**: Option\<u32\>
+<ResponseField name="id_lists_sync_interval_ms" type="Option<u32>">
   How often the SDK updates ID lists from Statsig servers (in milliseconds).
+</ResponseField>
 
-- **`id_lists_url`**: Option\<String\>
+<ResponseField name="id_lists_url" type="Option<String>">
   Custom URL for fetching ID lists.
+</ResponseField>
 
-- **`init_timeout_ms`**: Option\<u64\>
+<ResponseField name="init_timeout_ms" type="Option<u64>">
   Sets the maximum timeout for initialization requests (in milliseconds).
+</ResponseField>
 
-- **`log_event_url`**: Option\<String\>
+<ResponseField name="log_event_url" type="Option<String>">
   Custom URL for logging events.
+</ResponseField>
 
-- **`observability_client`**: Option\<Weak\<dyn ObservabilityClient\>\>
+<ResponseField name="observability_client" type="Option<Weak<dyn ObservabilityClient>>">
   Client for collecting observability data.
+</ResponseField>
 
-- **`output_log_level`**: Option\<LogLevel\>
+<ResponseField name="output_log_level" type="Option<LogLevel>">
   Controls the verbosity of SDK logs.
+</ResponseField>
 
-- **`override_adapter`**: Option\<Arc\<dyn OverrideAdapter\>\>
+<ResponseField name="override_adapter" type="Option<Arc<dyn OverrideAdapter>>">
   Custom adapter for overrides.
+</ResponseField>
 
-- **`spec_adapters_config`**: Option\<Vec\<SpecAdapterConfig\>\>
+<ResponseField name="spec_adapters_config" type="Option<Vec<SpecAdapterConfig>>">
   Configuration for specification adapters.
+</ResponseField>
 
-- **`specs_adapter`**: Option\<Arc\<dyn SpecsAdapter\>\>
+<ResponseField name="specs_adapter" type="Option<Arc<dyn SpecsAdapter>>">
   Custom adapter for specifications.
+</ResponseField>
 
-- **`specs_sync_interval_ms`**: Option\<u32\>
+<ResponseField name="specs_sync_interval_ms" type="Option<u32>">
   How often the SDK updates specifications from Statsig servers (in milliseconds).
+</ResponseField>
 
-- **`specs_url`**: Option\<String\>
+<ResponseField name="specs_url" type="Option<String>">
   Custom URL for fetching feature specifications.
+</ResponseField>
 
-- **`global_custom_fields`**: Option\<HashMap\<String, DynamicValue\>\>
+<ResponseField name="global_custom_fields" type="Option<HashMap<String, DynamicValue>>">
   Global custom fields to include with all evaluations.
+</ResponseField>
 
-- **`proxy_config`**: Option\<ProxyConfig\>
+<ResponseField name="proxy_config" type="Option<ProxyConfig>">
   Configuration for connecting through a proxy server. The `ProxyConfig` struct has the following properties:
   - `proxy_host`: Option\<String\> - Specifies the proxy server host
   - `proxy_port`: Option\<u16\> - Specifies the proxy server port
   - `proxy_auth`: Option\<String\> - For proxy authentication (format: `"username:password"`)
   - `proxy_protocol`: Option\<String\> - Specifies the protocol (e.g., `"http"`, `"https"`)
+</ResponseField>
 
 
 ### Example Usage

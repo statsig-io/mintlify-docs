@@ -79,7 +79,7 @@ In Metric and Assignment sources, you can use Statsig Macros to directly inject 
 
 For example, in an incremental reload from `2023-09-01` to `2023-09-03`, this query:
 
-```
+```sql
 SELECT
     user_id,
     event,
@@ -91,7 +91,7 @@ WHERE dt BETWEEN {statsig_start_date} AND {statsig_end_date}
 
 resolves to
 
-```
+```sql
 SELECT
     user_id,
     event,
