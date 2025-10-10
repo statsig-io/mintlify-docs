@@ -1,53 +1,72 @@
-import { StatsigClient, StatsigOptions, StatsigUser } from "@statsig/js-client";
-import { useEffect, useState } from "react";
+(async function initializeStatsig() {
+  const STATSIG_CLIENT_KEY =
+    "client-Wql5Tkj3Wa3sE8VpFjWpCHCPHxYZMbq6RfcRZZVHFdm";
+  const STATSIG_SCRIPT_URL = `https://cdn.jsdelivr.net/npm/@statsig/js-client@3/build/statsig-js-client+session-replay+web-analytics.min.js?apikey=${STATSIG_CLIENT_KEY}`;
 
-import { StatsigAutoCapturePlugin } from "@statsig/web-analytics";
-import { StatsigSessionReplayPlugin } from "@statsig/session-replay";
+  // Load Statsig dependencies
+  const loadScript = (url) => {
+    return new Promise((resolve, reject) => {
+      const script = document.createElement("script");
+      script.src = url;
+      script.async = true;
+      script.onload = resolve;
+      script.onerror = reject;
+      document.head.appendChild(script);
+    });
+  };
 
-function getStatsig() {
-  const client = window.Statsig.StatsigClient.instance(
-    process.env.MINTLIFY_STATSIG_SDK_KEY,
-    {
-      environment:
-        process.env.NODE_ENV === "development" ? "development" : "production",
-    }
-  );
-  client.initializeAsync().catch((e) => console.error(e));
-  return client;
-}
+  try {
+    // console.log("Loading Statsig scripts...");
+    await loadScript(STATSIG_SCRIPT_URL);
 
-export function useExperiment(name) {
-  const statsig = getStatsig();
-  const [exp, setExp] = useState(
-    statsig.loadingState === "Ready" ? statsig.getExperiment(name) : null
-  );
-  useEffect(() => {
-    function handler() {
-      setExp(statsig.getExperiment(name));
-    }
-
-    statsig.on("values_updated", handler);
-    return () => {
-      statsig.off("values_updated", handler);
-    };
-  }, [name, statsig]);
-  return exp;
-}
-
-export function useDynamicConfig(name) {
-  const statsig = getStatsig();
-  const [config, setConfig] = useState(
-    statsig.loadingState === "Ready" ? statsig.getDynamicConfig(name) : null
-  );
-  useEffect(() => {
-    function handler() {
-      setConfig(statsig.getDynamicConfig(name));
+    const statsigNamespace = window.Statsig ?? window.StatsigSDK;
+    if (!statsigNamespace) {
+      throw new ReferenceError(
+        "Statsig namespace not available on window.Statsig or window.StatsigSDK"
+      );
     }
 
-    statsig.on("values_updated", handler);
-    return () => {
-      statsig.off("values_updated", handler);
-    };
-  }, [name, statsig]);
-  return config;
-}
+    const {
+      StatsigClient,
+      StatsigAutoCapturePlugin,
+      StatsigSessionReplayPlugin,
+    } = statsigNamespace;
+
+    if (typeof StatsigClient !== "function") {
+      throw new ReferenceError(
+        "StatsigClient constructor not found in the Statsig namespace"
+      );
+    }
+
+    const plugins = [];
+    if (typeof StatsigAutoCapturePlugin === "function") {
+      plugins.push(new StatsigAutoCapturePlugin());
+    } else {
+      console.warn(
+        "StatsigAutoCapturePlugin not available, skipping autocapture"
+      );
+    }
+
+    if (typeof StatsigSessionReplayPlugin === "function") {
+      plugins.push(new StatsigSessionReplayPlugin());
+    } else {
+      console.warn(
+        "StatsigSessionReplayPlugin not available, skipping session replay"
+      );
+    }
+
+    const options = plugins.length > 0 ? { plugins } : undefined;
+    const client = new StatsigClient(
+      STATSIG_CLIENT_KEY,
+      {
+        userID: "anonymous",
+      },
+      options
+    );
+
+    // console.log("Initializing Statsig client...");
+    await client.initializeAsync();
+  } catch (error) {
+    console.error("Failed to initialize Statsig:", error);
+  }
+})();
