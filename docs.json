@@ -18,10 +18,7 @@
     "family": "Geist"
   },
   "contextual": {
-    "options": [
-      "copy",
-      "chatgpt"
-    ]
+    "options": ["copy", "chatgpt"]
   },
   "navigation": {
     "tabs": [
@@ -31,10 +28,7 @@
           {
             "group": "Get Started",
             "icon": "rocket",
-            "pages": [
-              "welcome",
-              "understanding-platform"
-            ]
+            "pages": ["welcome", "understanding-platform"]
           },
           {
             "group": "Experiments",
@@ -245,20 +239,11 @@
                 ]
               },
               "product-analytics/dashboards",
-<<<<<<< Updated upstream
-              "product-analytics/topline-alerts",
-              {
-                "group": "Users",
-                "pages": [
-                  "product-analytics/users-tab",
-                  "product-analytics/user-profiles"
-=======
               {
                 "group": "Alerts",
                 "pages": [
                   "metrics/rollout-alerts",
                   "product-analytics/topline-alerts"
->>>>>>> Stashed changes
                 ]
               }
             ]
@@ -267,7 +252,6 @@
             "group": "Other Features",
             "icon": "bolt",
             "pages": [
-              
               {
                 "group": "Low-Code Experiments",
                 "pages": [
@@ -283,10 +267,7 @@
               },
               {
                 "group": "Web Analytics",
-                "pages": [
-                  "webanalytics/overview",
-                  "webanalytics/autocapture"
-                ]
+                "pages": ["webanalytics/overview", "webanalytics/autocapture"]
               },
               {
                 "group": "Infra Analytics",
@@ -904,9 +885,7 @@
               },
               {
                 "group": "Data Exports",
-                "pages": [
-                  "integrations/data-exports/overview"
-                ]
+                "pages": ["integrations/data-exports/overview"]
               },
               {
                 "group": "Serverless & Edge",
@@ -1000,15 +979,11 @@
                   },
                   {
                     "group": "Templates",
-                    "pages": [
-                      "experiments/templates/templates"
-                    ]
+                    "pages": ["experiments/templates/templates"]
                   },
                   {
                     "group": "Decision Framework",
-                    "pages": [
-                      "experiments/templates/decision-framework"
-                    ]
+                    "pages": ["experiments/templates/decision-framework"]
                   }
                 ]
               },
@@ -1033,15 +1008,11 @@
               "infrastructure/introduction",
               {
                 "group": "Open Telemetry",
-                "pages": [
-                  "server/concepts/open_telemetry"
-                ]
+                "pages": ["server/concepts/open_telemetry"]
               },
               {
                 "group": "Cloudflare",
-                "pages": [
-                  "server/concepts/cloudflare"
-                ]
+                "pages": ["server/concepts/cloudflare"]
               },
               {
                 "group": "Domains & IP",
@@ -1104,7 +1075,7 @@
       "destination": "/statsig-warehouse-native/features/statistics/variance-reduction"
     },
     {
-      "source":"/statsig-warehouse-native/features/other-features",
+      "source": "/statsig-warehouse-native/features/other-features",
       "destination": "/statsig-warehouse-native/features/other-useful-features"
     },
     {
@@ -1340,13 +1311,6 @@
       "destination": "/client/react"
     },
     {
-<<<<<<< Updated upstream
-      "source": "/dynamic-config/overview",
-      "destination": "/dynamic-config"
-    },
-    {
-=======
->>>>>>> Stashed changes
       "source": "/experiments/statistical-methods/methodologies/srm-checks",
       "destination": "/stats-engine/methodologies/srm-checks"
     },
@@ -1666,7 +1630,7 @@
       "source": "/developer-guides/feature-flags-in-react",
       "destination": "/client/react"
     },
-  
+
     {
       "source": "/experiments-plus/geotests/methodology",
       "destination": "/statsig-warehouse-native/geotests/methodology"
