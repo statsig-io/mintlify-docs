@@ -44,7 +44,9 @@ The copied URL will look something like this:
 
 You can extract information from here to get the required fields for Account Name, which for this example would be `xy12345.us-central1.gcp`.
 
-<Info>
+<Info> 
+
+### Using \<orgname\>-\<account_name\> for Account Name
 
 For the Account Name field, you can also enter your Snowflake [account identifier](https://docs.snowflake.com/en/user-guide/admin-account-identifier.html#format-1-preferred-account-name-in-your-organization), which typically takes the form `<orgname>-<account_name>`. To find the `<orgname>` in the Snowflake console, click on your account profile (usually at the bottom left) to view account details as shown below.
 
@@ -78,7 +80,7 @@ Replace `<USER>` and `<PASSWORD>` with your value, which you will copy over into
 
 Depending on the scope of your data, you may want to adjust the size of the warehouse created.
 
-```sql
+```sql expandable
 BEGIN;
   -- set up variable values to be used in statements later
   -- make sure to configure user_name and user_password with your own values
