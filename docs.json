@@ -245,20 +245,11 @@
                 ]
               },
               "product-analytics/dashboards",
-<<<<<<< Updated upstream
-              "product-analytics/topline-alerts",
-              {
-                "group": "Users",
-                "pages": [
-                  "product-analytics/users-tab",
-                  "product-analytics/user-profiles"
-=======
               {
                 "group": "Alerts",
                 "pages": [
                   "metrics/rollout-alerts",
                   "product-analytics/topline-alerts"
->>>>>>> Stashed changes
                 ]
               }
             ]
