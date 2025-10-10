@@ -54,16 +54,30 @@
     }
 
     const options = plugins.length > 0 ? { plugins } : undefined;
-    const client = new StatsigClient(
+
+    // Check if the current environment includes development indicators
+    const isDevelopmentMode =
+      window.location.hostname === "localhost" ||
+      window.location.hostname === "127.0.0.1";
+
+    const environment = isDevelopmentMode ? "development" : "production";
+    const _client = new StatsigClient(
       STATSIG_CLIENT_KEY,
       {
-        userID: "anonymous",
+        userId: "", // Anonymous user; replace with stable ID if available
+        environment: environment,
       },
       options
     );
 
-    await client.initializeAsync();
+    await _client.initializeAsync();
+
+    // Optionally update userId after initialization if stableID is available
+    const stableID = _client.getContext?.()?.stableID;
+    if (stableID) {
+      await _client.updateUserAsync({ userID: stableID });
+    }
   } catch (error) {
-    console.error("Failed to initialize Statsig:", error);
+    // noop
   }
 })();
