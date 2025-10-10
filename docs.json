@@ -245,12 +245,17 @@
                 ]
               },
               "product-analytics/dashboards",
-              "product-analytics/topline-alerts",
+              {
+                "group": "Alerts",
+                "pages": [
+                  "metrics/rollout-alerts",
+                  "product-analytics/topline-alerts"
               {
                 "group": "Users",
                 "pages": [
                   "product-analytics/users-tab",
                   "product-analytics/user-profiles"
+
                 ]
               }
             ]
