@@ -1,39 +1,69 @@
 import { LocalModeSnippet } from "../../sdks/_LocalModeSnippet.mdx";
 import { data_store } from "../concepts/data_store.mdx";
 
-You can pass in an optional parameter `options` in addition to the server secret during initialization to customize the Statsig client. Here are the current options and we are always adding more to the list:
+You can pass in an optional parameter `options` in addition to the server secret during initialization to customize the Statsig client.
 
-- **initTimeoutMs**: double, default 3000
-  - used to decide how long the Statsig client waits for the initial network request to respond before calling the completion block. The Statsig client will return either cached values (if any) or default values if checkGate/getConfig/getExperiment is called before the initial network request completes.
-  - if you always want to wait for the latest values fetched from Statsig server, you should set this to 0 so we do not timeout the network request.
-  - unit is milliseconds.
-- **environment tier**: string, default null
-  - used to signal the environment tier the user is currently in
-  - e.g. passing in a value of `"staging"` will allow your users to pass any condition that pass for the staging environment tier, and fail any condition that only passes for other environment tiers.
-  - example:
-```
-val options = StatsigOptions()
-options.setTier("staging")
-```
+<ResponseField name="initTimeoutMs" type="double" default="3000">
+  Milliseconds to wait for the initial network request before calling the completion block. The Statsig client will return either cached values (if any) or default values if checkGate/getConfig/getExperiment is called before the initial network request completes. Set to `0` to wait indefinitely for the latest values.
+</ResponseField>
 
-- **bootstrapValues**: string?, default null
-  - a string that represents all rules for all feature gates, dynamic configs and experiments. It can be provided to bootstrap the Statsig server SDK at initialization in case your server runs into network issue or Statsig server is down temporarily.
-- **rulesUpdatedCallback**: ((rules: String) -> Unit)?, default null
-  - a callback function that's called whenever we have an update for the rules; it's called with a JSON string (used as is for `bootstrapValues` mentioned above) and a timestamp.
-- **localMode** - boolean, default false
-  - <LocalModeSnippet type="server" />
-- **api** - String?, default null
-  - The API endpoint to use for initialization and logging. Default to `STATSIG_API_URL_BASE` 
-- **rulesetsSyncIntervalMs** - Long, default 10 * 1000
-- **idListsSyncIntervalMs** - Long, default 60 * 1000
-- **dataStore**
-  - [Data Store/Adapter Concept](/server/concepts/data_store)
-- **userPersistentStorage**: IUserPersistentStorage default null
-  - A persistent storage adapter for running sticky experiments. See [Persistent Assignment](/server/concepts/persistent_assignment)
-- **customLogger** - LoggerInterface
-- **disableAllLogging** - Boolean, default false
-- **fallbackToStatsigAPI** - Boolean, default false
-- **proxyConfig** - ProxyConfig
+<ResponseField name="environment tier" type="string" default="null">
+  Used to signal the environment tier the user is currently in. E.g. passing in a value of `"staging"` will allow your users to pass any condition that pass for the staging environment tier, and fail any condition that only passes for other environment tiers.
+  
+  Example:
+  ```kotlin
+  val options = StatsigOptions()
+  options.setTier("staging")
+  ```
+</ResponseField>
+
+<ResponseField name="bootstrapValues" type="string?" default="null">
+  A string that represents all rules for all feature gates, dynamic configs and experiments. It can be provided to bootstrap the Statsig server SDK at initialization in case your server runs into network issue or Statsig server is down temporarily.
+</ResponseField>
+
+<ResponseField name="rulesUpdatedCallback" type="((rules: String) -> Unit)?" default="null">
+  A callback function that's called whenever we have an update for the rules; it's called with a JSON string (used as is for `bootstrapValues` mentioned above) and a timestamp.
+</ResponseField>
+
+<ResponseField name="localMode" type="boolean" default="false">
+  <LocalModeSnippet type="server" />
+</ResponseField>
+
+<ResponseField name="api" type="String?" default="null">
+  The API endpoint to use for initialization and logging. Defaults to `STATSIG_API_URL_BASE`.
+</ResponseField>
+
+<ResponseField name="rulesetsSyncIntervalMs" type="Long" default="10000">
+  How often the SDK updates rulesets from Statsig servers (in milliseconds).
+</ResponseField>
+
+<ResponseField name="idListsSyncIntervalMs" type="Long" default="60000">
+  How often the SDK updates ID lists from Statsig servers (in milliseconds).
+</ResponseField>
+
+<ResponseField name="dataStore" type="IDataStore">
+  A data store with custom storage behavior for config specs. See [Data Store/Adapter Concept](/server/concepts/data_store).
+</ResponseField>
+
+<ResponseField name="userPersistentStorage" type="IUserPersistentStorage" default="null">
+  A persistent storage adapter for running sticky experiments. See [Persistent Assignment](/server/concepts/persistent_assignment).
+</ResponseField>
+
+<ResponseField name="customLogger" type="LoggerInterface">
+  Custom logger implementation for SDK logging.
+</ResponseField>
+
+<ResponseField name="disableAllLogging" type="Boolean" default="false">
+  Disable all event logging.
+</ResponseField>
+
+<ResponseField name="fallbackToStatsigAPI" type="Boolean" default="false">
+  When set to true, the SDK will fallback to using the Statsig API directly if custom adapters fail to load configurations.
+</ResponseField>
+
+<ResponseField name="proxyConfig" type="ProxyConfig">
+  Configuration for a proxy server.
+  
   ```kotlin
     /**
     * Represents configuration for a proxy.

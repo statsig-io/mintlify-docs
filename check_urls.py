@@ -7,9 +7,13 @@ def check_url(row):
     path = row['cleaned_url'].replace('docs.statsig.com', '')
     if not path.startswith('/'):
         path = '/' + path
+    
+    test_url = f'https://statsig-4b2ff144.mintlify.app{path}'
+    row['test_url'] = test_url
+    
     try:
-        print(f' getting https://statsig-4b2ff144.mintlify.app{path}')
-        r = requests.get(f'https://statsig-4b2ff144.mintlify.app{path}', timeout=2)
+        print(f' getting {test_url}')
+        r = requests.get(test_url, timeout=2)
 
         # Extract title and check if it's a 404 page
         title_match = re.search(r'<title>(.*?)</title>', r.text, re.IGNORECASE)
@@ -25,6 +29,6 @@ with ThreadPoolExecutor(max_workers=40) as executor:
     rows = list(executor.map(check_url, rows))
 
 with open('old_docs_urls.csv', 'w', newline='') as f:
-    w = csv.DictWriter(f, ['f0_', 'cleaned_url', 'exists in mint docs'])
+    w = csv.DictWriter(f, ['f0_', 'cleaned_url', 'test_url', 'exists in mint docs'])
     w.writeheader()
     w.writerows(rows)
