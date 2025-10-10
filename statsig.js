@@ -14,9 +14,7 @@
       document.head.appendChild(script);
     });
   };
-
   try {
-    // console.log("Loading Statsig scripts...");
     await loadScript(STATSIG_SCRIPT_URL);
 
     const statsigNamespace = window.Statsig ?? window.StatsigSDK;
@@ -64,7 +62,6 @@
       options
     );
 
-    // console.log("Initializing Statsig client...");
     await client.initializeAsync();
   } catch (error) {
     console.error("Failed to initialize Statsig:", error);
