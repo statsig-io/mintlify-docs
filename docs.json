@@ -730,7 +730,7 @@
               {
                 "group": "Legacy Server SDKs",
                 "pages": [
-                  "server/legacy-sdks",
+                  "server-core/legacy-sdks",
                   "server/nodejsServerSDK",
                   "server/pythonSDK",
                   "server/erlang",
@@ -1098,6 +1098,10 @@
   },
   "redirects": [
     {
+      "source": "/sdk/debugging",
+      "destination": "/sdks/debugging"
+    },
+    {
       "source": "/stats-engine/methodologies/delta-method-whn",
       "destination": "/experiments/statistical-methods/methodologies/delta-method.mdx"
     },
@@ -1222,6 +1226,10 @@
       "destination": "/product-analytics/topline-alerts"
     },
     {
+      "source": "/product-analytics/topline_alerts",
+      "destination": "/product-analytics/topline-alerts"
+    },
+    {
       "source": "/statsig-warehouse-native/pipeline-overview",
       "destination": "/statsig-warehouse-native/analysis-tools/pipeline-overview"
     },
@@ -1267,7 +1275,7 @@
     },
     {
       "source": "/experiments-plus/cure",
-      "destination": "statsig-warehouse-native/cure/introduction"
+      "destination": "/statsig-warehouse-native/cure/introduction"
     },
     {
       "source": "/client/javascript-sdk/stable-id",
@@ -1316,10 +1324,6 @@
     {
       "source": "/console-api/*",
       "destination": "/console-api/introduction"
-    },
-    {
-      "source": "/guides/sidecar-experiments/advanced-configurations",
-      "destination": "/guides/sidecar-experiments/advanced-configurations"
     },
     {
       "source": "experiments-plus/cure",
