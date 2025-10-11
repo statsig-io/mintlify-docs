@@ -350,7 +350,7 @@
                       },
                       "metrics/custom-metrics",
                       "metrics/precomputed-metrics",
-                      "metrics/user-dimensions",
+                      "metrics/user-property",
                       "metrics/metric-dimensions"
                     ]
                   },
@@ -667,7 +667,7 @@
             "group": "Client SDKs",
             "pages": [
               "client/javascript-sdk",
-              "client/html",
+              "client/html-snippet",
               "client/React",
               "client/Next",
               "client/Android",
@@ -692,7 +692,7 @@
                         "group": "JS On Device Evaluation SDKs",
                         "pages": [
                           "client/jsOnDeviceEvaluationSDK",
-                          "client/ReactNativeOnDeviceEvaluation.mdx"
+                          "client/ReactNativeOnDeviceEvaluation"
                         ]
                       }
                     ]
@@ -1098,12 +1098,24 @@
   },
   "redirects": [
     {
+      "source": "/metrics/user-dimensions",
+      "destination": "/metrics/user-property"
+    },
+    {
+      "source": "/infrastructure/managed-proxy",
+      "destination": "/infrastructure/api_proxy/managed-proxy"
+    },
+    {
+      "source": "/guides/experimentation-program",
+      "destination": "/statsig-warehouse-native/guides/experimentation-program"
+    },
+    {
       "source": "/sdk/debugging",
       "destination": "/sdks/debugging"
     },
     {
       "source": "/stats-engine/methodologies/delta-method-whn",
-      "destination": "/experiments/statistical-methods/methodologies/delta-method.mdx"
+      "destination": "/experiments/statistical-methods/methodologies/delta-method"
     },
     {
       "source": "/experimentation/quality-score-whn",
@@ -1131,23 +1143,23 @@
     },
     {
       "source": "/statsig-warehouse-native/features/statistics/confidence-intervals",
-      "destination": "statsig-warehouse-native/features/statistics/confidence-intervals.mdx"
+      "destination": "statsig-warehouse-native/features/statistics/confidence-intervals"
     },
     {
       "source": "/stats-engine/topline-impact-whn",
-      "destination": "statsig-warehouse-native/features/statistics/topline-impact.mdx"
+      "destination": "statsig-warehouse-native/features/statistics/topline-impact"
     },
     {
       "source": "/stats-engine/methodologies/one-sided-test-whn",
-      "destination": "statsig-warehouse-native/features/statistics/methodologies/one-sided-test.mdx"
+      "destination": "statsig-warehouse-native/features/statistics/methodologies/one-sided-test"
     },
     {
       "source": "/stats-engine/metric-deltas-whn",
-      "destination": "statsig-warehouse-native/features/statistics/metric-deltas.mdx"
+      "destination": "statsig-warehouse-native/features/statistics/metric-deltas"
     },
     {
       "source": "/client/iOS/repo-migration-guide",
-      "destination": "/client/migration-guides/ios-repo-migration-guide.mdx"
+      "destination": "/client/migration-guides/ios-repo-migration-guide"
     },
     {
       "source": "/developer-guides/abtest-in-javascript",
@@ -1171,7 +1183,7 @@
     },
     {
       "source": "/client/onDevice",
-      "destination": "client/onDeviceOverview.mdx"
+      "destination": "client/onDeviceOverview"
     },
     {
       "source": "/guides/srm/",
@@ -1199,19 +1211,19 @@
     },
     {
       "source": "/client/javascript-sdk/using-evaluations-data-adapter",
-      "destination": "/client/javascript-mono/UsingEvaluationsDataAdapter.mdx"
+      "destination": "/client/javascript-mono/UsingEvaluationsDataAdapter"
     },
     {
       "source": "/guides/production",
-      "destination": "/statsig-warehouse-native/guides/production.mdx"
+      "destination": "/statsig-warehouse-native/guides/production"
     },
     {
       "source": "/client/js-on-device-eval-client",
-      "destination": "/client/jsOnDeviceEvaluationSDK.mdx"
+      "destination": "/client/jsOnDeviceEvaluationSDK"
     },
     {
       "source": "/server-core/java/migration",
-      "destination": "/server-core/migration-guides/java.mdx"
+      "destination": "/server-core/migration-guides/java"
     },
     {
       "source": "/feature-flags/bots",
@@ -1239,14 +1251,14 @@
     },
     {
       "source": "/guides/running-a-poc",
-      "destination": "statsig-warehouse-native/guides/running_a_poc"
+      "destination": "/statsig-warehouse-native/guides/running_a_poc"
     },
     {
       "source": "/server/javaSdk",
       "destination": "/server/java"
     },
     {
-      "source": "/users/profiles/",
+      "source": "/users/profiles",
       "destination": "/product-analytics/user-profiles"
     },
     {
@@ -1255,7 +1267,7 @@
     },
     {
       "source": "/statsig-warehouse-native/guides/forwarded-data",
-      "destination": "/connecting-your-warehouse/forwarded-data"
+      "destination": "/statsig-warehouse-native/connecting-your-warehouse/forwarded-data"
     },
     {
       "source": "/server-core/dotnetCoreSDK",
@@ -1271,7 +1283,11 @@
     },
     {
       "source": "/client/javascript-sdk/migrating-from-statsig-react",
-      "destination": "/client/migration-guides/MigrationFromOldReactClient"
+      "destination": "/client/migration-guides/MigrationFromOldReact"
+    },
+    {
+      "source": "/client/migration-guides/MigrationFromOldReactSDK",
+      "destination": "/client/migration-guides/MigrationFromOldReact"
     },
     {
       "source": "/experiments-plus/cure",
