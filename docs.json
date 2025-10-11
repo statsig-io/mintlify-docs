@@ -1166,10 +1166,6 @@
       "destination": "/client/javascript-sdk"
     },
     {
-      "source": "/experiments-plus/stratified-sampling-whn",
-      "destination": "experiments/advanced-setup/stratified-sampling"
-    },
-    {
       "source": "/statsig-warehouse-native/guides/dummy_evaluation",
       "destination": "/statsig-warehouse-native/guides/playground_eval"
     },
@@ -1262,10 +1258,6 @@
       "destination": "/product-analytics/user-profiles"
     },
     {
-      "source": "/infrastructure/managed-proxy",
-      "destination": "infrastructure/api_proxy/managed-proxy"
-    },
-    {
       "source": "/statsig-warehouse-native/guides/forwarded-data",
       "destination": "/statsig-warehouse-native/connecting-your-warehouse/forwarded-data"
     },
@@ -1340,10 +1332,6 @@
     {
       "source": "/console-api/*",
       "destination": "/console-api/introduction"
-    },
-    {
-      "source": "experiments-plus/cure",
-      "destination": "/statsig-warehouse-native/cure/introduction"
     },
     {
       "source": "/stats-engine/methodologies/cuped",
