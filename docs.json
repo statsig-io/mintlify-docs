@@ -54,7 +54,7 @@
                 ]
               },
               {
-                "group": "Configure Stats Methods",
+                "group": "Configure Stats Engine",
                 "pages": [
                   {
                     "group": "Experiment Types",
@@ -133,7 +133,7 @@
                 ]
               },
               {
-                "group": "Ending An Experiment",
+                "group": "End An Experiment",
                 "pages": [
                   "experiments/ending/ending-experiment",
                   "experiments/ending/make-decision",
@@ -153,18 +153,18 @@
                   "experiments/interpreting-results/best-practices",
                   "experiments/interpreting-results/reconciling-experiment-results",
                   "experiments/interpreting-results/faq",
-                  "experiments/interpreting-results/participating-units"
-                ]
-              },
-              {
-                "group": "Further Analysis",
-                "pages": [
-                  "experiments/interpreting-results/custom-queries",
-                  "experiments/exploring-results/aggregated-impact",
-                  "experiments/statistical-methods/topline-impact",
-                  "experiments/exploring-results/meta-analysis",
-                  "experiments/exploring-results/differential-impact-detection",
-                  "experiments/exploring-results/interaction-detection"
+                  "experiments/interpreting-results/participating-units",
+                  {
+                    "group": "Further Analysis",
+                    "pages": [
+                      "experiments/interpreting-results/custom-queries",
+                      "experiments/exploring-results/aggregated-impact",
+                      "experiments/statistical-methods/topline-impact",
+                      "experiments/exploring-results/meta-analysis",
+                      "experiments/exploring-results/differential-impact-detection",
+                      "experiments/exploring-results/interaction-detection"
+                    ]
+                  }
                 ]
               },
               "experiments/layers-overview",
@@ -230,21 +230,38 @@
             ]
           },
           {
-            "group": "Product Analytics",
+            "group": "Analytics",
             "icon": "chart-line",
             "pages": [
-              "product-analytics/overview",
-              "product-analytics/drilldown",
               {
-                "group": "Other Chart Types",
+                "group": "Product Analytics",
                 "pages": [
+                  "product-analytics/overview",
+                  "product-analytics/drilldown",
                   "product-analytics/funnels",
                   "product-analytics/retention",
                   "product-analytics/distribution",
-                  "product-analytics/user-journeys"
+                  "product-analytics/user-journeys",
+                  "product-analytics/dashboards",
+                  {
+                    "group": "Users",
+                    "pages": [
+                      "product-analytics/users-tab",
+                      "product-analytics/user-profiles"
+    
+                    ]
+                  }
                 ]
               },
-              "product-analytics/dashboards",
+              {
+                "group": "Infra Analytics",
+                "pages": [
+                  "infra-analytics/overview",
+                  "infra-analytics/logs-explorer",
+                  "infra-analytics/logs-explorer-queries",
+                  "infra-analytics/topline-alerts-logs"
+                ]
+              },
               {
                 "group": "Alerts",
                 "pages": [
@@ -253,13 +270,22 @@
                 ]
               },
               {
-                "group": "Users",
+                "group": "Web Analytics",
                 "pages": [
-                  "product-analytics/users-tab",
-                  "product-analytics/user-profiles"
-
+                  "webanalytics/overview",
+                  "webanalytics/autocapture"
                 ]
               }
+            ]
+          },
+          {
+            "group": "AI Evals",
+            "icon": "magic",
+            "pages": [
+              "ai-evals/overview",
+              "ai-evals/prompts",
+              "ai-evals/offline-evals",
+              "ai-evals/online-evals"
             ]
           },
           {
@@ -288,22 +314,6 @@
                 ]
               },
               {
-                "group": "Web Analytics",
-                "pages": [
-                  "webanalytics/overview",
-                  "webanalytics/autocapture"
-                ]
-              },
-              {
-                "group": "Infra Analytics",
-                "pages": [
-                  "infra-analytics/overview",
-                  "infra-analytics/logs-explorer",
-                  "infra-analytics/logs-explorer-queries",
-                  "infra-analytics/topline-alerts-logs"
-                ]
-              },
-              {
                 "group": "Session Replay",
                 "pages": [
                   "session-replay/overview",
@@ -314,23 +324,6 @@
                 ]
               },
               "integrations/mcp",
-              {
-                "group": "AI Evals",
-                "pages": [
-                  "ai-evals/overview",
-                  "ai-evals/getting-started",
-                  "ai-evals/prompts",
-                  "ai-evals/graders",
-                  "ai-evals/offline-evals",
-                  {
-                    "group": "Online Evals",
-                    "pages": [
-                      "ai-evals/online-evals",
-                      "ai-evals/create-an-online-eval"
-                    ]
-                  }
-                ]
-              },
               {
                 "group": "Data & Metrics",
                 "pages": [
@@ -378,7 +371,6 @@
                       "metrics/create-user-funnels",
                       "metrics/create-user-flows",
                       "metrics/count-distinct",
-                      "metrics/autogenerated",
                       "metrics/hierarchical-id"
                     ]
                   }
@@ -686,6 +678,7 @@
                   {
                     "group": "On Device Evaluation SDKs",
                     "pages": [
+                      "client/onDeviceOverview",
                       "client/swiftOnDeviceEvaluationSDK",
                       "client/androidOnDeviceEvaluationSDK",
                       {
@@ -1078,7 +1071,7 @@
                 "pages": [
                   "infrastructure/reliability-faq",
                   "guides/uptime",
-                  "infrastructure/monitoring"
+                  "infrastructure/sdk-monitoring"
                 ]
               }
             ]
@@ -1097,6 +1090,62 @@
     }
   },
   "redirects": [
+    {
+      "source": "/client/js-on-device-eval-client/using-evaluations-data-adapter",
+      "destination": "/client/javascript-mono/UsingSpecsDataAdapter"
+    },
+    {
+      "source": "/autotune",
+      "destination": "/autotune/overview"
+    },
+    {
+      "source": "/http-api",
+      "destination": "/http-api/overview"
+    },
+    {
+      "source": "/product-analytics/alerts/rollout_alerts",
+      "destination": "/metrics/rollout-alerts"
+    },
+    {
+      "source": "/server/phpSDK",
+      "destination": "/server/php"
+    },
+    {
+      "source": "/server/rustSDK",
+      "destination": "/server/rust"
+    },
+    {
+      "source": "/server/erlangSDK",
+      "destination": "/server/erlang"
+    },
+    {
+      "source": "/client/concepts/user",
+      "destination": "/sdks/user"
+    },
+    {
+      "source": "/infrastructure/forward-proxy",
+      "destination": "/server/concepts/forward_proxy"
+    },
+    {
+      "source": "/guides/device-level-experiment",
+      "destination": "/guides/first-device-level-experiment"
+    },
+    {
+      "source": "/guides/device-level-experiments",
+      "destination": "/guides/first-device-level-experiment"
+    },
+    {
+      "source": "/stats-engine/methodologies/winsorization",
+      "destination": "/experiments/statistical-methods/methodologies/winsorization"
+    },
+    {
+      "source": "/metrics",
+      "destination": "/metrics/101"
+    },
+    {
+      "source": "/stats-engine",
+      "destination": "/statsig-warehouse-native/features/experiment-options"
+    },
     {
       "source": "/metrics/user-dimensions",
       "destination": "/metrics/user-property"
@@ -1120,10 +1169,6 @@
     {
       "source": "/experimentation/quality-score-whn",
       "destination": "/statsig-warehouse-native/features/quality-score"
-    },
-    {
-      "source": "/experimentation/quality-score-whn/",
-      "destination": "/experiments/setup/quality-score"
     },
     {
       "source": "/stats-engine/variance-whn",
@@ -1179,15 +1224,19 @@
     },
     {
       "source": "/client/onDevice",
-      "destination": "client/onDeviceOverview"
+      "destination": "/client/onDeviceOverview"
     },
     {
-      "source": "/guides/srm/",
+      "source": "/guides/srm",
       "destination": "experiments/monitoring/srm"
     },
     {
-      "source": "/pulse/access-whn/",
+      "source": "/pulse/access-whn",
       "destination": "/experiments/interpreting-results/access-whn"
+    },
+    {
+      "source": "/infrastructure/monitoring",
+      "destination": "/infrastructure/sdk-monitoring"
     },
     {
       "source": "/sdk_monitoring",
@@ -1207,6 +1256,10 @@
     },
     {
       "source": "/client/javascript-sdk/using-evaluations-data-adapter",
+      "destination": "/client/javascript-mono/UsingEvaluationsDataAdapter"
+    },
+    {
+      "source": "/client/javascript/using-evaluations-data-adapter",
       "destination": "/client/javascript-mono/UsingEvaluationsDataAdapter"
     },
     {
@@ -1316,6 +1369,18 @@
     {
       "source": "/sdk-keys/:slug*",
       "destination": "/sdks/:slug*"
+    },
+    {
+      "source": "/experiments-plus",
+      "destination": "/experiments/overview"
+    },
+    {
+      "source": "/experiments",
+      "destination": "/experiments/overview"
+    },
+    {
+      "source": "/experiments/index",
+      "destination": "/experiments/overview"
     },
     {
       "source": "/experiments-plus/:slug*",
@@ -1538,10 +1603,6 @@
       "destination": "/release-pipeline/overview"
     },
     {
-      "source": "/stats-engine/methodologies/winsorization",
-      "destination": "/experiments/statistical-methods/methodologies/winsorization"
-    },
-    {
       "source": "/stats-engine/methodologies/bonferroni-correction",
       "destination": "/experiments/statistical-methods/methodologies/bonferroni-correction"
     },
@@ -1676,10 +1737,6 @@
     {
       "source": "/guides/experiments",
       "destination": "/experiments-plus/overview"
-    },
-    {
-      "source": "/experiments-plus",
-      "destination": "/experiments/overview"
     },
     {
       "source": "/developer-guides/feature-flags-in-react",

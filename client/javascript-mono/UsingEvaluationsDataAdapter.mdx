@@ -1,16 +1,8 @@
 ---
 title: Using EvaluationsDataAdapter
-sidebar_label: EvaluationsDataAdapter
-displayed_sidebar: cloud
-keywords:
-  - owner:brock
-last_update:
-  date: 2025-09-18
+sidebarTitle: EvaluationsDataAdapter
+description: Learn how to use and customize the StatsigEvaluationsDataAdapter for caching and fetching evaluation data.
 ---
-
-import Tabs from "@theme/Tabs";
-import TabItem from "@theme/TabItem";
-import GitHubEmbed from "@site/src/components/GitHubEmbed";
 
 The `StatsigEvaluationsDataAdapter` is the default `EvaluationsDataAdapter` used by a `StatsigClient` instance.
 
@@ -40,7 +32,16 @@ this could lead to values changing mid-session as newer values arrive from the n
 
 ### Getting the Data Adapter
 
-<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/precomputed-client/sample-precomp-get-data-adapter.tsx" />
+You can access the data adapter from your Statsig client instance:
+
+```typescript
+const client = new StatsigClient('client-key', { userID: 'user-123' });
+await client.initializeAsync();
+
+const dataAdapter = client.dataAdapter;
+```
+
+[View full example on GitHub](https://github.com/statsig-io/js-client-monorepo/blob/main/samples/react/src/samples/precomputed-client/sample-precomp-get-data-adapter.tsx)
 
 ### Bootstrapping
 
@@ -49,7 +50,19 @@ Statsig Server SDK on your backend and do not wish to make unnecessary network c
 
 This approach can also be useful if you are building a mobile app and want to bundle values with your application. Then you can load the values from a local file at startup and provide them to the data adapter.
 
-<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/precomputed-client/sample-precomp-bootstrap.tsx" />
+```typescript
+import { StatsigClient } from '@statsig/js-client';
+
+const client = new StatsigClient('client-key', { userID: 'user-123' });
+
+// Bootstrap with data from server
+const bootstrapData = /* data from server or local file */;
+await client.dataAdapter.setData(bootstrapData);
+
+await client.initializeAsync();
+```
+
+[View full example on GitHub](https://github.com/statsig-io/js-client-monorepo/blob/main/samples/react/src/samples/precomputed-client/sample-precomp-bootstrap.tsx)
 
 If you are using a server SDK to bootstrap your js/react app, you will need to make some updates to how your server SDK generates values.  One of the optimizations we made with this new js-client SDK was to remove the `sha256` library for hashing gate/experiment names.  Instead, we use a `djb2` hash.  By default, all server SDKs generate `sha256` hashes of gate/experiment names in the `getClientInitializeResponse` method.  You will need to set the hash algorithm parameter to that method call to `"djb2"` instead in order to bootstrap this new client SDK.  One of the benefits to this hashing algorithm is it will make the entire payload smaller as well, so its a net win on package size, speed, and payload size for the SDK.
 
@@ -67,7 +80,21 @@ statsig.getClientInitializeResponse(
 
 ### Prefetching
 
-<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/precomputed-client/sample-precomp-prefetch.tsx" />
+You can manually trigger a prefetch for a user before calling `updateUser`:
+
+```typescript
+const client = new StatsigClient('client-key', { userID: 'user-123' });
+await client.initializeAsync();
+
+// Prefetch data for a different user
+const newUser = { userID: 'user-456' };
+await client.dataAdapter.prefetchData(newUser);
+
+// Update to the new user (will use prefetched data)
+await client.updateUserAsync(newUser);
+```
+
+[View full example on GitHub](https://github.com/statsig-io/js-client-monorepo/blob/main/samples/react/src/samples/precomputed-client/sample-precomp-prefetch.tsx)
 
 ### Custom Implementation
 
@@ -119,19 +146,17 @@ prefetchData: (user: StatsigUser) => Promise<void>;
 setData: (data: string) => Promise<void>;
 ```
 
-:::note
-You can use <code>setDataLegacy</code> if your Server SDK is outdated.
-:::
-<details>
-  <summary>setData is supported by the following Statsig Server SDKs</summary>
-   <ul>
-    <li>node-js-server-sdk@5.20.0</li>
-    <li>java-server-sdk@1.18.0</li>
-    <li>ruby-sdk@1.34.0</li>
-    <li>dotnet-sdk@1.25.0</li>
-    <li>php-sdk@3.2.0</li>
-   </ul>
-</details>
+<Note>
+You can use `setDataLegacy` if your Server SDK is outdated.
+</Note>
+
+<Accordion title="setData is supported by the following Statsig Server SDKs">
+- node-js-server-sdk@5.20.0
+- java-server-sdk@1.18.0
+- ruby-sdk@1.34.0
+- dotnet-sdk@1.25.0
+- php-sdk@3.2.0
+</Accordion>
 
 
 ---

@@ -1,16 +1,8 @@
 ---
 title: Using SpecsDataAdapter
-sidebar_label: SpecsDataAdapter
-slug: /client/js-on-device-eval-client/using-evaluations-data-adapter
-keywords:
-  - owner:brock
-last_update:
-  date: 2025-09-18
+sidebarTitle: SpecsDataAdapter
+description: Learn how to use and customize the StatsigSpecsDataAdapter for on-device evaluation clients.
 ---
-
-import Tabs from "@theme/Tabs";
-import TabItem from "@theme/TabItem";
-import GitHubEmbed from "@site/src/components/GitHubEmbed";
 
 The `StatsigSpecsDataAdapter` is the default `SpecsDataAdapter` used by a `StatsigOnDeviceEvalClient` instance.
 
@@ -40,7 +32,16 @@ this could lead to values changing mid-session as newer values arrive from the n
 
 ### Getting the Data Adapter
 
-<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/on-device-eval-client/sample-on-device-get-data-adapter.tsx" />
+You can access the data adapter from your Statsig on-device client instance:
+
+```typescript
+const client = new StatsigOnDeviceEvalClient('client-key');
+await client.initializeAsync();
+
+const dataAdapter = client.dataAdapter;
+```
+
+[View full example on GitHub](https://github.com/statsig-io/js-client-monorepo/blob/main/samples/react/src/samples/on-device-eval-client/sample-on-device-get-data-adapter.tsx)
 
 ### Bootstrapping
 
@@ -48,11 +49,23 @@ Bootstrapping allows you to provide the required data without a network call. Th
 
 If you are building a mobile app and want to bundle values with your application. Then you can load the values from a local file at startup and provide them to the data adapter.
 
-<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/on-device-eval-client/sample-on-device-bootstrap.tsx" />
+```typescript
+import { StatsigOnDeviceEvalClient } from '@statsig/js-on-device-eval-client';
 
-:::note
+const client = new StatsigOnDeviceEvalClient('client-key');
+
+// Bootstrap with specs data from local file or bundle
+const specsData = /* data from local file */;
+await client.dataAdapter.setData(specsData);
+
+await client.initializeAsync();
+```
+
+[View full example on GitHub](https://github.com/statsig-io/js-client-monorepo/blob/main/samples/react/src/samples/on-device-eval-client/sample-on-device-bootstrap.tsx)
+
+<Note>
 You can get a copy of your current specs data by visiting: `https://api.statsigcdn.com/v1/download_config_specs/client-{YOUR_SDK_KEY}.json`
-:::
+</Note>
 
 ### Custom Implementation
 
