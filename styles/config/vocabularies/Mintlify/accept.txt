@@ -787,3 +787,4 @@ post_logs_retry_limit
 post_logs_retry_backoff
 backoff
 user_persistent_storage
+Mintlify
