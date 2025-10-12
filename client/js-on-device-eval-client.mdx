@@ -24,7 +24,7 @@ import {
   ManualExposures,
 } from "./Templates/index.mdx";
 
-import OnDeviceEvalProsAndCons from "./Templates/_OnDeviceEvalProsAndCons.mdx";
+import OnDeviceEvalProsAndCons from "/snippets/local-eval/onDeviceEvalProsAndCons.mdx";
 
 import * as _DataAdapter from "./js-device-eval-mono/_dataAdapter.mdx";
 export const DataAdapter = _DataAdapter;
@@ -59,13 +59,7 @@ export const Builder = SDKDocsBuilder({
     [
       GettingStartedRulesets,
       {
-        additionalWelcomeMessage: <OnDeviceEvalProsAndCons
-          sdkName="@statsig/js-on-device-eval-client"
-          otherSDK={{
-            name: "@statsig/js-client",
-            link: "/client/javascript-sdk",
-          }}
-        />,
+        additionalWelcomeMessage: <OnDeviceEvalProsAndCons sdkName="@statsig/js-on-device-eval-client" otherSDKName="@statsig/js-client" otherSDKLink="/client/javascript-sdk" />,
         sdkType: "JS using on device evaluations",
         install: <Install />,
         initialize: <Initialize />,
