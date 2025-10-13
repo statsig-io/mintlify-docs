@@ -75,7 +75,7 @@
     // Optionally update userId after initialization if stableID is available
     const stableID = _client.getContext?.()?.stableID;
     if (stableID) {
-      await _client.updateUserAsync({ userID: stableID });
+      await _client.updateUserAsync({ userID: stableID , custom: { "newDocs": true }});
     }
   } catch (error) {
     // noop
