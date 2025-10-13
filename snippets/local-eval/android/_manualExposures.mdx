@@ -1,104 +1,139 @@
-import CodeBlock from "@theme/CodeBlock";
+## Manual Exposures
 
-export const Snippets = {
-  // Gates
-  gateSnippet: (
-    <CodeBlock language="swift">
-      {`// Kotlin
+Manual exposure logging gives you control over when exposure events are sent to Statsig. This is useful for preventing logging exposures on feature checks that don't result in the user actually experiencing the feature.
+
+### Gates
+
+Check a gate without automatically logging an exposure:
+
+<CodeGroup>
+
+```kotlin Kotlin
 val user = StatsigUser("user_id")
-val result = Statsig.checkGate(user, "a_gate_name", CheckGateOption(disableExposureLogging = true))
-\t
-// Java
-StatsigUser user = new StatsigUser("user_id")
-CheckGateOption option = new CheckGateOption(true)
+val result = Statsig.checkGate(user, "a_gate_name", CheckGateOption(disableExposureLogging = true))
+```
+
+```java Java
+StatsigUser user = new StatsigUser("user_id");
+CheckGateOption option = new CheckGateOption(true);
 boolean result = Statsig.checkGate(user, "a_gate_name", option);
-`}
-    </CodeBlock>
-  ),
-  gateExposureSnippet: (
-    <CodeBlock language="swift">
-      {`// Kotlin
+```
+
+</CodeGroup>
+
+Manually log the gate exposure:
+
+<CodeGroup>
+
+```kotlin Kotlin
 Statsig.logGateExposure(user, "a_gate_name")
-\t
-// Java
+```
+
+```java Java
 Statsig.logGateExposure(user, "a_gate_name");
-`}
-    </CodeBlock>
-  ),
-  // Configs
-  configSnippet: (
-    <CodeBlock language="swift">
-      {`// Kotlin
+```
+
+</CodeGroup>
+
+### Dynamic Configs
+
+Get a config without automatically logging an exposure:
+
+<CodeGroup>
+
+```kotlin Kotlin
 val user = StatsigUser("user_id")
 val config = Statsig.getConfig(user, "a_config_name", GetConfigOption(disableExposureLogging = true))
-\t
-// Java
-StatsigUser user = new StatsigUser("user_id")
-GetConfigOption option = new GetConfigOption(true)
+```
+
+```java Java
+StatsigUser user = new StatsigUser("user_id");
+GetConfigOption option = new GetConfigOption(true);
 DynamicConfig config = Statsig.getConfig(user, "a_config_name", option);
-`}
-    </CodeBlock>
-  ),
-  configExposureSnippet: (
-    <CodeBlock language="swift">
-      {`// Kotlin
+```
+
+</CodeGroup>
+
+Manually log the config exposure:
+
+<CodeGroup>
+
+```kotlin Kotlin
 Statsig.logConfigExposure(user, "a_config_name")
-\t
-// Java
+```
+
+```java Java
 Statsig.logConfigExposure(user, "a_config_name");
-`}
-    </CodeBlock>
-  ),
-  // Experiment
-  experimentSnippet: (
-    <CodeBlock language="swift">
-      {`// Kotlin
+```
+
+</CodeGroup>
+
+### Experiments
+
+Get an experiment without automatically logging an exposure:
+
+<CodeGroup>
+
+```kotlin Kotlin
 val user = StatsigUser("user_id")
 val option = GetExperimentOption(true)
 val experiment = Statsig.getExperiment(user, "an_experiment_name", option)
-\t
-// Java
-StatsigUser user = new StatsigUser("user_id")
-GetConfigOption option = new GetExperimentOption(true)
+```
+
+```java Java
+StatsigUser user = new StatsigUser("user_id");
+GetConfigOption option = new GetExperimentOption(true);
 DynamicConfig experiment = Statsig.getExperiment(user, "an_experiment_name", option);
-`}
-    </CodeBlock>
-  ),
-  experimentExposureSnippet: (
-    <CodeBlock language="swift">
-      {`// Kotlin
+```
+
+</CodeGroup>
+
+Manually log the experiment exposure:
+
+<CodeGroup>
+
+```kotlin Kotlin
 Statsig.logExperimentExposure(user, "an_experiment_name")
-\t
-// Java
+```
+
+```java Java
 Statsig.logExperimentExposure(user, "an_experiment_name");
-`}
-    </CodeBlock>
-  ),
-  // Layer
-  layerSnippet: (
-    <CodeBlock language="swift">
-      {`// Kotlin
+```
+
+</CodeGroup>
+
+### Layers
+
+Get a layer without automatically logging an exposure:
+
+<CodeGroup>
+
+```kotlin Kotlin
 val user = StatsigUser("user_id")
 val option = GetExperimentOption(true)
 val layer = Statsig.getLayer(user, "a_layer_name", option)
 val results = layer.getString("a_parameter_name", "fallback")
-\t
-// Java
-StatsigUser user = new StatsigUser("user_id")
-GetConfigOption option = new GetExperimentOption(true)
+```
+
+```java Java
+StatsigUser user = new StatsigUser("user_id");
+GetConfigOption option = new GetExperimentOption(true);
 Layer layer = Statsig.getLayer(user, "a_layer_name", option);
 String result = layer.getString("a_parameter_name", "fallback");
-`}
-    </CodeBlock>
-  ),
-  layerExposureSnippet: (
-    <CodeBlock language="swift">
-      {`// Kotlin
+```
+
+</CodeGroup>
+
+Manually log the layer parameter exposure:
+
+<CodeGroup>
+
+```kotlin Kotlin
 Statsig.logLayerParameterExposure(user, "a_layer_name", "a_parameter_name")
-\t
-// Java
+```
+
+```java Java
 Statsig.logLayerParameterExposure(user, "a_layer_name", "a_parameter_name");
-`}
-    </CodeBlock>
-  ),
-};
+```
+
+</CodeGroup>

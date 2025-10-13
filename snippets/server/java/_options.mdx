@@ -1,5 +1,4 @@
-import { LocalModeSnippet } from "../../sdks/_LocalModeSnippet.mdx";
-import { data_store } from "../concepts/data_store.mdx";
+import LocalModeSnippet from '/snippets/server/localModeSnippet.mdx'
 
 You can pass in an optional parameter `options` in addition to the server secret during initialization to customize the Statsig client.
 
@@ -26,7 +25,7 @@ You can pass in an optional parameter `options` in addition to the server secret
 </ResponseField>
 
 <ResponseField name="localMode" type="boolean" default="false">
-  <LocalModeSnippet type="server" />
+  <LocalModeSnippet />
 </ResponseField>
 
 <ResponseField name="api" type="String?" default="null">
@@ -84,20 +83,19 @@ You can pass in an optional parameter `options` in addition to the server secret
   
   ```
 
-  **Example Usage**
-  
-  ```java
+**Example Usage**
 
-    import okhttp3.Credentials;
+```java
+import okhttp3.Credentials;
 
-    // Create a ProxyConfig object With Auth
-    ProxyConfig proxyConfigWithAuth = new ProxyConfig("localhost", 8080, Credentials.basic("username", "password"), "https");
+// Create a ProxyConfig object With Auth
+ProxyConfig proxyConfigWithAuth = new ProxyConfig("localhost", 8080, Credentials.basic("username", "password"), "https");
 
-    // Create a ProxyConfig object Without Auth
-    ProxyConfig proxyConfig = new ProxyConfig("localhost", 8080);
+// Create a ProxyConfig object Without Auth
+ProxyConfig proxyConfig = new ProxyConfig("localhost", 8080);
 
-    StatsigOptions options = new StatsigOptions();
-    options.setProxyConfig(proxyConfig);
-    Future initFuture = Statsig.initializeAsync(apiKey, options);
-    initFuture.get();
-  
+StatsigOptions options = new StatsigOptions();
+options.setProxyConfig(proxyConfig);
+Future initFuture = Statsig.initializeAsync(apiKey, options);
+initFuture.get();
+```

@@ -1,16 +1,7 @@
 ---
 title: Migrating from Legacy Go SDK to Go Core
-sidebar_label: Migration Guide
-keywords:
-  - owner:brock
-last_update:
-  date: 2025-09-18
+description: Learn how to migrate from the legacy Go Server SDK to the new Go Core SDK with improved performance and new features
 ---
-
-import Tabs from "@theme/Tabs";
-import TabItem from "@theme/TabItem";
-
-# Migrating from Legacy Go SDK to Go Core
 
 This guide will help you migrate from the legacy Go Server SDK to the new Go Core SDK. The Go Core SDK offers significant performance improvements and new features, as it's built on a shared Rust core library.
 
@@ -25,38 +16,43 @@ This guide will help you migrate from the legacy Go Server SDK to the new Go Cor
 
 ### Legacy Go SDK
 
-```go
+<CodeGroup>
+
+```bash CLI
 go get github.com/statsig-io/go-sdk
 ```
 
-Or, add a dependency in go.mod:
-
-```go
+```go go.mod
 require (
   github.com/statsig-io/go-sdk v1.26.0
 )
 ```
 
+</CodeGroup>
+
 ### Go Core SDK
 
-Go Core requires the new package and additional setup:
+Go Core requires the new package and additional setup.
 
-You can install the latest version of the SDK:
-```go
+Install the latest version of the SDK:
+
+<CodeGroup>
+
+```bash Latest Version
 go get github.com/statsig-io/statsig-server-core/statsig-go@latest
 ```
 
-or a specific version of the SDK:
-```go
+```bash Specific Version
 go get github.com/statsig-io/statsig-server-core/statsig-go@v0.7.2
 ```
 
-Or, add a dependency on the most recent version of the SDK in go.mod:
-```go
+```go go.mod
 require (
   github.com/statsig-io/statsig-server-core/statsig-go v0.7.2
 )
 ```
+
+</CodeGroup>
 
 See the [Releases tab in GitHub](https://github.com/statsig-io/statsig-server-core/releases) for the latest versions.
 
@@ -67,24 +63,25 @@ go install github.com/statsig-io/statsig-server-core/statsig-go/cmd/post-install
 post-install
 ```
 
-The system should prompt you to set the environment variables using a statsig.env or statsig.env.ps1 file that was generated during the post-install script.
-Follow the instructions to set the environment variables.
+The system should prompt you to set the environment variables using a `statsig.env` or `statsig.env.ps1` file that was generated during the post-install script. Follow the instructions to set the environment variables.
 
-```
-// E.g. - the command will look something like this:
+<CodeGroup>
 
-macOS: 
+```bash macOS
 source /Users/Your-User-Name/.statsig_env
+```
 
-Windows (PowerShell): 
+```powershell Windows (PowerShell)
 . "C:\Users\Your-User-Name\.statsig_env.ps1"
 ```
 
-Users can also add in the variables to their .bashrc, .zshrc, or .ps1 file to load them automatically.
+</CodeGroup>
 
-:::note
+Users can also add the variables to their `.bashrc`, `.zshrc`, or `.ps1` file to load them automatically.
+
+<Note>
 You may need to have gcc installed on your system in order to run the SDK on Windows. See [FAQ](/server-core/go-core#faq) for more information.
-:::
+</Note>
 
 See [FAQ](/server-core/go-core#faq) if you run into any issues with installation.
 
@@ -102,16 +99,9 @@ See [FAQ](/server-core/go-core#faq) if you run into any issues with installation
 
 ### Initialization
 
-<Tabs
-  groupId="sdk-comparison"
-  defaultValue="legacy"
-  values={[
-    {label: 'Legacy Go SDK', value: 'legacy'},
-    {label: 'Go Core SDK', value: 'core'},
-  ]}>
-  <TabItem value="legacy">
+<CodeGroup>
 
-```go
+```go Legacy Go SDK
 import (
   statsig "github.com/statsig-io/go-sdk"
 )
@@ -122,10 +112,7 @@ statsig.Initialize("server-secret-key")
 statsig.InitializeWithOptions("server-secret-key", &Options{Environment: Environment{Tier: "staging"}})
 ```
 
-  </TabItem>
-  <TabItem value="core">
-
-```go
+```go Go Core SDK
 import (
     statsig "github.com/statsig-io/statsig-server-core/statsig-go/src"
 )
@@ -153,21 +140,13 @@ if err != nil {
 }
 ```
 
-  </TabItem>
-</Tabs>
+</CodeGroup>
 
 ### Checking Gates
 
-<Tabs
-  groupId="sdk-comparison"
-  defaultValue="legacy"
-  values={[
-    {label: 'Legacy Go SDK', value: 'legacy'},
-    {label: 'Go Core SDK', value: 'core'},
-  ]}>
-  <TabItem value="legacy">
+<CodeGroup>
 
-```go
+```go Legacy Go SDK
 import (
   statsig "github.com/statsig-io/go-sdk"
 )
@@ -181,10 +160,7 @@ user := statsig.User{
 enabled := statsig.CheckGate(user, "my_gate")
 ```
 
-  </TabItem>
-  <TabItem value="core">
-
-```go
+```go Go Core SDK
 import (
     statsig "github.com/statsig-io/statsig-server-core/statsig-go/src"
 )
@@ -200,21 +176,13 @@ user := statsig.NewStatsigUserBuilder().
 enabled := s.CheckGate(user, "my_gate")
 ```
 
-  </TabItem>
-</Tabs>
+</CodeGroup>
 
 ### Getting Dynamic Configs
 
-<Tabs
-  groupId="sdk-comparison"
-  defaultValue="legacy"
-  values={[
-    {label: 'Legacy Go SDK', value: 'legacy'},
-    {label: 'Go Core SDK', value: 'core'},
-  ]}>
-  <TabItem value="legacy">
+<CodeGroup>
 
-```go
+```go Legacy Go SDK
 import (
   statsig "github.com/statsig-io/go-sdk"
 )
@@ -229,10 +197,7 @@ config := statsig.GetConfig(user, "my_config")
 value := config.Get("key", "default_value")
 ```
 
-  </TabItem>
-  <TabItem value="core">
-
-```go
+```go Go Core SDK
 import (
     statsig "github.com/statsig-io/statsig-server-core/statsig-go/src"
 )
@@ -248,21 +213,13 @@ user := statsig.NewStatsigUserBuilder().
 config := s.GetDynamicConfig(user, "my_config")
 ```
 
-  </TabItem>
-</Tabs>
+</CodeGroup>
 
 ### Getting Experiments
 
-<Tabs
-  groupId="sdk-comparison"
-  defaultValue="legacy"
-  values={[
-    {label: 'Legacy Go SDK', value: 'legacy'},
-    {label: 'Go Core SDK', value: 'core'},
-  ]}>
-  <TabItem value="legacy">
+<CodeGroup>
 
-```go
+```go Legacy Go SDK
 import (
   statsig "github.com/statsig-io/go-sdk"
 )
@@ -276,10 +233,7 @@ user := statsig.User{
 experiment := statsig.GetExperiment(user, "my_experiment")
 ```
 
-  </TabItem>
-  <TabItem value="core">
-
-```go
+```go Go Core SDK
 import (
     statsig "github.com/statsig-io/statsig-server-core/statsig-go/src"
 )
@@ -295,21 +249,13 @@ user := statsig.NewStatsigUserBuilder().
 experiment := s.GetExperiment(user, "my_experiment")
 ```
 
-  </TabItem>
-</Tabs>
+</CodeGroup>
 
 ### Logging Events
 
-<Tabs
-  groupId="sdk-comparison"
-  defaultValue="legacy"
-  values={[
-    {label: 'Legacy Go SDK', value: 'legacy'},
-    {label: 'Go Core SDK', value: 'core'},
-  ]}>
-  <TabItem value="legacy">
+<CodeGroup>
 
-```go
+```go Legacy Go SDK
 import (
   statsig "github.com/statsig-io/go-sdk"
 )
@@ -328,10 +274,7 @@ statsig.LogEvent(Event{
 	})
 ```
 
-  </TabItem>
-  <TabItem value="core">
-
-```go
+```go Go Core SDK
 import (
     statsig "github.com/statsig-io/statsig-server-core/statsig-go/src"
 )
@@ -355,8 +298,7 @@ event := map[string]interface{}{
 s.LogEvent(*user, event)
 ```
 
-  </TabItem>
-</Tabs>
+</CodeGroup>
 
 ## Key Migration Steps
 
@@ -366,13 +308,12 @@ s.LogEvent(*user, event)
 
 3. **Update Initialization**:
    - Use the builder pattern to create user and options
-   - Replace statsig.User{} with statsig.NewStatsigUserBuilder().With*().Build()
-   - Initialize with statsig.NewStatsig() and call Initialize()
+   - Replace `statsig.User{}` with `statsig.NewStatsigUserBuilder().With*().Build()`
+   - Initialize with `statsig.NewStatsig()` and call `Initialize()`
 
 4. **Test Thoroughly**: 
    - Verify all feature gates, experiments, and configs work as expected
    - Check that event logging is functioning correctly
-
 
 ## New Features Available in Go Core
 
