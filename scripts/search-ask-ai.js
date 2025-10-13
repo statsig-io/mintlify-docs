@@ -67,46 +67,12 @@
     document.head.appendChild(style);
   }
 
-  function openAskAI(query) {
-    const detail = { query, source: "search" };
-    const kapaCandidates = [
-      window.KapaAIWidget,
-      window.KapaWidget,
-      window.KapaAI,
-      window.Kapa,
-      window.kapa,
-    ];
-
-    for (const candidate of kapaCandidates) {
-      if (typeof candidate?.openWithQuery === "function") {
-        candidate.openWithQuery(query);
-        return true;
-      }
-      if (typeof candidate?.open === "function") {
-        candidate.open({ query });
-        return true;
-      }
-      if (typeof candidate?.toggle === "function") {
-        candidate.toggle(true, query);
-        return true;
-      }
-    }
-
-    const launcherButton =
-      document.querySelector("[data-kapa-open]") ||
-      document.querySelector("[data-testid='kapa-launcher']") ||
-      document.querySelector("button[class*='kapa'][class*='launcher']");
-    if (launcherButton instanceof HTMLElement) {
-      launcherButton.click();
-      setTimeout(() => {
-        window.dispatchEvent(new CustomEvent("mintlify:ask-ai", { detail }));
-      }, 250);
-      return true;
-    }
-
-    window.dispatchEvent(new CustomEvent("mintlify:ask-ai", { detail }));
-    window.__mintlifyAskAiFallbackQuery = detail;
-    return false;
+  function dispatchAskAI(query, source = "search") {
+    window.dispatchEvent(
+      new CustomEvent("mintlify:ask-ai", {
+        detail: { query, source },
+      })
+    );
   }
 
   function closeSearch(modal) {
@@ -134,6 +100,7 @@
     const button = document.createElement("button");
     button.type = "button";
     button.className = `${ASK_AI_CLASS} DocSearch-Hit`;
+    button.dataset.mintlifyAskAiOption = "true";
     button.setAttribute("role", "option");
     button.style.display = "none";
 
@@ -151,14 +118,8 @@
       event.preventDefault();
       event.stopPropagation();
       const query = button.dataset.query;
-      if (!query) {
-        return;
-      }
-
-      const success = openAskAI(query);
-      if (success) {
-        closeSearch(modal);
-      }
+      dispatchAskAI(query, "search-suggestion");
+      closeSearch(modal);
     });
 
     const dropdown = modal.querySelector(".DocSearch-Dropdown") || modal;
@@ -205,6 +166,24 @@
 
   injectStyle();
 
+  function isNativeAskAiButton(element) {
+    if (!(element instanceof HTMLElement)) {
+      return false;
+    }
+    if (element.dataset.mintlifyAskAiOption === "true") {
+      return false;
+    }
+    const aria = element.getAttribute("aria-label")?.toLowerCase();
+    if (aria && aria.includes("ask ai")) {
+      return true;
+    }
+    const text = element.textContent?.trim().toLowerCase();
+    if (!text) {
+      return false;
+    }
+    return text === "ask ai" || text.startsWith("ask ai ");
+  }
+
   const observer = new MutationObserver(() => {
     document.querySelectorAll("input.DocSearch-Input").forEach(bindInput);
   });
@@ -217,4 +196,28 @@
   document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll("input.DocSearch-Input").forEach(bindInput);
   });
+
+  document.addEventListener(
+    "click",
+    (event) => {
+      const target =
+        event.target instanceof Element
+          ? event.target.closest("button, a")
+          : null;
+      if (!target || !isNativeAskAiButton(target)) {
+        return;
+      }
+
+      const modal = target.closest(".DocSearch-Modal");
+      const input = modal?.querySelector("input.DocSearch-Input");
+      const query = input?.value?.trim() ?? "";
+
+      event.preventDefault();
+      event.stopPropagation();
+
+      dispatchAskAI(query.length > 0 ? query : undefined, "search-native");
+      closeSearch(modal);
+    },
+    true
+  );
 })();

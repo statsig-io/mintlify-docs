@@ -20,38 +20,45 @@ function findLauncherButton() {
   );
 }
 
-function openKapaWithQuery(query) {
-  if (!query) {
-    return false;
-  }
-
+function openKapa(query) {
+  const sanitizedQuery =
+    typeof query === "string" ? query.trim() : "";
+  const hasQuery = sanitizedQuery.length > 0;
   const api = getKapaApi();
-  if (api?.openWithQuery && typeof api.openWithQuery === "function") {
-    api.openWithQuery(query);
+  if (api?.openWithQuery && typeof api.openWithQuery === "function" && hasQuery) {
+    api.openWithQuery(sanitizedQuery);
     return true;
   }
 
   if (api?.open && typeof api.open === "function") {
     try {
-      api.open({ query });
+      if (hasQuery) {
+        api.open({ query: sanitizedQuery });
+      } else {
+        api.open();
+      }
     } catch (error) {
-      api.open(query);
+      if (hasQuery) {
+        api.open(sanitizedQuery);
+      } else {
+        api.open();
+      }
     }
     return true;
   }
 
   if (api?.toggle && typeof api.toggle === "function") {
-    api.toggle(true, query);
+    api.toggle(true, hasQuery ? sanitizedQuery : undefined);
     return true;
   }
 
   const launcher = findLauncherButton();
   if (launcher instanceof HTMLElement) {
     launcher.click();
-    if (query) {
+    if (hasQuery) {
       setTimeout(() => {
         window.dispatchEvent(
-          new CustomEvent("kapa:set-query", { detail: { query } })
+          new CustomEvent("kapa:set-query", { detail: { query: sanitizedQuery } })
         );
       }, 250);
     }
@@ -72,9 +79,9 @@ function flushPendingQueries() {
   }
 
   while (pendingQueries.length) {
-    const query = pendingQueries.shift();
-    if (!openKapaWithQuery(query)) {
-      pendingQueries.unshift(query);
+    const request = pendingQueries.shift();
+    if (!openKapa(request)) {
+      pendingQueries.unshift(request);
       break;
     }
   }
@@ -83,12 +90,8 @@ function flushPendingQueries() {
 window.addEventListener("mintlify:ask-ai", (event) => {
   const detail = event.detail ?? {};
   const query = typeof detail === "string" ? detail : detail.query;
-  if (!query) {
-    return;
-  }
-
-  if (!openKapaWithQuery(query)) {
-    pendingQueries.push(query);
+  if (!openKapa(query)) {
+    pendingQueries.push(query ?? null);
   }
 });
 
