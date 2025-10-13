@@ -1,17 +1,6 @@
-import Tabs from "@theme/Tabs";
-import TabItem from "@theme/TabItem";
+<CodeGroup>
 
-<Tabs
-  groupId="js-sdk-lang-choice"
-  defaultValue="ts"
-  values={[
-    {label: 'TypeScript', value: 'ts'},
-    {label: 'JavaScript', value: 'js'},
-  ]}>
-
-  <TabItem value="ts">
-
-```typescript
+```typescript TypeScript
 import type { StatsigUser } from "statsig-js";
 
 const prefetchUsers: StatsigUser[] = [
@@ -26,10 +15,7 @@ await Statsig.initialize(
 );
 ```
 
-  </TabItem>
-  <TabItem value="js">
-
-```jsx
+```javascript JavaScript
 const prefetchUsers = [
   { userID: "user_a", customIDs: { groupID: "group_a" } },
   { userID: "user_b", customIDs: { groupID: "group_a" } },
@@ -42,5 +28,4 @@ await Statsig.initialize(
 );
 ```
 
-  </TabItem>
-</Tabs>
+</CodeGroup>

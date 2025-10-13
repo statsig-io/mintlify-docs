@@ -694,7 +694,7 @@
                     "group": "Migrating from Legacy JS",
                     "pages": [
                       "client/migration-guides/MigrationFromOldJsClient",
-                      "client/migration-guides/MigrationFromOldReactClient"
+                      "client/migration-guides/MigrationFromOldReact"
                     ]
                   }
                 ]

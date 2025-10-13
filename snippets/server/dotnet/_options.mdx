@@ -1,4 +1,4 @@
-import { LocalModeSnippet } from "../../sdks/_LocalModeSnippet.mdx";
+import LocalModeSnippet from '/snippets/server/localModeSnippet.mdx'
 
 `Initialize()` takes an optional parameter `options` in addition to `sdkKey` that you can provide to customize the Statsig client. The .NET SDK uses an inheritance hierarchy with `StatsigOptions` as the base class, and `StatsigServerOptions` and `StatsigClientOptions` extending it for server-side and client-side specific configurations.
 
@@ -50,7 +50,7 @@ These options are available for both server and client SDKs:
 Server-specific options that extend StatsigOptions:
 
 <ResponseField name="LocalMode" type="bool" default="false">
-  <LocalModeSnippet type="server" />
+  <LocalModeSnippet />
 </ResponseField>
 
 <ResponseField name="DataStore" type="IDataStore" default="null">

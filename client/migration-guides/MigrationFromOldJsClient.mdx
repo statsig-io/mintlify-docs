@@ -1,18 +1,10 @@
 ---
 title: Migrating to @statsig/js-client
-sidebar_label: Migrating to @statsig/js-client
-keywords:
-  - owner:brock
-last_update:
-  date: 2025-09-18
+description: Learn how to migrate from the legacy statsig-js SDK to the new @statsig/js-client SDK
 ---
 
-import Tabs from "@theme/Tabs";
-import TabItem from "@theme/TabItem";
-import GitHubEmbed from "@site/src/components/GitHubEmbed";
-
-<Warning> 
-### DEPRECATED
+<Warning>
+### Deprecated
 Migrate soon! Official support for statsig-js ended Jan 31, 2025.
 </Warning>
 
@@ -39,16 +31,9 @@ Synchronous initialization will leverage cache (if available), returning immedia
 
 Asynchronous initialization, on the other hand, is awaitable and ensures that the most current data is fetched and used.
 
-<Tabs
-  groupId="js-migration-choice"
-  defaultValue="new"
-  values={[
-    {label: 'statsig-js (Legacy)', value: 'legacy'},
-    {label: 'New', value: 'new'},
-  ]}>
-  <TabItem value="legacy">
+<CodeGroup>
 
-```typescript
+```typescript statsig-js (Legacy)
 import Statsig from "statsig-js";
 
 // initialize returns a promise which always resolves
@@ -59,16 +44,37 @@ await Statsig.initialize(
 );
 ```
 
+```typescript New - Async
+import { StatsigClient } from '@statsig/js-client';
 
-  </TabItem>
-  <TabItem value="new">
+const client = new StatsigClient(
+  'client-sdk-key',
+  { userID: 'some_user_id' },
+  { environment: { tier: 'staging' } }
+);
 
-<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/precomputed-client/sample-precomp-initialize.tsx" />
+// Async - waits for latest values
+await client.initializeAsync();
+```
 
-You can read more about StatsigClient initialization [here](/client/javascript-sdk#initialize-the-sdk).
+```typescript New - Sync
+import { StatsigClient } from '@statsig/js-client';
 
-  </TabItem>
-</Tabs>
+const client = new StatsigClient(
+  'client-sdk-key',
+  { userID: 'some_user_id' },
+  { environment: { tier: 'staging' } }
+);
+
+// Sync - uses cache, fetches in background
+client.initializeSync();
+```
+
+</CodeGroup>
+
+<Tip>
+View a full example on [GitHub](https://github.com/statsig-io/js-client-monorepo/blob/main/samples/react/src/samples/precomputed-client/sample-precomp-initialize.tsx) or read more about StatsigClient initialization [here](/client/javascript-sdk#initialize-the-sdk).
+</Tip>
 
 
 
@@ -111,16 +117,9 @@ statsig.getClientInitializeResponse(
 
 Similar to initialization, the `updateUser` method now supports both synchronous and asynchronous approaches. Each method functions in the same manner as the initialization process.
 
-<Tabs
-  groupId="js-migration-choice"
-  defaultValue="new"
-  values={[
-    {label: 'statsig-js (Legacy)', value: 'legacy'},
-    {label: 'New', value: 'new'},
-  ]}>
-  <TabItem value="legacy">
+<CodeGroup>
 
-```typescript
+```typescript statsig-js (Legacy)
 import Statsig from "statsig-js";
 
 const user = { userID: "a-user" };
@@ -128,13 +127,33 @@ const user = { userID: "a-user" };
 await Statsig.updateUser(user);
 ```
 
-  </TabItem>
-  <TabItem value="new">
+```typescript New - Async
+import { StatsigClient } from '@statsig/js-client';
 
-<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/precomputed-client/sample-precomp-update-user.tsx" />
+const client = new StatsigClient('client-sdk-key', { userID: 'initial-user' });
+await client.initializeAsync();
 
-  </TabItem>
-</Tabs>
+// Update to new user - async
+const newUser = { userID: 'a-user' };
+await client.updateUserAsync(newUser);
+```
+
+```typescript New - Sync
+import { StatsigClient } from '@statsig/js-client';
+
+const client = new StatsigClient('client-sdk-key', { userID: 'initial-user' });
+client.initializeSync();
+
+// Update to new user - sync
+const newUser = { userID: 'a-user' };
+client.updateUserSync(newUser);
+```
+
+</CodeGroup>
+
+<Tip>
+View a full example on [GitHub](https://github.com/statsig-io/js-client-monorepo/blob/main/samples/react/src/samples/precomputed-client/sample-precomp-update-user.tsx)
+</Tip>
 
 
 
@@ -146,19 +165,11 @@ await Statsig.updateUser(user);
 
 ## Static Instance
 
-In the previous SDK version, there was a top-level static interface for using Statsig. To enhance support for multiple instances,
-we have replaced this with a static method that retrieves an instance.
+In the previous SDK version, there was a top-level static interface for using Statsig. To enhance support for multiple instances, we have replaced this with a static method that retrieves an instance.
 
-<Tabs
-  groupId="js-migration-choice"
-  defaultValue="new"
-  values={[
-    {label: 'statsig-js (Legacy)', value: 'legacy'},
-    {label: 'New', value: 'new'},
-  ]}>
-  <TabItem value="legacy">
+<CodeGroup>
 
-```typescript
+```typescript statsig-js (Legacy)
 import Statsig from "statsig-js";
 
 await Statsig.initialize(YOUR_CLIENT_KEY, { userID: 'a-user' });
@@ -169,15 +180,25 @@ if (Statsig.checkGate('a_gate')) {
 }
 ```
 
-  </TabItem>
-  <TabItem value="new">
+```typescript New
+import { StatsigClient } from '@statsig/js-client';
 
-<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/precomputed-client/sample-precomp-static-instance.tsx" />
+// Initialize once in your app
+const client = new StatsigClient(YOUR_CLIENT_KEY, { userID: 'a-user' });
+await client.initializeAsync();
 
-You can read more about StatsigClient multi-instance support [here](/client/javascript-sdk#multiple-client-instances).
+// then later, at some other location in your code base
+const instance = StatsigClient.instance(YOUR_CLIENT_KEY);
+if (instance.checkGate('a_gate')) { 
+  // do something...
+}
+```
 
-  </TabItem>
-</Tabs>
+</CodeGroup>
+
+<Tip>
+View a full example on [GitHub](https://github.com/statsig-io/js-client-monorepo/blob/main/samples/react/src/samples/precomputed-client/sample-precomp-static-instance.tsx) or read more about StatsigClient multi-instance support [here](/client/javascript-sdk#multiple-client-instances).
+</Tip>
 
 
 
@@ -219,20 +240,11 @@ https://github.com/statsig-io/js-client-monorepo/blob/0e7201635f71e77633de04c4c1
 
 ## GDPR
 
-In certain use cases (consent management), it is necessary to suspend cache and network usage until the user grants specific 
-permissions. Previously, the method for achieving this was somewhat fragmented. 
-In the new SDK, these functionalities have been consolidated for improved coherence and ease of implementation.
+In certain use cases (consent management), it is necessary to suspend cache and network usage until the user grants specific permissions. Previously, the method for achieving this was somewhat fragmented. In the new SDK, these functionalities have been consolidated for improved coherence and ease of implementation.
 
-<Tabs
-  groupId="js-migration-choice"
-  defaultValue="new"
-  values={[
-    {label: 'statsig-js (Legacy)', value: 'legacy'},
-    {label: 'New', value: 'new'},
-  ]}>
-  <TabItem value="legacy">
+<CodeGroup>
 
-```typescript
+```typescript statsig-js (Legacy)
 // start the SDK without storage or logging
 Statsig.initialize(
   'client-key',
@@ -253,13 +265,35 @@ Statsig.reenableAllLogging();
 StatsigLocalStorage.disabled = false;
 ```
 
-  </TabItem>
-  <TabItem value="new">
+```typescript New
+import { StatsigClient } from '@statsig/js-client';
 
-<GitHubEmbed url="https://raw.githubusercontent.com/statsig-io/js-client-monorepo/main/samples/react/src/samples/precomputed-client/sample-precomp-gdpr.tsx" />
+// start the SDK without storage or logging
+const client = new StatsigClient(
+  'client-key',
+  { userID: 'a_user' },
+  {
+    disableLogging: true,
+    disableStorage: true,
+    networkConfig: { preventAllNetworkTraffic: true },
+  }
+);
 
-  </TabItem>
-</Tabs>
+await client.initializeAsync();
+
+// then, once permission was granted
+client.updateRuntimeOptions({
+  disableLogging: false,
+  disableStorage: false,
+  networkConfig: { preventAllNetworkTraffic: false },
+});
+```
+
+</CodeGroup>
+
+<Tip>
+View a full example on [GitHub](https://github.com/statsig-io/js-client-monorepo/blob/main/samples/react/src/samples/precomputed-client/sample-precomp-gdpr.tsx)
+</Tip>
 
 
 
