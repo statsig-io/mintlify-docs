@@ -200,23 +200,38 @@ Statsig.logEvent("purchase", 2.99, Map.of("item_name" to "remove_ads"))
 ### Getting a Parameter Store
 
 To fetch a set of parameters, use the following api:
-
-```kotlin
-let homepageStore = Statsig.getParameterStore("homepage")
+<CodeGroup>
+```java Java
+ParameterStore homepageStore = Statsig.getParameterStore("homepage");
 ```
+
+```kotlin Kotlin
+val homepageStore = Statsig.getParameterStore("homepage")
+```
+</CodeGroup>
 
 ### Getting a parameter
 
 You can then access parameters like this:
+<CodeGroup>
+```java Java
+String title = homepageStore.getString(
+    "title", //parameter name
+    "Welcome" // default value
+);
 
-```kotlin
-let title = homepageStore.getString(
+boolean shouldShowUpsell = homePageStore.getBoolean("upsell_upgrade_now", false)
+```
+
+```kotlin Kotlin
+val title = homepageStore.getString(
   "title",   // parameter name
   "Welcome", // default value
 )
 
-let shouldShowUpsell = homepageStore.getBoolean("upsell_upgrade_now", false)
+val shouldShowUpsell = homepageStore.getBoolean("upsell_upgrade_now", false)
 ```
+</CodeGroup>
 
 <statsigUser/>
 <CodeGroup>
