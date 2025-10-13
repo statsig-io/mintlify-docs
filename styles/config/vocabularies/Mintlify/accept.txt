@@ -1161,3 +1161,17 @@ viewport
 visit_id
 wall_time
 webpack
+a_param
+Axios
+cardinalities
+CDNs
+CDPs
+deduped
+DMAs
+eventSubscriptions
+os_name
+os_version
+packFn
+SKUs
+Statsd
+testedPlatforms
