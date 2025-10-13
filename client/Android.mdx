@@ -94,8 +94,8 @@ async {
 ## Use the SDK
 
 <checkGate/>
-<CodeGroup dropdown>
-```java kotlin
+<CodeGroup>
+```java java
 DynamicConfig config = Statsig.getConfig("awesome_product_details");
 
 // The 2nd parameter is the default value to be used in case the given parameter name does not exist on
@@ -120,8 +120,8 @@ val shouldDiscount = config.getBoolean("discount", false)
 
 
 <getDynamicConfig/>
-<CodeGroup dropdown>
-```java java
+<CodeGroup>
+```java Java
 if (Statsig.checkGate("new_homepage_design")) {
   // Gate is on, show new home page
 } else {
@@ -129,7 +129,7 @@ if (Statsig.checkGate("new_homepage_design")) {
 }
 ```
 
-```kotlin kotlin
+```kotlin Kotlin
 if (Statsig.checkGate("new_homepage_design")) {
   // Gate is on, show new home page
 } else {
@@ -142,8 +142,8 @@ if (Statsig.checkGate("new_homepage_design")) {
 
 <getExperimentLayer/>
 
-<CodeGroup dropdown>
-```java java
+<CodeGroup>
+```java Java
 // Values via getLayer
 
 Layer layer = Statsig.getLayer("user_promo_experiments")
@@ -163,7 +163,7 @@ Double discount = priceExperiment.getDouble("discount", 0.1);
 Double price = msrp * (1 - discount);
 ```
 
-```kotlin kotlin
+```kotlin Kotlin
 // Values via getLayer
 
 val layer = Statsig.getLayer("user_promo_experiments")
@@ -185,12 +185,12 @@ val price = msrp * (1 - discount);
 </CodeGroup>
 <logEvent/>
 
-<CodeGroup dropdown>
-```java java
+<CodeGroup>
+```java Java
 Statsig.logEvent("purchase", 2.99, Map.of("item_name", "remove_ads"));
 ```
 
-```kotlin kotlin
+```kotlin Kotlin
 Statsig.logEvent("purchase", 2.99, Map.of("item_name" to "remove_ads"))
 ```
 </CodeGroup>
@@ -219,8 +219,8 @@ let shouldShowUpsell = homepageStore.getBoolean("upsell_upgrade_now", false)
 ```
 
 <statsigUser/>
-<CodeGroup dropdown>
-```java java
+<CodeGroup>
+```java Java
 StatsigUser newUser = new StatsigUser("new_user_id");
 Statsig.updateUserAsync(newUser, this); // this must implement IStatsigCallback
 
@@ -232,7 +232,7 @@ public void onStatsigUpdateUser() {
 }
 ```
 
-```kotlin kotlin
+```kotlin Kotlin
 Statsig.updateUser(StatsigUser("new_user_id"))
 ```
 </CodeGroup>
@@ -244,12 +244,12 @@ Statsig.updateUser(StatsigUser("new_user_id"))
 
 <shuttingDown/>
 
-<CodeGroup dropdown>
-```java java
+<CodeGroup>
+```java Java
 Statsig.shutdown();
 ```
 
-```kotlin kotlin
+```kotlin Kotlin
 Statsig.shutdown()
 ```
 </CodeGroup>
