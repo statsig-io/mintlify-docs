@@ -11,7 +11,7 @@ These SDKs use a different paradigm than their precomputed counterparts: [JS](/c
 
 ### Cons
 - Entire project definition is available client side - the names and configurations of all experiments and feature flags accessible by your client key are exposed. See our [client key with server permission best practices](/sdk-keys/api-keys/#client-keys-with-server-permissions)
-- Payload size is strictly larger than what is required for the [{otherSDKName}]({otherSDKLink})
+- Payload size is strictly larger than what is required for the traditional SDKs
 - Evaluation performance is slightly slower - rather than looking up the value, the SDK must actually evaluate targeting conditions and an allocation decision
 - Does not support ID list segments with > 1000 IDs
 - Does not support IP or User Agent based checks (Browser Version/Name, OS Version/Name, IP, Country)
