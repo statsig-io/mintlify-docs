@@ -1432,10 +1432,6 @@
       "destination": "/experiments/create-new"
     },
     {
-      "source": "/sdks/debugging",
-      "destination": "/sdk/debugging"
-    },
-    {
       "source": "/experiments/advanced-setup/power-analysis",
       "destination": "/experiments/power-analysis"
     },
