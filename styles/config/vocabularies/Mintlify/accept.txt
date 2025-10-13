@@ -920,3 +920,8 @@ JSInitialize
 JSFaqs
 downsampling
 event_count_custom
+userAgent
+browserName
+browserVersion
+localOverrides
+manualExposures
