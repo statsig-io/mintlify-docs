@@ -1,4 +1,6 @@
+---
 title: Fastly
+---
 
 ## Overview
 Statsig’s Fastly integration pushes Statsig Configs to Fastly KV, providing low latency for gate and experiment evaluations in your Fastly project.
@@ -42,7 +44,7 @@ In our example, we are checking a gate called "test_fastly" that is set to pass 
 
 ### 1. The `FastlyDataAdapter`
 ```
-const dataAdapter = new FastlyDataAdapter(<KV_STORE_NAME>, 'statsig-<PROJECT_ID>');
+const dataAdapter = new FastlyDataAdapter(KV_STORE_NAME, 'statsig-PROJECT_ID');
 ```
 
 The adapter takes two arguments:
@@ -97,7 +99,7 @@ import statsig from 'statsig-node';
 addEventListener("fetch", (event) => event.respondWith(handleRequest(event)));
 
 async function handleRequest(event) {
-  const dataAdapter = new FastlyDataAdapter(<KV_STORE_NAME>, 'statsig-<PROJECT_ID>');
+  const dataAdapter = new FastlyDataAdapter(KV_STORE_NAME, 'statsig-PROJECT_ID');
 
   await statsig.initialize(
     env.STATSIG_SECRET_KEY,
