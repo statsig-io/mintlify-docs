@@ -29,8 +29,7 @@ When $\Large g$ < 1, the control mean is significantly different from 0, and we 
 Since the control and test group results are independent of each other, covariance terms in Fieller's Theorem can be dropped.
 
 $$
-\Large
-CI(\% \Delta \overline{X} ) = \frac{1}{1-g} \left \frac{\overline{X_T}}{\overline{X_C}} \pm \frac{Z_{\alpha/2}}{\overline{X_C}} \sqrt{ \frac{\overline{X_T}^2}{\overline{X_C}^2} \cdot \frac{\mathrm{var}(X_C)}{n_C-1} + (1-g)\frac{\mathrm{var}(X_T)}{n_T-1} } \right - 1
+CI(\% \Delta \overline{X} ) = \frac{1}{1-g} \left( \frac{\overline{X_T}}{\overline{X_C}} \pm \frac{Z_{\alpha/2}}{\overline{X_C}} \sqrt{ \frac{\overline{X_T}^2}{\overline{X_C}^2} \cdot \frac{\mathrm{var}(X_C)}{n_C-1} + (1-g)\frac{\mathrm{var}(X_T)}{n_T-1} } \right) - 1
 $$
 
 ### 2B: Edge Case: Control Mean not Statistically Distinct from Zero

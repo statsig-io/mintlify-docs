@@ -1,5 +1,3 @@
-## Custom "Explore" Queries
-
 Custom queries are a way to run additional custom experiment analyses on your existing data beyond what is in your main Results tab. You may run them to gain deeper insights from your experiments and feature roll-outs, debug interesting results, or scope down your results to interesting sub-groups. Custom queries allow you to filter or group metrics by event or user dimensions, or filter to a specific set of users to see how an experiment or launch has impacted these users' experience.
 
 Custom queries are experimental analyses just like in the main Results tab, and all the same statistical procedures apply. Results are computed as p-values and confidence intervals for your metric deltas, and advanced statistical methods like [CUPED](/stats-engine/methodologies/cuped) and [Sequential Testing](/experiments-plus/sequential-testing) can be used.
@@ -25,7 +23,9 @@ This timing behavior only affects precomputed user dimensions that run on a sche
 
 To run a Custom Query, navigate to the **Explore** tab within your experiment.
 
+<Frame>
 <img width="467" alt="Custom query explore tab interface" src="https://github.com/user-attachments/assets/b2737ba1-dbf4-4235-a806-afea5dfe9a78" />
+</Frame>
 
 Custom Query fields: 
 
@@ -54,17 +54,18 @@ User groups in experiment results are based off of first-touch attribution. The 
 ### Viewing a Custom Query in Explore
 
 These queries take a few minutes to run (don't worry, we'll send you an email once your results are ready in case you want to hop to another task), but once complete the results will be visible in the **Query History** section of the **Explore** interface. All historical queries (across your team) will be stored here. You can also give your query a display name inline for easier future identification. 
-
+<Frame>
 <img width="1374" alt="Screenshot 2025-06-08 at 10 34 38 PM" src="https://github.com/user-attachments/assets/46574581-604e-4d29-b231-fa51876c813d" />
-
+</Frame>
 ### Scheduling a Custom Query
 
 If you want a daily refresh of a given Custom Query, you can schedule your Custom Query directly from the **Explore** tab. To do this, author the Custom Query you wish to schedule, then tap the "..." menu, then **Schedule**. This Custom Query will now run daily and live in the **Scheduled** tab of your Metric Lifts. 
-
+<Frame>
 <img width="1378" alt="Screenshot 2025-06-08 at 10 35 21 PM" src="https://github.com/user-attachments/assets/56d11b46-f2de-4569-89f7-b0a439910964" />
-
+</Frame>
+<Frame>
 <img width="505" alt="Scheduled query configuration interface" src="https://github.com/user-attachments/assets/fad0c8ce-3f9c-46be-a09c-52263e124259" />
-
+</Frame>
 ### Reviewing Custom Query Results
 
 Custom query results look a lot like the main Results tab, because the statistical methods are the same. Statsig uses the same experimental analyses practices on your custom analysis as we do on your main Results.

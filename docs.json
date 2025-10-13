@@ -565,11 +565,12 @@
                   "statsig-warehouse-native/features/interpreting-results/read-results",
                   "statsig-warehouse-native/features/interpreting-results/metric-drill-down",
                   "statsig-warehouse-native/features/interpreting-results/custom-queries",
-                  "statsig-warehouse-native/features/interpreting-results/export",
+                  "experiments/interpreting-results/access-whn",
                   "statsig-warehouse-native/features/interpreting-results/participating-units",
                   "statsig-warehouse-native/features/interpreting-results/best-practices",
                   "statsig-warehouse-native/features/interpreting-results/faq",
-                  "statsig-warehouse-native/features/reports"
+                  "statsig-warehouse-native/features/reports",
+                  "statsig-warehouse-native/features/exploring-results/aggregated-impact"
                 ]
               },
               {

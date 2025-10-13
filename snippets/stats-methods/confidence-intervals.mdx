@@ -17,7 +17,6 @@ Once we've established the variance of the delta, it's straightforward to comput
 For the **absolute metric delta**, the confidence interval is given by:
 
 $$
-\LARGE
 CI(\Delta \overline{X}) = \Delta \overline{X} \pm Z_{\alpha/2} \cdot \sqrt{{var(\Delta \overline{X})}}
 $$
 
@@ -31,14 +30,12 @@ The confidence interval for the **relative metric delta** can use one of two met
 When using Fieller Intervals, the relative metric delta CI can be computed using:
 
 $$
-\Large
 CI(\% \Delta \overline{X} ) = \frac{1}{1-g} ( \frac{\overline{X_T}}{\overline{X_C}} - 1 \pm \frac{Z_{\alpha/2}}{\sqrt{n_C} \cdot \overline{X_C}} \sqrt{(1-g) \cdot \frac{var(X_T)}{n_T(n_T-1)} + \frac{\overline{X_T} var(X_C)}{\overline{X_C} n_C (n_C-1)}})
 $$
 
 When using the Delta Method, the confidence interval is:
 
 $$
-\Large
 \begin{split}
 CI(\Delta \overline X\%)
 &= \Delta \overline X\% \pm Z_{\alpha/2} \cdot\sqrt{{var(\Delta \overline X\%)}}\\
@@ -49,7 +46,6 @@ $$
 If using the Delta Method and the the control mean is not significantly away from zero, then it's simplified to:
 
 $$
-\Large
 \begin{split}
 CI(\Delta \overline X\%)
 &= \Delta \overline X\% \pm Z_{\alpha/2} \cdot\sqrt{{var(\Delta \overline X\%)}} \\
@@ -62,7 +58,6 @@ $$
 When running one-sided tests, the form of the confidence interval calculation changes slightly to account for a redistribution of desired false positive rate when looking for increases or decreases in the metric:
 
 $$
-\Large
 CI(\Delta \overline{X}) = \begin{cases}
 \left[\Delta \overline{X} - Z_{\alpha} \cdot \sqrt{{var(\Delta \overline{X})}}, \quad +\infty  \right) & \text{if right-hand test}\\
 \\
@@ -83,12 +78,10 @@ For small sample sizes, we use Welch's t-test instead of a standard z-test. This
 For a two-sided test, the confidence interval is therefore:
 
 $$
-\Large
 CI(\Delta \overline{X}) = \Delta \overline{X} \pm t_{\alpha/2} \cdot \sqrt{{var(\Delta \overline{X})}}
 $$
 
 $$
-\Large
 \nu = \frac{\left(var(\overline X_t) + var(\overline X_c)\right)^2}{\frac{var(\overline X_t)^2}{N_t - 1}+\frac{var(\overline X_c)^2}{N_c - 1}}\
 = \frac{var(\Delta\overline{X})^2}{\frac{var(\overline X_t)^2}{N_t - 1}+\frac{var(\overline X_c)^2}{N_c - 1}}
 $$
@@ -102,6 +95,5 @@ Sometimes we want to answer questions like "Does my test variant lead to a click
 The confidence interval is calculated by
 
 $$
-\Large
 CI(\Delta \overline X) = (\overline X_{group} - fixed \ value) \pm Z \cdot\sqrt{{var( \overline X_{group})}}
 $$
