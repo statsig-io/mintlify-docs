@@ -79,7 +79,7 @@ In Metric and Assignment sources, you can use Statsig Macros to directly inject 
 
 For example, in an incremental reload from `2023-09-01` to `2023-09-03`, this query:
 
-```
+```sql
 SELECT
     user_id,
     event,
@@ -91,7 +91,7 @@ WHERE dt BETWEEN {statsig_start_date} AND {statsig_end_date}
 
 resolves to
 
-```
+```sql
 SELECT
     user_id,
     event,
@@ -128,7 +128,7 @@ When using Statsig’s Metric Explorer to visualize the data within your warehou
 
 We advise partitioning on event date and clustering on event when defining your events table. This will improve performance as the majority of queries will filter for the name of the event and the time it was logged. When defining the partition on event date, you should truncate the timestamp to day-level granularity instead of using the raw timestamp (which would otherwise have millisecond precision resulting in very high cardinality).
 
-```
+```sql
 -- Create an events table partitioned by date and clustered by event.
 CREATE TABLE dataset.events (
   ts TIMESTAMP NOT NULL,
@@ -139,9 +139,9 @@ PARTITION BY DATE(ts)
 CLUSTER BY event;
 ```
 
-BigQuery’s support for applying a cluster to an existing table is limited. Additionally, adding a cluster to an existing table will not automatically recluster the data right away. Given this, if you need to repartition on event date or add a cluster by event, you can create a new table with the correct partitions and clusters using your current table.
+BigQuery's support for applying a cluster to an existing table is limited. Additionally, adding a cluster to an existing table will not automatically recluster the data right away. Given this, if you need to repartition on event date or add a cluster by event, you can create a new table with the correct partitions and clusters using your current table.
 
-```
+```sql
 -- Using an existing events table, create a new table that is partitioned by date and clustered by event.
 CREATE OR REPLACE TABLE dataset.events_new
 PARTITION BY DATE(ts)
@@ -163,7 +163,7 @@ When making clustering decisions in your events table layout, [liquid clustering
 
 We recommend employing liquid clustering for your events table with the following:
 
-```
+```sql
 -- Enable liquid clustering for your events table.
 ALTER TABLE events SET TBLPROPERTIES ('delta.liquidClustering.enabled' = 'true');
 
@@ -180,21 +180,21 @@ If your events table is frequently being updated, Databricks recommends scheduli
 
 If you choose not to use liquid partitioning, our recommendation is to partition on a single low cardinality column such as the date of the event. Try to avoid adding more than one column on the partition unless absolutely necessary and don't partition on a column that has a cardinality that would exceed one thousand. We suggest using a generated column to simplify pruning:
 
-```
+```sql
 -- Define a partition on the event date generated column.
 CREATE TABLE events (ts TIMESTAMP, event STRING, event_date DATE GENERATED ALWAYS AS (CAST(ts AS DATE))) USING DELTA PARTITIONED BY (event_date);
 ```
 
 You can use `ZORDER` to colocate similar values within a file for a high cardinality column, which benefits query performance by improving data skipping. We recommend doing this on the event column:
 
-```
+```sql
 -- ZORDER by the event column to improve data skipping.
 OPTIMIZE events ZORDER BY (event);
 ```
 
-Using a scheduled job that runs `OPTIMIZE` on the last week’s event data, you can improve query performance by compacting the number of small data files into fewer, larger files:
+Using a scheduled job that runs `OPTIMIZE` on the last week's event data, you can improve query performance by compacting the number of small data files into fewer, larger files:
 
-```
+```sql
 -- Periodically optimize the events table based on the last week of data.
 OPTIMIZE events WHERE event_date >= current_date() - INTERVAL 7 DAYS;
 ```
@@ -203,7 +203,7 @@ In general, avoid partitioning on a combination of event date and event. For eve
 
 If extra parallelism is desired without introducing too many partitions, you can `ZORDER` by an additional bucket column. This bucket column can be defined as follows:
 
-```
+```sql
 -- Add bucket column for extra parallelism.
 ALTER TABLE events ADD COLUMN event_bucket INT GENERATED ALWAYS AS (pmod(hash(event), 16));
 
@@ -215,7 +215,7 @@ OPTIMIZE events ZORDER BY (event_bucket);
 
 Dynamic File Pruning will enable Spark to prune partitions based on filter values at runtime. It should be enabled if possible using:
 
-```
+```sql
 -- Turn on Dynamic File Pruning.
 SET spark.databricks.optimizer.dynamicFilePruning = true;
 ```
@@ -224,7 +224,7 @@ SET spark.databricks.optimizer.dynamicFilePruning = true;
 
 To rebalance skew and adjust join strategy, we advise turning on Adaptive Query Execution:
 
-```
+```sql
 -- Turn on Adapative Query Execution
 SET spark.sql.adaptive.enabled = true;
 ```
@@ -243,7 +243,7 @@ Ordering secondarily by event will mean rows are grouped by event within each ti
 
 Given there can be significant skew among event types, we generally advise using an automatic distribution style rather than distributing upon the event column. This will allow Redshift to make distribution decisions based on the size of the table and query patterns. You can create an events table with the above recommendations in mind as follows:
 
-```
+```sql
 -- Create an events table with an automatic distrbution style and sort key on timestamp, event.
 CREATE TABLE events (
   event       VARCHAR NOT NULL,
@@ -254,9 +254,9 @@ DISTSTYLE AUTO
 COMPOUND SORTKEY (ts, event);
 ```
 
-If you already have an events table and want to leverage the recommended distribution style and sort key, you won’t be able to apply those changes by modifying the existing table. Instead, you can create a new table and copy over data:
+If you already have an events table and want to leverage the recommended distribution style and sort key, you won't be able to apply those changes by modifying the existing table. Instead, you can create a new table and copy over data:
 
-```
+```sql
 -- Create a new events table with the preferred distribution style and sort key.
 CREATE TABLE events_new (
   event       VARCHAR NOT NULL,
@@ -287,7 +287,7 @@ DROP TABLE events_old;
 
 Given Snowflake does not allow for explicit partitioning, we recommend using clustering keys on the event date and event to improve performance as the majority of queries will filter for the name of the event and the time it was logged. Note that we advise clustering on the timestamp truncated to day-level granularity instead of the raw timestamp (which would otherwise have millisecond precision causing very high cardinality).
 
-```
+```sql
 -- Cluster events on the timestamp truncated to day and event.
 ALTER TABLE events CLUSTER BY (DATE_TRUNC('day', ts), event);
 ```
@@ -298,7 +298,7 @@ If you have a high cardinality of unique event types, it might be advisable to a
 
 If there are high cardinality columns that you frequently reference in Metrics Explorer filters, consider using search optimization rather than clustering by it. This avoids an overly large range of values for each micro-partition generated by Snowflake, which would make pruning inefficient. For high cardinality columns, we can instead rely on the auxiliary search index generated through search optimization.
 
-```
+```sql
 -- Add search optimization for fast lookups.
 ALTER TABLE events ADD SEARCH OPTIMIZATION ON EQUALITY(some_column);
 ```
@@ -307,7 +307,7 @@ ALTER TABLE events ADD SEARCH OPTIMIZATION ON EQUALITY(some_column);
 
 You can use `SYSTEM$CLUSTERING_INFORMATION` to check if your current clustering scheme is effective. Large values of average_depth and average_overlaps may indicate the existing table should be reclustered on different keys with lower cardinality.
 
-```
+```sql
 -- Given an events table clustered on event date and event, check the clustering information.
 SELECT SYSTEM$CLUSTERING_INFORMATION('YOUR_DATABASE.YOUR_SCHEMA.EVENTS', '(DATE_TRUNC(''day'', ts), event)');
 ```
