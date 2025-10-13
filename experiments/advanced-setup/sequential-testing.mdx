@@ -79,7 +79,7 @@ Sequential testing is a reliable way to make an early decision, particularly for
 Statsig uses mSPRT based on the the approach proposed by Zhao et al. in this [paper](https://arxiv.org/pdf/1905.10493.pdf). The two-sided Sequential Testing confidence interval with significance level $\alpha$ is given by:
 
 $$
-\LARGE
+
 CI^*(\Delta \overline{X}) = \Delta \overline{X} \pm Z^*_{\alpha/2} \cdot \sqrt{V}
 $$
 
@@ -88,14 +88,14 @@ where
 - $Z^*_{\alpha/2}$ is the z-critical value, modified for sequential testing:
 
 $$
-\LARGE
+
 Z^*_{\alpha/2} = \sqrt{\frac{(V+\tau)}{\tau}\left(-2\ln(\alpha/2)-\ln(\frac{V}{V+\tau})\right)}
 $$
 
 - $V$ is the standard variance of the delta of means when computing [variance](/stats-engine/variance). It can be obtained from the sample variance of the test and control group means:
 
 $$
-\LARGE
+
 V = var(\Delta \overline X)
 = var(\overline X_t) + var(\overline X_c)
 = \frac{var(X_t)}{N_t} + \frac{var(X_c)}{N_c}
@@ -104,7 +104,7 @@ $$
 - $\tau$ is the mixing parameter given by:
 
 $$
-\LARGE
+
 \tau
 =(Z_{\alpha/2})^2\cdot\frac{var(X_t)+var(X_c)}{N_t+N_c}
 $$
@@ -122,7 +122,7 @@ We want to evaluate the mSPRT test so that our Type I error remains approximatel
 Our observed z-statistic (i.e. z-score) remains unchanged. Instead of evaluating $Z$ on a standard-normal distribution $N(0, 1)$ as we usually do, we evaluate against some other normal distribution $N(0, \sigma^2)$ with mean of zero and standard deviation $\sigma$. For a two-sided test, since we want the probability of an observed $Z$ exceeding $Z^*_{\alpha/2}$ (assuming the null hypothesis to be true) to be limited to $\alpha$, we can find the unknown parameter by solving for $\sigma$:
 
 $$
-\LARGE
+
 \sigma=\frac{Z_{\alpha/2}^*}{\sqrt{2} \cdot erf^{-1}(1-\alpha)}
 $$
 
@@ -131,7 +131,7 @@ where $erf^{-1}$ is the [inverse error function](https://en.wikipedia.org/wiki/E
 From here we can compute the two-sided sequential testing p-value as:
 
 $$
-\LARGE
+
 \text{p-value}^* = 2 \cdot \frac{1}{\sqrt{2\pi}} \int \limits _{-\infty}^{-|Z|} \frac{e^{- \frac{t^2}{{2\sigma^2}}}}{\sigma}dt
 $$
 
@@ -142,7 +142,7 @@ where $Z$ is the observed z-statistic (i.e. z-score) as usual.
 We can modify each step for one-sided sequential testing.
 
 $$
-\LARGE
+
 CI^*(\Delta \overline{X}) = \begin{cases}
 \left[\Delta \overline{X} - Z^*_{\alpha} \cdot \sqrt{V}, \quad +\infty \right) & \text{if right-sided test} \\
 \\
@@ -151,7 +151,7 @@ CI^*(\Delta \overline{X}) = \begin{cases}
 $$
 
 $$
-\LARGE
+
 \text{p-value}^* = \begin{cases}
 1 - \frac{1}{\sqrt{2\pi}} \int \limits _{-\infty}^{Z} \frac{e^{- \frac{t^2}{{2\sigma^2}}}}{\sigma}dt  \quad \text{if right-sided test} \\
 \\
@@ -164,7 +164,7 @@ where
 - $Z^*_{\alpha}$ is the one-sided test z-critical value, modified for sequential testing:
 
 $$
-\LARGE
+
 Z^*_{\alpha} = \sqrt{\frac{(V+\tau)}{\tau}\left(-2\ln(\alpha)-\ln(\frac{V}{V+\tau})\right)}
 $$
 
@@ -173,7 +173,7 @@ $$
 - $\tau$ is the mixing parameter given by:
 
 $$
-\LARGE
+
 \tau
 =(Z_{\alpha})^2\cdot\frac{var(X_t)+var(X_c)}{N_t+N_c}
 $$
@@ -183,7 +183,7 @@ $$
 - $\sigma$ is solved via:
 
 $$
-\LARGE
+
 \sigma = \begin{cases}
 \frac{Z_{\alpha}^*}{\sqrt{2} \cdot erf^{-1}(1 - 2 \alpha)} & \text{if right-sided test} \\
 \\
