@@ -10,19 +10,19 @@ In most cases though, Fieller Interval results are very similar to results from 
 
 ### 1: Determine if a Fieller Interval is Well-Defined
 
-Before proceeding to applying Fieller’s Theorem, we need to check that the denominator of the relative lift metric $\Large \overline{X_C}$ is significantly distinct from 0.
+Before proceeding to applying Fieller’s Theorem, we need to check that the denominator of the relative lift metric $ \overline{X_C}$ is significantly distinct from 0.
 
-We do this by calculating the parameter $\Large g$:
+We do this by calculating the parameter $ g$:
 
 $$
-\Large
+
 g = \frac{Z_{\alpha/2}^2 \cdot \mathrm{var}(X_C)}{(n_C-1) \cdot \overline{X_C}^2}
 $$
 
 Where:
-$\Large Z_{\alpha/2}$ is the critical value associated with the desired confidence level $\Large \mathrm{var}(X_C)$ is the variance of the control group metric values $\Large n_C$ is the number of units in the control group $\Large \overline{X_C}$ is the mean of the control group metric values
+$ Z_{\alpha/2}$ is the critical value associated with the desired confidence level $ \mathrm{var}(X_C)$ is the variance of the control group metric values $ n_C$ is the number of units in the control group $ \overline{X_C}$ is the mean of the control group metric values
 
-When $\Large g$ < 1, the control mean is significantly different from 0, and we can use Fieller intervals.
+When $ g$ < 1, the control mean is significantly different from 0, and we can use Fieller intervals.
 
 ### 2A: Apply Fieller Interval Formula
 
@@ -41,7 +41,7 @@ When $\overline{X_C}$ is not statistically different from zero, the denominator 
 When this happens, we surface the relative lift observed during the experiment.
 
 $$
-\Large
+
 \% \Delta \overline{X} = \frac{\overline{X_T}-\overline{X_C}}{\overline{X_C}}
 $$
 

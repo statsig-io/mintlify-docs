@@ -74,7 +74,6 @@ Statsig uses an updated version of Hajnal's two-sample t test, as modified by De
 On each day, compute the following for a comparison between any two groups A and B for a specific metric:
 
 $$
-\LARGE
 {LR} =
 \frac
 {\phi(|z_{m}|; \theta, 1)}
@@ -83,10 +82,10 @@ $$
 
 where:
 
-- $\Large \phi(x; \theta, 1)$ is the PDF of a normal distribution of shape $\Large \mathcal{N}(\theta, 1)$ evaluated at $\Large x$
-- $\Large z$ is the observed Z-statistic between the groups
+- $ \phi(x; \theta, 1)$ is the PDF of a normal distribution of shape $ \mathcal{N}(\theta, 1)$ evaluated at $ x$
+- $ z$ is the observed Z-statistic between the groups
   $$
-  \Large
+  
   z = \frac
   {\Delta \bar{X}}
   {\sigma_{\Delta\bar{X}}}
@@ -96,14 +95,14 @@ where:
   $$
 
 $$
-\Large
+
 \sigma_{\Delta\bar{X}}=\sqrt{\frac{var(X_A)}{N_A}+\frac{var(X_B)}{N_B}}
 $$
 
-- $\Large \theta$ is derived from **Cohen's d** set prior to the experiment for the particular metric being considered
+- $ \theta$ is derived from **Cohen's d** set prior to the experiment for the particular metric being considered
 
 $$
-\Large
+
 \theta = \frac
 {\delta}
 {\sqrt{
@@ -111,20 +110,20 @@ $$
 }}
 $$
 
-- $\Large N_{A}$ and $\Large N_{B}$ are the number of observed units for each group
+- $ N_{A}$ and $ N_{B}$ are the number of observed units for each group
 
 ### Power Analysis & Setting Cohen's d
 
 SPRT requires that a value of [**Cohen's d**](https://en.wikiversity.org/wiki/Cohen%27s_d) be set prior to the start of the experiment for each metric being evaluated. Setting the parameter requires three components:
 
 - **MDE**: An Minimum Detectable Effect desired to be measured, in units of percent
-- **Mean**: A baseline average value for the metric, $\Large \overline{X}$
-- **Standard Deviation**: A baseline standard deviation for the metric, $\Large \sigma_{X}$
+- **Mean**: A baseline average value for the metric, $ \overline{X}$
+- **Standard Deviation**: A baseline standard deviation for the metric, $ \sigma_{X}$
 
 With them, it's easy to compute Cohen's d parameter for each metric:
 
 $$
-\Large
+
 \delta = \frac{\text{MDE\%} \cdot \overline{X}}{100 \cdot \sigma_{X}}
 $$
 
@@ -137,24 +136,24 @@ While Cohen's d is used to compute your experimental results after the experimen
 Given:
 
 $$
-\Large
+
 A=ln\left(\frac{1-\beta}{\alpha}\right)
 $$
 
 $$
-\Large
+
 k=\frac{n_{ec}}{n_{et}}=\frac{\text{units expected in control}}{\text{units expected in treatment}}=\frac{\text{\% units expected in control}}{\text{\% units expected in treatment}}
 $$
 
 $$
-\Large
+
 n_{et} = \frac{A}{\frac{1}{2}\left(\frac{k}{1+k}\right)\delta^2}
 $$
 
 Then, the total number of expected units at decision time is:
 
 $$
-\Large
+
 n_e=n_{et}+n_{ec}=n_{et}(1+k)
 $$
 

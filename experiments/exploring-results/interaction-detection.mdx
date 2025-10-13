@@ -37,16 +37,16 @@ See more examples in this [article](https://www.statsig.com/blog/interaction-eff
 ## Methodology
 
 $$
-\LARGE
+
 \Delta_{\text{treatment effect}} = (\overline{X_{test \cdot test}} - \overline{X_{test \cdot control}}) - (\overline{X_{control \cdot test}} - \overline{X_{control \cdot control}})
 $$
 
 $$
-\LARGE
+
 \Delta_{\text{treatment effect}}{\%} = \frac{\Delta_{\text{treatment effect}}}{(\overline{X_{control \cdot test}} - \overline{X_{control \cdot control}})}
 $$
 
 $$
-\LARGE
+
 variance = \frac{Var(X_{test \cdot test})}{n_{test \cdot test}} + \frac{Var(X_{test \cdot control})}{n_{test \cdot control}} + \frac{Var(X_{control \cdot test})}{n_{control \cdot test}} + \frac{Var(X_{control \cdot control})}{n_{control \cdot control}}
 $$
