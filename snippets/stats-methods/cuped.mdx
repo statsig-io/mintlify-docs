@@ -17,40 +17,40 @@ CUPED for ratios metrics, where each experiment unit is represented by a numerat
 Denote the numerator, denominator, pre-experiment numerator, and pre-experiment denominator as $Y$, $N$, $X$, and $M$, respectively. Using the CUPED-reduced variance formula,
 
 $$
-\LARGE
+
 Var(\frac{Y_{cv}}{N_{cv}})=Var(\frac{Y}{N})+\theta^2 Var(\frac{X}{M})-2\theta Cov(\frac{Y}{N}, \frac{X}{M})
 $$
 
 where optimal $\theta$ is found as
 
 $$
-\LARGE
+
 \frac{Cov(\frac{Y}{N}, \frac{X}{M})}{Var(\frac{X}{M})}
 $$
 
 expanded to
 
 $$
-\LARGE
+
 \frac{Cov(\frac{Y}{\mu_N}-\frac{\mu_Y N}{\mu^2_N}, \frac{X}{\mu_M}-\frac{\mu_X M}{\mu^2_M})}{Var(\frac{X}{\mu_M}-\frac{\mu_X M}{\mu^2_M})}
 $$
 
 The CUPED-adjusted group means are inferred based on the control group.
 
 $$
-\LARGE
+
 \frac{Y_{cv}}{N_{cv}}=\frac{Y}{N}-\theta \frac{X}{M} + \theta \mathbb{E}[R]
 $$
 
 While $\mathbb{E}[R]$ is hard to deduct, we recognized that
 
 $$
-\LARGE
+
 \frac{Y_{cv}(control)}{N_{cv}(control)}=\frac{Y(control)}{N(control)}
 $$
 
 $$
-\LARGE
+
 \frac{Y_{cv}(test)}{N_{cv}(test)} \\
 :=\frac{Y(control)}{N(control)} - (\frac{Y(control)}{N(control)} - \theta \frac{X(control)}{M(control)}) + (\frac{Y(test)}{N(test)} - \theta\frac{X(test)}{M(test)}) \\
 :=\frac{Y(test)}{N(test)} - \theta\frac{X(test)}{M(test)} + \theta \frac{X(control)}{M(control)}
