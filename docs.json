@@ -94,7 +94,7 @@
                     "group": "Reducing False Positives",
                     "pages": [
                       "experiments/statistical-methods/methodologies/bonferroni-correction",
-                      "experiments/statistical-methods/methodologies/benjamini\u2013hochberg-procedure"
+                      "experiments/statistical-methods/methodologies/benjamini-hochberg-procedure"
                     ]
                   },
                   {
@@ -587,7 +587,7 @@
                     "group": "Methodologies Used (WHN)",
                     "pages": [
                       "statsig-warehouse-native/features/statistics/methodologies/bonferroni-correction",
-                      "statsig-warehouse-native/features/statistics/methodologies/benjamini\u2013hochberg-procedure",
+                      "statsig-warehouse-native/features/statistics/methodologies/benjamini-hochberg-procedure",
                       "statsig-warehouse-native/features/statistics/methodologies/cuped",
                       "statsig-warehouse-native/features/statistics/methodologies/delta-method",
                       "statsig-warehouse-native/features/statistics/methodologies/fieller-intervals",
@@ -1587,8 +1587,8 @@
       "destination": "/experiments/setup/quality-score"
     },
     {
-      "source": "/stats-engine/methodologies/benjamini–hochberg-procedure",
-      "destination": "/experiments/statistical-methods/methodologies/benjamini–hochberg-procedure"
+      "source": "/stats-engine/methodologies/benjamini-hochberg-procedure",
+      "destination": "/experiments/statistical-methods/methodologies/benjamini-hochberg-procedure"
     },
     {
       "source": "/stats-engine/methodologies/delta-method",

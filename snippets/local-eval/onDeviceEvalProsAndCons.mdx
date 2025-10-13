@@ -2,8 +2,7 @@
   Statsig's normal (remote evaluation) SDKs are recommended for most client applications. Understand the use case and privacy risks by reading the [On-Device Eval SDK overview](/client/onDevice). On-device evaluation SDKs are for Enterprise & Pro Tier only.
 </Info>
 
-The `{sdkName}` SDK uses a different paradigm than its precomputed counterpart ([{otherSDKName}]({otherSDKLink})). 
-It is a Client SDK that behaves more like a Server SDK. Rather than requiring a user up front, you can check gates/configs/experiments for any set of user properties, because the SDK downloads a complete representation of your project and evaluates checks in real time.
+These SDKs use a different paradigm than their precomputed counterparts: [JS](/client/javascript-sdk), [Android](/client/Android), [iOS](/client/iosClientSDK), they behave more like Server SDKs. Rather than requiring a user up front, you can check gates/configs/experiments for any set of user properties, because the SDK downloads a complete representation of your project and evaluates checks in real time.
 
 ### Pros
 - No need for a network request when changing user properties - just check the gate/config/experiment locally
