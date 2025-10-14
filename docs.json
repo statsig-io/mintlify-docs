@@ -757,7 +757,7 @@
               "console-api/introduction",
               {
                 "group": "API reference",
-                "openapi": "console-api/capiopenapi.json"
+                "openapi": "https://api.statsig.com/openapi/20240601.json"
               }
             ]
           },
