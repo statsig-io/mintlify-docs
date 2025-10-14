@@ -1096,6 +1096,10 @@
   },
   "redirects": [
     {
+      "source": "/server/nodejsServerSDK/upgrade_guide/v5ToV6",
+      "destination": "/server/migration-guides/v5ToV6UpgradeGuide"
+    },
+    {
       "source": "/experiments/working-with",
       "destination": "/experiments/overview"
     },
