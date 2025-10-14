@@ -66,6 +66,7 @@
       {
         userId: "", // Anonymous user; replace with stable ID if available
         environment: environment,
+        custom: { "newDocs": true }
       },
       options
     );
