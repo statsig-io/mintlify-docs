@@ -6,3 +6,4 @@ Server Secret Keys should always be kept private. If you expose one, you can dis
 
 There is also an optional parameter named `options` that allows you to pass in a StatsigOptions to customize the SDK.
 
+You should initialize once per instace of the sdk you create, and reuse the initialized instance for subsequent requests.
