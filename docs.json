@@ -257,8 +257,15 @@
                 "group": "Infra Analytics",
                 "pages": [
                   "infra-analytics/overview",
-                  "infra-analytics/logs-explorer",
-                  "infra-analytics/logs-explorer-queries",
+                  "infra-analytics/getting-started",
+                  {
+                    "group": "Logs Explorer",
+                    "pages": [
+                      "infra-analytics/logs-explorer",
+                      "infra-analytics/logs-explorer-queries",
+                      "infra-analytics/events-mode-logs-explorer"
+                    ]
+                  },
                   "infra-analytics/topline-alerts-logs"
                 ]
               },
@@ -1034,7 +1041,7 @@
               {
                 "group": "Open Telemetry",
                 "pages": [
-                  "server/concepts/open_telemetry"
+                  "/infra-analytics/getting-started.mdx"
                 ]
               },
               {
