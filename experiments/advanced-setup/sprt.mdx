@@ -8,7 +8,10 @@ description: "Learn about SPRT methodology for faster A/B test decision making w
 The **Sequential Probability Ratio Test** (SPRT) is another, advanced methodology for running AB tests, differing from the traditional Null Hypothesis Significance Test (commonly called [Frequentist](/stats-engine/p-value) analysis). SPRT can meaningfully improve time to decision for your experiments, including detecting unwanted metric regressions much faster. It also tends to be much easier to share results to stakeholders who aren't super familiar with P-values and Significance levels. Lastly, SPRT has no penalties for peeking; there's no need for sequential testing plans, Alpha spending, or CI-penalties as SPRT is built to be a sequential test methodology from the start.
 
 <Frame>
-  <img src="/images/experiments/sprt/sprt_scorecard.png" alt="SPRT experiment results scorecard" />
+  <img
+    src="/images/experiments/sprt/sprt_scorecard.png"
+    alt="SPRT experiment results scorecard"
+  />
 </Frame>
 
 ### Concepts
@@ -27,7 +30,12 @@ The Upper and Lower decision boundaries are determined by your joint tolerances 
 - When LR falls into the range between these thresholds, no decision can be made and you should continue collecting data.
 
 <p align="center">
-<img src="/images/experiments/sprt/sprt_hover_card.png" alt="SPRT Hover Card" width="500" align="center"/>
+  <img
+    src="/images/experiments/sprt/sprt_hover_card.png"
+    alt="SPRT Hover Card"
+    width="500"
+    align="center"
+  />
 </p>
 
 An LR of 5.8, for example, indicates that the what you observed is 5.8x more likely under the alternative hypothesis as compared to the null hypothesis.
@@ -44,27 +52,33 @@ One of the nice things about SPRT is that this Likelihood Ratio is similar to ho
 
 ## Comparing SPRT to other analysis methods
 
-| Category                    | Frequentist                                | SPRT                                                            |
-| --------------------------- | ------------------------------------------ | --------------------------------------------------------------- |
-| Test Statistic              | P-value                                    | Likelihood Ratio                                                |
-| Decision Threshold          | Alpha                                      | A & B                                                           |
-| Decision Framework          | Reject/Fail to Reject the Null             | Accept the Null, Accept the Alternative Hypothesis, Or Continue |
-| Allows Peeking              | Yes, but with Sequential Testing Penalties | Yes, Unlimited                                                  |
-| Requires Pre-Setup          | No, but highly recommended                 | Yes, per metric                                                 |
-| Allows 1- and 2-Sided tests | Yes, per metric                            | Yes, per metric                                                 |
+| Category                    | Frequentist                                                                                                                        | Bayesian                                                                                                                                                     | SPRT                                                                                                                                                              |
+| --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Test Statistic              | P-value: <br /> <br /> _Probability of observing the results that is as extreme as the sample data if the null hypothesis is true_ | Posterior Probability: <br /> <br /> _Probability of Test better than Control given the observed data and your prior information_                            | Likelihood Ratio: <br /> <br /> _Comparing the goodness of fit of two competing statistical models_                                                               |
+| Decision Threshold          | Alpha (Industry standard 5%)                                                                                                       | Posterior Probability and Credible Intervals                                                                                                                 | Upper & Lower Decision Boundary decided based one the alpha and beta you picked                                                                                   |
+| Decision Framework          | Reject/Fail to Reject the Null based on if p-value > 5%                                                                            | Whether chance to beat control exceeds the pre-set decision threshold                                                                                        | Accept the Null Hypothesis, Accept Alternative Hypothesis, Or Continue based on the comparison of calculated likelihood ration with Upper/Lower Decision boundary |
+| Allows Peeking              | Yes, but with Sequential Testing Penalties                                                                                         | Yes, Unlimited                                                                                                                                               | Yes, Unlimited                                                                                                                                                    |
+| Requires Pre-Setup          | Yes, requires sample size calculation based on historical metric mean and MDE                                                      | Optional, but you can define prior distribution per metric if you have previous knowledge which can accelerates the experiment or correct surprising results | Yes, requires historical information about each metric as well as MDE                                                                                             |
+| Allows 1- and 2-Sided tests | Yes, per metric                                                                                                                    | Yes, per metric                                                                                                                                              | Yes, per metric                                                                                                                                                   |
 
 ## How to Use SPRT in Statsig
 
 **Enabling SPRT:** Select SPRT as your analysis method when setting up an AB test in the Statsig console.
 
 <Frame>
-  <img src="/images/experiments/sprt/sprt_power_analysis.png" alt="SPRT power analysis configuration interface" />
+  <img
+    src="/images/experiments/sprt/sprt_power_analysis.png"
+    alt="SPRT power analysis configuration interface"
+  />
 </Frame>
 
 **Interpreting Results:** The experiment Results tab shows the latest likelihood ratio for each metric in your experiment and indicates when a decision boundary has been reached, allowing you to accept the null or alternative hypothesis with confidence.
 
 <Frame>
-  <img src="/images/experiments/sprt/sprt_results_readout.png" alt="SPRT experiment results dashboard" />
+  <img
+    src="/images/experiments/sprt/sprt_results_readout.png"
+    alt="SPRT experiment results dashboard"
+  />
 </Frame>
 
 ## Computing SPRT Results
@@ -84,8 +98,9 @@ where:
 
 - $ \phi(x; \theta, 1)$ is the PDF of a normal distribution of shape $ \mathcal{N}(\theta, 1)$ evaluated at $ x$
 - $ z$ is the observed Z-statistic between the groups
+
   $$
-  
+
   z = \frac
   {\Delta \bar{X}}
   {\sigma_{\Delta\bar{X}}}
@@ -110,7 +125,7 @@ $$
 }}
 $$
 
-- $ N_{A}$ and $ N_{B}$ are the number of observed units for each group
+- $ N*{A}$ and $ N*{B}$ are the number of observed units for each group
 
 ### Power Analysis & Setting Cohen's d
 
@@ -118,7 +133,7 @@ SPRT requires that a value of [**Cohen's d**](https://en.wikiversity.org/wiki/Co
 
 - **MDE**: An Minimum Detectable Effect desired to be measured, in units of percent
 - **Mean**: A baseline average value for the metric, $ \overline{X}$
-- **Standard Deviation**: A baseline standard deviation for the metric, $ \sigma_{X}$
+- **Standard Deviation**: A baseline standard deviation for the metric, $ \sigma\_{X}$
 
 With them, it's easy to compute Cohen's d parameter for each metric:
 
