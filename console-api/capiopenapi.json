@@ -261,6 +261,7 @@
               "type": "string",
               "enum": [
                 "edit_experiment_scheduled_start",
+                "edit_ai_config_agent_version",
                 "update_ai_dataset",
                 "upload_ai_config_dataset_csv",
                 "resalt_experiment",
@@ -679,6 +680,7 @@
                 "type": "string",
                 "enum": [
                   "edit_experiment_scheduled_start",
+                  "edit_ai_config_agent_version",
                   "update_ai_dataset",
                   "upload_ai_config_dataset_csv",
                   "resalt_experiment",
@@ -16511,6 +16513,194 @@
         ]
       }
     },
+    "/console/v1/gates/{id}/dynamic_config_references": {
+      "get": {
+        "summary": "List Dynamic Config References",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "minimum": 0,
+              "maximum": 100,
+              "type": "number"
+            }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "Page number",
+            "schema": {
+              "example": 1,
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "type": "integer"
+            }
+          },
+          {
+            "name": "x-respect-review-settings",
+            "in": "header",
+            "description": "Optional header to respect review settings for mutation endpoints.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List dynamic configs that reference this gate",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/PaginationResponseWithMessage"
+                    },
+                    {
+                      "properties": {
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/DynamicConfigDto"
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "example": {
+                    "message": "Dynamic Configs listed successfully.",
+                    "data": [
+                      {
+                        "id": "example_config",
+                        "name": "Example Config",
+                        "description": "An example dynamic configuration",
+                        "idType": "userID",
+                        "lastModifierID": "abc123",
+                        "lastModifiedTime": 1600000000000,
+                        "lastModifierName": "Jane Doe",
+                        "lastModifierEmail": "jane@example.com",
+                        "creatorID": "def456",
+                        "createdTime": 1500000000000,
+                        "creatorName": "John Smith",
+                        "creatorEmail": "john@example.com",
+                        "targetApps": [
+                          "myapp"
+                        ],
+                        "holdoutIDs": [],
+                        "tags": [
+                          "example_tag"
+                        ],
+                        "team": "Product",
+                        "isEnabled": true,
+                        "rules": [],
+                        "defaultValue": {},
+                        "defaultValueJson5": "{}",
+                        "schema": "{\"$schema\":\"https://json-schema.org/draft/2020-12/schema\",\"properties\":{}}",
+                        "schemaJson5": "{\n  \"$schema\": \"https://json-schema.org/draft/2020-12/schema\",\n  \"properties\": {}\n}",
+                        "version": 1
+                      }
+                    ]
+                  }
+                },
+                "example": {
+                  "message": "Dynamic Configs listed successfully.",
+                  "data": [
+                    {
+                      "id": "example_config",
+                      "name": "Example Config",
+                      "description": "An example dynamic configuration",
+                      "idType": "userID",
+                      "lastModifierID": "abc123",
+                      "lastModifiedTime": 1600000000000,
+                      "lastModifierName": "Jane Doe",
+                      "lastModifierEmail": "jane@example.com",
+                      "creatorID": "def456",
+                      "createdTime": 1500000000000,
+                      "creatorName": "John Smith",
+                      "creatorEmail": "john@example.com",
+                      "targetApps": [
+                        "myapp"
+                      ],
+                      "holdoutIDs": [],
+                      "tags": [
+                        "example_tag"
+                      ],
+                      "team": "Product",
+                      "isEnabled": true,
+                      "rules": [],
+                      "defaultValue": {},
+                      "defaultValueJson5": "{}",
+                      "schema": "{\"$schema\":\"https://json-schema.org/draft/2020-12/schema\",\"properties\":{}}",
+                      "schemaJson5": "{\n  \"$schema\": \"https://json-schema.org/draft/2020-12/schema\",\n  \"properties\": {}\n}",
+                      "version": 1
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found. The requested resource could not be found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "enum": [
+                        404
+                      ]
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "message"
+                  ]
+                },
+                "examples": {
+                  "Not Found": {
+                    "value": {
+                      "status": 404,
+                      "message": "Not Found. The requested resource could not be found."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Gates"
+        ],
+        "security": [
+          {
+            "STATSIG-API-KEY": []
+          }
+        ]
+      }
+    },
     "/console/v1/gates/{id}/enable": {
       "put": {
         "summary": "Enable Gate",
@@ -16638,6 +16828,664 @@
         "tags": [
           "Gates",
           "MCP"
+        ],
+        "security": [
+          {
+            "STATSIG-API-KEY": []
+          }
+        ]
+      }
+    },
+    "/console/v1/gates/{id}/experiment_references": {
+      "get": {
+        "summary": "List Experiment References",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "minimum": 0,
+              "maximum": 100,
+              "type": "number"
+            }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "Page number",
+            "schema": {
+              "example": 1,
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "type": "integer"
+            }
+          },
+          {
+            "name": "x-respect-review-settings",
+            "in": "header",
+            "description": "Optional header to respect review settings for mutation endpoints.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List experiments that reference this gate",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/PaginationResponseWithMessage"
+                    },
+                    {
+                      "properties": {
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/ExternalExperimentDto"
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "example": {
+                    "message": "Experiments listed successfully.",
+                    "data": [
+                      {
+                        "id": "a_experiment",
+                        "name": "a_experiment",
+                        "description": "description",
+                        "idType": "userID",
+                        "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "lastModifiedTime": 1707427635442,
+                        "lastModifierName": "CONSOLE API",
+                        "lastModifierEmail": null,
+                        "creatorID": "1vaQaBoLlkauH9iiuOSBP2",
+                        "createdTime": 1707427634717,
+                        "creatorName": "CONSOLE API",
+                        "creatorEmail": null,
+                        "targetApps": [],
+                        "holdoutIDs": [],
+                        "tags": [],
+                        "status": "setup",
+                        "launchedGroupID": null,
+                        "startTime": null,
+                        "endTime": null,
+                        "layerID": null,
+                        "hypothesis": "This will be a good feature :)",
+                        "primaryMetrics": [
+                          {
+                            "name": "d1_retention_rate",
+                            "type": "user"
+                          }
+                        ],
+                        "primaryMetricTags": [],
+                        "secondaryMetrics": [],
+                        "secondaryMetricTags": [],
+                        "groups": [
+                          {
+                            "name": "Control",
+                            "id": "6sEQvUd4c6E55V6ljBYMeJ",
+                            "size": 50,
+                            "parameterValues": {
+                              "assigned_group": "control"
+                            },
+                            "description": ""
+                          },
+                          {
+                            "name": "Test",
+                            "id": "6sEQvVS6EoNzpkEgUJUpxL",
+                            "size": 50,
+                            "parameterValues": {
+                              "assigned_group": "test"
+                            },
+                            "description": ""
+                          }
+                        ],
+                        "allocation": 100,
+                        "duration": 14,
+                        "targetingGateID": "",
+                        "defaultConfidenceInterval": "95",
+                        "bonferroniCorrection": false,
+                        "decisionReason": null,
+                        "decisionTime": null,
+                        "healthChecks": [],
+                        "owner": {
+                          "ownerType": "USER",
+                          "ownerName": "Test User"
+                        },
+                        "inlineTargetingRulesJSON": "{}",
+                        "healthCheckStatus": "PASSED"
+                      },
+                      {
+                        "id": "b_experiment",
+                        "name": "b experiment",
+                        "description": "",
+                        "idType": "userID",
+                        "inlineTargetingRulesJSON": "{}",
+                        "lastModifierID": "68ztZp2v2nFc81RAsvuvj4",
+                        "lastModifiedTime": 1706744900374,
+                        "lastModifierName": "jacob O'Quinn",
+                        "lastModifierEmail": "jacob@statsig.com",
+                        "creatorID": "68ztZp2v2nFc81RAsvuvj4",
+                        "createdTime": 1678394676162,
+                        "creatorName": "jacob O'Quinn",
+                        "creatorEmail": "jacob@statsig.com",
+                        "targetApps": [],
+                        "holdoutIDs": [],
+                        "tags": [
+                          "customTag",
+                          "asdf"
+                        ],
+                        "status": "archived",
+                        "launchedGroupID": null,
+                        "startTime": null,
+                        "endTime": null,
+                        "layerID": null,
+                        "hypothesis": "",
+                        "primaryMetrics": [],
+                        "primaryMetricTags": [],
+                        "secondaryMetrics": [],
+                        "secondaryMetricTags": [
+                          "★ Core"
+                        ],
+                        "groups": [
+                          {
+                            "name": "Control",
+                            "id": "7dCnwm0by2laSOcBNKIL8r",
+                            "size": 50,
+                            "parameterValues": {
+                              "control": "control value"
+                            },
+                            "description": ""
+                          },
+                          {
+                            "name": "Test",
+                            "id": "7dCnwnFe0kuFcdKxoSEort",
+                            "size": 50,
+                            "parameterValues": {
+                              "control": "test value"
+                            },
+                            "description": ""
+                          }
+                        ],
+                        "allocation": 100,
+                        "duration": 14,
+                        "targetingGateID": "targeting_gate_to_select_users",
+                        "defaultConfidenceInterval": "95",
+                        "bonferroniCorrection": false,
+                        "decisionReason": null,
+                        "decisionTime": null,
+                        "healthCheckStatus": "WAITING",
+                        "healthChecks": [
+                          {
+                            "name": "Checks not yet detected",
+                            "status": "WAITING",
+                            "description": "This experiment has not recorded any exposure checks in production yet."
+                          },
+                          {
+                            "name": "Valid unit type not yet verified",
+                            "status": "WAITING",
+                            "description": "Exposure checks for this experiment are pending evaluation. This experiment requires exposure checks with unit IDs of type userID"
+                          },
+                          {
+                            "name": "Event metric data not yet verified",
+                            "status": "WAITING",
+                            "description": "This experiment has recorded no event metric with a valid unit ID yet, or these event metrics are pending evaluation. If you are importing events, this may take up to a day to reflect. This experiment requires metrics with unit IDs of type userID"
+                          },
+                          {
+                            "name": "Pulse metrics not yet available",
+                            "status": "WAITING",
+                            "description": "Expect to see your Pulse Results within 24 hours. Statsig computes Pulse results on a daily basis."
+                          },
+                          {
+                            "name": "Exposure balance not yet verified",
+                            "status": "WAITING",
+                            "description": "Exposure balance for this experiment is pending evaluation. As the experiment records more exposures, Statsig will continue to evaluate experiment exposure balance."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                "example": {
+                  "message": "Experiments listed successfully.",
+                  "data": [
+                    {
+                      "id": "a_experiment",
+                      "name": "a_experiment",
+                      "description": "description",
+                      "idType": "userID",
+                      "lastModifierID": "1vaQaBoLlkauH9iiuOSBP2",
+                      "lastModifiedTime": 1707427635442,
+                      "lastModifierName": "CONSOLE API",
+                      "lastModifierEmail": null,
+                      "creatorID": "1vaQaBoLlkauH9iiuOSBP2",
+                      "createdTime": 1707427634717,
+                      "creatorName": "CONSOLE API",
+                      "creatorEmail": null,
+                      "targetApps": [],
+                      "holdoutIDs": [],
+                      "tags": [],
+                      "status": "setup",
+                      "launchedGroupID": null,
+                      "startTime": null,
+                      "endTime": null,
+                      "layerID": null,
+                      "hypothesis": "This will be a good feature :)",
+                      "primaryMetrics": [
+                        {
+                          "name": "d1_retention_rate",
+                          "type": "user"
+                        }
+                      ],
+                      "primaryMetricTags": [],
+                      "secondaryMetrics": [],
+                      "secondaryMetricTags": [],
+                      "groups": [
+                        {
+                          "name": "Control",
+                          "id": "6sEQvUd4c6E55V6ljBYMeJ",
+                          "size": 50,
+                          "parameterValues": {
+                            "assigned_group": "control"
+                          },
+                          "description": ""
+                        },
+                        {
+                          "name": "Test",
+                          "id": "6sEQvVS6EoNzpkEgUJUpxL",
+                          "size": 50,
+                          "parameterValues": {
+                            "assigned_group": "test"
+                          },
+                          "description": ""
+                        }
+                      ],
+                      "allocation": 100,
+                      "duration": 14,
+                      "targetingGateID": "",
+                      "defaultConfidenceInterval": "95",
+                      "bonferroniCorrection": false,
+                      "decisionReason": null,
+                      "decisionTime": null,
+                      "healthChecks": [],
+                      "owner": {
+                        "ownerType": "USER",
+                        "ownerName": "Test User"
+                      },
+                      "inlineTargetingRulesJSON": "{}",
+                      "healthCheckStatus": "PASSED"
+                    },
+                    {
+                      "id": "b_experiment",
+                      "name": "b experiment",
+                      "description": "",
+                      "idType": "userID",
+                      "inlineTargetingRulesJSON": "{}",
+                      "lastModifierID": "68ztZp2v2nFc81RAsvuvj4",
+                      "lastModifiedTime": 1706744900374,
+                      "lastModifierName": "jacob O'Quinn",
+                      "lastModifierEmail": "jacob@statsig.com",
+                      "creatorID": "68ztZp2v2nFc81RAsvuvj4",
+                      "createdTime": 1678394676162,
+                      "creatorName": "jacob O'Quinn",
+                      "creatorEmail": "jacob@statsig.com",
+                      "targetApps": [],
+                      "holdoutIDs": [],
+                      "tags": [
+                        "customTag",
+                        "asdf"
+                      ],
+                      "status": "archived",
+                      "launchedGroupID": null,
+                      "startTime": null,
+                      "endTime": null,
+                      "layerID": null,
+                      "hypothesis": "",
+                      "primaryMetrics": [],
+                      "primaryMetricTags": [],
+                      "secondaryMetrics": [],
+                      "secondaryMetricTags": [
+                        "★ Core"
+                      ],
+                      "groups": [
+                        {
+                          "name": "Control",
+                          "id": "7dCnwm0by2laSOcBNKIL8r",
+                          "size": 50,
+                          "parameterValues": {
+                            "control": "control value"
+                          },
+                          "description": ""
+                        },
+                        {
+                          "name": "Test",
+                          "id": "7dCnwnFe0kuFcdKxoSEort",
+                          "size": 50,
+                          "parameterValues": {
+                            "control": "test value"
+                          },
+                          "description": ""
+                        }
+                      ],
+                      "allocation": 100,
+                      "duration": 14,
+                      "targetingGateID": "targeting_gate_to_select_users",
+                      "defaultConfidenceInterval": "95",
+                      "bonferroniCorrection": false,
+                      "decisionReason": null,
+                      "decisionTime": null,
+                      "healthCheckStatus": "WAITING",
+                      "healthChecks": [
+                        {
+                          "name": "Checks not yet detected",
+                          "status": "WAITING",
+                          "description": "This experiment has not recorded any exposure checks in production yet."
+                        },
+                        {
+                          "name": "Valid unit type not yet verified",
+                          "status": "WAITING",
+                          "description": "Exposure checks for this experiment are pending evaluation. This experiment requires exposure checks with unit IDs of type userID"
+                        },
+                        {
+                          "name": "Event metric data not yet verified",
+                          "status": "WAITING",
+                          "description": "This experiment has recorded no event metric with a valid unit ID yet, or these event metrics are pending evaluation. If you are importing events, this may take up to a day to reflect. This experiment requires metrics with unit IDs of type userID"
+                        },
+                        {
+                          "name": "Pulse metrics not yet available",
+                          "status": "WAITING",
+                          "description": "Expect to see your Pulse Results within 24 hours. Statsig computes Pulse results on a daily basis."
+                        },
+                        {
+                          "name": "Exposure balance not yet verified",
+                          "status": "WAITING",
+                          "description": "Exposure balance for this experiment is pending evaluation. As the experiment records more exposures, Statsig will continue to evaluate experiment exposure balance."
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found. The requested resource could not be found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "enum": [
+                        404
+                      ]
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "message"
+                  ]
+                },
+                "examples": {
+                  "Not Found": {
+                    "value": {
+                      "status": 404,
+                      "message": "Not Found. The requested resource could not be found."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Gates"
+        ],
+        "security": [
+          {
+            "STATSIG-API-KEY": []
+          }
+        ]
+      }
+    },
+    "/console/v1/gates/{id}/gate_references": {
+      "get": {
+        "summary": "List Gate References",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "minimum": 0,
+              "maximum": 100,
+              "type": "number"
+            }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "Page number",
+            "schema": {
+              "example": 1,
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "type": "integer"
+            }
+          },
+          {
+            "name": "x-respect-review-settings",
+            "in": "header",
+            "description": "Optional header to respect review settings for mutation endpoints.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List entities that reference this gate",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/PaginationResponseWithMessage"
+                    },
+                    {
+                      "properties": {
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/ExternalGateDto"
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "example": {
+                    "message": "Gates listed successfully.",
+                    "data": [
+                      {
+                        "id": "a_gate",
+                        "name": "A Gate",
+                        "description": "description",
+                        "idType": "userID",
+                        "lastModifierID": "4R5PV7mvYdW6NLCwK8ocoz",
+                        "lastModifiedTime": 1705439406750,
+                        "lastModifierName": "CONSOLE API",
+                        "lastModifierEmail": null,
+                        "creatorID": "4R5PV7mvYdW6NLCwK8ocoz",
+                        "createdTime": 1705439406615,
+                        "creatorName": "CONSOLE API",
+                        "creatorEmail": null,
+                        "targetApps": [],
+                        "holdoutIDs": [],
+                        "tags": [],
+                        "isEnabled": true,
+                        "status": "In Progress",
+                        "rules": [],
+                        "checksPerHour": 0,
+                        "type": "PERMANENT",
+                        "typeReason": "NONE",
+                        "team": null,
+                        "reviewSettings": {
+                          "requiredReview": false,
+                          "allowedReviewers": []
+                        },
+                        "measureMetricLifts": true,
+                        "owner": {
+                          "ownerID": "user123",
+                          "ownerName": "CONSOLE API",
+                          "ownerType": "SDK_KEY",
+                          "ownerEmail": ""
+                        },
+                        "monitoringMetrics": [],
+                        "version": 1
+                      }
+                    ],
+                    "pagination": {
+                      "all": "",
+                      "itemsPerPage": 100,
+                      "nextPage": null,
+                      "pageNumber": 1,
+                      "previousPage": null,
+                      "totalItems": 1
+                    }
+                  }
+                },
+                "example": {
+                  "message": "Gates listed successfully.",
+                  "data": [
+                    {
+                      "id": "a_gate",
+                      "name": "A Gate",
+                      "description": "description",
+                      "idType": "userID",
+                      "lastModifierID": "4R5PV7mvYdW6NLCwK8ocoz",
+                      "lastModifiedTime": 1705439406750,
+                      "lastModifierName": "CONSOLE API",
+                      "lastModifierEmail": null,
+                      "creatorID": "4R5PV7mvYdW6NLCwK8ocoz",
+                      "createdTime": 1705439406615,
+                      "creatorName": "CONSOLE API",
+                      "creatorEmail": null,
+                      "targetApps": [],
+                      "holdoutIDs": [],
+                      "tags": [],
+                      "isEnabled": true,
+                      "status": "In Progress",
+                      "rules": [],
+                      "checksPerHour": 0,
+                      "type": "PERMANENT",
+                      "typeReason": "NONE",
+                      "team": null,
+                      "reviewSettings": {
+                        "requiredReview": false,
+                        "allowedReviewers": []
+                      },
+                      "measureMetricLifts": true,
+                      "owner": {
+                        "ownerID": "user123",
+                        "ownerName": "CONSOLE API",
+                        "ownerType": "SDK_KEY",
+                        "ownerEmail": ""
+                      },
+                      "monitoringMetrics": [],
+                      "version": 1
+                    }
+                  ],
+                  "pagination": {
+                    "all": "",
+                    "itemsPerPage": 100,
+                    "nextPage": null,
+                    "pageNumber": 1,
+                    "previousPage": null,
+                    "totalItems": 1
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found. The requested resource could not be found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "enum": [
+                        404
+                      ]
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "message"
+                  ]
+                },
+                "examples": {
+                  "Not Found": {
+                    "value": {
+                      "status": 404,
+                      "message": "Not Found. The requested resource could not be found."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Gates"
         ],
         "security": [
           {
@@ -32916,6 +33764,7 @@
                         "status": "IN_PROGRESS",
                         "currentPhase": "Phase 1",
                         "currentPhaseID": "phase_123456",
+                        "currentPhaseEndTime": 1646560799123,
                         "actions": [
                           {
                             "type": "STARTED",
@@ -32937,6 +33786,7 @@
                         "status": "COMPLETED",
                         "currentPhase": "Phase 1",
                         "currentPhaseID": "phase_123456",
+                        "currentPhaseEndTime": 1646560799124,
                         "actions": [
                           {
                             "type": "STARTED",
@@ -32971,6 +33821,7 @@
                       "status": "IN_PROGRESS",
                       "currentPhase": "Phase 1",
                       "currentPhaseID": "phase_123456",
+                      "currentPhaseEndTime": 1646560799123,
                       "actions": [
                         {
                           "type": "STARTED",
@@ -32992,6 +33843,7 @@
                       "status": "COMPLETED",
                       "currentPhase": "Phase 1",
                       "currentPhaseID": "phase_123456",
+                      "currentPhaseEndTime": 1646560799124,
                       "actions": [
                         {
                           "type": "STARTED",
@@ -33075,9 +33927,10 @@
                     "data": {
                       "id": "trigger_1646560789123",
                       "releasePipelineID": "pipeline_123456",
-                      "status": "INITIATED",
+                      "status": "IN_PROGRESS",
                       "currentPhase": "Phase 1",
                       "currentPhaseID": "phase_123456",
+                      "currentPhaseEndTime": 1646560799123,
                       "creatorID": "user_123456",
                       "createdTime": 1646560789123,
                       "gateID": "gate_123456",
@@ -33100,9 +33953,10 @@
                   "data": {
                     "id": "trigger_1646560789123",
                     "releasePipelineID": "pipeline_123456",
-                    "status": "INITIATED",
+                    "status": "IN_PROGRESS",
                     "currentPhase": "Phase 1",
                     "currentPhaseID": "phase_123456",
+                    "currentPhaseEndTime": 1646560799123,
                     "creatorID": "user_123456",
                     "createdTime": 1646560789123,
                     "gateID": "gate_123456",
@@ -56112,6 +56966,15 @@
             "type": "string",
             "description": "Last Modifier ID"
           },
+          "team": {
+            "type": "string",
+            "nullable": true,
+            "description": "Team Name"
+          },
+          "teamID": {
+            "type": "string",
+            "description": "Team ID"
+          },
           "parameters": {
             "type": "array",
             "items": {
@@ -62173,6 +63036,12 @@
             "type": "string",
             "nullable": true,
             "description": "Current phase ID"
+          },
+          "currentPhaseEndTime": {
+            "type": "number",
+            "nullable": true,
+            "description": "Current phase end time",
+            "format": "double"
           }
         },
         "required": [
@@ -62185,7 +63054,8 @@
           "lastModifierName",
           "status",
           "currentPhase",
-          "currentPhaseID"
+          "currentPhaseID",
+          "currentPhaseEndTime"
         ]
       },
       "ReleasePipelineUpdateDto": {
