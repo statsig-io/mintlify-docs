@@ -7,6 +7,11 @@
     "dark": "#202020",
     "light": "#F9FAFA"
   },
+  "seo": {
+    "metatags": {
+        "og:image": "/images/OG_Docs_100725.jpg"
+    }
+  },
   "background": {
     "image": {
       "light": "/images/hero_image_light.png",
