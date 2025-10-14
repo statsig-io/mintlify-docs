@@ -1096,6 +1096,18 @@
   },
   "redirects": [
     {
+      "source": "/server/nodejsServerSDK/upgrade_guide/v5ToV6",
+      "destination": "/server/migration-guides/v5ToV6UpgradeGuide"
+    },
+    {
+      "source": "/experiments/working-with",
+      "destination": "/experiments/overview"
+    },
+    {
+      "source": "/client/CPP",
+      "destination": "/client/cpp"
+    },
+    {
       "source": "/client/js-on-device-eval-client/using-evaluations-data-adapter",
       "destination": "/client/javascript-mono/UsingSpecsDataAdapter"
     },
