@@ -728,6 +728,7 @@
                 "group": "More Server SDKs",
                 "pages": [
                   "server/cpp",
+                  "server/go",
                   "server-core/rust-core",
                   "server-core/elixir-core",
                   "server-core/php-core"
@@ -739,7 +740,6 @@
                   "server-core/legacy-sdks",
                   "server/nodejsServerSDK",
                   "server/pythonSDK",
-                  "server/go",
                   "server/erlang",
                   "server/java",
                   "server/rust",
