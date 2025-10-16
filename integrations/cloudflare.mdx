@@ -57,7 +57,7 @@ If you've used a Statsig sdk in the past, these steps should be familiar. The us
 In our example, we are checking a gate called "test_cloudflare_sync" that is set to a 50% pass rate.  We create a random userID on every request, and we should see it evaluate to true 50% of the time.
 
 ### 1. Creating a `StatsigCloudflareClient` instance
-```
+```bash
 const client = new StatsigCloudflareClient("<Your Statsig client key>", {loggingEnabled: 'always'});
 ```
 The client instantiation takes two arguments:
@@ -68,7 +68,7 @@ The client instantiation takes two arguments:
 
 The following line initializes the client by loading feature gate and experiment configurations directly from your Cloudflare KV store.
 
-```
+```bash
 const initResult = await client.initializeFromCloudflare(env.<YOUR_KV_NAMESPACE_BINDING>, <YOUR_KV_KEY>);
 ```
 
@@ -78,7 +78,7 @@ The client initialization takes two arguments:
 - `KvKey : string` This is the KV pair key that was either generated through the Statsig integration, or renamed by you. It can be found under **Workers KV** -> **Your KV namespace** -> **KV Pairs**
 
 ### 3. Checking a Gate
-```
+```bash
 const value = client.checkGate("test_cloudflare_sync", { userID: randomUserId });
 ```
 
@@ -91,7 +91,7 @@ The `checkGate` method takes two arguments:
 Refer to the [Javascript on device evaluation sdk documentation](/client/jsOnDeviceEvaluationSDK) for how to check other entities like experiments and dynamic configs.
 
 ### 4. Logging an event
-```
+```bash
 client.logEvent('gate_check', { userID: randomUserId });
 ```
 This is an event log in code. 
@@ -108,7 +108,7 @@ For more information on event logging, see [here](https://docs.statsig.com/clien
 
 ### 5. Flushing Events
 
-```
+```bash
 ctx.waitUntil(statsig.flush());
 ```
 
@@ -116,7 +116,7 @@ This flushes all events from the sdk to Statsig.  **Without this, you wont be ab
 
 ### Putting it all together
 
-```
+```Javascript
 import { StatsigCloudflareClient } from '@statsig/serverless-client/cloudflare';
 
 export default {
@@ -167,7 +167,7 @@ To optimize for edge use cases, we do not provide an api to recognize updates to
 ### Flushing events
 The SDK enqueues logged events and flushes them in batches. In order to ensure events are properly flushed, we recommend calling flush using context.waitUntil. This will keep the request handler alive until events are flushed without blocking the response.
 
-```
+```bash
 context.waitUntil(Statsig.flush());
 ```
 
