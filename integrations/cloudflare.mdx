@@ -2,8 +2,22 @@
 title: Cloudflare KV
 ---
 
-## Overview
+## Overview 
 Statsig’s Cloudflare integration pushes Statsig Configs to Cloudflare KV, providing low latency for gate and experiment evaluations in Cloudflare Workers.
+The Statsig Cloudflare helper provides a streamlined way to integrate Statsig into your Cloudflare Workers. It automatically handles client initialization and event flushing, allowing you to focus on your business logic.
+
+**This helper is ideal for users who want to:**
+
+- Get started quickly with minimal boilerplate
+- Ensure consistent initialization and cleanup across all requests
+- Ensure event flushes are never missed
+- Maintain simpler worker code
+
+**Use the [advanced/manual setup](#advanced-manual-usage) if:**
+
+- You need fine-grained control over initialization timing
+- You need fine-grained control over event flushing timing
+- You need to customize error handling behavior 
 
 ## Configure Integration
 First, enable the Cloudflare integration in the Statsig Console.
@@ -15,29 +29,113 @@ You will need to input the following:
 - **KV Namespace ID**: We recommend creating a new KV namespace for your Statsig integration. You can create a new namespace, and get the ID from **Account Home** -> **Storage and Databases** -> **Workers KV**, and copy it from the table view.
 - **Cloudflare API Key**: Can be found in Cloudflare portal under **Account Home** -> **Profile** -> **API Tokens**. You need a token with Account.Workers KV Storage Edit Permissions.
 
-There is also an option to filter the configs that are synced into your KV namespace by a [/sdk-keys/target-apps](Target App).  You may wish to enable this in the future as the size of your config payload grows.  For now, you can leave this unchecked.
+There is also an option to filter the configs that are synced into your KV namespace by a [/sdk-keys/target-apps](Target App).  You may wish to enable this in the future as the size of your config payload grows. For now, you can leave this unchecked.
 
 After filling this out, click **Enable**.
 
-Within a minute, the Statsig backend should generate a config payload from your Statsig project and push it into your KV namespace.  Under your KV namespace, navigate to **KV Pairs** - you should see an entry starting with the prefix `statsig-`. This is they `key` associated with your KV storage. You may change this key name. For ease of use, the default key we recommend is `STATSIG_SPECS`.
+Within a minute, the Statsig backend should generate a config payload from your Statsig project and push it into your KV namespace.  Under your KV namespace, navigate to **KV Pairs** - you should see an entry starting with the prefix `statsig-`. This is they `key` associated with your KV storage. Note this key down as it will be required later.
 
 ## Add the Statsig SDK to your Worker
 Now lets hook up the SDK to read that config payload and use it for gate and experiment checks in your worker.  If you've never created a worker before, you can follow the instructions [here](https://developers.cloudflare.com/workers/).
 
 After creating your worker, you will need to connect your KV store to your worker through a binding. Navigate to **Compute (Workers)** -> **Select Your Worker** -> **Bindings** -> **Add binding** -> **KV namespace**. Name your binding under **Variable name**. The default we recommend is `STATSIG_KV`. Under **KV namespace**, select your KV store name. For more information on connecting your worker to your KV store, you can follow the instructions [here](https://developers.cloudflare.com/pages/functions/bindings/).
 
-The remainder of this document assumes you are using **Node.js**.
-
 <Note>
-The`@statsig/serverless-client/cloudflare` package only supports JavaScript. 
+The`@statsig/serverless-client` package only supports JavaScript. 
 </Note>
 
+## Installation
+
+Install the Statsig serverless SDK:
+
+```bash
+npm install @statsig/serverless-client
+```
+
+## Import
+
+Import the helper
+```bash
+import { handleWithStatsig } from '@statsig/serverless-client/cloudflare-wrapper';
+```
+
+## Basic Usage
+
+```javascript
+export default handleWithStatsig(handler, params)
+```
+The helper method takes two arguments:
+- `handler` This is your Cloudflare worker fetch handler code. 
+- `params` :
+
+    | Parameter | Optional | Type | Description | Default |
+    |-----------|----------|------|-------------|---------|
+    | `kvKey` | No | `string` | The key of your KV pair | None |
+    | `envStatsigKey` | Yes | `string` | The env var storing your Statsig client key | STATSIG_KEY |
+    | `envKvBindingName` | Yes | `string` | Your KV binding name | STATSIG_KV |
+    | `statsigOptions` | Yes | `StatsigOptions` | See StatsigOptions [here](https://docs.statsig.com/client/javascript-sdk#statsig-options) | None|
+
+
+In the [Statsig Cloudflare KV integration setup](https://docs.statsig.com/integrations/cloudflare#configure-integration), there are default values suggested for the**KV Binding** and **Statsig Client Key**. If you have used these values, you do not need to provide them in the params object. **If your names are different from the default values, specify them in the params object.**
+
+## Example Usage
+
+```javascript
+import { handleWithStatsig } from '@statsig/serverless-client/cloudflare-wrapper';
+
+export default handleWithStatsig(
+  async (request, env, ctx, client) => {
+    const randomUserId = Math.floor(Math.random() * 100).toString();
+    const value = client.checkGate("pass_gate", { userID: randomUserId });
+    client.logEvent('new_event', { userID: randomUserId });
+    return new Response(value);
+  },
+  {
+   kvKey:"<YOUR_KV_KEY>",
+   envStatsigKey:'YOUR_NON_DEFAULT_STATSIG_KEY', 
+   envKvBindingName:'YOUR_NON_DEFAULT_KV_BINDING'
+   statsigOptions:
+    {loggingEnabled:'always'}
+  }
+)
+```
+
+**That's it!** The helper automatically:
+
+- Initializes the Statsig Client with config specs from your KV store
+- Executes your handler code (Your business logic + Statsig usage)
+- Flushes all events after your handler completes execution
+- Cleans up resources
+
+## Environment variables
+
+The helper expects your **Statsig Client Key** and **KV Binding** to be stored as environment variables. Set these in the Cloudflare dashboard under **Worker → Settings → Variables and Secrets**.
+
+## Error handling
+
+The helper provides automatic error handling:
+
+- **Missing environment variables**: Returns a 500 error with details about which variable is missing
+- **KV initialization failures**: Returns a 500 error indicating the initialization problem
+- **Handler errors**: Your handler's errors are not caught, allowing you to implement custom error handling.
+
+
+
+<Accordion title="Advanced/manual usage">
+
+## Prerequisites
+
+1. Completed the [Statsig Cloudflare KV integration setup](#configure-integration)
+2. [Created and bound a KV namespace to your worker](#advanced-manual-usage)
+
+## Installation
 First, you'll need to install the Statsig serverless sdk.
 
 ```bash
 npm install @statsig/serverless-client
 ```
 
+## Import
 Next, import the Cloudflare client.
 
 ```bash
@@ -124,7 +222,7 @@ export default {
     try {
       const client = new StatsigCloudflareClient("<YOUR_STATSIG_CLIENT_KEY>", {loggingEnabled: 'always'});
       
-      const initResult = await client.initializeFromCloudflare(env.STATSIG_KV, "STATSIG_SPECS");
+      const initResult = await client.initialize(env.STATSIG_KV, "STATSIG_SPECS");
       
       const randomUserId = Math.floor(Math.random() * 100).toString(); //generates a random user id
 
@@ -176,3 +274,7 @@ Cloudflare KV has maximum size limits that may prevent Statsig from pushing conf
 
 ### Unsupported Features
 Statsig ID Lists are not currently synced into Cloudflare KVs.  If you rely on large (>1000) ID lists, you will not be able to check them in your Cloudflare Worker.
+
+
+</Accordion>
+
