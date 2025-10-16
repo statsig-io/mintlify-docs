@@ -47,5 +47,33 @@ var statsig = new Statsig("server-secret-key", options);
 - **SetIDListsURL(string)**: Override the default ID lists endpoint
 - **SetIDListsSyncIntervalMs(int)**: How often to sync ID lists (default: 60000ms)
 - **SetGlobalCustomFields(Dictionary\<string, object\>)**: Global custom fields for all events
+- **SetProxyConfig(ProxyConfig)**: Configuration for connecting through a proxy server
+
+## Proxy Configuration
+
+The `ProxyConfig` class allows you to configure the SDK to connect through a proxy server. This is useful when your application runs in an environment that requires all outbound HTTP traffic to go through a proxy.
+
+```csharp
+var proxyConfig = new ProxyConfig
+{
+    ProxyHost = "proxy.example.com",
+    ProxyPort = 8080,
+    ProxyAuth = "username:password", // Optional
+    ProxyProtocol = "http" // Optional: "http" or "https"
+};
+
+var options = new StatsigOptionsBuilder()
+    .SetProxyConfig(proxyConfig)
+    .Build();
+
+var statsig = new Statsig("server-secret-key", options);
+```
+
+### ProxyConfig Properties
+
+- **ProxyHost** (string): The hostname or IP address of the proxy server
+- **ProxyPort** (int): The port number of the proxy server
+- **ProxyAuth** (string, optional): Authentication credentials in the format "username:password"
+- **ProxyProtocol** (string, optional): The protocol to use for the proxy connection ("http" or "https")
 
 </Accordion>
