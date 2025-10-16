@@ -28,6 +28,14 @@
       "chatgpt"
     ]
   },
+  "integrations": {
+    "ga4": {
+        "measurementId": "G-EM5RHE1RHW"
+    },
+    "gtm": {
+      "tagId": "GTM-NRDCWNF"
+    }
+  },
   "navigation": {
     "tabs": [
       {
