@@ -24,15 +24,15 @@ Within a minute, the Statsig backend should generate a config payload from your 
 ## Add the Statsig SDK to your Worker
 Now lets hook up the SDK to read that config payload and use it for gate and experiment checks in your worker.  If you've never created a worker before, you can follow the instructions [here](https://developers.cloudflare.com/workers/).
 
-After creating your worker, you will need to connect your KV store to your worker through a binding. Navigate to **Compute (Workers)** -> ** Select Your Worker** -> **Bindings** -> **Add binding** -> **KV namespace**. Name your binding under **Variable name**. The default we recommend is `STATSIG_KV`. Under **KV namespace**, select your KV store name. For more information on connecting your worker to your KV store, you can follow the instructions [here](https://developers.cloudflare.com/pages/functions/bindings/).
+After creating your worker, you will need to connect your KV store to your worker through a binding. Navigate to **Compute (Workers)** -> **Select Your Worker** -> **Bindings** -> **Add binding** -> **KV namespace**. Name your binding under **Variable name**. The default we recommend is `STATSIG_KV`. Under **KV namespace**, select your KV store name. For more information on connecting your worker to your KV store, you can follow the instructions [here](https://developers.cloudflare.com/pages/functions/bindings/).
 
 The remainder of this document assumes you are using **Node.js**.
 
-:::note 
-Note: the `@statsig/serverless-client/cloudflare` package only supports JavaScript. 
-:::
+<Note>
+The`@statsig/serverless-client/cloudflare` package only supports JavaScript. 
+</Note>
 
-First up, you'll need to install the Statsig serverless sdk.
+First, you'll need to install the Statsig serverless sdk.
 
 ```bash
 npm install @statsig/serverless-client
@@ -62,7 +62,7 @@ const client = new StatsigCloudflareClient("<Your Statsig client key>", {logging
 ```
 The client instantiation takes two arguments:
 - `client key : string`  This is available from the [Project Settings](https://console.statsig.com/api_keys) page in the Statsig Console.  This is used to authenticate your requests.  In this example, we have hardcoded it (In prod, set this in the cloudflare dashboard under Worker > Settings > Variables and Secrets)
-- `options : Statsig Options Object` If you plan to log events, set `{loggingEnabled: 'always'}` like in the example provided. See here, for more [options](https://docs.statsig.com/client/javascript-sdk#statsig-options).
+- `options : StatsigOptions` If you plan to log events, set `{loggingEnabled: 'always'}` like in the example provided. See here, for more [options](https://docs.statsig.com/client/javascript-sdk#statsig-options).
 
 ### 2. Client initialization
 
@@ -80,7 +80,6 @@ The client initialization takes two arguments:
 ### 3. Checking a Gate
 ```
 const value = client.checkGate("test_cloudflare_sync", { userID: randomUserId });
-
 ```
 
 This is a gate check in code.
@@ -95,17 +94,17 @@ Refer to the [Javascript on device evaluation sdk documentation](/client/jsOnDev
 ```
 client.logEvent('gate_check', { userID: randomUserId });
 ```
-This is an event log in code. For more information on event logging, see [here](https://docs.statsig.com/client/jsOnDeviceEvaluationSDK#logging-an-event).
+This is an event log in code. 
 
 The `logEvent` method takes two parameters:
-- `Event name : string` This is the name of the event you are logging
+- `eventOrName : string | StatsigEvent` This is the name and details of the event you are logging.
 - `StatsigUser` The Statsig user object for whom the event is being logged.
 
-Refer to the documentation above for more optional parameters for more thorough event logging
+For more information on event logging, see [here](https://docs.statsig.com/client/jsOnDeviceEvaluationSDK#logging-an-event).
 
-:::note 
-Note: `loggingEnabled: 'always'` must be set in the options object when you create an instance of the client to successfully log events
-:::
+<Note>
+`loggingEnabled: 'always'` must be set in the options object when you create an instance of the client to successfully log events
+</Note>
 
 ### 5. Flushing Events
 
@@ -145,21 +144,25 @@ export default {
 
 If you want to check on the evaluations you are getting, you can go to the gate you created for this example and look at the evaluations in the Diagnostics tab.
 
-```
+
 <Frame>
   <img src="https://github.com/user-attachments/assets/1cc865ed-e15c-41a4-8979-24e1d457a7b1" alt="Diagnostics Stream" />
 </Frame>
-```
+
 If you want to check the events you logged, in the **Statsig Console**, go to **Data** -> **Events**
+
+<Frame>
+  <img src="../images/client/Events.png"/>
+</Frame>
 
 And there you have it - a working Cloudflare KV integration for Statsig. 
 
 ## Other Considerations
 
 ### Polling for updates
-The SDK cannot poll for updates across requests since [Cloudflare does not allow for timers**](https://developers.cloudflare.com/workers/reference/security-model/#step-1-disallow-timers-and-multi-threading).
-To optimize for edge use cases, we do not provide an api to recognize updates to your config specs. However, when a change is made to your project definition on the Statsig console, the changes will be propagates to the KV store and will be reflected the next time you initialize the Cloudlfare client.
-```
+The SDK cannot poll for updates across requests since [**Cloudflare does not allow for timers**](https://developers.cloudflare.com/workers/reference/security-model/#step-1-disallow-timers-and-multi-threading).
+To optimize for edge use cases, we do not provide an api to recognize updates to your config specs. However, when a change is made to your project definition on the Statsig console, the changes will be propagates to the KV store and will be reflected the next time you initialize the Cloudlflare client.
+
 
 ### Flushing events
 The SDK enqueues logged events and flushes them in batches. In order to ensure events are properly flushed, we recommend calling flush using context.waitUntil. This will keep the request handler alive until events are flushed without blocking the response.
