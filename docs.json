@@ -1054,7 +1054,7 @@
               {
                 "group": "Open Telemetry",
                 "pages": [
-                  "/infra-analytics/getting-started.mdx"
+                  "/infra-analytics/getting-started"
                 ]
               },
               {
