@@ -68,8 +68,11 @@ When selecting an event, the total number of times the event occurred (Count) on
 - **Count per User**: Plot the frequency distribution of how often users perform a specific event, showing statistics like average, median, or percentile values per user within the given time range per data point. This aggregation helps analyze user engagement patterns by measuring how many times each user performed an event, then applying summary statistics across those users.
 
 ### Exposures
+Selecting an experiment or gate exposure plots its first exposures over your selected date-range. First exposures are the first time a unique id (set on the experiment or gate) was exposed to each of your experiment groups or each of your gate's rules.
 
-Selecting an experiment exposure plots the experiment's first exposures over your selected date-range.
+### Understanding First Exposures in Feature Gates
+
+When a gate is checked for a user, an exposure is created for the rule who's conditions they've met. If the user is exposed to multiple different rules at different times, the first exposure from each rule is kept. We recommend grouping by rule to see each rule's exposures separately.
 
 ### Metrics
 
