@@ -17,7 +17,7 @@ You will need to input the following:
 - **KV Namespace ID**: We recommend creating a new KV namespace for your Statsig integration. You can create a new namespace, and get the ID from **Account Home** -> **Storage and Databases** -> **Workers KV**, and copy it from the table view.
 - **Cloudflare API Key**: Can be found in Cloudflare portal under **Account Home** -> **Profile** -> **API Tokens**. You need a token with Account.Workers KV Storage Edit Permissions.
 
-There is also an option to filter the configs that are synced into your KV namespace by a [/sdk-keys/target-apps](Target App).  You may wish to enable this in the future as the size of your config payload grows. For now, you can leave this unchecked.
+There is also an option to filter the configs that are synced into your KV namespace by a Target App.  You may wish to enable this in the future as the size of your config payload grows. For now, you can leave this unchecked.
 
 After filling this out, click **Enable**.
 
@@ -58,7 +58,7 @@ The helper method takes two arguments:
 
     | Parameter | Optional | Type | Description |
     |-----------|----------|------|-------------|
-    | `kvKey` | No | `string` | The key of your KV pair |
+    | `kvKey` | No | `string` | The **env var** storing the key of your KV pair |
     | `envStatsigKey` | No | `string` | The **env var** storing your Statsig client key |
     | `envKvBindingName` | No | `string` | Your KV binding name |
     | `statsigOptions` | Yes | `StatsigOptions` | See StatsigOptions [here](https://docs.statsig.com/client/javascript-sdk#statsig-options) |
@@ -67,6 +67,10 @@ For best practice:
 
 - store `envStatsigKey` as a Cloudflare secret. You can set this in the Cloudflare dashboard under, **Worker → Settings → Variables and Secrets**
 - store `kvKey` and `envKvBindingName` in your wrangler.toml
+
+<Note>
+Statsig requires the three required parameters to be stored as environment variables. Either in your wrangler.toml or as Cloudflare secrets
+</Note>
 
 ## Example Usage
 <Tabs>
@@ -83,7 +87,7 @@ export default handleWithStatsig(
     return new Response(value);
   },
   {
-   kvKey: env.kv_key,
+   kvKey: 'kv_key',
    envStatsigKey:'statsig_key', //In Cloudflare secrets, if your statsig key is stored as statsig_key=***********. Your var is "statsig_key"
    envKvBindingName:'STATSIG_KV'
   }
