@@ -285,6 +285,7 @@
               {
                 "group": "Alerts",
                 "pages": [
+                  "product-analytics/alerts-overview",
                   "metrics/rollout-alerts",
                   "product-analytics/topline-alerts"
                 ]
@@ -1104,6 +1105,26 @@
   },
   "redirects": [
     {
+      "source": "/experiments/stratified-sampling-whn",
+      "destination": "/statsig-warehouse-native/features/stratified-sampling"
+    },
+    {
+      "source": "/metrics/metric-alerts",
+      "destination": "/product-analytics/alerts-overview"
+    },
+    {
+      "source": "/feature-gates/working-with",
+      "destination": "/feature-flags/overview"
+    },
+    {
+      "source": "/client/jsClientSDK",
+      "destination": "/client/javascript-sdk"
+    },
+    {
+      "source": "/feature-gates/feature-gates-lifecycle",
+      "destination": "/feature-flags/feature-flags-lifecycle"
+    },
+    {
       "source": "/server/nodejsServerSDK/upgrade_guide/v5ToV6",
       "destination": "/server/migration-guides/v5ToV6UpgradeGuide"
     },
@@ -1112,8 +1133,8 @@
       "destination": "/experiments/overview"
     },
     {
-      "source": "/client/CPP",
-      "destination": "/client/cpp"
+      "source": "/client/cpp",
+      "destination": "/client/CPP"
     },
     {
       "source": "/client/js-on-device-eval-client/using-evaluations-data-adapter",
@@ -1269,7 +1290,7 @@
     },
     {
       "source": "/client/cpp-client-sdk",
-      "destination": "/client/cpp"
+      "destination": "/client/CPP"
     },
     {
       "source": "server/phpSDK",
