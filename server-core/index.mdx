@@ -7,7 +7,7 @@ description: Learn about Statsig Server Core, our second generation of Server SD
 
 Statsig Server Core is our second generation of Server SDKs: a full rewrite with a shared, performance-focused core library that enables superior across-the-board perf and feature maturity across our Server SDKs. Server Core SDKs include:
 
-- **Faster Evaluation:** A shared, performance-focused Rust evaluation engine, that evaluates 3-5x as our pure native code SDKs.
+- **Faster evaluation:** A shared, performance-focused Rust evaluation engine, that evaluates 3-5x as our pure native code SDKs.
 - **Superior non-eval performance:** more efficient network and CPU usage, plus other performance optimizations always arriving to each SDK.
 - **Features new to Server SDKs:** Parameter Stores, Contextual Multi-Armed Bandits, and more.
 - **Quality-of-life improvements from certain SDKs:** Observability Interface, streaming config changes (from the Statsig Forward Proxy) and more
@@ -16,15 +16,17 @@ Statsig Server Core is our second generation of Server SDKs: a full rewrite with
 
 Server Core SDKs are available on an opt-in basis, with native SDKs still available and supported in all languages. If you're just getting started with Statsig, we recommend choosing a Server Core SDK if its convenient for you, but we continue to support bug fixes in our [Legacy SDKs](/server-core/legacy-sdks), and will until we set end-of-support dates for these SDKs. At that time - we'll also provide guidance to make migration as easy as possible.
 
-- **[Node](/server-core/node-core)**: Stable, [npm](https://www.npmjs.com/package/@statsig/statsig-node-core)
-- **[Python](/server-core/python-core)**: Stable, [PyPI](https://pypi.org/project/statsig-python-core/)
-- **[Java](/server-core/java-core)**: Stable, [Maven Central](https://central.sonatype.com/artifact/com.statsig/javacore/overview)
-- **[PHP](/server-core/php-core)**: Stable, [Packagist](https://packagist.org/packages/statsig/statsigsdk)
-- **[Rust](/server-core/rust-core)**: Stable, [Crates.io](https://crates.io/crates/statsig-rust)
-- **[Elixir](/server-core/elixir-core)**: Stable
-- **[.NET](/server-core/dotnet-core.mdx)**: Stable, [NuGet](https://www.nuget.org/packages/Statsig.Dotnet/0.9.3-beta.2509250234)
-- **Ruby**: In Development, planned for Late 2025
-- **[Go](/server-core/go-core)**: Beta
+| SDK | Status | Package | Migration Guide |
+|-----|--------|---------|-----------------|
+| [Node](/server-core/node-core) | Stable | [npm](https://www.npmjs.com/package/@statsig/statsig-node-core) | |
+| [Python](/server-core/python-core) | Stable | [PyPI](https://pypi.org/project/statsig-python-core/) | [Link](/server-core/migration-guides/python) |
+| [Java](/server-core/java-core) | Stable | [Maven Central](https://central.sonatype.com/artifact/com.statsig/javacore/overview) | [Link](server-core/migration-guides/java) |
+| [PHP](/server-core/php-core) | Stable | [Packagist](https://packagist.org/packages/statsig/statsigsdk) | |
+| [Rust](/server-core/rust-core) | Stable | [Crates.io](https://crates.io/crates/statsig-rust) | |
+| [Elixir](/server-core/elixir-core) | Stable | | |
+| [.NET](/server-core/dotnet-core.mdx) | Stable | [NuGet](https://www.nuget.org/packages/Statsig.Dotnet/0.9.3-beta.2509250234) | |
+| Ruby | In Development, planned for Late 2025 | | |
+| [Go](/server-core/go-core) | Beta | | |
 
 ### Technical differences
 
