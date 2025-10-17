@@ -132,22 +132,24 @@ DataAdapters provide a layer of resilience, and ensure your server is ready to s
 <CodeGroup>
 
 ```js Node.js Initialization
-import { Statsig } from "statsig-node";
+import { Statsig, StatsigUser } from '@statsig/statsig-node-core';
 
-await Statsig.initialize("YOUR_SERVER_KEY");
+const statsig = new Statsig("YOUR_SERVER_KEY");
+await statsig.initialize();
 
 // Server SDK is now ready to evaluate gates/experiments for any user
-const user = { userID: "123" };
-const gate = await Statsig.checkGate(user, "my_gate");
+const user = new StatsigUser({ userID: "123" });
+const gate = statsig.checkGate(user, "my_gate");
 ```
 
 ```python Python Initialization
-import statsig
+from statsig_python_core import Statsig, StatsigUser
 
-statsig.initialize("YOUR_SERVER_KEY")
+statsig = Statsig("YOUR_SERVER_KEY")
+statsig.initialize().wait()
 
 # Server SDK is now ready
-user = {"userID": "123"}
+user = StatsigUser("123")
 gate = statsig.check_gate(user, "my_gate")
 ```
 
