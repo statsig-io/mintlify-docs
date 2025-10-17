@@ -11,8 +11,6 @@ import Initialization2 from '/snippets/server-core/initialization2.mdx'
 import CheckGateIntro from '/snippets/server-core/checkGate.mdx'
 import GetDynamicConfigIntro from '/snippets/server-core/getDynamicConfig.mdx'
 import GetExperimentIntro from '/snippets/server-core/getExperiment.mdx'
-import GetPromptIntro from '/snippets/server-core/getPrompt.mdx'
-import GetPromptSetIntro from '/snippets/server-core/getPromptSet.mdx'
 import ParamStoresIntro from '/snippets/server-core/paramStores.mdx'
 import LogEventIntro from '/snippets/server-core/logEvent.mdx'
 import ForwardLogLineEventIntro from '/snippets/server-core/forwardLogLineEvent.mdx'
@@ -35,8 +33,6 @@ import initialization from '/snippets/server-core/python/initialization.mdx'
 import checkGate from '/snippets/server-core/python/checkGate.mdx'
 import getDynamicConfig from '/snippets/server-core/python/getDynamicConfig.mdx'
 import getExperiment from '/snippets/server-core/python/getExperiment.mdx'
-import getPrompt from '/snippets/server-core/python/getPrompt.mdx'
-import getPromptSet from '/snippets/server-core/python/getPromptSet.mdx'
 import paramStores from '/snippets/server-core/python/paramStores.mdx'
 import logEvent from '/snippets/server-core/python/logEvent.mdx'
 import forwardLogLineEvent from '/snippets/server-core/python/forwardLogLineEvent.mdx'
@@ -88,12 +84,6 @@ import faqs from '/snippets/server-core/python/faqs.mdx'
 
 <GetFeatureGateIntro/>
 <getFeatureGate/>
-
-<GetPromptIntro/>
-<getPrompt/>
-
-<GetPromptSetIntro/>
-<getPromptSet/>
 
 <ParamStoresIntro/>
 <paramStores/>
@@ -149,7 +139,6 @@ import faqs from '/snippets/server-core/python/faqs.mdx'
 - `get_layer(user: StatsigUser, layer_name: str, options: Optional[LayerEvaluationOptions] = None) -> Layer`
 - `get_feature_gate(user: StatsigUser, gate_name: str, options: Optional[FeatureGateEvaluationOptions] = None) -> FeatureGate`
 - `get_parameter_store(user: StatsigUser, parameter_store_name: str, options: Optional[ParameterStoreEvaluationOptions] = None) -> ParameterStore`
-- `get_prompt(user: StatsigUser, prompt_name: str, options: Optional[PromptEvaluationOptions] = None) -> Prompt`
 - `log_event(user: StatsigUser, event_name: str, value: Optional[Union[str, float]] = None, metadata: Optional[Dict[str, str]] = None) -> None`
 - `manually_log_gate_exposure(user: StatsigUser, gate_name: str) -> None`
 - `manually_log_dynamic_config_exposure(user: StatsigUser, config_name: str) -> None`
