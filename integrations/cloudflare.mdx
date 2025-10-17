@@ -7,19 +7,6 @@ Statsig’s Cloudflare integration pushes Statsig Configs to Cloudflare KV, prov
 
 The Statsig Cloudflare helper provides a streamlined way to integrate Statsig into your Cloudflare Workers. It automatically handles client initialization and event flushing, allowing you to focus on your business logic.
 
-**This helper is ideal for users who want to:**
-
-- Get started quickly with minimal boilerplate
-- Ensure consistent initialization and cleanup across all requests
-- Ensure event flushes are never missed
-- Maintain simpler worker code
-
-**Use the [advanced/manual setup](#advanced-manual-usage) if:**
-
-- You need fine-grained control over initialization timing
-- You need fine-grained control over event flushing timing
-- You need to customize error handling behavior 
-
 ## Configure Integration
 First, enable the Cloudflare integration in the Statsig Console.
 
@@ -131,6 +118,12 @@ export default handleWithStatsig(
 
 <Accordion title="Advanced/manual usage">
 
+**Use the advanced/manual setup if:**
+
+- You need fine-grained control over initialization timing
+- You need fine-grained control over event flushing timing
+- You need to customize error handling behavior 
+
 ## Prerequisites
 
 1. Completed the [Statsig Cloudflare KV integration setup](#configure-integration)
@@ -179,7 +172,7 @@ For best practice:
 The following line initializes the client by loading feature gate and experiment configurations directly from your Cloudflare KV store.
 
 ```bash
-const initResult = await client.initializeFromCloudflare(env.<YOUR_KV_NAMESPACE_BINDING>, <YOUR_KV_KEY>);
+const initResult = await client.initializeFromKv(env.<YOUR_KV_NAMESPACE_BINDING>, <YOUR_KV_KEY>);
 ```
 
 The client initialization takes two arguments:
@@ -236,7 +229,7 @@ export default {
     try {
       const client = new StatsigCloudflareClient(env.statsig_key);
       
-      const initResult = await client.initialize(env.STATSIG_KV, env.kv_key);
+      const initResult = await client.initializeFromKV(env.STATSIG_KV, env.kv_key);
       
       const randomUserId = Math.floor(Math.random() * 100).toString(); //generates a random user id
 
@@ -303,7 +296,7 @@ context.waitUntil(Statsig.flush());
 ```
 
 ### Size Limits
-Cloudflare KV has maximum size limits that may prevent Statsig from pushing configs into your KV. See [here](https://developers.cloudflare.com/workers/platform/limits/#kv-limits) for the latest Cloudflare KV limits.  If your payload continues to grow, you will need to set the option to filter the payload by a [/sdk-keys/target-apps](Target App) in the integration settings.
+Cloudflare KV has maximum size limits that may prevent Statsig from pushing configs into your KV. See [here](https://developers.cloudflare.com/workers/platform/limits/#kv-limits) for the latest Cloudflare KV limits.  If your payload continues to grow, you will need to set the option to filter the payload by a Target App in the integration settings.
 
 ### Unsupported Features
 Statsig ID Lists are not currently synced into Cloudflare KVs.  If you rely on large (>1000) ID lists, you will not be able to check them in your Cloudflare Worker.
